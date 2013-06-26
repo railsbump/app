@@ -1,5 +1,6 @@
 <%= form_tag :rubygems, method: :get do %>
   <%= text_field_tag :query, nil, placeholder: "Search?", autofocus: true %>
+  <%= submit_tag 'Search' %>
 <% end %>
 
 <p><%= link_to "Register new gem", new_rubygem_path %></p>

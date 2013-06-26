@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20130626170139) do
 
   create_table "rubygems", force: true do |t|
-    t.string   "name",                 null: false
-    t.string   "status", null: false
+    t.string   "name",       null: false
+    t.string   "status",     null: false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rubygems", ["name"], name: "index_rubygems_on_name", using: :btree
+  add_index "rubygems", ["name"], name: "index_rubygems_on_name", unique: true, using: :btree
 
 end

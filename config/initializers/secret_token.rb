@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Rails4ready::Application.config.secret_key_base = '2e96d0f378e6ffb2a9c61645a9f8af7519d47b4f484f26b02b30b54596e670b02c22b58528e6481fca274fb2e1d9d5b39ceac9ee334f0db2e44a5f5b489d97e4'
+Rails4ready::Application.config.secret_key_base = ENV['SECRET_KEY_BASE'] || '2e96d0f378e6ffb2a9c61645a9f8af7519d47b4f484f26b02b30b54596e670b02c22b58528e6481fca274fb2e1d9d5b39ceac9ee334f0db2e44a5f5b489d97e4'

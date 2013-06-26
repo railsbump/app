@@ -2,7 +2,7 @@ class CreateRubygems < ActiveRecord::Migration
   def change
     create_table :rubygems do |t|
       t.string :name, null: false
-      t.string :compatibility_status, null: false
+      t.string :status, null: false
       t.text :notes
 
       t.timestamps

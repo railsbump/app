@@ -1,6 +1,8 @@
 class Rubygem < ActiveRecord::Base
   STATUSES = ['compatible', 'not compatible', 'unknown']
 
-  validates :name, :presence, uniqueness: true
-  validates :compatibility_status, :presence, inclusion: STATUSES
+  validates :name,   presence: true, uniqueness: true
+  validates :status, presence: true, inclusion: STATUSES
+
+  scope :alphabetically, -> { order "name" }
 end

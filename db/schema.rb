@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130626170139) do
 
   create_table "rubygems", force: true do |t|
     t.string   "name",                 null: false
-    t.string   "compatibility_status", null: false
+    t.string   "status", null: false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"

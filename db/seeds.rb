@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Rubygem.create!(
+  name:   "Devise",
+  status: "compatible",
+  notes:  "From 3.0rc version"
+)
+
+Rubygem.create!(
+  name:   "CanCan",
+  status: "unknown",
+  notes:  "Maybe ready in the 2.0"
+)
+
+Rubygem.create!(
+  name:   "roadie",
+  status: "not compatible"
+)

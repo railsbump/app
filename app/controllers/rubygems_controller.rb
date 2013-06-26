@@ -1,11 +1,11 @@
 class RubygemsController < ApplicationController
   def index
-    scope = Rubygem.alphabetically
+    alphabetical = Rubygem.alphabetically
 
     @gems = if params[:query].present?
-      scope.search_by_name params[:query]
+      alphabetical.search_by_name params[:query]
     else
-      scope
+      alphabetical
     end
   end
 

@@ -1,10 +1,10 @@
-<%= form_tag :rubygems, method: :get do %>
-  <%= text_field_tag :query, nil, placeholder: "Search?", autofocus: true %>
-  <%= submit_tag 'Search' %>
+<%= form_tag :rubygems, method: :get, class: "well form-search" do %>
+  <%= text_field_tag :query, nil, placeholder: "Type the name of a gem", autofocus: true, class: "input-medium search-query" %>
+  <%= submit_tag 'Search', class: "btn btn-primary" %>
 <% end %>
 
 <p><%= link_to "Register new gem", new_rubygem_path %></p>
-<table>
+<table class="table table-bordered table-striped table-hover">
   <thead>
     <th>Name</th>
     <th>Status</th>

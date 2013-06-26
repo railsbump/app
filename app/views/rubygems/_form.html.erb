@@ -1,21 +1,40 @@
-<%= form_for @gem do |f| %>
-  <% if @gem.errors.any? %>
-  <p>One or more errors prevented the gem to be saved:</p>
-  <ul>
-    <% @gem.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+<%= form_for @gem, class: "form-horizontal well" do |f| %>
+  <fieldset>
+    <% if @gem.errors.any? %>
+      <div class="alert alert-error">
+        <p>One or more errors prevented the gem to be saved:</p>
+        <ul>
+          <% @gem.errors.full_messages.each do |error| %>
+            <li><%= error %>.</li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </ul>
-  <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name, autofocus: true, required: true %>
+    <div class="control-group">
+      <%= f.label :name, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+    </div>
 
-  <%= f.label :status %>
-  <%= f.select :status, Rubygem::STATUSES %>
+    <div class="control-group">
+      <%= f.label :status, class: "control-label" %>
+      <div class="controls">
+        <%= f.select :status, Rubygem::STATUSES %>
+      </div>
+    </div>
 
-  <%= f.label :notes %>
-  <%= f.text_area :notes %>
+    <div class="control-group">
+      <%= f.label :notes, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_area :notes %>
+        <p class="help-block">You can use Markdown.</p>
+      </div>
+    </div>
 
-  <%= f.submit "Save" %>
+    <div class="form-actions">
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    </div>
+  </fieldset>
 <% end %>

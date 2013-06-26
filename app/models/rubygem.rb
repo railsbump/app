@@ -6,4 +6,8 @@ class Rubygem < ActiveRecord::Base
 
   scope :alphabetically, -> { order "name" }
   scope :search_by_name, ->(name) { where "name ILIKE '%#{name}%'" }
+
+  def to_param
+    name
+  end
 end

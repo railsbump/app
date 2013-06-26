@@ -9,6 +9,10 @@ class RubygemsController < ApplicationController
     end
   end
 
+  def show
+    @gem = Rubygem.find_by name: param[:id]
+  end
+
   def new
     @gem = Rubygem.new
   end

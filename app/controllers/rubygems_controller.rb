@@ -19,6 +19,7 @@ class RubygemsController < ApplicationController
 
   def create
     @gem = Rubygem.new rubygem_params
+
     if @gem.save
       redirect_to @gem, success: "Gem successfully registered"
     else

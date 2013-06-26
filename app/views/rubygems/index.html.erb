@@ -1,5 +1,4 @@
-
-<%= form_tag :rubygems, method: :get, class: "well form-search" do %>
+<%= form_tag :rubygems, method: :get, remote: true, class: "well form-search", id: "gems-search" do %>
   <%= text_field_tag :query, nil, placeholder: "Type the name of a gem", autofocus: true, autocomplete: "off", class: "input-medium search-query" %>
   <%= submit_tag 'Search', class: "btn btn-primary" %>
   <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
@@ -13,12 +12,6 @@
     <th>Notes<th>
   </thead>
   <tbody>
-    <% @gems.each do |gem| %>
-      <tr>
-        <td><%= link_to gem.name, gem %></td>
-        <td><%= gem.status %></td>
-        <td><%= gem.notes %></td>
-      </tr>
-    <% end %>
+    <%= render 'gems' %>
   </tbody>
 </table>

@@ -1,3 +1,7 @@
+<%= form_tag :gems, method: :get do %>
+  <%= text_field_tag :query, nil, placeholder: "Search?", autofocus: true %>
+<% end %>
+
 <table>
   <thead>
     <th>Name</th>
@@ -13,5 +17,4 @@
       </tr>
     <% end %>
   </tbody>
-
 </table>

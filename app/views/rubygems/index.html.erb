@@ -1,9 +1,11 @@
+
 <%= form_tag :rubygems, method: :get, class: "well form-search" do %>
-  <%= text_field_tag :query, nil, placeholder: "Type the name of a gem", autofocus: true, class: "input-medium search-query" %>
+  <%= text_field_tag :query, nil, placeholder: "Type the name of a gem", autofocus: true, autocomplete: "off", class: "input-medium search-query" %>
   <%= submit_tag 'Search', class: "btn btn-primary" %>
+  <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
 <% end %>
 
-<p><%= link_to "Register new gem", new_rubygem_path %></p>
+
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <th>Name</th>

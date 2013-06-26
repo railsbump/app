@@ -15,4 +15,8 @@
 /log/*.log
 /tmp
 
+# Ignore spring bin.
 /bin/spring
+
+# Ignore DB config.
+/config/database.yml

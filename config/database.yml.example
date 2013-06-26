@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: rails4ready_development
   pool: 5
-  username: rails4ready
+  username: 
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: rails4ready_test
   pool: 5
-  username: rails4ready
+  username:
   password:
 
 production:

@@ -2,7 +2,7 @@
   <tr>
     <td><%= link_to gem.name, gem %></td>
     <td><%= gem.status %></td>
-    <td><%= gem.notes %></td>
+    <td><%= markdown gem.notes %></td>
   </tr>
 <% end %>
 

@@ -20,3 +20,5 @@
 
 # Ignore DB config.
 /config/database.yml
+
+.ruby-version

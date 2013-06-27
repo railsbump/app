@@ -3,7 +3,7 @@ class RubygemsController < ApplicationController
   before_filter :unauthorize_if_ready, only: [:edit, :update]
 
   def index
-    alphabetical = Rubygem.alphabetically
+    alphabetical = Rubygem.alphabetically.page params[:page]
 
     @gems = if params[:query].present?
       alphabetical.search_by_name params[:query]

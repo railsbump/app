@@ -4,13 +4,15 @@
   <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
 <% end %>
 
+<div id="pagination"><%= paginate @gems, remote: true %></div>
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <th>Name</th>
     <th>Status</th>
     <th>Notes<th>
   </thead>
-  <tbody>
+
+  <tbody id="gems">
     <%= render 'gems' %>
   </tbody>
 </table>

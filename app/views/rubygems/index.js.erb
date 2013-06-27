@@ -1,1 +1,2 @@
-$('tbody').html("<%=j render('gems') %>");
+$('#gems').html("<%=j render('gems') %>");
+$('#pagination').html("<%=j paginate(@gems, remote: true) %>")

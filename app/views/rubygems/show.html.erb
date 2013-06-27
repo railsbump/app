@@ -1,11 +1,12 @@
-<h1><%= @gem.name %></h1>
-<h2>Ready for Rails 4? <%= @gem.status %></h2>
+<h2><%= @gem.name %></h2>
+
+<p>Ready for Rails 4? <span class="<%= @gem.status.gsub " ", "-" %>"><%= @gem.status %></span>.</p>
 
 <% if @gem.notes.present? %>
   <p><%= markdown @gem.notes %></p>
 <% end %>
 
-<h2>Comments:</h2>
+<p>Please comment if you know the current status of this gem, or want to add extra info. We'll update the info accordingly, thanks!</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

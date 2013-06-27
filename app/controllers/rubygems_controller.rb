@@ -41,7 +41,7 @@ class RubygemsController < ApplicationController
   end
 
   def set_rubygem
-    @gem = Rubygem.find_by! name: params[:id]
+    @gem = Rubygem.cached_find_by_name params[:id]
   end
 
   def unauthorize_if_ready

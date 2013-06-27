@@ -1,4 +1,6 @@
 class RubygemsController < ApplicationController
+  before_filter :set_rubygem, only: [:show, :edit, :update]
+
   def index
     alphabetical = Rubygem.alphabetically
 
@@ -9,10 +11,6 @@ class RubygemsController < ApplicationController
     end
   end
 
-  def show
-    @gem = Rubygem.find_by! name: params[:id]
-  end
-
   def new
     @gem = Rubygem.new
   end
@@ -21,9 +19,17 @@ class RubygemsController < ApplicationController
     @gem = Rubygem.new rubygem_params
 
     if @gem.save
-      redirect_to @gem, success: "Gem successfully registered"
+      redirect_to @gem, success: "Gem successfully registered."
     else
       render :new
+    end
+  end
+
+  def update
+    if @gem.update rubygem_params
+      redirect_to @gem, success: "Gem successfully updated."
+    else
+      render :edit
     end
   end
 
@@ -31,5 +37,9 @@ class RubygemsController < ApplicationController
 
   def rubygem_params
     params.require(:rubygem).permit :name, :status, :notes
+  end
+
+  def set_rubygem
+    @gem = Rubygem.find_by! name: params[:id]
   end
 end

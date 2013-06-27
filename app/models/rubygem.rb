@@ -8,7 +8,8 @@ class Rubygem < ActiveRecord::Base
   validates :status, presence: true, inclusion: STATUSES
 
   scope :alphabetically, -> { order "name" }
-  scope :search_by_name, ->(name) { where "name ILIKE '%#{name}%'" }
+  scope :recent,         -> { order "updated_at DESC" }
+  scope :by_name,        ->(name) { where "name ILIKE '%#{name}%'" }
 
   def ready?
     status == "ready"

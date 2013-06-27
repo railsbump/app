@@ -1,5 +1,5 @@
 class Rubygem < ActiveRecord::Base
-  STATUSES = ["compatible", "not compatible", "unknown"]
+  STATUSES = ["ready", "not ready", "unknown"]
 
   validates :name,   presence: true, uniqueness: true
   validates :status, presence: true, inclusion: STATUSES

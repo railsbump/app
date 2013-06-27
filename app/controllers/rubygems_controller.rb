@@ -1,5 +1,6 @@
 class RubygemsController < ApplicationController
-  before_filter :set_rubygem, only: [:show, :edit, :update]
+  before_filter :set_rubygem,          only: [:show, :edit, :update]
+  before_filter :unauthorize_if_ready, only: [:edit, :update]
 
   def index
     alphabetical = Rubygem.alphabetically
@@ -41,5 +42,9 @@ class RubygemsController < ApplicationController
 
   def set_rubygem
     @gem = Rubygem.find_by! name: params[:id]
+  end
+
+  def unauthorize_if_ready
+    redirect_to @gem if @gem.ready?
   end
 end

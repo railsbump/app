@@ -1,4 +1,5 @@
 class RubygemsController < ApplicationController
+  http_basic_authenticate_with name: ENV['LOGIN'], password: ENV['PASSWORD'], only: [:edit, :update]
   before_filter :set_rubygem, only: [:show, :edit, :update]
 
   def index

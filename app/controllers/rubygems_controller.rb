@@ -37,7 +37,7 @@ class RubygemsController < ApplicationController
   private
 
   def rubygem_params
-    params.require(:rubygem).permit :name, :status, :notes
+    params.require(:rubygem).permit :name, :status, :notes, :miel
   end
 
   def set_rubygem

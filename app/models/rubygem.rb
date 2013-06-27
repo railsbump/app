@@ -1,6 +1,9 @@
 class Rubygem < ActiveRecord::Base
   STATUSES = ["ready", "not ready", "unknown"]
 
+  attr_accessor :miel # honeypot field for spammers
+  validates_format_of :miel, without: /.+/
+
   validates :name,   presence: true, uniqueness: true
   validates :status, presence: true, inclusion: STATUSES
 

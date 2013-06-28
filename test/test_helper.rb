@@ -6,6 +6,10 @@ class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
   fixtures :all
+
+  def self.test_order
+    :random
+  end
 end
 
 class ActionController::TestCase

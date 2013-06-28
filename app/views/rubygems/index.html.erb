@@ -6,14 +6,4 @@
 <% end %>
 
 <div id="pagination"><%= paginate @gems, remote: true %></div>
-<table class="table table-bordered table-striped table-hover">
-  <thead>
-    <th>Name</th>
-    <th>Status</th>
-    <th>Notes</th>
-  </thead>
-
-  <tbody id="gems">
-    <%= render "shared/gems" %>
-  </tbody>
-</table>
+<%= render "shared/gems_table" %>

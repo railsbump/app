@@ -9,9 +9,12 @@ Ready4rails4::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # Show full error reports and disable caching.
+  # Show full error reports.
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = false
+
+  # Enable caching
+  config.action_controller.perform_caching = true
+  config.cache_store = :mem_cache_store
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

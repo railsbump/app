@@ -6,8 +6,4 @@ module ApplicationHelper
       Markdown.render(content).html_safe
     end
   end
-
-  def display_status status
-    content_tag(:span, class: status.gsub(" ", "-")) { status }
-  end
 end

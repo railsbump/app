@@ -35,7 +35,7 @@ class RubygemsController < ApplicationController
     @form = RubygemForm.new rubygem: @gem
 
     if @form.save params[:rubygem]
-      RubygemCache.flush_cache @gem
+      RubygemCache.flush_by_gem @gem
 
       redirect_to @form.rubygem, success: "Gem successfully updated."
     else

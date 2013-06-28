@@ -21,6 +21,7 @@ gem 'turbolinks'
 
 group :test do
   gem 'blind'
+  gem 'mocha', require: false
 end
 
 group :production do

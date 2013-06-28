@@ -10,7 +10,7 @@ class RubygemsController < ApplicationController
     @gems = if params[:query].present?
       paginate.by_name params[:query]
     else
-      RubygemCache.recent paginate
+      paginate.recent
     end
   end
 
@@ -22,7 +22,6 @@ class RubygemsController < ApplicationController
     @gem = Rubygem.new rubygem_params
 
     if @gem.save
-      RubygemCache.flush_cache @gem
       redirect_to @gem, success: "Gem successfully registered."
     else
       render :new
@@ -32,6 +31,7 @@ class RubygemsController < ApplicationController
   def update
     if @gem.update rubygem_params
       RubygemCache.flush_cache @gem
+
       redirect_to @gem, success: "Gem successfully updated."
     else
       render :edit

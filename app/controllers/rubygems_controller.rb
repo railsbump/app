@@ -1,3 +1,5 @@
+require_dependency 'rubygem_cache'
+
 class RubygemsController < ApplicationController
   before_filter :set_rubygem,          only: [:show, :edit, :update]
   before_filter :unauthorize_if_ready, only: [:edit, :update]
@@ -6,9 +8,9 @@ class RubygemsController < ApplicationController
     paginate = Rubygem.page(params[:page]).per 20
 
     @gems = if params[:query].present?
-      paginate.alphabetically.by_name params[:query]
+      paginate.by_name params[:query]
     else
-      paginate.recent
+      RubygemCache.recent paginate
     end
   end
 
@@ -20,6 +22,7 @@ class RubygemsController < ApplicationController
     @gem = Rubygem.new rubygem_params
 
     if @gem.save
+      RubyGemCache.flush_cache
       redirect_to @gem, success: "Gem successfully registered."
     else
       render :new
@@ -28,6 +31,7 @@ class RubygemsController < ApplicationController
 
   def update
     if @gem.update rubygem_params
+      RubyGemCache.flush_cache
       redirect_to @gem, success: "Gem successfully updated."
     else
       render :edit
@@ -41,7 +45,7 @@ class RubygemsController < ApplicationController
   end
 
   def set_rubygem
-    @gem = Rubygem.cached_find_by_name params[:id]
+    @gem = RubygemCache.cached_find_by_name params[:id]
   end
 
   def unauthorize_if_ready

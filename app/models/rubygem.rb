@@ -7,15 +7,8 @@ class Rubygem < ActiveRecord::Base
   validates :name,   presence: true, uniqueness: true
   validates :status, presence: true, inclusion: STATUSES
 
-  scope :alphabetically, -> { order "name" }
-  scope :recent,         -> { order "updated_at DESC" }
-  scope :by_name,        ->(name) { where "name ILIKE '%#{name}%'" }
-
-  after_commit :flush_cache
-
-  def self.cached_find_by_name name
-    Rails.cache.fetch [self.name, name] { find_by! name: name }
-  end
+  scope :recent,  -> { order "updated_at DESC" }
+  scope :by_name, ->(name) { where("name ILIKE '%#{name}%'").order "name" }
 
   def ready?
     status == "ready"
@@ -23,11 +16,5 @@ class Rubygem < ActiveRecord::Base
 
   def to_param
     name
-  end
-
-  private
-
-  def flush_cache
-    Rails.cache.delete [self.class.name, name]
   end
 end

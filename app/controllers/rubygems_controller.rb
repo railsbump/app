@@ -1,6 +1,8 @@
 require_dependency 'rubygem_cache'
 
 class RubygemsController < ApplicationController
+  http_basic_authenticate_with name: ENV['LOGIN'], password: ENV['PASSWORD'], only: [:new, :create]
+
   before_filter :set_rubygem,          only: [:show, :edit, :update]
   before_filter :unauthorize_if_ready, only: [:edit, :update]
 

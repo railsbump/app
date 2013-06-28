@@ -27,6 +27,9 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.9)
+    blind (0.0.1)
+      actionpack
+      activesupport
     builder (3.1.4)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -128,6 +131,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blind
   coffee-rails (~> 4.0.0)
   dalli
   jquery-rails

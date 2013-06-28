@@ -19,6 +19,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
+group :test do
+  gem 'blind'
+end
+
 group :production do
   gem 'rails_12factor'
 end

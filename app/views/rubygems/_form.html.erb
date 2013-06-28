@@ -1,10 +1,10 @@
-<%= form_for @gem, class: "form-horizontal well" do |f| %>
+<%= form_for @form, class: "form-horizontal well" do |f| %>
   <fieldset>
-    <% if @gem.errors.any? %>
+    <% if @form.errors.any? %>
       <div class="alert alert-error">
         <p>One or more errors prevented the gem to be saved:</p>
         <ul>
-          <% @gem.errors.full_messages.each do |error| %>
+          <% @form.errors.full_messages.each do |error| %>
             <li><%= error %>.</li>
           <% end %>
         </ul>
@@ -23,7 +23,7 @@
     <div class="control-group">
       <%= f.label :status, class: "control-label" %>
       <div class="controls">
-        <%= f.select :status, Rubygem::STATUSES %>
+        <%= f.select :status, RubygemForm::STATUSES %>
       </div>
     </div>
 

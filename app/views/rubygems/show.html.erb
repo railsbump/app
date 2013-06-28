@@ -1,6 +1,6 @@
 <h2>
-  <%= @gem.name %>
-
+  <%= @gem.name %> -
+  <%= link_to 'edit info', edit_rubygem_path(@gem) %>
 </h2>
 
 <p>Ready for Rails 4? <span class="<%= @gem.status.gsub " ", "-" %>"><%= @gem.status %></span>.</p>
@@ -11,11 +11,7 @@
 
 <p>
   Please comment if you know the current status of this gem, or want
-  to add extra info. We'll update the info accordingly
-  <% if !@gem.ready? %>
-    or you can <%= link_to 'help us', edit_rubygem_path(@gem) %>
-  <% end %>
-  , thanks!
+  to add extra info. We'll update the info accordingly, thanks!
 </p>
 
 <%= render 'application/disqus' %>

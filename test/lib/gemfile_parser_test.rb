@@ -1,4 +1,5 @@
 require "test_helper"
+require_relative "../../lib/gemfile_parser"
 
 class GemfileParserTest < ActiveSupport::TestCase
   GEMFILE = File.read File.expand_path("../fixtures/gemfile", __dir__)

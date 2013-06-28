@@ -1,7 +1,7 @@
 <% @gems.each do |gem| %>
   <tr>
     <td><%= link_to gem.name, gem %></td>
-    <td><%= gem.status %></td>
+    <td><%= display_status gem.status %></td>
     <td><%= markdown gem.notes %></td>
   </tr>
 <% end %>

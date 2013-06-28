@@ -3,7 +3,7 @@
 
 </h2>
 
-<p>Ready for Rails 4? <span class="<%= @gem.status.gsub " ", "-" %>"><%= @gem.status %></span>.</p>
+<p>Ready for Rails 4? <%= display_status @gem.status %>.</p>
 
 <% if @gem.notes.present? %>
   <p><%= markdown @gem.notes %></p>

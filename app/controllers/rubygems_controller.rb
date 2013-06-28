@@ -1,4 +1,4 @@
-require_dependency 'rubygem_cache'
+require_dependency "rubygem_cache"
 
 class RubygemsController < ApplicationController
   before_filter :set_rubygem, only: [:show, :edit, :update]
@@ -17,24 +17,11 @@ class RubygemsController < ApplicationController
     @form = RubygemForm.new rubygem: Rubygem.new
   end
 
-  def gemfile
-  end
-
-  def checkgemfile
-    gemfilecontents = params[:gemfile]
-    @gems = gemfilecontents
-              .scan(/gem\s+['"](\w+)['"]/)
-              .flatten
-              .reject { |gem| gem == "rails" }
-              .map { |gem| Rubygem.by_name(gem).first }
-              .compact
-  end
-
   def create
     @form = RubygemForm.new rubygem: Rubygem.new
 
     if @form.save params[:rubygem]
-      redirect_to @form.rubygem, success: "Gem successfully registered."
+      redirect_to @form.rubygem
     else
       render :new
     end
@@ -50,7 +37,7 @@ class RubygemsController < ApplicationController
     if @form.save params[:rubygem]
       RubygemCache.flush_by_gem @gem
 
-      redirect_to @form.rubygem, success: "Gem successfully updated."
+      redirect_to @form.rubygem
     else
       render :edit
     end

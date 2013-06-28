@@ -22,7 +22,7 @@ class RubygemsController < ApplicationController
     @gem = Rubygem.new rubygem_params
 
     if @gem.save
-      RubyGemCache.flush_cache
+      RubygemCache.flush_cache @gem
       redirect_to @gem, success: "Gem successfully registered."
     else
       render :new
@@ -31,7 +31,7 @@ class RubygemsController < ApplicationController
 
   def update
     if @gem.update rubygem_params
-      RubyGemCache.flush_cache
+      RubygemCache.flush_cache @gem
       redirect_to @gem, success: "Gem successfully updated."
     else
       render :edit

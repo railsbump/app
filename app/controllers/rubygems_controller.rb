@@ -5,7 +5,7 @@ class RubygemsController < ApplicationController
   before_filter :unauthorize_if_ready, only: [:edit, :update]
 
   def index
-    paginate = Rubygem.page(params[:page]).per 20
+    paginate = Rubygem.page params[:page]
 
     @gems = if params[:query].present?
       paginate.by_name params[:query]

@@ -5,6 +5,6 @@ class GemfilesController < ApplicationController
   end
 
   def create
-    @gems = GemfileParser.new(params[:gemfile]).gems
+    @gems = GemfileParser.gems_status params[:gemfile]
   end
 end

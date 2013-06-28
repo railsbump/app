@@ -1,11 +1,15 @@
 class GemfileParser
   attr_reader :gemfile
 
+  def self.gems_status gemfile
+    new(gemfile).gems_status
+  end
+
   def initialize gemfile
     @gemfile = gemfile
   end
 
-  def gems
+  def gems_status
     gemfile
       .scan(/gem\s+['"](\w+)['"]/)
       .flatten

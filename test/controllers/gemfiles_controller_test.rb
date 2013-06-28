@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class GemfilesControllerTest < ActionController::TestCase
   GEMFILE = File.read File.expand_path("../fixtures/gemfile", __dir__)

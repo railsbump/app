@@ -1,8 +1,7 @@
 require_dependency 'rubygem_cache'
 
 class RubygemsController < ApplicationController
-  before_filter :set_rubygem,          only: [:show, :edit, :update]
-  before_filter :unauthorize_if_ready, only: [:edit, :update]
+  before_filter :set_rubygem, only: [:show, :edit, :update]
 
   def index
     paginate = Rubygem.page params[:page]
@@ -15,23 +14,33 @@ class RubygemsController < ApplicationController
   end
 
   def new
-    @gem = Rubygem.new
+    @form = RubygemForm.new rubygem: Rubygem.new
   end
 
   def create
-    @gem = Rubygem.new rubygem_params
+    @form = RubygemForm.new rubygem: Rubygem.new
 
-    if @gem.save
-      RubyGemCache.flush_cache
-      redirect_to @gem, success: "Gem successfully registered."
+    if @form.validate params[:rubygem]
+      @form.save
+      RubygemCache.flush_cache @form.rubygem
+
+      redirect_to @form.rubygem, success: "Gem successfully registered."
     else
       render :new
     end
   end
 
+  def edit
+    @form = RubygemForm.new rubygem: @gem
+  end
+
   def update
-    if @gem.update rubygem_params
-      RubyGemCache.flush_cache
+    @form = RubygemForm.new rubygem: @gem
+
+    if @gem.validates params[:rubygem]
+      @form.save
+      RubygemCache.flush_cache @gem
+
       redirect_to @gem, success: "Gem successfully updated."
     else
       render :edit
@@ -40,15 +49,7 @@ class RubygemsController < ApplicationController
 
   private
 
-  def rubygem_params
-    params.require(:rubygem).permit :name, :status, :notes, :miel
-  end
-
   def set_rubygem
     @gem = RubygemCache.find_by_name params[:id]
-  end
-
-  def unauthorize_if_ready
-    redirect_to @gem if @gem.ready?
   end
 end

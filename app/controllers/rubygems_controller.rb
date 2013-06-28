@@ -18,6 +18,19 @@ class RubygemsController < ApplicationController
     @gem = Rubygem.new
   end
 
+  def gemfile
+  end
+
+  def checkgemfile
+    gemfilecontents = params[:gemfile]
+    @gems = gemfilecontents
+              .scan(/gem\s+['"](\w+)['"]/)
+              .flatten
+              .reject { |gem| gem == "rails" }
+              .map { |gem| Rubygem.by_name(gem).first }
+              .compact
+  end
+
   def create
     @gem = Rubygem.new rubygem_params
 

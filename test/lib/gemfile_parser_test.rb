@@ -9,5 +9,6 @@ class GemfileParserTest < ActiveSupport::TestCase
     result = GemfileParser.gems_status GEMFILE
 
     assert_equal gems, result
+    assert !gems.any? { |g| GemfileParser::EXCLUDED.include? g.name }
   end
 end

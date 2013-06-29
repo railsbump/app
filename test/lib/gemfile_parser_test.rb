@@ -1,14 +1,15 @@
-require "test_helper"
+require "minitest/autorun"
 require_relative "../../lib/gemfile_parser"
 
 class GemfileParserTest < ActiveSupport::TestCase
-  GEMFILE = File.read File.expand_path("../fixtures/gemfile", __dir__)
+  GEMFILE  = File.read File.expand_path("../fixtures/gemfile", __dir__)
+  EXCLUDED = GemfileParser::EXCLUDED
 
   test "returns gems status for a given Gemfile" do
-    gems   = Rubygem.all
-    result = GemfileParser.gems_status GEMFILE
+    gems   = ["dalli", "pg", "puma"] # meh
+    result = GemfileParser.gems GEMFILE
 
     assert_equal gems, result
-    assert !gems.any? { |g| GemfileParser::EXCLUDED.include? g.name }
+    assert !gems.any? { |g| EXCLUDED.include? g }
   end
 end

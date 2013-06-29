@@ -2,9 +2,9 @@ require "test_helper"
 
 class GemfilesControllerTest < ActionController::TestCase
   test "#create returns existing gems from Gemfile" do
-    gemfile = 'gemfile'
-    gems    = stub "gems"
-    GemfileParser.stubs(:gems_status).with(gemfile).returns gems
+    gemfile, parsed, gems = "gemfile", stub, stub
+    GemfileParser.stubs(:gems).with(gemfile).returns parsed
+    Rubygem.stubs(:where).with(name: parsed).returns gems
 
     post :create, gemfile: gemfile
 

@@ -7,9 +7,10 @@ class GemfileParserTest < ActiveSupport::TestCase
 
   test "returns gems status for a given Gemfile" do
     gems   = Rubygem.alphabetical # meh
-    result = GemfileParser.gems_status GEMFILE
+    registered, unregistered = GemfileParser.gems_status GEMFILE
 
-    assert_equal gems.to_a, result
+    assert_equal gems.to_a, registered
+    assert_equal ["coffee-rails"], unregistered
     assert_equal EXCLUDED, EXCLUDED - gems.pluck(:name)
   end
 end

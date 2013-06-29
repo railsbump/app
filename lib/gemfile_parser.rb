@@ -12,12 +12,16 @@ class GemfileParser
   end
 
   def gems_status
-    Rubygem.alphabetical.where name: gem_names - EXCLUDED
+    excluded     = gem_names - EXCLUDED
+    registered   = Rubygem.alphabetical.where name: excluded
+    unregistered = excluded - registered.pluck(:name)
+
+    [registered, unregistered]
   end
 
   private
 
   def gem_names
-    gemfile.scan(/gem\s+['"](\w+)['"]/).flatten
+    gemfile.scan(/gem\s+['"](\S+)['"]/).flatten
   end
 end

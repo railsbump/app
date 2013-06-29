@@ -6,6 +6,8 @@ require 'mocha/setup'
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
+  fixtures :all
+
   def self.test_order
     :random
   end

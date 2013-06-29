@@ -1,6 +1,6 @@
 require_dependency "gemfile_parser"
 
-class GemfilesController < ApplicationController
+class GemfileChecksController < ApplicationController
   def new
   end
 

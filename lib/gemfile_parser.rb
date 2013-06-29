@@ -3,25 +3,21 @@ class GemfileParser
 
   EXCLUDED = ["rails"]
 
-  def self.gem_names gemfile
-    new(gemfile).gem_names
+  def self.gems_status gemfile
+    new(gemfile).gems_status
   end
 
   def initialize gemfile
     @gemfile = gemfile
   end
 
-  def gem_names
-    gems_without_excluded.sort
+  def gems_status
+    Rubygem.alphabetical.where name: gem_names - EXCLUDED
   end
 
   private
 
-  def gems_without_excluded
-    gems_array.reject { |gem| EXCLUDED.include? gem }
-  end
-
-  def gems_array
+  def gem_names
     gemfile.scan(/gem\s+['"](\w+)['"]/).flatten
   end
 end

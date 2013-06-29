@@ -1,6 +1,7 @@
 class Rubygem < ActiveRecord::Base
-  scope :recent,  -> { order "updated_at DESC" }
-  scope :by_name, ->(name) { where("name ILIKE '%#{name}%'").order "name" }
+  scope :alphabetical, -> { order "name" }
+  scope :recent,       -> { order "updated_at DESC" }
+  scope :by_name,      ->(name) { alphabetical.where("name ILIKE '%#{name}%'") }
 
   def to_param
     name

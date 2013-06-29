@@ -6,10 +6,10 @@ class GemfileParserTest < ActiveSupport::TestCase
   EXCLUDED = GemfileParser::EXCLUDED
 
   test "returns gems status for a given Gemfile" do
-    gems   = ["dalli", "pg", "puma"] # meh
-    result = GemfileParser.gem_names GEMFILE
+    gems   = Rubygem.alphabetical # meh
+    result = GemfileParser.gems_status GEMFILE
 
-    assert_equal gems, result
-    assert !gems.any? { |g| EXCLUDED.include? g }
+    assert_equal gems.to_a, result
+    assert_equal EXCLUDED, EXCLUDED - gems.pluck(:name)
   end
 end

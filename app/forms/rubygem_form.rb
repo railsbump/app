@@ -4,7 +4,7 @@ class RubygemForm < Reform::Form
   include DSL
   include Reform::Form::ActiveRecord
 
-  STATUSES = ["ready", "not ready", "unknown"]
+  STATUSES = ["ready", "not ready", "unknown", "does not depend on rails version"]
 
   properties [:name, :status, :notes], on: :rubygem
 

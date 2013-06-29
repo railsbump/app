@@ -17,7 +17,7 @@ body {
   padding-top: 20px;
   padding-bottom: 60px;
 }
-span.ready {
+span.ready, span.does-not-depend-on-rails-version {
   color: green;
 }
 span.not-ready {

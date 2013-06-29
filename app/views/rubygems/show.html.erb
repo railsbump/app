@@ -4,6 +4,7 @@
 </h2>
 
 <p>Ready for Rails 4? <%= display_status @gem %>.</p>
+<p><em>Status or notes updated <%= time_ago_in_words @gem.updated_at%> ago.</em></th>
 
 <% if @gem.notes.present? %>
   <p><%= markdown @gem.notes %></p>

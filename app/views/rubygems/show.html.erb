@@ -9,9 +9,11 @@
   <p><%= markdown @gem.notes %></p>
 <% end %>
 
+<p>See on <a href="http://rubygems.org/gems/<%= @gem.name %>">rubygems.org</a>.</p>
+
 <p>
-  Please comment if you know the current status of this gem, or want
-  to add extra info. We'll update the info accordingly, thanks!
+  <em>Please comment below if you know the current status of this gem, or want
+  to add extra info. We'll update the info accordingly, thanks!</em>
 </p>
 
 <%= render 'application/disqus' %>

@@ -21,6 +21,7 @@ class RubygemsController < ApplicationController
     @form = RubygemForm.new rubygem: Rubygem.new
 
     if @form.save params[:rubygem]
+      ApplicationMailer.new_gem_admin_notification(@form).deliver
       redirect_to @form.rubygem
     else
       render :new

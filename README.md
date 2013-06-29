@@ -9,10 +9,5 @@ one-click report of the status of your Gemfile gems.
 ## Thanks to
 
 * all the people who reports new gem status and add new gems to the site
-* [amarraja](https://github.com/amarraja) for allowing the users to paste their Gemfiles
-
-## Authors
-
-* [frodsan](https://github.com/frodsan)
-* [Florent2](https://github.com/Florent2)
-
+* [amarraja](https://github.com/amarraja) for allowing the users to paste their
+Gemfiles

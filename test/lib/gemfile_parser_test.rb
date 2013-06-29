@@ -7,7 +7,7 @@ class GemfileParserTest < ActiveSupport::TestCase
 
   test "returns gems status for a given Gemfile" do
     gems   = ["dalli", "pg", "puma"] # meh
-    result = GemfileParser.gems GEMFILE
+    result = GemfileParser.gem_names GEMFILE
 
     assert_equal gems, result
     assert !gems.any? { |g| EXCLUDED.include? g }

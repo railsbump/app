@@ -3,15 +3,15 @@ class GemfileParser
 
   EXCLUDED = ["rails"]
 
-  def self.gems gemfile
-    new(gemfile).gems
+  def self.gem_names gemfile
+    new(gemfile).gem_names
   end
 
   def initialize gemfile
     @gemfile = gemfile
   end
 
-  def gems
+  def gem_names
     gems_without_excluded.sort
   end
 

@@ -6,6 +6,6 @@ class GemfilesController < ApplicationController
 
   def create
     parsed_gems = GemfileParser.gems params[:gemfile]
-    @gems = Rubygem.where(name: parsed_gems)
+    @gems = Rubygem.where name: parsed_gems
   end
 end

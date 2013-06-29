@@ -11,6 +11,6 @@ class GemfileParserTest < ActiveSupport::TestCase
 
     assert_equal gems.to_a, registered
     assert_equal ["coffee-rails"], unregistered
-    assert_equal EXCLUDED, EXCLUDED - gems.pluck(:name)
+    assert_equal EXCLUDED, EXCLUDED - registered.pluck(:name)
   end
 end

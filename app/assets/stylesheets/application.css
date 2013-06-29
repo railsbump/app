@@ -23,9 +23,6 @@ span.ready {
 span.not-ready {
   color: red;
 }
-span.unknown {
-  color: yellow;
-}
 input#rubygem_miel {
   display: none;
 }

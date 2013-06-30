@@ -5,3 +5,7 @@ notifications:
   email:
     - lrodriguezsanc@gmail.com
     - florent2@gmail.com
+before_install:
+  - cp 'db/config/database.yml.travis' 'db/config/database.yml'
+  - psql -c 'create database travis_test' -U postgres
+  - rake --trace db:migrate test

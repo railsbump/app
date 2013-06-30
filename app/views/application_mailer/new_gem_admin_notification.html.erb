@@ -7,7 +7,7 @@
       <ul>
         <li>Status: <%= @gem.status %></li>
         <li>Notes:  <%= @gem.notes %></li>
-        <li>Link:   <%= link_to @gem.name, rubygem_url(gem) %></li>
+        <li>Link:   <%= link_to @gem.name, rubygem_url(@gem) %></li>
       </ul>
     </body>
   </html>

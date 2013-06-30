@@ -1,3 +1,7 @@
 language: ruby
 rvm:
   - 2.0.0
+notifications:
+  email:
+    - lrodriguezsanc@gmail.com
+    - florent2@gmail.com

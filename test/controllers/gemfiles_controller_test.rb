@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GemfilesControllerTest < ActionController::TestCase
+class GemfileChecksControllerTest < ActionController::TestCase
   test "#create returns existing gems from Gemfile" do
     gemfile, gems = "gemfile", stub("gems")
     GemfileParser.expects(:gems_status).with(gemfile).returns gems

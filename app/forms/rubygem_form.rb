@@ -17,6 +17,6 @@ class RubygemForm < Reform::Form
   validates :miel,   format: { without: /.+/ }
 
   def save params
-    rubygem.update(to_hash) if validate(params)
+    rubygem.update(to_h) if validate(params)
   end
 end

@@ -11,6 +11,10 @@ class RubygemsController < ApplicationController
     end
   end
 
+  def show
+    fresh_when @gem, public: true
+  end
+
   def new
     @form = RubygemForm.new rubygem: Rubygem.new
   end

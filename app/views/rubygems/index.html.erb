@@ -6,5 +6,4 @@
   <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
 <% end %>
 
-<div id="pagination"><%= paginate @gems, remote: true %></div>
 <%= render "shared/gems_table" %>

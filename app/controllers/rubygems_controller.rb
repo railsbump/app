@@ -4,12 +4,10 @@ class RubygemsController < ApplicationController
   before_filter :set_rubygem, only: [:show, :edit, :update]
 
   def index
-    paginate = Rubygem.page params[:page]
-
     @gems = if params[:query].present?
-      paginate.by_name params[:query]
+      Rubygem.by_name params[:query]
     else
-      paginate.recent
+      Rubygem.recent
     end
   end
 

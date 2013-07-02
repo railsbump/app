@@ -4,10 +4,11 @@ class RubygemsController < ApplicationController
   before_filter :set_rubygem, only: [:show, :edit, :update]
 
   def index
-    @gems = if params[:query].present?
-      Rubygem.by_name params[:query]
+    if params[:query].present?
+      @gems = Rubygem.by_name params[:query]
     else
-      Rubygem.recent
+      @gems = Rubygem.recent
+      fresh_when last_modified: @gems.maximum(:updated_at)
     end
   end
 

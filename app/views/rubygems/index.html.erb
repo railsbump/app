@@ -6,6 +6,11 @@
   <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
 <% end %>
 
-<h4>Top 20 recent updated gems:</h4>
+<div class="alert text-center">
+  <%= @total_count %> registered,
+  <%= @count_status["ready"] %> ready,
+  <%= @count_status["not ready"] %> not ready and
+  <%= @count_status["unknown"] %> unknown.
+</div>
 
 <%= render "shared/gems_table" %>

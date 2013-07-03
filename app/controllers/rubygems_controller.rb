@@ -7,8 +7,11 @@ class RubygemsController < ApplicationController
     if params[:query].present?
       @gems = Rubygem.by_name params[:query]
     else
-      @gems = Rubygem.recent
-      fresh_when last_modified: @gems.maximum(:updated_at)
+      @total_count  = RubygemCache.total_count
+      @count_status = RubygemCache.count_by_status
+      @gems         = Rubygem.recent
+
+      fresh_when last_modified: RubygemCache.maximum_updated_at
     end
   end
 
@@ -24,6 +27,7 @@ class RubygemsController < ApplicationController
     @form = RubygemForm.new rubygem: Rubygem.new
 
     if @form.save params[:rubygem]
+      RubygemCache.flush
       ApplicationMailer.new_gem_admin_notification(@form).deliver
       redirect_to @form.rubygem
     else

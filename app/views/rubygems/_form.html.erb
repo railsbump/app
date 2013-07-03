@@ -13,6 +13,8 @@
 
     <%= f.text_field :miel %>
 
+    <p class="alert alert-info">Register a new gem only if you know whether it is ready or not. Thanks :)</p>
+
     <div class="control-group">
       <%= f.label :name, class: "control-label" %>
       <div class="controls">
@@ -30,8 +32,7 @@
     <div class="control-group">
       <%= f.label :notes, class: "control-label" %>
       <div class="controls">
-        <%= f.text_area :notes %>
-        <p class="help-block">You can use Markdown.</p>
+        <%= f.text_area :notes, placeholder: "Please indicate how you know it's ready or not: point to the Changelog, the README, issue(s), etc. You can use Markdown." %>
       </div>
     </div>
 

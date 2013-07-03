@@ -26,3 +26,6 @@ span.not-ready {
 input#rubygem_miel {
   display: none;
 }
+textarea#rubygem_notes {
+  width: 400px;
+}

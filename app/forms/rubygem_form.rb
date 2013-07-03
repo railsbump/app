@@ -14,6 +14,7 @@ class RubygemForm < Reform::Form
 
   validates :name,   presence: true, uniqueness: { case_sensitive: false }
   validates :status, presence: true, inclusion: STATUSES
+  validates :notes,  presence: true
   validates :miel,   format: { without: /.+/ }
 
   def save params

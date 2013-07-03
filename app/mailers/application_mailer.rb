@@ -13,7 +13,7 @@ class ApplicationMailer < ActionMailer::Base
     @gem = gem
     mail(
       to:      ENV['ADMIN_EMAILS'],
-      subject: "'#{gem.name} has been updated!"
+      subject: "'#{gem.name}' has been updated!"
     )
   end
 end

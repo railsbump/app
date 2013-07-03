@@ -44,6 +44,7 @@ class RubygemsController < ApplicationController
 
     if @form.save params[:rubygem]
       RubygemCache.flush_by_gem @gem
+      ApplicationMailer.updated_gem_admin_notification(@form.rubygem).deliver
 
       redirect_to @form.rubygem
     else

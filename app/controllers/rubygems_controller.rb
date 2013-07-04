@@ -4,11 +4,12 @@ class RubygemsController < ApplicationController
   before_filter :set_rubygem, only: [:show, :edit, :update]
 
   def index
+    @total_count  = RubygemCache.total_count
+    @count_status = RubygemCache.count_by_status
+
     if params[:query].present?
       @gems = Rubygem.by_name params[:query]
     else
-      @total_count  = RubygemCache.total_count
-      @count_status = RubygemCache.count_by_status
       @gems         = Rubygem.recent
 
       fresh_when last_modified: RubygemCache.maximum_updated_at

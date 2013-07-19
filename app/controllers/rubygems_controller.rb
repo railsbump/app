@@ -1,19 +1,25 @@
 require_dependency "rubygem_cache"
 
 class RubygemsController < ApplicationController
-  before_filter :set_rubygem, only: [:show, :edit, :update]
+  before_action :set_rubygem,  only: [:show, :edit, :update]
+  before_action :set_statuses, only: [:index, :status]
 
   def index
-    @total_count  = RubygemCache.total_count
-    @count_status = RubygemCache.count_by_status
-
     if params[:query].present?
       @gems = Rubygem.by_name params[:query]
     else
-      @gems         = Rubygem.recent
+      @gems = Rubygem.recent
 
       fresh_when last_modified: RubygemCache.maximum_updated_at
     end
+  end
+
+  def status
+    status = params[:status]
+
+    not_found if !Rubygem::STATUSES.include?(status)
+
+    @gems = Rubygem.by_status(status).page params[:page]
   end
 
   def show
@@ -57,5 +63,10 @@ class RubygemsController < ApplicationController
 
   def set_rubygem
     @gem = RubygemCache.find_by_name params[:id]
+  end
+
+  def set_statuses
+    @total_count  = RubygemCache.total_count
+    @count_status = RubygemCache.count_by_status
   end
 end

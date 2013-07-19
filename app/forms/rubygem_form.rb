@@ -4,8 +4,6 @@ class RubygemForm < Reform::Form
   include DSL
   include Reform::Form::ActiveRecord
 
-  STATUSES = ["ready", "not ready"]
-
   properties [:name, :status, :notes], on: :rubygem
 
   attr_accessor :miel # honeypot field for spammers
@@ -13,7 +11,7 @@ class RubygemForm < Reform::Form
   model :rubygem
 
   validates :name,   presence: true, uniqueness: { case_sensitive: false }
-  validates :status, presence: true, inclusion: STATUSES
+  validates :status, presence: true, inclusion: Rubygem::STATUSES
   validates :notes,  presence: true
   validates :miel,   format: { without: /.+/ }
 

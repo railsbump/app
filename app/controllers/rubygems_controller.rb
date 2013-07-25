@@ -17,7 +17,7 @@ class RubygemsController < ApplicationController
   def status
     status = params[:status]
 
-    not_found if !Rubygem::STATUSES.include?(status)
+    raise ActionController::RoutingError if !Rubygem::STATUSES.include?(status)
 
     @gems = Rubygem.by_status(status).page params[:page]
   end

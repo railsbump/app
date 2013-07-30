@@ -5,19 +5,19 @@ class RubygemsController < ApplicationController
   before_action :set_statuses, only: [:index, :status]
 
   def index
-    @gems = Rubygem.recent
-    fresh_when last_modified: RubygemCache.maximum_updated_at
-  end
+    if params[:query].present?
+      @gems = Rubygem.by_name params[:query]
+    else
+      @gems = Rubygem.recent
 
-  def search
-    @gems = Rubygem.by_name params[:query]
-    render :index
+      fresh_when last_modified: RubygemCache.maximum_updated_at
+    end
   end
 
   def status
     status = params[:status]
 
-    raise ActionController::RoutingError if !Rubygem::STATUSES.include?(status)
+    raise_if_not_included Rubygem::STATUSES, status
 
     @gems = Rubygem.by_status(status).page params[:page]
   end
@@ -68,5 +68,14 @@ class RubygemsController < ApplicationController
   def set_statuses
     @total_count  = RubygemCache.total_count
     @count_status = RubygemCache.count_by_status
+  end
+
+  def raise_if_not_included array, value
+    return if array.include?(value)
+
+    expected = array.to_sentence last_word_connector: ' or '
+    message  = "Given #{value.inspect} param is not #{expected}"
+
+    raise ActionController::RoutingError.new(message)
   end
 end

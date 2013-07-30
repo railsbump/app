@@ -5,13 +5,13 @@ class RubygemsController < ApplicationController
   before_action :set_statuses, only: [:index, :status]
 
   def index
-    if params[:query].present?
-      @gems = Rubygem.by_name params[:query]
-    else
-      @gems = Rubygem.recent
+    @gems = Rubygem.recent
+    fresh_when last_modified: RubygemCache.maximum_updated_at
+  end
 
-      fresh_when last_modified: RubygemCache.maximum_updated_at
-    end
+  def search
+    @gems = Rubygem.by_name params[:query]
+    render :index
   end
 
   def status

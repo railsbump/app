@@ -7,7 +7,7 @@ class RubygemsController < ApplicationController
   def index
     @gems = Rubygem.recent
 
-    fresh_when last_modified: RubygemCache.maximum_updated_at
+    fresh_when @gems, last_modified: RubygemCache.maximum_updated_at, public: true
   end
 
   def search

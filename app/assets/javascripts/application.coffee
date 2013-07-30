@@ -5,8 +5,9 @@
 
 onReady = ->
   $('#gems-search').keyup ->
-    $.get $(this).attr('action'), $(this).serialize(), null, 'script'
-    false
+    if $("#query").val().length
+      $.get $(this).attr('action'), $(this).serialize(), null, 'script'
+      false
 
 $(document).ready onReady
 

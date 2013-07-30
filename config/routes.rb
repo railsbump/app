@@ -1,10 +1,12 @@
 Ready4rails4::Application.routes.draw do
+  get "/search", to: "rubygems#search", as: "search"
+
   resources :rubygems, except: :destroy, path: "gems" do
-    collection do
-      get :search
+    collection {
       get "/status/:status", to: "rubygems#statuses", as: "status"
-    end
+    }
   end
+
 
   resource  :gemfile_check, only: [:new, :create]
   get "/gemfile/new", to: redirect("/gemfile_check/new")

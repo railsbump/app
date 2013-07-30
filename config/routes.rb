@@ -2,7 +2,7 @@ Ready4rails4::Application.routes.draw do
   resources :rubygems, except: :destroy, path: "gems" do
     collection do
       get :search
-      get "/status/:status", to: "rubygems#status", as: "status"
+      get "/status/:status", to: "rubygems#statuses", as: "status"
     end
   end
 

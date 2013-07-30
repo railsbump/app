@@ -2,7 +2,7 @@ require_dependency "rubygem_cache"
 
 class RubygemsController < ApplicationController
   before_action :set_rubygem,  only: [:show, :edit, :update]
-  before_action :set_statuses, only: [:index, :status]
+  before_action :set_statuses, only: [:index, :statuses]
 
   def index
     @gems = Rubygem.recent
@@ -16,12 +16,14 @@ class RubygemsController < ApplicationController
     render :index
   end
 
-  def status
+  def statuses
     status = params[:status]
 
     raise_if_not_included Rubygem::STATUSES, status
 
     @gems = Rubygem.by_status(status).page params[:page]
+    
+    render :status
   end
 
   def show

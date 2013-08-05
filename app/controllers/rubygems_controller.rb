@@ -2,7 +2,7 @@ require_dependency "rubygem_cache"
 
 class RubygemsController < ApplicationController
   before_action :set_rubygem,  only: [:show, :edit, :update]
-  before_action :set_statuses, only: [:index, :statuses]
+  before_action :set_statuses, only: [:index, :search, :statuses]
 
   def index
     @gems = Rubygem.recent

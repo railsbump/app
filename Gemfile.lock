@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 6471b9343efd35342432f9f2b38a951d16304aff
+  specs:
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,9 +60,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
-    kaminari (0.14.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -143,7 +148,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dalli
   jquery-rails
-  kaminari
+  kaminari!
   memcachier
   mocha
   pg

@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'dalli'
-gem 'kaminari'
+gem 'kaminari', github: "amatsuda/kaminari"
 gem 'memcachier'
 gem 'pg'
 gem 'puma'

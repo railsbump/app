@@ -1,0 +1,5 @@
+cuba -v 3.1.0
+cutest -v 1.2.1
+pry -v 0.9.12.3
+rack-test -v 0.6.2
+shotgun -v 0.9

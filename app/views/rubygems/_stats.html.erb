@@ -1,7 +1,0 @@
-<div class="alert text-center">
-  <%= @total_count %> registered gems,
-
-  <%= Rubygem::STATUSES.map { |status| %>
-    <% "#{@count_status[status]} #{link_to(status, status_rubygems_path(status))}" %>
-  <% }.to_sentence.html_safe %>
-</div>

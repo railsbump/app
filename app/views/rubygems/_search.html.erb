@@ -1,7 +1,0 @@
-<%= form_tag :search, method: :get, remote: true, class: "well form-search", id: "gems-search" do %>
-  <%= link_to "Upload a Gemfile", new_gemfile_check_path, class: "btn btn-primary" %>
-  <span style="padding-left: 10px; padding-right:10px">OR</span>
-  <%= text_field_tag :query, nil, placeholder: "Search the name of a gem", autocomplete: "off", class: "input-large search-query", autofocus: true %>
-
-  <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
-<% end %>

@@ -1,7 +1,0 @@
-<%= render "shared/gems_table" %>
-
-<% if @unregistered.any? %>
-  <p class="alert">
-    We can't find the following gems in our database: <%= @unregistered.to_sentence %>.
-    Please <%= link_to 'register', new_rubygem_path %> them if you know whether they are ready or not for Rails 4.
-<% end %>

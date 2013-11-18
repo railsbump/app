@@ -9,11 +9,11 @@ class Rubygem < Sequel::Model
     end
   end
 
-  def self.recent limit
+  def self.recent limit = 25
     order(Sequel.desc(:updated_at)).limit limit
   end
 
-  def self.search query, limit
+  def self.search query, limit = 25
     where(Sequel.ilike(:name, "%#{query}%")).limit(limit).by_name
   end
 end

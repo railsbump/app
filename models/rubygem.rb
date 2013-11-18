@@ -1,7 +1,7 @@
 class Rubygem < Sequel::Model
   STATUSES = ['ready', 'not ready', 'unknown']
 
-  def self.recent
-    order Sequel.desc(:updated_at)
+  def self.recent quantity
+    order(Sequel.desc(:updated_at)).limit quantity
   end
 end

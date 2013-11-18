@@ -1,0 +1,9 @@
+<ul>
+  % gems.each do |gem|
+    <li>
+      <h2>{{ gem.name }}</h2>
+      <p>{{ gem.notes }}</p>
+      <p>{{ gem.status }}</p>
+    </li>
+  % end
+</ul>

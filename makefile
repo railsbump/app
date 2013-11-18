@@ -8,16 +8,10 @@ gems:
 install:
 		dep install
 
-db_create:
-		createdb ready4rails
-
-db_drop:
-		dropdb ready4rails
-
-db_migrate:
+migrate:
 		sequel -m ./db/migrations $$(env $$(cat env.sh) printenv DATABASE_URL)
 
-db_seed:
+seed:
 		env $$(cat env.sh) ruby seeds.rb
 
 server:

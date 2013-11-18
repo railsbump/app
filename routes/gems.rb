@@ -1,11 +1,27 @@
 class Gems < Cuba
   define do
-    on 'search', param('query') do |query|
-      render 'gems', gems: Rubygem.search(query)
+    on root do
+      render 'gems', gems: Rubygem.recent
+    end
+
+    on 'search', param('name') do |name|
+      render 'gems', gems: Rubygem.by_name(name)
     end
 
     on 'new' do
       render 'gems/new', gem: CreateRubygem.new({})
+    end
+
+    on 'status/:status' do |status|
+      gems = Rubygem.by_status status
+
+      on !gems.empty? do
+        render 'gems', gems: gems
+      end
+
+      on default do
+        not_found
+      end
     end
 
     on post do
@@ -29,7 +45,7 @@ class Gems < Cuba
     end
 
     on default do
-      render 'gems', gems: Rubygem.recent
+      not_found
     end
   end
 end

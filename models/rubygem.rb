@@ -4,16 +4,22 @@ class Rubygem < Sequel::Model
   STATUSES = ['ready', 'not ready', 'unknown']
 
   dataset_module do
-    def by_name
+    def ordered_by_name
       order :name
+    end
+
+    def by_name name
+      where Sequel.ilike(:name, "%#{ name }%")
+    end
+
+    def by_status status
+      where status: status
     end
   end
 
+  set_dataset self.ordered_by_name
+
   def self.recent limit = 25
     order(Sequel.desc(:updated_at)).limit limit
-  end
-
-  def self.search query, limit = 25
-    where(Sequel.ilike(:name, "%#{query}%")).limit(limit).by_name
   end
 end

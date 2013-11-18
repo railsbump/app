@@ -1,0 +1,11 @@
+% statuses = Rubygem::STATUSES.map { |status| [ status, status ] }
+
+<form action="/gems" method="post">
+  <input type="text" name="gem[name]" value="{{ gem.name }}">
+
+  <select name="gem[status]">
+    {{ this.select_options statuses, gem.status }}
+  </select>
+
+  <textarea name="gem[notes]">{{ gem.notes }}</textarea>
+</form>

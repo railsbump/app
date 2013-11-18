@@ -5,5 +5,6 @@ mote -v 1.1.2
 pg -v 0.17.0
 pry -v 0.9.12.3
 rack-test -v 0.6.2
+scrivener -v 0.2.0
 sequel -v 4.4.0
 shotgun -v 0.9

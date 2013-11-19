@@ -2,7 +2,7 @@ class Gemfile < Cuba
   plugin GemfileHelpers
 
   define do
-    on get do
+    on get, root do
       render 'gemfile', gemfile: nil
     end
 

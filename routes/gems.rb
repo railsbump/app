@@ -1,6 +1,6 @@
 class Gems < Cuba
   define do
-    on root do
+    on get, root do
       render 'gems', gems: Rubygem.recent
     end
 
@@ -29,7 +29,7 @@ class Gems < Cuba
         gem = CreateRubygem.new params
 
         on gem.valid? do
-          Rubygem.create! gem.attributes
+          Rubygem.create gem.attributes
 
           res.redirect '/gems'
         end

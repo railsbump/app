@@ -1,5 +1,6 @@
 require 'cuba'
 require 'cuba/mote'
+require 'json_serializer'
 require 'scrivener'
 require 'sequel'
 
@@ -9,10 +10,15 @@ Cuba.plugin Cuba::Mote
 
 DB = Sequel.connect DATABASE_URL
 
-Dir['./lib/**/*.rb'].each     { |f| require f }
-Dir['./models/**/*.rb'].each  { |f| require f }
-Dir['./helpers/**/*.rb'].each { |f| require f }
-Dir['./routes/**/*.rb'].each  { |f| require f }
+def require_dir str
+  Dir[str].each { |f| require f }
+end
+
+require_dir './lib/**/*.rb'
+require_dir './models/**/*.rb'
+require_dir './helpers/**/*.rb'
+require_dir './serializers/**/*.rb'
+require_dir './routes/**/*.rb'
 
 Cuba.plugin HtmlHelpers
 Cuba.plugin RoutesHelpers

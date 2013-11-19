@@ -12,9 +12,15 @@ class Gemfile < Cuba
       on !gems.empty? do
         status = GemfileStatus.new gems
 
-        render 'gemfile/status',
-          registered: status.registered,
-          unregistered: status.unregistered
+        on accept('application/json') do
+          json GemfileStatusSerializer.new(status)
+        end
+
+        on default do
+          render 'gemfile/status',
+            registered: status.registered,
+            unregistered: status.unregistered
+        end
       end
 
       on default do

@@ -1,6 +1,7 @@
 cuba -v 3.1.0
 cuba-contrib -v 3.1.0
 cutest -v 1.2.1
+json-serializer -v 0.0.2
 mote -v 1.1.2
 pg -v 0.17.0
 pry -v 0.9.12.3

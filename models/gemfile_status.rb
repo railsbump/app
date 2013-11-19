@@ -6,7 +6,7 @@ class GemfileStatus
   end
 
   def registered
-    Rubygem.where name: @gems
+    Rubygem.where(name: @gems).all
   end
 
   def unregistered

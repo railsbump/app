@@ -9,9 +9,10 @@ Cuba.plugin Cuba::Mote
 
 DB = Sequel.connect DATABASE_URL
 
-Dir['./lib/**/*.rb'].each    { |f| require f }
-Dir['./models/**/*.rb'].each { |f| require f }
-Dir['./routes/**/*.rb'].each { |f| require f }
+Dir['./lib/**/*.rb'].each     { |f| require f }
+Dir['./models/**/*.rb'].each  { |f| require f }
+Dir['./helpers/**/*.rb'].each { |f| require f }
+Dir['./routes/**/*.rb'].each  { |f| require f }
 
 Cuba.plugin HtmlHelpers
 Cuba.plugin RoutesHelpers

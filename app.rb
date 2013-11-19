@@ -25,6 +25,10 @@ Cuba.define do
     run Gems
   end
 
+  on 'gemfile' do
+    run Gemfile
+  end
+
   on default do
     not_found
   end

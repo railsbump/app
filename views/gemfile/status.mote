@@ -1,0 +1,8 @@
+{{ this.partial 'gems/list', gems: registered }}
+
+% if unregistered.any?
+  <p>
+    We can't find the following gems in our database:
+    {{ this.to_sentence this.link_gems(unregistered) }}
+  </p>
+% end

@@ -1,0 +1,7 @@
+<p>Paste your Gemfile contents here:</p>
+
+<form action="/gemfile" method="post">
+  <textarea name="gemfile" required="true" autofocus="true">{{ gemfile }}</textarea>
+
+  <input type="submit" value="Check my Gemfile!">
+</form>

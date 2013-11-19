@@ -5,15 +5,15 @@ class Gems < Cuba
     end
 
     on 'search', param('name') do |name|
-      render 'gems', gems: Rubygem.by_name(name)
+      render 'gems', gems: Rubygem.search_by_name(name)
     end
 
     on 'new' do
-      render 'gems/new', gem: CreateRubygem.new({})
+      render 'gems/new', gem: CreateRubygem.new(req.params)
     end
 
     on 'status/:status' do |status|
-      gems = Rubygem.by_status status
+      gems = Rubygem.where status: status
 
       on !gems.empty? do
         render 'gems', gems: gems
@@ -29,7 +29,7 @@ class Gems < Cuba
         gem = CreateRubygem.new params
 
         on gem.valid? do
-          Rubygem.create gem.attributes
+          Rubygem.create! gem.attributes
 
           res.redirect '/gems'
         end

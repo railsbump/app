@@ -3,13 +3,7 @@ class Rubygem < Sequel::Model
 
   STATUSES = ['ready', 'not ready', 'unknown']
 
-  dataset_module do
-    def ordered_by_name
-      order :name
-    end
-  end
-
-  set_dataset self.ordered_by_name
+  set_dataset order(:name)
 
   def self.recent limit = 25
     order(Sequel.desc(:updated_at)).limit limit

@@ -1,5 +1,6 @@
 <h2>
-  <%= @gem.name %>
+  <%= @gem.name %> -
+  <%= link_to 'edit info', edit_rubygem_path(@gem) %>
 </h2>
 
 <p>Ready for Rails 4? <%= display_status @gem %>.</p>

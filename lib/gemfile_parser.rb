@@ -22,6 +22,6 @@ class GemfileParser
   private
 
   def gem_names
-    gemfile.scan(/gem\s+['"](\S+)['"]/).flatten
+    gemfile.scan(/^[ \t]*gem\s+['"](\S+)['"]/).flatten
   end
 end

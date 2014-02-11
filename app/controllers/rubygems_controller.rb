@@ -22,7 +22,7 @@ class RubygemsController < ApplicationController
     raise_if_not_included Rubygem::STATUSES, status
 
     @gems = Rubygem.by_status(status).page params[:page]
-    
+
     render :status
   end
 

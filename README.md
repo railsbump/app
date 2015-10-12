@@ -2,7 +2,7 @@
 
 **NOTE**: Currently, we only support Rails 4.
 
-[Ready4Rails4.net](http://ready4rails4.net) lists many gems and shows whether they are ready
+[Ready4Rails4.net](http://www.ready4rails4.net) lists many gems and shows whether they are ready
 for Rails 4 or not. You can also paste your Gemfile to get a one-click report
 of the status of your Gemfile gems.
 

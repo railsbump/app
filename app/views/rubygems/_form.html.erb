@@ -1,10 +1,10 @@
-<%= form_for @form, class: "form-horizontal well" do |f| %>
+<%= form_for @rubygem, class: "form-horizontal well" do |f| %>
   <fieldset>
-    <% if @form.errors.any? %>
+    <% if @rubygem.errors.any? %>
       <div class="alert alert-error">
         <p>One or more errors prevented the gem to be saved:</p>
         <ul>
-          <% @form.errors.full_messages.each do |error| %>
+          <% @rubygem.errors.full_messages.each do |error| %>
             <li><%= error %>.</li>
           <% end %>
         </ul>

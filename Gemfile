@@ -10,7 +10,6 @@ gem 'memcachier'
 gem 'pg'
 gem 'puma'
 gem 'redcarpet'
-gem 'reform'
 gem 'airbrake'
 
 gem 'sass-rails', '~> 4.0.0'

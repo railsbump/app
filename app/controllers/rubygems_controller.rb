@@ -1,7 +1,6 @@
 require_dependency "rubygem_cache"
 
 class RubygemsController < ApplicationController
-  before_action :set_rubygem,  only: [:show, :edit, :update]
   before_action :set_statuses, only: [:index, :search, :statuses]
 
   def index
@@ -27,47 +26,27 @@ class RubygemsController < ApplicationController
   end
 
   def show
+    @gem = RubygemCache.find_by_name params[:id]
     fresh_when @gem, public: true
   end
 
   def new
-    @form = RubygemForm.new rubygem: Rubygem.new
+    @rubygem = Rubygem.new
   end
 
   def create
-    @form = RubygemForm.new rubygem: Rubygem.new
+    @rubygem = Rubygem.new params[:rubygem].permit!
 
-    if @form.save params[:rubygem]
+    if @rubygem.save
       RubygemCache.flush
-      ApplicationMailer.new_gem_admin_notification(@form).deliver
-      redirect_to @form.rubygem
+      ApplicationMailer.new_gem_admin_notification(@rubygem).deliver
+      redirect_to @rubygem
     else
       render :new
     end
   end
 
-  def edit
-    @form = RubygemForm.new rubygem: @gem
-  end
-
-  def update
-    @form = RubygemForm.new rubygem: @gem
-
-    if @form.save params[:rubygem]
-      RubygemCache.flush_by_gem @gem
-      ApplicationMailer.updated_gem_admin_notification(@form.rubygem).deliver
-
-      redirect_to @form.rubygem
-    else
-      render :edit
-    end
-  end
-
   private
-
-  def set_rubygem
-    @gem = RubygemCache.find_by_name params[:id]
-  end
 
   def set_statuses
     @total_count  = RubygemCache.total_count

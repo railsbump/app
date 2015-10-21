@@ -90,5 +90,5 @@ Ready4rails4::Application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: 'ready4rails4.net' }
+  config.action_mailer.default_url_options = { host: 'ready4rails.net' }
 end

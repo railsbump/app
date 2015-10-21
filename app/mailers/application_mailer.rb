@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "notifier@ready4rails4.net"
+  default from: "notifier@ready4rails.net"
 
   def new_gem_admin_notification gem
     @gem = gem

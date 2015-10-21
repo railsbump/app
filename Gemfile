@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.3'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.4'
 
 gem 'dalli'
 gem 'kaminari', github: "amatsuda/kaminari"
@@ -19,15 +19,16 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
+gem 'sdoc', '~> 0.4.0', group: :doc, require: false
+gem 'rails_12factor', group: :production
+
 group :test do
   gem 'blind'
   gem 'mocha', require: false
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
-group :doc do
-  gem 'sdoc', require: false
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end

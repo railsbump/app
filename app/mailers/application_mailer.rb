@@ -8,12 +8,4 @@ class ApplicationMailer < ActionMailer::Base
       subject: "A new gem has been registered! '#{gem.name}'"
     )
   end
-
-  def updated_gem_admin_notification gem
-    @gem = gem
-    mail(
-      to:      ENV['ADMIN_EMAILS'],
-      subject: "'#{gem.name}' has been updated!"
-    )
-  end
 end

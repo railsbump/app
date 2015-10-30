@@ -4,9 +4,7 @@ ruby '2.2.3'
 
 gem 'rails', '4.2.4'
 
-gem 'dalli'
 gem 'kaminari', github: "amatsuda/kaminari"
-gem 'memcachier'
 gem 'pg'
 gem 'puma'
 gem 'redcarpet'

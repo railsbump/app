@@ -1,12 +1,10 @@
-require_dependency "rubygem_cache"
-
 class RubygemsController < ApplicationController
-  before_action :set_statuses, only: [:index, :search, :statuses]
+  before_action :get_counts, only: [:index, :search, :statuses]
 
   def index
     @gems = Rubygem.recent
 
-    fresh_when @gems, last_modified: RubygemCache.maximum_updated_at, public: true
+    fresh_when @gems, last_modified: Rubygem.maximum(:updated_at), public: true
   end
 
   def search
@@ -26,7 +24,7 @@ class RubygemsController < ApplicationController
   end
 
   def show
-    @gem = RubygemCache.find_by_name params[:id]
+    @gem = Rubygem.find_by_name params[:id]
     fresh_when @gem, public: true
   end
 
@@ -38,7 +36,6 @@ class RubygemsController < ApplicationController
     @rubygem = Rubygem.new params[:rubygem].permit!
 
     if @rubygem.save
-      RubygemCache.flush
       ApplicationMailer.new_gem_admin_notification(@rubygem).deliver
       redirect_to @rubygem
     else
@@ -48,9 +45,9 @@ class RubygemsController < ApplicationController
 
   private
 
-  def set_statuses
-    @total_count  = RubygemCache.total_count
-    @count_status = RubygemCache.count_by_status
+  def get_counts
+    @total_count  = Rubygem.count
+    @count_status = Rubygem.group(:status).count
   end
 
   def raise_if_not_included array, value

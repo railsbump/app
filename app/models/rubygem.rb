@@ -12,8 +12,15 @@ class Rubygem < ActiveRecord::Base
   validates :miel, format: { without: /.+/ }
   validate  :gem_exists_in_rubygem_dot_org
 
+  scope :newest,  -> { order(updated_at: :desc) }
   scope :by_name, -> { order "name" }
-  scope :recent,  -> { order(updated_at: :desc).limit 20 }
+
+  def self.by_status(status, rails_version)
+    case rails_version
+    when 4 then where(status_rails4: status)
+    when 5 then where(status_rails5: status)
+    end
+  end
 
   def self.search query
     where("name ILIKE ?", "%#{query}%")

@@ -2,4 +2,9 @@
 
 <%= render "stats" %>
 
+<% if @status %>
+  <h2>Gems <%= @status %> for Rails <%= @rails_version %></h2>
+<% end %>
 <%= render "shared/gems_table" %>
+
+<%= paginate @gems %>

@@ -1,15 +1,8 @@
 <div class="alert text-center">
-  <%= @total_count %> registered gems
-
-  <br />
   Rails 4:
-    <%= Rubygem::STATUSES.map { |status| %>
-      <% "#{@count_status_rails4[status]} #{link_to(status, status_rubygems_path(status))}" %>
-    <% }.to_sentence.html_safe %>
+    <%= Rubygem::STATUSES.map { |status| link_to(Rubygem.by_status(status, 4).count.to_s + " " + status, root_path(status: status, rails_version: 4))}.to_sentence.html_safe %>
 
   <br />
   Rails 5:
-    <%= Rubygem::STATUSES.map { |status| %>
-      <% "#{@count_status_rails5[status]} #{link_to(status, status_rubygems_path(status))}" %>
-    <% }.to_sentence.html_safe %>
+    <%= Rubygem::STATUSES.map { |status| link_to(Rubygem.by_status(status, 5).count.to_s + " " + status, root_path(status: status, rails_version: 5))}.to_sentence.html_safe %>
 </div>

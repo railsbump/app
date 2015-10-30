@@ -1,26 +1,21 @@
 class RubygemsController < ApplicationController
-  before_action :get_counts, only: [:index, :search, :statuses]
-
   def index
-    @gems = Rubygem.recent
+    @status        = params[:status]
+    @rails_version = params[:rails_version]
+    @query         = params[:query]
 
-    fresh_when @gems, last_modified: Rubygem.maximum(:updated_at), public: true
-  end
+    @gems = Rubygem.page(params[:page])
+    @gems = if @status
+              @gems.by_name.by_status(@status, @rails_version.to_i)
+            elsif @query.present?
+              @gems.by_name.search(@query)
+            else
+              @gems.newest
+            end
 
-  def search
-    @gems = Rubygem.search(params[:query]).by_name.limit 20
-
-    render :index
-  end
-
-  def statuses
-    status = params[:status]
-
-    raise_if_not_included Rubygem::STATUSES, status
-
-    @gems = Rubygem.by_status(status).page params[:page]
-
-    render :status
+    unless params[:page] || @query || @status
+      fresh_when last_modified: Rubygem.maximum(:updated_at), public: true
+    end
   end
 
   def show
@@ -41,22 +36,5 @@ class RubygemsController < ApplicationController
     else
       render :new
     end
-  end
-
-  private
-
-  def get_counts
-    @total_count = Rubygem.count
-    @count_status_rails4 = Rubygem.group(:status_rails4).count
-    @count_status_rails5 = Rubygem.group(:status_rails5).count
-  end
-
-  def raise_if_not_included array, value
-    return if array.include?(value)
-
-    expected = array.to_sentence last_word_connector: ' or '
-    message  = "Given #{value.inspect} param is not #{expected}"
-
-    raise ActionController::RoutingError.new(message)
   end
 end

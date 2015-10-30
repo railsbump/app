@@ -5,16 +5,19 @@ class Rubygem < ActiveRecord::Base
 
   attr_accessor :miel
 
-  validates :name,   presence: true, uniqueness: { case_sensitive: false }
-  validates :status, presence: true, inclusion: Rubygem::STATUSES
-  validates :notes,  presence: true
-  validates :miel,   format: { without: /.+/ }
-  validate :gem_exists_in_rubygem_dot_org
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
+  validates :status_rails4, :status_rails5, presence: true, inclusion: Rubygem::STATUSES
+  validates :notes_rails4, presence: true, unless: Proc.new { |rubygem| rubygem.status_rails4 == "unknown" }
+  validates :notes_rails5, presence: true, unless: Proc.new { |rubygem| rubygem.status_rails5 == "unknown" }
+  validates :miel, format: { without: /.+/ }
+  validate  :gem_exists_in_rubygem_dot_org
 
-  scope :alphabetical, -> { order "name" }
-  scope :recent,       -> { order("updated_at DESC").limit 20 }
-  scope :by_name,      ->(name)   { alphabetical.where("name ILIKE ?", "%#{name}%").limit 20 }
-  scope :by_status,    ->(status) { alphabetical.where status: status }
+  scope :by_name, -> { order "name" }
+  scope :recent,  -> { order(updated_at: :desc).limit 20 }
+
+  def self.search query
+    where("name ILIKE ?", "%#{query}%")
+  end
 
   def to_param
     name

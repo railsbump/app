@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ready for Rails 4?</title>
+  <title>Ready for Rails 4 or 5?</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags unless response.cache_control[:public] %>
+  <%= favicon_link_tag %>
 </head>
 <body>
   <div class="container">
-    <h1><a href="/">Is it ready for Rails 4?</a></h1>
-    <p>Check easily whether a gem is ready for Rails 4 or not.</p>
+    <h1><a href="/">Is a gem ready for Rails 4 or 5?</a></h1>
 
     <%= yield %>
 
     <footer>
-      <p>Cooked by <a href="http://frodsan.com">frodsan</a> and <a href="http://florentguilleux.fr">Florent</a>, powered by <a href="http://rubyonrails.org">Rails</a>, dressed with <a href="http://bootswatch.com/cyborg/">Boostswatch Cyborg</a>, hosted on <a href="http://heroku.com>">Heroku</a>, recipe at <a href="https://github.com/rubyperu/ready4rails">GitHub: ready4rails</a>. Made in Perú.</p>
+      <p>Dressed with <a href="http://bootswatch.com/cyborg/">Boostswatch Cyborg</a>, recipe at <a href="https://github.com/rubyperu/ready4rails">GitHub: ready4rails</a>, made in Perú.</p>
     </footer>
   </div>
 

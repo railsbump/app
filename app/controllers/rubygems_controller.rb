@@ -8,7 +8,7 @@ class RubygemsController < ApplicationController
   end
 
   def search
-    @gems = Rubygem.by_name params[:query]
+    @gems = Rubygem.search(params[:query]).by_name.limit 20
 
     render :index
   end
@@ -46,8 +46,9 @@ class RubygemsController < ApplicationController
   private
 
   def get_counts
-    @total_count  = Rubygem.count
-    @count_status = Rubygem.group(:status).count
+    @total_count = Rubygem.count
+    @count_status_rails4 = Rubygem.group(:status_rails4).count
+    @count_status_rails5 = Rubygem.group(:status_rails5).count
   end
 
   def raise_if_not_included array, value

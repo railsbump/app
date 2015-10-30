@@ -5,7 +5,7 @@ class GemfileParserTest < ActiveSupport::TestCase
   EXCLUDED = GemfileParser::EXCLUDED
 
   test "returns gems status for a given Gemfile" do
-    gems = Rubygem.alphabetical # meh
+    gems = Rubygem.by_name
     gemfile = File.read File.expand_path("../fixtures/gemfile", __dir__)
     registered, unregistered = GemfileParser.gems_status gemfile
 

@@ -13,7 +13,7 @@ class GemfileParser
 
   def gems_status
     excluded     = gem_names - EXCLUDED
-    registered   = Rubygem.alphabetical.where name: excluded
+    registered   = Rubygem.by_name.where name: excluded
     unregistered = excluded - registered.map(&:name)
 
     [registered, unregistered]

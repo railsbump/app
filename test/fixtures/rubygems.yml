@@ -1,14 +1,20 @@
 ready:
   name: "pg"
-  status: "ready"
-  notes: "from last release"
+  status_rails4: "ready"
+  notes_rails4: "from last release"
+  status_rails5: "ready"
+  notes_rails5: "from last release"
 
 not_ready:
   name: "puma"
-  status: "not ready"
-  notes: ""
+  status_rails4: "not ready"
+  notes_rails4: ""
+  status_rails5: "not ready"
+  notes_rails5: ""
 
 unknown:
   name: "dalli"
-  status: "unknown"
-  notes: ""
+  status_rails4: "unknown"
+  notes_rails4: ""
+  status_rails5: "unknown"
+  notes_rails5: ""

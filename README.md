@@ -1,10 +1,7 @@
-# Is this gem ready for Rails 4?
-
-**NOTE**: Currently, we only support Rails 4.
+# Is this gem ready for Rails 4 or 5?
 
 [Ready4Rails.net](http://www.ready4rails.net) lists many gems and shows whether they are ready
-for Rails 4 or not. You can also paste your Gemfile to get a one-click report
-of the status of your Gemfile gems.
+for Rails 4 or 5. You can also paste your Gemfile to get a one-click report of the status of your Gemfile gems.
 
 ## Thanks to
 

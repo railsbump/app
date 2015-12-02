@@ -2,6 +2,8 @@
   <%= link_to "Check a Gemfile", new_gemfile_check_path, class: "btn btn-primary" %>
   <span style="padding-left: 10px; padding-right:10px">OR</span>
   <%= search_field_tag :query, nil, placeholder: "Search the name of a gem", autocomplete: "off", class: "input-large search-query", autofocus: true %>
+  <span style="padding-left: 10px; padding-right:10px">OR</span>
+  <%= link_to "use the API", "https://github.com/rubyperu/ready4rails#api-beta" %>
 
   <%= link_to "Register new gem", new_rubygem_path, class: "btn btn-success pull-right" %>
 <% end %>

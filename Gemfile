@@ -21,6 +21,7 @@ gem 'jquery-rails'
 
 gem 'sdoc', '~> 0.4.0', group: :doc, require: false
 gem 'rails_12factor', group: :production
+gem 'spring-commands-rspec', group: :development
 
 group :test do
   gem 'rspec-rails', '~> 3.0.0'

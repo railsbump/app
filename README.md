@@ -13,6 +13,10 @@ for Rails 4 or 5. You can also paste your Gemfile to get a one-click report of t
 * [frodsan](https://github.com/frodsan)
 * [Florent2](https://github.com/Florent2)
 
+## Development
+
+* run test suite with `bin/rspec`
+
 ## License
 
 This project is licensed under the terms of the MIT license.

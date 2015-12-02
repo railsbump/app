@@ -5,8 +5,10 @@
   </head>
   <body>
     <ul>
-      <li>Status: <%= @gem.status %></li>
-      <li>Notes:  <%= @gem.notes %></li>
+      <li>Rails 4 Status: <%= @gem.status_rails4 %></li>
+      <li>Rails 5 Status: <%= @gem.status_rails5 %></li>
+      <li>Rails 4 Notes:  <%= @gem.notes_rails4 %></li>
+      <li>Rails 5 Notes:  <%= @gem.notes_rails5 %></li>
       <li>Link:   <%= link_to @gem.name, rubygem_url(@gem) %></li>
     </ul>
   </body>

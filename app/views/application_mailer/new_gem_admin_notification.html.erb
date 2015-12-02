@@ -5,11 +5,11 @@
   </head>
   <body>
     <ul>
-      <li>Status Rails 4: <%= @gem.status_rails4 %></li>
-      <li>Notes Rails 4:  <%= @gem.notes_rails4 %></li>
-      <li>Status Rails 5: <%= @gem.status_rails5 %></li>
-      <li>Notes Rails 5:  <%= @gem.notes_rails5 %></li>
-      <li>Link:   <%= link_to @gem.name, rubygem_url(@gem) %></li>
+      <li>Rails 4 Status: <%= @gem.status_rails4 %></li>
+      <li>Rails 5 Status: <%= @gem.status_rails5 %></li>
+      <li>Rails 4 Notes:  <%= @gem.notes_rails4 %></li>
+      <li>Rails 5 Notes:  <%= @gem.notes_rails5 %></li>
+      <li>Link: <%= link_to @gem.name, rubygem_url(@gem) %></li>
     </ul>
   </body>
 </html>

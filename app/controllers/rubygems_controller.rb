@@ -1,4 +1,5 @@
 class RubygemsController < ApplicationController
+
   def index
     @status        = params[:status]
     @rails_version = params[:rails_version]
@@ -21,6 +22,10 @@ class RubygemsController < ApplicationController
   def show
     @gem = Rubygem.find_by_name params[:id]
     fresh_when @gem, public: true
+    respond_to do |format|
+      format.html
+      format.json { render :json => (@gem || {})  }
+    end
   end
 
   def new

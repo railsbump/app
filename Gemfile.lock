@@ -48,6 +48,7 @@ GEM
       builder
       multi_json
     arel (6.0.3)
+    awesome_print (1.6.1)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -184,6 +185,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  awesome_print
   byebug
   dalli
   database_cleaner

@@ -1,8 +1,0 @@
-test:
-  adapter: postgresql
-  host: localhost
-  database: travis_test
-  username: postgres
-  password:
-  pool: 5
-  timeout: 5000

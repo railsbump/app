@@ -1,0 +1,15 @@
+module API
+  class ReleasesController < BaseController
+    def create
+      Rollbar.info 'RubyGems Webhook fired.', params: params
+
+      # if params[:name] == 'rails'
+      #   RailsReleases::Create.call(params[:version])
+      # else
+      #   Gemmies::Create.call(params[:name])
+      # end
+
+      head :ok
+    end
+  end
+end

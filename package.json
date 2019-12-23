@@ -1,8 +1,8 @@
 {
-  "name": "ready4rails",
+  "name": "railsbump",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/krautcomputing/ready4rails.git",
+  "repository": "https://github.com/krautcomputing/railsbump.git",
   "author": "Manuel Meurer <manuel@krautcomputing.com>",
   "license": "MIT",
   "engines": {
@@ -10,7 +10,14 @@
   },
   "dependencies": {
     "@rails/webpacker": "4.2.2",
-    "bootstrap": "^4.4.1"
+    "autosize": "^4.0.2",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0",
+    "rails-ujs": "^5.2.4-1",
+    "rollbar": "^2.14.4",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.41.4"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"

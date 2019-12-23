@@ -1,0 +1,32 @@
+- show_gem_name = true unless local_assigns.key?(:show_gem_name)
+
+%table.table
+
+  %thead
+    %tr
+      - if show_gem_name
+        %th{ rowspan: 2 }
+          Gem
+      %th{ colspan: RailsRelease.latest_major.size }
+        Compatible with...
+    %tr
+      - RailsRelease.latest_major.each do |rails_release|
+        %th
+          Rails
+          = rails_release.version.canonical_segments.first
+
+  %tbody
+    - gemmies.each do |gemmy|
+      %tr
+        - if show_gem_name
+          %td
+            = link_to gemmy.name, gemmy
+        - RailsRelease.latest_major.each do |rails_release|
+          %td
+            - if rails_compatibility = gemmy.rails_compatibilities.find_by(rails_release: rails_release)
+              - if rails_compatibility.compatible?
+                %i.far.fa-thumbs-up
+              - else
+                %i.far.fa-thumbs-down
+            - else
+              Still checking...

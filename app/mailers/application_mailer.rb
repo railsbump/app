@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'hello@ready4rails.net'
+  default from: 'hello@railsbump.org'
   layout 'mailer'
 end

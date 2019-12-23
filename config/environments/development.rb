@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.hosts << 'ready4rails.test'
+  config.hosts << 'railsbump.test'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

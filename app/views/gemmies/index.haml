@@ -1,4 +1,35 @@
 %h1
-  Gems
+  Hi there and welcome to RailsBump! 👋
 
-= render 'table', gemmies: @gemmies
+%p
+  This project used to be called Ready4Rails and probably you arrived here after being forwarded from ready4rails.net.
+
+%p
+  I
+  == (#{link_to 'Manuel Meurer', 'https://github.com/manuelmeurer'})
+  took over Ready4Rails from
+  = link_to 'Florent Guilleux', 'https://github.com/Florent2'
+  in December 2019 to rebuild it into a service that automatically checks which gems are compatible with which (major) Rails versions.
+
+%p
+  My motivation is purely egostic. 😉 I run
+  == #{link_to 'Uplink', 'https://uplink.tech/'},
+  a network for IT freelancers in Germany, and the software behind it is a fairly large monolithic Rails 5 app. At some point I want to upgrade to Rails 6, and I'd like to know which of the gems the app currently uses is compatible with Rails 6. So in effect, I'd like to be able to paste/upload my Gemfile and see a nice big table with all gems and their compatibility status. If they're not compatible yet, it would be great to see a link to the PR where compatibility is being discussed or worked on, or if the gem is not maintained anymore, it would be great to see alternatives that are compatible with the next Rails version (although
+  = link_to 'The Ruby Toolbox', 'https://www.ruby-toolbox.com/'
+  might be a better tool for that).
+
+%p
+  So that's the plan. The current (Jan 30, 2020) status is that 80% of RailsBump is done and I found a nice way to check the compatiblity of lots of gems automatically, for free. I simply need to build that part. 🤪
+
+%p
+  If you have any comments or ideas for other features that could be built for RailsBump, please get involved! Open an
+  = link_to 'issue', 'https://github.com/krautcomputing/railsbump/issues'
+  or
+  == #{link_to 'send me a mail', 'mailto:manuel@krautcomputing.com'}.
+
+%p
+  Or if you simply would like to be notified when RailsBump goes live, watch the
+  = link_to 'GitHub repo', 'https://github.com/krautcomputing/railsbump'
+  for 'Releases only'. I will create a 'v1.0' release when the first usable version is live.
+
+=# render 'table', gemmies: @gemmies

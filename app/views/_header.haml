@@ -3,5 +3,6 @@
     = brand_link 'RailsBump'
     = navbar_collapse class: 'justify-content-end' do
       = navbar_group do
-        = navbar_item 'Check Gemfile', new_gemfile_path
+        - if Rails.env.development?
+          = navbar_item 'Check Gemfile', new_gemfile_path
         = navbar_item 'GitHub', 'https://github.com/krautcomputing/railsbump'

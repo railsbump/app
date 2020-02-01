@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_222830) do
+ActiveRecord::Schema.define(version: 2020_02_01_222813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2020_01_25_222830) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["version"], name: "index_rails_releases_on_version", unique: true
+  end
+
+  create_table "travis_notifications", force: :cascade do |t|
+    t.jsonb "data"
+    t.datetime "processed_at"
+    t.bigint "rails_compatibility_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rails_compatibility_id"], name: "index_travis_notifications_on_rails_compatibility_id"
   end
 
 end

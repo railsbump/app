@@ -1,13 +1,11 @@
 module API
   class TravisNotificationsController < BaseController
     def create
-      Rollbar.info 'Travis notification', params: params
-
       # TODO: verify
       # https://docs.travis-ci.com/user/notifications/#verifying-webhook-requests
 
-      # TODO: process
-      # https://docs.travis-ci.com/user/notifications/#webhooks-delivery-format
+      travis_notification = TravisNotification.create!(payload: JSON.load(params[:payload]))
+      TravisNotifications::Process.call_async travis_notification
 
       head :ok
     end

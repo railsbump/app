@@ -25,6 +25,7 @@ end
 gem 'dotenv-heroku',                            '~> 0.0'
 gem 'dotenv-rails',                             '~> 2.7'
 gem 'gems',                                     '~> 1.2', require: false
+gem 'git',                                      '~> 1.5'
 gem 'rails_bootstrap_navbar',                   '~> 3.0'
 gem 'sucker_punch',                             '~> 2.1'
 

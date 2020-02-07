@@ -12,9 +12,9 @@ module RailsReleases
 
       rails_release = RailsRelease.create!(version: rails_release_version)
 
-      Gemmy.find_each do |gemmy|
-        RailsCompatibilities::Create.call_async gemmy, rails_release
-      end
+      Process.call_async rails_release
+
+      rails_release
     end
   end
 end

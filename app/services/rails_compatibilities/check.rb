@@ -1,7 +1,7 @@
 require 'fileutils'
 
 module RailsCompatibilities
-  class Create < Services::Base
+  class Check < Services::Base
     REPO   = 'git@github.com:manuelmeurer/railsbump-checker.git'
     REMOTE = 'origin'
     TMP    = Rails.root.join('tmp')

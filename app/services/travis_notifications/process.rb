@@ -18,8 +18,10 @@ module TravisNotifications
       rails_compatibility_groups = RailsCompatibilities::FindGroupedByDependencies.call(gemmy).values
       rails_compatibility_groups.detect do |rails_compatibility_group|
         rails_compatibility_group.includes?(rails_compatibility)
-      end.each do |rails_compatibility|
-        rails_compatibility.update! compatible: compatible
+      end.select do |rc|
+        rc.rails_release == rails_compatibility.rails_release
+      end.each do |rc|
+        rc.update! compatible: compatible
       end
 
       unless compatible

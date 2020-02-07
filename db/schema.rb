@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.index ["name"], name: "index_gemmies_on_name", unique: true
   end
 
-  create_table "rails_compatibilities", id: false, force: :cascade do |t|
-    t.bigint "gemmy_id"
-    t.bigint "rails_release_id"
+  create_table "rails_compatibilities", force: :cascade do |t|
     t.string "version"
     t.boolean "compatible"
+    t.bigint "gemmy_id"
+    t.bigint "rails_release_id"
     t.index ["gemmy_id"], name: "index_rails_compatibilities_on_gemmy_id"
     t.index ["rails_release_id"], name: "index_rails_compatibilities_on_rails_release_id"
   end

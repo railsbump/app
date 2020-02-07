@@ -4,5 +4,6 @@
     = navbar_collapse class: 'justify-content-end' do
       = navbar_group do
         - if Rails.env.development?
+          = navbar_item 'Add gem', new_gemmy_path
           = navbar_item 'Check Gemfile', new_gemfile_path
-        = navbar_item 'GitHub', 'https://github.com/krautcomputing/railsbump'
+        = navbar_item 'GitHub', 'https://github.com/manuelmeurer/railsbump'

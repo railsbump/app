@@ -9,7 +9,7 @@ class GemfilesController < ApplicationController
     redirect_to e.gemfile
   rescue Gemfiles::Create::Error => e
     @gemfile = Gemfile.new
-    flash.now[:alert] = "Error! #{e.message}"
+    flash.now[:alert] = e.message
     render :new
   else
     redirect_to @gemfile

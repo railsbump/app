@@ -1,16 +1,17 @@
+require 'fileutils'
+
 module RailsCompatibilities
-  class Create < ::Services::Base
-    REPO = 'git@github.com:krautcomputing/railsbump-checker.git'
-    TMP  = Rails.root.join('tmp')
-    PATH = TMP.join('railsbump-checker')
+  class Create < Services::Base
+    REPO   = 'git@github.com:manuelmeurer/railsbump-checker.git'
+    REMOTE = 'origin'
+    TMP    = Rails.root.join('tmp')
 
     def call(rails_compatibility)
-      branch_name = [
-        rails_compatibility.gemmy.name,
-        rails_compatibility.version,
-        'rails',
-        rails_compatibility.rails_release.version
-      ].join('_')
+      gemmy_name    = rails_compatibility.gemmy.name
+      gemmy_version = rails_compatibility.version
+      rails_version = rails_compatibility.rails_release.version
+      branch_name   = [gemmy_name, gemmy_version, 'rails', rails_version].join('_')
+      dir           = TMP.join("railsbump_checker_#{branch_name}")
 
       ssh_key = ENV['SSH_KEY']&.dup
       if ssh_key.present?
@@ -22,11 +23,7 @@ module RailsCompatibilities
         ENV['GIT_SSH_COMMAND']="ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
       end
 
-      git = if PATH.exist?
-        Git.open(PATH)
-      else
-        Git.clone(REPO, PATH)
-      end
+      git = Git.clone(REPO, dir)
 
       git.config 'user.name',  'RailsBump Checker'
       git.config 'user.email', 'hello@railsbump.org'
@@ -35,7 +32,7 @@ module RailsCompatibilities
 
       git.branches.select { |branch| branch.name == branch_name }.each do |branch|
         if branch.remote
-          git.push branch.remote.name, branch_name, delete: true
+          git.push REMOTE, branch.name, delete: true
         else
           branch.delete
         end
@@ -54,20 +51,24 @@ module RailsCompatibilities
         'Gemfile'     => <<~CONTENT,
                            source 'https://rubygems.org'
 
-                           gem 'rails', '#{rails_compatibility.rails_release.version}'
-                           gem '#{rails_compatibility.gemmy.name}', '#{rails_compatibility.version}'
+                           gem 'rails', '#{rails_version}'
+                           gem '#{gemmy_name}', '#{gemmy_version}'
                          CONTENT
         'Rakefile'    => 'task :default'
       }
 
       files.each do |filename, content|
-        File.write PATH.join(filename), content
+        File.write dir.join(filename), content
         git.add filename
       end
 
-      git.commit "test compatibility of #{rails_compatibility.gemmy.name} #{rails_compatibility.version} with rails #{rails_compatibility.rails_release.version}"
+      git.commit "test compatibility of #{gemmy_name} #{gemmy_version} with rails #{rails_version}"
 
-      git.push 'origin', branch_name
+      git.push REMOTE, branch_name
+    ensure
+      if dir
+        FileUtils.rm_rf dir
+      end
     end
   end
 end

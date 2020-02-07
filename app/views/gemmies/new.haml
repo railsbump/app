@@ -1,0 +1,9 @@
+%h1
+  Add gem
+
+= form_with model: @gemmy, local: true do |form|
+
+  .form-group
+    = form.text_field :name, class: 'form-control', placeholder: 'Gem name'
+
+  = form.submit 'Add', class: 'btn btn-primary'

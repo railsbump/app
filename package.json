@@ -2,7 +2,7 @@
   "name": "railsbump",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/krautcomputing/railsbump.git",
+  "repository": "https://github.com/manuelmeurer/railsbump.git",
   "author": "Manuel Meurer <manuel@krautcomputing.com>",
   "license": "MIT",
   "engines": {

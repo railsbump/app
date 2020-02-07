@@ -1,5 +1,5 @@
 module Gemfiles
-  class Create < ::Services::Base
+  class Create < Services::Base
     class AlreadyExists < Error
       attr_reader :gemfile
 

@@ -12,7 +12,7 @@ module Gemmies
 
       RailsCompatibilities::FindGroupedByDependencies.call(gemmy).values.each do |rails_compatibilities|
         rails_compatibilities.uniq(&:rails_release).each do |rails_compatibility|
-          RailsCompatibilities::Check.call_async rails_compatibility
+          RailsCompatibilities::Check.call rails_compatibility
         end
       end
     end

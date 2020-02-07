@@ -11,7 +11,7 @@ module RailsReleases
 
         RailsCompatibilities::FindGroupedByDependencies.call(gemmy).values.each do |rails_compatibilities|
           rails_compatibility = rails_compatibilities.detect { |rails_compatibility| rails_compatibility.rails_release == rails_release }
-          RailsCompatibilities::Check.call_async rails_compatibility
+          RailsCompatibilities::Check.call rails_compatibility
         end
       end
     end

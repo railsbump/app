@@ -9,7 +9,7 @@ module TravisNotifications
       gemmy_name, gemmy_version, _, rails_version = branch.split('_')
       gemmy                                       = Gemmy.find_by!(name: gemmy_name)
       rails_release                               = RailsRelease.find_by!(version: rails_version)
-      compat                         = gemmy.compats.find_by!(rails_release: rails_release, version: gemmy_version)
+      compat                                      = gemmy.compats.find_by!(rails_release: rails_release, version: gemmy_version)
 
       travis_notification.update! compat: compat
 

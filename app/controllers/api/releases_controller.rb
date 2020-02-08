@@ -1,7 +1,7 @@
 module API
   class ReleasesController < BaseController
     def create
-      Rollbar.info 'RubyGems release', params: params
+      Rollbar.error 'RubyGems release', params: params
 
       # if params[:name] == 'rails'
       #   RailsReleases::Create.call(params[:version])

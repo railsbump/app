@@ -15,7 +15,7 @@ class RailsRelease < ApplicationRecord
     end
   end
 
-  has_many :compats
+  has_many :compats, dependent: :destroy
   has_many :compatible_gemmies, through: :compats
 
   scope :latest_major, -> {

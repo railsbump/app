@@ -6,7 +6,7 @@ git_source :github do |repo|
   "https://github.com/#{repo}.git"
 end
 
-ruby '2.6.5'
+ruby '2.7.0'
 
 # Return early if this file is parsed by the Bundler plugin DSL.
 # This won't let us access dependencies in common-gems.

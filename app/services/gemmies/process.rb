@@ -3,16 +3,16 @@ module Gemmies
     def call(gemmy)
       gemmy.versions.each do |version|
         RailsRelease.find_each do |rails_release|
-          gemmy.rails_compatibilities.where(
+          gemmy.compats.where(
             rails_release: rails_release,
             version:       version
           ).first_or_create!
         end
       end
 
-      RailsCompatibilities::FindGroupedByDependencies.call(gemmy).values.each do |rails_compatibilities|
-        rails_compatibilities.uniq(&:rails_release).each do |rails_compatibility|
-          RailsCompatibilities::Check.call rails_compatibility
+      Compats::FindGroupedByDependencies.call(gemmy).values.each do |compats|
+        compats.uniq(&:rails_release).each do |compat|
+          Compats::Check.call compat
         end
       end
     end

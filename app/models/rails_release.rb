@@ -15,8 +15,8 @@ class RailsRelease < ApplicationRecord
     end
   end
 
-  has_many :rails_compatibilities
-  has_many :compatible_gemmies, through: :rails_compatibilities
+  has_many :compats
+  has_many :compatible_gemmies, through: :compats
 
   scope :latest_major, -> {
     versions = pluck(:version).group_by { |version| version[/\A\d+/] }

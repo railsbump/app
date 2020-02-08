@@ -23,8 +23,8 @@
             = link_to gemmy.name, gemmy
         - RailsRelease.latest_major.each do |rails_release|
           %td
-            - if rails_compatibility = gemmy.rails_compatibilities.find_by(rails_release: rails_release)
-              - if rails_compatibility.compatible?
+            - if compat = gemmy.compats.find_by(rails_release: rails_release)
+              - if compat.compatible?
                 %i.far.fa-thumbs-up
               - else
                 %i.far.fa-thumbs-down

@@ -1,15 +1,15 @@
 require 'fileutils'
 
-module RailsCompatibilities
+module Compats
   class Check < Services::Base
     REPO   = 'git@github.com:manuelmeurer/railsbump-checker.git'
     REMOTE = 'origin'
     TMP    = Rails.root.join('tmp')
 
-    def call(rails_compatibility)
-      gemmy_name    = rails_compatibility.gemmy.name
-      gemmy_version = rails_compatibility.version
-      rails_version = rails_compatibility.rails_release.version
+    def call(compat)
+      gemmy_name    = compat.gemmy.name
+      gemmy_version = compat.version
+      rails_version = compat.rails_release.version
       branch_name   = [gemmy_name, gemmy_version, 'rails', rails_version].join('_')
       dir           = TMP.join("railsbump_checker_#{branch_name}")
 

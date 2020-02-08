@@ -1,8 +1,8 @@
 class Gemmy < ApplicationRecord
   validates :name, presence: true, uniqueness: { allow_blank: true }
 
-  has_many :rails_compatibilities
-  has_many :compatible_rails_releases, through: :rails_compatibilities
+  has_many :compats
+  has_many :compatible_rails_releases, through: :compats
 
   delegate :to_param, to: :name
 

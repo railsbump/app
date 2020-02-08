@@ -57,10 +57,10 @@ ALTER SEQUENCE public.gemmies_id_seq OWNED BY public.gemmies.id;
 
 
 --
--- Name: rails_compatibilities; Type: TABLE; Schema: public; Owner: -
+-- Name: compats; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rails_compatibilities (
+CREATE TABLE public.compats (
     gemmy_id bigint,
     rails_releases_id bigint,
     compatible boolean
@@ -161,17 +161,17 @@ CREATE UNIQUE INDEX index_gemmies_on_name ON public.gemmies USING btree (name);
 
 
 --
--- Name: index_rails_compatibilities_on_gemmy_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_compats_on_gemmy_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_rails_compatibilities_on_gemmy_id ON public.rails_compatibilities USING btree (gemmy_id);
+CREATE INDEX index_compats_on_gemmy_id ON public.compats USING btree (gemmy_id);
 
 
 --
--- Name: index_rails_compatibilities_on_rails_releases_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_compats_on_rails_releases_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_rails_compatibilities_on_rails_releases_id ON public.rails_compatibilities USING btree (rails_releases_id);
+CREATE INDEX index_compats_on_rails_releases_id ON public.compats USING btree (rails_releases_id);
 
 
 --

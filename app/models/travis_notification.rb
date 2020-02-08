@@ -1,7 +1,7 @@
 class TravisNotification < ApplicationRecord
-  belongs_to :rails_compatibility, optional: true
+  belongs_to :compat, optional: true
 
-  validates :rails_compatibility, presence: { if: :processed? }
+  validates :compat, presence: { if: :processed? }
 
   def processed?
     !!processed_at
@@ -12,10 +12,10 @@ end
 #
 # Table name: travis_notifications
 #
-#  id                     :bigint           not null, primary key
-#  data                   :jsonb
-#  processed_at           :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  rails_compatibility_id :bigint
+#  id           :bigint           not null, primary key
+#  data         :jsonb
+#  processed_at :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  compat_id    :bigint
 #

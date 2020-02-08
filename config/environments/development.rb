@@ -1,3 +1,5 @@
+require 'sucker_punch/testing/inline'
+
 Rails.application.configure do
   config.hosts << 'railsbump.test'
 

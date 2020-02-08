@@ -5,6 +5,7 @@ class CreateRailsCompatibilities < ActiveRecord::Migration[6.0]
       t.boolean :compatible
       t.references :gemmy
       t.references :rails_release
+      t.timestamps
     end
   end
 end

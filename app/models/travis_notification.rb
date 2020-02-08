@@ -1,4 +1,6 @@
 class TravisNotification < ApplicationRecord
+  include HasTimestamps[:processed_at]
+
   belongs_to :compat, optional: true
 
   validates :compat, presence: { if: :processed? }

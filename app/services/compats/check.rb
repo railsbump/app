@@ -7,6 +7,8 @@ module Compats
     TMP    = Rails.root.join('tmp')
 
     def call(compat)
+      return unless Rails.env.production?
+
       gemmy_name    = compat.gemmy.name
       gemmy_version = compat.version
       rails_version = compat.rails_release.version

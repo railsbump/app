@@ -17,7 +17,7 @@ module TravisNotifications
 
       compat_groups = Compats::FindGroupedByDependencies.call(gemmy).values
       compat_groups.detect do |compat_group|
-        compat_group.includes?(compat)
+        compat_group.include?(compat)
       end.select do |rc|
         rc.rails_release == compat.rails_release
       end.each do |rc|

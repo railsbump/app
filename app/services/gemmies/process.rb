@@ -11,8 +11,8 @@ module Gemmies
       end
 
       Compats::FindGroupedByDependencies.call(gemmy).values.each do |compats|
-        compats.uniq(&:rails_release).each do |compat|
-          Compats::Check.call_async compat
+        compats.uniq(&:rails_release).select(&:unchecked?).each do |compat|
+          Compats::Check.call compat
         end
       end
     end

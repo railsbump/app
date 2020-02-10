@@ -9,6 +9,8 @@ module Compats
         dependencies.detect do |data|
           data.fetch(:number) == compat.version.to_s
         end.fetch(:dependencies).sort
+      end.transform_values do |compats|
+        compats.sort_by(&:version)
       end
     end
   end

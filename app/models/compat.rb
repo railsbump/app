@@ -1,5 +1,5 @@
 class Compat < ApplicationRecord
-  include HasVersion
+  include HasVersion, HasTimestamps[:checked_at]
 
   belongs_to :gemmy
   belongs_to :rails_release

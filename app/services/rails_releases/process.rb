@@ -11,7 +11,9 @@ module RailsReleases
 
         Compats::FindGroupedByDependencies.call(gemmy).values.each do |compats|
           compat = compats.detect { |compat| compat.rails_release == rails_release }
-          Compats::Check.call_async compat
+          if compat.unchecked?
+            Compats::Check.call compat
+          end
         end
       end
     end

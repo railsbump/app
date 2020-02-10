@@ -12,7 +12,7 @@ module Gemmies
 
       Compats::FindGroupedByDependencies.call(gemmy).values.each do |compats|
         compats.uniq(&:rails_release).each do |compat|
-          Compats::Check.call compat
+          Compats::Check.call_async compat
         end
       end
     end

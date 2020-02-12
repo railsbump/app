@@ -24,6 +24,10 @@ class RailsRelease < ApplicationRecord
                               .map(&:max)
     order(:version).where(version: versions)
   }
+
+  def to_s
+    "Rails #{version}"
+  end
 end
 
 # == Schema Information

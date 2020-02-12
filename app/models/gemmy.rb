@@ -4,7 +4,7 @@ class Gemmy < ApplicationRecord
   has_many :compats, dependent: :destroy
   has_many :compatible_rails_releases, through: :compats
 
-  delegate :to_param, to: :name
+  delegate :to_param, :to_s, to: :name
 
   def versions=(value)
     super value.map(&:to_s)

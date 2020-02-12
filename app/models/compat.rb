@@ -18,6 +18,10 @@ class Compat < ApplicationRecord
       end
     end
   end
+
+  def to_s
+    "Compatibility of #{gemmy} #{version} with #{rails_release}"
+  end
 end
 
 # == Schema Information

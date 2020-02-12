@@ -11,7 +11,7 @@
     = stylesheet_link_tag :application, media: 'all'
     = javascript_pack_tag :application, data: { 'turbolinks-track': 'reload' }, defer: true
 
-  %body
+  %body{ class: page_classes }
     = render './header'
     .container-lg
       = flash_messages

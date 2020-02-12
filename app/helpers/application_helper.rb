@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def page_classes
+    [
+      controller.controller_name,
+      { 'create' => 'new', 'update' => 'edit' }.fetch(controller.action_name, controller.action_name)
+    ].join(' ')
+  end
+
   def alert(level, text = nil, &block)
     content_tag :div, class: "alert alert-#{level} alert-dismissible fade show" do
       concat content_tag(:button, '×', type: 'button', class: 'close', data: { dismiss: 'alert' })

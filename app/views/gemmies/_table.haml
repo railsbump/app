@@ -1,6 +1,6 @@
 - show_gem_name = true unless local_assigns.key?(:show_gem_name)
 
-%table.table
+%table.compat-table.table
 
   %thead
     %tr
@@ -13,7 +13,7 @@
       - RailsRelease.latest_major.each do |rails_release|
         %th
           Rails
-          = rails_release.version.canonical_segments.first
+          = rails_release.version
 
   %tbody
     - gemmies.each do |gemmy|
@@ -22,11 +22,15 @@
           %td
             = link_to gemmy.name, gemmy
         - RailsRelease.latest_major.each do |rails_release|
-          %td
-            - if compat = gemmy.compats.find_by(rails_release: rails_release)
-              - if compat.compatible?
+          - compats = gemmy.compats.merge(rails_release.compats)
+          - status  = compats.any?(&:compatible?) ? :compatible : :incompatible if compats.any?
+          - text    = !status ? "The compatibility of #{gemmy.name} with Rails #{rails_release.version} is still being checked." : (status == :compatible ? "At least one available version of the #{gemmy.name} gem is compatible with Rails #{rails_release.version}." : "No available version of the #{gemmy.name} gem is compatible with Rails #{rails_release.version}.")
+          %td{ class: status || 'checking' }
+            %span{ data: { toggle: 'tooltip', placement: 'bottom', title: text } }
+              - case status
+              - when nil
+                Still checking...
+              - when :compatible
                 %i.far.fa-thumbs-up
               - else
                 %i.far.fa-thumbs-down
-            - else
-              Still checking...

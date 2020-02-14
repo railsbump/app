@@ -1,0 +1,14 @@
+- compats = gemmy.compats.merge(rails_release.compats)
+- status  = compats.all?(&:incompatible) ? :incompatible : (:compatible if compats.any?(&:compatible)) if compats.any?
+- text    = !status ? "The compatibility of #{gemmy.name} with Rails #{rails_release.version} is still being checked." : (status == :compatible ? "At least one available version of the #{gemmy.name} gem is compatible with Rails #{rails_release.version}." : "No available version of the #{gemmy.name} gem is compatible with Rails #{rails_release.version}.")
+
+%td{ class: status || 'checking', data: (status ? {} : { target: 'compat-table.checking', gemmy: gemmy.to_global_id, 'rails-release': rails_release.to_global_id }) }
+  %span{ data: { toggle: 'tooltip', placement: 'bottom', title: text } }
+    - case status
+    - when nil
+      %i.fas.fa-spinner.fa-pulse
+      Checking...
+    - when :compatible
+      %i.far.fa-thumbs-up
+    - else
+      %i.far.fa-thumbs-down

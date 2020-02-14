@@ -2,7 +2,7 @@ module Gemmies
   class Process < Services::Base
     def call(gemmy)
       gemmy.versions.each do |version|
-        RailsRelease.find_each do |rails_release|
+        RailsRelease.latest_major.find_each do |rails_release|
           gemmy.compats.where(
             rails_release: rails_release,
             version:       version

@@ -9,7 +9,7 @@ class Compat < ApplicationRecord
 
   validate do
     if gemmy && rails_release && version
-      scope = self.class.where(gemmy: gemmy, rails_release: rails_release, version: version)
+      scope = self.class.unscoped.where(gemmy: gemmy, rails_release: rails_release, version: version)
       if persisted?
         scope = scope.where.not(id: id)
       end
@@ -21,6 +21,10 @@ class Compat < ApplicationRecord
 
   def to_s
     "Compatibility of #{gemmy} #{version} with #{rails_release}"
+  end
+
+  def incompatible
+    compatible == false
   end
 end
 

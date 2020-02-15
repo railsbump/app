@@ -20,6 +20,11 @@ export default class extends Controller {
     const url     = `${this.data.get('url')}?${params.toString()}`
 
     $.getScript(url)
+      .fail((xhr, status, error) => {
+        this.stopRefresh()
+        if (Rollbar)
+          Rollbar.error('Error during compat table refresh.', { xhr: xhr, status: status, error: error })
+      })
   }
 
   stopRefresh() {

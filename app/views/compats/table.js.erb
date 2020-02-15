@@ -3,3 +3,6 @@
     "<%= j render 'compats/table_cell', gemmy: gemmy, rails_release: rails_release %>"
   )
 <% end %>
+<% if @compats.any? %>
+  $('[data-toggle="tooltip"]').tooltip()
+<% end %>

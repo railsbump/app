@@ -2,9 +2,7 @@ require 'fileutils'
 
 module Compats
   class Check < Services::Base
-    REPO   = 'git@github.com:manuelmeurer/railsbump-checker.git'
-    REMOTE = 'origin'
-    TMP    = Rails.root.join('tmp')
+    TMP = Rails.root.join('tmp')
 
     def call(compat)
       check_uniqueness
@@ -13,9 +11,11 @@ module Compats
         raise Error, 'Compat is already checked.'
       end
 
-      unless Rails.env.production?
+      case
+      when compat.dependencies.blank?
+        compat.update! compatible: true
+      when Rails.env.production?
         @compat = compat
-
         check
       end
 
@@ -25,15 +25,11 @@ module Compats
     private
 
       def check
-        gemmy_name    = @compat.gemmy.name
-        gemmy_version = @compat.version
-        rails_version = @compat.rails_release.version
-        branch_name   = [gemmy_name, gemmy_version, 'rails', rails_version].join('_')
-        dir           = TMP.join("railsbump_checker_#{branch_name}")
-        ssh_key_file  = TMP.join('ssh_key')
+        branch_name = @compat.id.to_s
 
         ssh_key = ENV['SSH_KEY']&.dup
         if ssh_key.present?
+          ssh_key_file = TMP.join('ssh_key')
           unless ssh_key_file.exist?
             unless ssh_key[-1] == "\n"
               ssh_key << "\n"
@@ -43,16 +39,11 @@ module Compats
           ENV['GIT_SSH_COMMAND']="ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
         end
 
-        git = Git.clone(REPO, dir)
-
-        git.config 'user.name',  'RailsBump Checker'
-        git.config 'user.email', 'hello@railsbump.org'
-
-        git.checkout
+        git = CheckOutGitRepo.call
 
         git.branches.select { |branch| branch.name == branch_name }.each do |branch|
           if branch.remote
-            git.push REMOTE, branch.name, delete: true
+            git.push 'origin', branch.name, delete: true
           else
             branch.delete
           end
@@ -60,34 +51,44 @@ module Compats
 
         git.branch(branch_name).checkout
 
+        dependencies = @compat.dependencies.dup
+        dependencies.transform_values! do |contraints|
+          contraints.split(/\s*,\s*/)
+        end
+        dependencies['rails'] ||= []
+        dependencies['rails'] << "= #{@compat.rails_release.version}"
+
+        gemfile_dependencies = dependencies.map do |gem, constraints_group|
+          "gem '#{gem}', #{constraints_group.map { |constraints| "'#{constraints}'" }.join(', ')}"
+        end
+
         files = {
           '.travis.yml' => <<~CONTENT,
                              language: ruby
                              rvm:
                                - 2.6
                              notifications:
-                               webhooks: #{api_travis_notifications_url}
+                               webhooks: #{Rails.application.routes.url_helpers.api_travis_notifications_url}
                            CONTENT
           'Gemfile'     => <<~CONTENT,
                              source 'https://rubygems.org'
 
-                             gem 'rails', '#{rails_version}'
-                             gem '#{gemmy_name}', '#{gemmy_version}'
+                             #{gemfile_dependencies.join("\n")}
                            CONTENT
           'Rakefile'    => 'task :default'
         }
 
         files.each do |filename, content|
-          File.write dir.join(filename), content
+          File.write File.join(git.dir.path, filename), content
           git.add filename
         end
 
-        git.commit "Test compatibility of #{gemmy_name} #{gemmy_version} with Rails #{rails_version}"
+        git.commit "Test #{@compat}"
 
-        git.push REMOTE, branch_name
+        git.push 'origin', branch_name
       ensure
-        if dir&.exist?
-          FileUtils.rm_rf dir
+        if git && File.exist?(git.dir.path)
+          FileUtils.rm_rf git.dir.path
         end
       end
   end

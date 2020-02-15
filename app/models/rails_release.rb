@@ -1,5 +1,10 @@
 class RailsRelease < ApplicationRecord
-  include HasVersion
+  composed_of :version,
+    class_name: 'Gem::Version',
+    mapping:    %w(version to_s),
+    converter:  Gem::Version.method(:new)
+
+  has_many :compats, dependent: :destroy
 
   validates :version, presence: true, format: { with: /\A\d+\.\d+\z/, allow_blank: true }
 
@@ -14,9 +19,6 @@ class RailsRelease < ApplicationRecord
       end
     end
   end
-
-  has_many :compats, dependent: :destroy
-  has_many :compatible_gemmies, through: :compats
 
   scope :latest_major, -> {
     versions = pluck(:version).group_by { |version| version[/\A\d+/] }

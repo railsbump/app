@@ -1,21 +1,11 @@
 module RailsReleases
   class Process < Services::Base
     def call(rails_release)
-      Gemmy.find_each do |gemmy|
-        gemmy.versions.each do |version|
-          gemmy.compats.where(
-            rails_release: rails_release,
-            version:       version
-          ).first_or_create!
-        end
-
-        Compats::FindGroupedByDependencies.call(gemmy).values.each do |compats|
-          compat = compats.detect { |compat| compat.rails_release == rails_release }
-          if compat.unchecked?
-            Compats::Check.call compat
-          end
-        end
+      Compat.where.not(rails_release: rails_release).find_each do |compat|
+        rails_release.compats.where(dependencies: compat.dependencies).first_or_create!
       end
+
+      Compats::CheckAllUnchecked.call
     end
   end
 end

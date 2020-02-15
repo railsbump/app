@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
   enable_extension "plpgsql"
 
   create_table "compats", force: :cascade do |t|
-    t.string "version"
     t.boolean "compatible"
-    t.bigint "gemmy_id"
     t.bigint "rails_release_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["gemmy_id"], name: "index_compats_on_gemmy_id"
+    t.datetime "checked_at"
+    t.jsonb "dependencies", default: {}
     t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
   end
 
@@ -43,9 +42,9 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
 
   create_table "gemmies", force: :cascade do |t|
     t.string "name"
-    t.text "versions", default: [], null: false, array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "dependencies_and_versions", default: {}
     t.index ["name"], name: "index_gemmies_on_name", unique: true
   end
 

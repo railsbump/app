@@ -6,7 +6,7 @@ export default class extends Controller {
   connect() {
     this.timer = setInterval(() => {
       this.refresh()
-    }, 1000)
+    }, 2000)
   }
 
   refresh() {
@@ -15,7 +15,7 @@ export default class extends Controller {
       return
     }
 
-    const compats = this.checkingTargets.map(el => [el.dataset.gemmy, el.dataset.railsRelease])
+    const compats = this.checkingTargets.slice(0, 10).map(el => [el.dataset.gemmy, el.dataset.railsRelease])
     const params  = new URLSearchParams({ compats: JSON.stringify(compats) })
     const url     = `${this.data.get('url')}?${params.toString()}`
 

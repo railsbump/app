@@ -21,15 +21,7 @@ module Gemmies
         raise AlreadyExists.new(existing_gemmy)
       end
 
-      begin
-        versions = Gems.versions(name).map do |data|
-          data.fetch('number')
-        end
-      rescue Gems::NotFound
-        raise Error, 'Name is invalid.'
-      end
-
-      gemmy = Gemmy.create!(name: name, versions: versions)
+      gemmy = Gemmy.create!(name: name)
 
       AddWebhook.call_async gemmy
       Process.call_async gemmy

@@ -1,5 +1,11 @@
 class Gemmy < ApplicationRecord
-  validates :name, presence: true, uniqueness: { allow_blank: true }
+  FORBIDDEN_NAMES = %w(
+    new
+    edit
+    rails
+  )
+
+  validates :name, presence: true, uniqueness: { allow_blank: true }, exclusion: FORBIDDEN_NAMES
 
   delegate :to_param, :to_s, to: :name
 

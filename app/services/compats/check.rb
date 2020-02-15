@@ -2,8 +2,6 @@ require 'fileutils'
 
 module Compats
   class Check < Services::Base
-    TMP = Rails.root.join('tmp')
-
     def call(compat)
       check_uniqueness
 
@@ -26,18 +24,6 @@ module Compats
 
       def check
         branch_name = @compat.id.to_s
-
-        ssh_key = ENV['SSH_KEY']&.dup
-        if ssh_key.present?
-          ssh_key_file = TMP.join('ssh_key')
-          unless ssh_key_file.exist?
-            unless ssh_key[-1] == "\n"
-              ssh_key << "\n"
-            end
-            File.write ssh_key_file, ssh_key
-          end
-          ENV['GIT_SSH_COMMAND']="ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
-        end
 
         git = CheckOutGitRepo.call
 

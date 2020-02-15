@@ -5,7 +5,7 @@ module TravisNotifications
         raise Error, "Travis Notification #{travis_notification.id} has already been processed."
       end
 
-      branch, status = travis_notification.data.fetch('branch', 'status')
+      branch, status = travis_notification.data.fetch_values('branch', 'status')
       compatible     = status == 0
       compat         = Compat.find(branch)
 

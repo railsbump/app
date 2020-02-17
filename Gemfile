@@ -23,7 +23,7 @@ gem 'rails', '~> 6.0.2'
 end
 
 gem 'dotenv-rails',                             '~> 2.7'
-gem 'envkey',                                   '~> 1.0', '!= 1.2.6' # v1.2.6 breaks loading env vars in test env
+gem 'envkey',                                   '~> 1.0', '!= 1.2.6', require: false # v1.2.6 breaks loading env vars in test env
 gem 'gems',                                     '~> 1.2', require: false
 gem 'git',                                      '~> 1.5'
 gem 'rails_bootstrap_navbar',                   '~> 3.0'

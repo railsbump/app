@@ -11,7 +11,7 @@ module RailsBump
 
     Rails.application.routes.default_url_options =
       config.action_mailer.default_url_options = {
-        host:     ENV.fetch('HOST'),
+        host:     ENV.fetch('HOST') { 'localhost:3000' },
         protocol: 'https'
       }
   end

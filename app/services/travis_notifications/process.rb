@@ -12,11 +12,6 @@ module TravisNotifications
       compat.update! compatible: compatible
       travis_notification.update! compat: compat
 
-      unless compatible
-        build_url = travis_notification.data.fetch('build_url')
-        Rollbar.error "#{compat} has been marked as incompatible. Check Travis results!", build_url: build_url
-      end
-
       git = CheckOutGitRepo.call
       if git.branches.remote.any? { |remote_branch| remote_branch.name == branch }
         git.push 'origin', branch, delete: true

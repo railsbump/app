@@ -1,3 +1,3 @@
-task :check_compats do
+task check_compats: :environment do
   Compats::CheckAllUnchecked.call
 end

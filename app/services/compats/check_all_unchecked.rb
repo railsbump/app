@@ -1,5 +1,7 @@
 module Compats
   class CheckAllUnchecked < Services::Base
+    workers 1
+
     def call
       check_uniqueness
 

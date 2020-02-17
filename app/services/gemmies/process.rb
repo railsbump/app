@@ -3,7 +3,7 @@ module Gemmies
     def call(gemmy)
       UpdateVersions.call(gemmy)
       FindOrCreateCompats.call(gemmy)
-      Compats::CheckAllUnchecked.call
+      Compats::CheckAllUnchecked.call_async
     end
   end
 end

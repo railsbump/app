@@ -5,7 +5,7 @@ module RailsReleases
         rails_release.compats.where(dependencies: compat.dependencies).first_or_create!
       end
 
-      Compats::CheckAllUnchecked.call
+      Compats::CheckAllUnchecked.call_async
     end
   end
 end

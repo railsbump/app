@@ -15,7 +15,7 @@ module Gemfiles
 
       if content.present?
         bundler   = Bundler::Dsl.new
-        gem_names = bundler.eval_gemfile('', content).map(&:name).sort
+        gem_names = bundler.eval_gemfile('', content).map(&:name).sort - %w(rails)
 
         if gem_names.none?
           raise Error, 'No gems found in content.'

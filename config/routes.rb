@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => 'sidekiq'
+
   root 'gemmies#index'
 
   resources :gemmies, path: 'gems', only: %i(show new create)

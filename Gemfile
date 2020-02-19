@@ -27,7 +27,7 @@ gem 'envkey',                                   '~> 1.0', '!= 1.2.6', require: f
 gem 'gems',                                     '~> 1.2', require: false
 gem 'git',                                      '~> 1.5'
 gem 'rails_bootstrap_navbar',                   '~> 3.0'
-gem 'sucker_punch',                             '~> 2.1'
+gem 'sidekiq',                                  '~> 6.0'
 
 group :development do
   gem 'spring',                                 '~> 2.0'

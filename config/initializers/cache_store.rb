@@ -1,5 +1,5 @@
 # This has to be set here instead of `config/environments/production.rb`
-# since the environment variable REDIS_URL has to be present,
+# since the environment variable REDIS_URL is used,
 # which is loaded in the _envkey.rb initializer.
 if Rails.env.production?
   Rails.application.config.cache_store = :redis_cache_store, {

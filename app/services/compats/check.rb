@@ -61,7 +61,7 @@ module Compats
 
                              #{gemfile_dependencies.join("\n")}
                            CONTENT
-          'Rakefile'    => 'task :default'
+          'Rakefile'    => "task :default\n"
         }
 
         files.each do |filename, content|

@@ -19,3 +19,5 @@ $(document).on('turbolinks:load', () => {
   autosize(document.querySelectorAll('.autosize'))
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+// let's recompile!

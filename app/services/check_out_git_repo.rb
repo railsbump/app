@@ -19,6 +19,7 @@ class CheckOutGitRepo < Services::Base
           ssh_key << "\n"
         end
         File.write ssh_key_file, ssh_key
+        File.chmod 0600, ssh_key_file
       end
       ENV['GIT_SSH_COMMAND'] = "ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
     end

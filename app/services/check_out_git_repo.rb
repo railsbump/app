@@ -25,7 +25,7 @@ class CheckOutGitRepo < Services::Base
     end
 
     Git.clone(REPO, dir).tap do |git|
-      git.config 'user.name',  'RailsBump Checker'
+      git.config 'user.name',  'RailsBump'
       git.config 'user.email', 'hello@railsbump.org'
 
       git.checkout

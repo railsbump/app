@@ -54,7 +54,7 @@ module Compats
                              rvm:
                                - 2.6
                              notifications:
-                               webhooks: #{Rails.application.routes.url_helpers.api_travis_notifications_url}
+                               webhooks: #{api_travis_notifications_url}
                            CONTENT
           'Gemfile'     => <<~CONTENT,
                              source 'https://rubygems.org'

@@ -21,6 +21,12 @@ module Gemmies
         raise AlreadyExists.new(existing_gemmy)
       end
 
+      begin
+        Gems.info name
+      rescue Gems::NotFound
+        raise Error, 'Gem does not exist.'
+      end
+
       gemmy = Gemmy.create!(name: name)
 
       AddWebhook.call_async gemmy

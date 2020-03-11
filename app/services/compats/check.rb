@@ -53,6 +53,10 @@ module Compats
                              language: ruby
                              rvm:
                                - 2.6
+                             cache:
+                               bundler: true
+                               directories:
+                                 - /home/travis/.rvm/
                              notifications:
                                webhooks: #{api_travis_notifications_url}
                            CONTENT

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'table'
     end
   end
+  resources :email_notifications, only: :create
 
   namespace :api, path: '', constraints: { subdomain: 'api' } do
     resources :releases, only: :create

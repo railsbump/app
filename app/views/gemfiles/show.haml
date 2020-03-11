@@ -24,3 +24,5 @@
             = @gemfile.content
       .modal-footer
         = link_to 'Close', '#', class: 'btn btn-primary', data: { dismiss: 'modal' }
+
+= render 'email_notifications/form', notifiable: @gemfile

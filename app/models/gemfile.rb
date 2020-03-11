@@ -1,4 +1,6 @@
 class Gemfile < ApplicationRecord
+  include HasCompats
+
   has_many :dependencies, class_name: 'GemfileDependency', dependent: :destroy
   has_many :gemmies, through: :dependencies
 

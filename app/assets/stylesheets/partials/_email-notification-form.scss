@@ -1,0 +1,16 @@
+.email-notification-form {
+
+  .success,
+  .error {
+    display: none;
+    font-weight: bold;
+  }
+
+  .success {
+    color: $green;
+  }
+
+  .error {
+    color: $red;
+  }
+}

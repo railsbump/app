@@ -1,4 +1,6 @@
 class Gemmy < ApplicationRecord
+  include HasCompats
+
   FORBIDDEN_NAMES = %w(
     new
     edit

@@ -53,15 +53,16 @@ module Compats
                              language: ruby
                              rvm:
                                - 2.6
+                             install: bundle lock
+                             script: ""
                              notifications:
                                webhooks: #{api_travis_notifications_url}
                            CONTENT
-          'Gemfile'     => <<~CONTENT,
+          'Gemfile'     => <<~CONTENT
                              source 'https://rubygems.org'
 
                              #{gemfile_dependencies.join("\n")}
                            CONTENT
-          'Rakefile'    => "task :default\n"
         }
 
         files.each do |filename, content|

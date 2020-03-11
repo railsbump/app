@@ -12,11 +12,6 @@ module TravisNotifications
       compat.update! compatible: compatible
       travis_notification.update! compat: compat
 
-      git = CheckOutGitRepo.call
-      if git.branches.remote.any? { |remote_branch| remote_branch.name == branch }
-        git.push 'origin', branch, delete: true
-      end
-      FileUtils.rm_rf git.dir.path
 
       travis_notification.processed!
     end

@@ -1,0 +1,11 @@
+- hosts: worker01
+  roles:
+    - setup
+    - postfix
+    - git
+    - dotfiles
+    - nginx
+    - monit
+    - rbenv_ruby
+    - nodejs
+    - yarn

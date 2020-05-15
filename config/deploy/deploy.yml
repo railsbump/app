@@ -1,0 +1,4 @@
+- hosts: worker01
+  gather_facts: no
+  roles:
+    - deploy

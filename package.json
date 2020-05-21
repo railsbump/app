@@ -24,6 +24,7 @@
     "expose-loader": "^0.7.5",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
+    "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.4-1",
     "rollbar": "^2.14.4",
     "stimulus": "^1.1.1",

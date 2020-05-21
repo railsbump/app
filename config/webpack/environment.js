@@ -1,8 +1,22 @@
 const { environment } = require('@rails/webpacker')
 const webpack         = require('webpack')
-const expose          = require('./loaders/expose')
 
-environment.loaders.prepend('expose', expose)
+environment.loaders.prepend('erb', {
+  test:    /\.erb$/,
+  enforce: 'pre',
+  exclude: /node_modules/,
+  use: [{
+    loader: 'rails-erb-loader'
+  }]
+})
+
+environment.loaders.prepend('expose', {
+  test: require.resolve('jquery'),
+  use: [{
+    loader:  'expose-loader',
+    options: '$'
+  }]
+})
 
 environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({

@@ -1,3 +1,5 @@
+.env
+
 config/database.yml
 
 public/packs

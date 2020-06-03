@@ -5,11 +5,14 @@ class Compat < ApplicationRecord
 
   validates :dependencies, uniqueness: { scope: :rails_release }
 
+  scope :compatible,   -> { where(compatible: true) }
+  scope :incompatible, -> { where(compatible: false) }
+
   def to_s
     "Compatibility of #{rails_release} with #{dependencies.map { |gem, constraints| "#{gem} #{constraints}" }.to_sentence}"
   end
 
-  def incompatible
+  def incompatible?
     compatible == false
   end
 end

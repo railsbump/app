@@ -1,5 +1,5 @@
 - compats = gemmy.compats.where(rails_release: rails_release)
-- status  = compats.all?(&:incompatible) ? :incompatible : (:compatible if compats.any?(&:compatible)) if compats.any?
+- status  = compats.all?(&:incompatible?) ? :incompatible : (:compatible if compats.any?(&:compatible)) if compats.any?
 - text    = !status ? "The compatibility of #{gemmy} with #{rails_release} is still being checked." : (status == :compatible ? "At least one available version of #{gemmy} is compatible with #{rails_release}." : "No available version of #{gemmy} is compatible with #{rails_release}.")
 
 %td{ class: status || 'checking', data: (status ? {} : { target: 'compat-table.checking', gemmy: gemmy.to_global_id, 'rails-release': rails_release.to_global_id }) }

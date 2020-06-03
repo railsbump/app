@@ -1,3 +1,5 @@
+config/database.yml
+
 public/packs
 public/packs-test
 spec/examples.txt

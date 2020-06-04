@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: railsbump_development
+  sslmode: disable
+
+test:
+  <<: *default
+  database: railsbump_test
+
+production:
+  <<: *default
+  database: railsbump_production
+  username: railsbump
+  password: <%= ENV['RAILSBUMP_DATABASE_PASSWORD'] %>

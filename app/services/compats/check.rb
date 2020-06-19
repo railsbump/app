@@ -33,7 +33,7 @@ module Compats
         check_dependencies_individually
         check_with_travis
       ).each do |method|
-        call method if @compat.compatible.nil?
+        send method if @compat.compatible.nil?
       end
 
       compat.checked!

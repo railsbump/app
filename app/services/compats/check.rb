@@ -49,7 +49,11 @@ module Compats
 
       def check_rails_gems
         @compat.dependencies.each do |gem_name, requirement|
-          if RAILS_GEMS.include?(gem_name) && !Gem::Requirement.new(requirement).satisfied_by?(@compat.rails_release.version)
+          next unless RAILS_GEMS.include?(gem_name)
+          requirement_unmet = requirement.split(/\s*,\s*/).any? do |r|
+            !Gem::Requirement.new(r).satisfied_by?(@compat.rails_release.version)
+          end
+          if requirement_unmet
             @compat.update! compatible: false
             return
           end

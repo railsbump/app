@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'gemmies#index'
 
   resources :gemmies, path: 'gems', only: %i(show new create)
-  resources :gemfiles, only: %i(new create show)
+  resources :lockfiles, only: %i(new create show)
   resources :compats, only: [] do
     collection do
       get 'table'

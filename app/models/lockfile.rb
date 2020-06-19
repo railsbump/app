@@ -1,7 +1,7 @@
-class Gemfile < ApplicationRecord
+class Lockfile < ApplicationRecord
   include HasCompats
 
-  has_many :dependencies, class_name: 'GemfileDependency', dependent: :destroy
+  has_many :dependencies, class_name: 'LockfileDependency', dependent: :destroy
   has_many :gemmies, through: :dependencies
 
   validates :content, presence: true
@@ -13,7 +13,7 @@ end
 
 # == Schema Information
 #
-# Table name: gemfiles
+# Table name: lockfiles
 #
 #  id         :bigint           not null, primary key
 #  content    :text

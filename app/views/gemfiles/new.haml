@@ -1,9 +1,0 @@
-%h1
-  Check a Gemfile
-
-= form_with model: @gemfile, local: true do |form|
-
-  .form-group
-    = form.text_area :content, class: 'form-control autosize', placeholder: 'Paste the content of your Gemfile here.'
-
-  = form.submit 'Check now', class: 'btn btn-primary', data: { disable_with: t(:please_wait) }

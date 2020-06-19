@@ -1,28 +1,28 @@
 %h1
-  Show Gemfile check results
+  Show Gemfile.lock check results
 
 %p
   Checked
-  = l @gemfile.created_at, format: :short
+  = l @lockfile.created_at, format: :short
   &middot;
-  = link_to 'Show content', '#', data: { toggle: 'modal', target: '#gemfile-content-modal' }
+  = link_to 'Show content', '#', data: { toggle: 'modal', target: '#lockfile-content-modal' }
 
-= render 'compats/table', gemmies: @gemfile.gemmies
+= render 'compats/table', gemmies: @lockfile.gemmies
 
-#gemfile-content-modal.modal.fade
+#lockfile-content-modal.modal.fade
   .modal-dialog.modal-dialog-scrollable.modal-lg
     .modal-content
       .modal-header
         %h5.modal-title
-          Gemfile content
+          Gemfile.lock content
         %button.close{ type: 'button', data: { dismiss: 'modal' } }
           %span
             &times;
       .modal-body
         %pre
           - 3.times do
-            = @gemfile.content
+            = @lockfile.content
       .modal-footer
         = link_to 'Close', '#', class: 'btn btn-primary', data: { dismiss: 'modal' }
 
-= render 'email_notifications/form', notifiable: @gemfile
+= render 'email_notifications/form', notifiable: @lockfile

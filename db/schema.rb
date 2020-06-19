@@ -25,27 +25,27 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
   end
 
-  create_table "gemfile_dependencies", id: false, force: :cascade do |t|
-    t.bigint "gemfile_id"
-    t.bigint "gemmy_id"
-    t.index ["gemfile_id"], name: "index_gemfile_dependencies_on_gemfile_id"
-    t.index ["gemmy_id"], name: "index_gemfile_dependencies_on_gemmy_id"
-  end
-
-  create_table "gemfiles", force: :cascade do |t|
-    t.text "content"
-    t.string "slug"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["slug"], name: "index_gemfiles_on_slug", unique: true
-  end
-
   create_table "gemmies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "dependencies_and_versions", default: {}
     t.index ["name"], name: "index_gemmies_on_name", unique: true
+  end
+
+  create_table "lockfile_dependencies", id: false, force: :cascade do |t|
+    t.bigint "lockfile_id"
+    t.bigint "gemmy_id"
+    t.index ["gemmy_id"], name: "index_lockfile_dependencies_on_gemmy_id"
+    t.index ["lockfile_id"], name: "index_lockfile_dependencies_on_lockfile_id"
+  end
+
+  create_table "lockfiles", force: :cascade do |t|
+    t.text "content"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_lockfiles_on_slug", unique: true
   end
 
   create_table "rails_releases", force: :cascade do |t|

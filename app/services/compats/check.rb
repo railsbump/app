@@ -2,6 +2,22 @@ require 'fileutils'
 
 module Compats
   class Check < Services::Base
+    RAILS_GEMS = %w(
+      actioncable
+      actionmailbox
+      actionmailer
+      actionpack
+      actiontext
+      actionview
+      activejob
+      activemodel
+      activerecord
+      activestorage
+      activesupport
+      rails
+      railties
+    )
+
     def call(compat)
       check_uniqueness
 
@@ -9,12 +25,15 @@ module Compats
         raise Error, 'Compat is already checked.'
       end
 
-      case
-      when compat.dependencies.blank?
-        compat.update! compatible: true
-      when Rails.env.production?
-        @compat = compat
-        check
+      @compat = compat
+
+      %i(
+        check_empty_dependencies
+        check_rails_gems
+        check_dependencies_individually
+        check_with_travis
+      ).each do |method|
+        call method if @compat.compatible.nil?
       end
 
       compat.checked!
@@ -22,7 +41,33 @@ module Compats
 
     private
 
-      def check
+      def check_empty_dependencies
+        if @compat.dependencies.blank?
+          @compat.update! compatible: true
+        end
+      end
+
+      def check_rails_gems
+        @compat.dependencies.each do |gem_name, requirement|
+          if RAILS_GEMS.include?(gem_name) && !Gem::Requirement.new(requirement).satisfied_by?(@compat.rails_release.version)
+            @compat.update! compatible: false
+            return
+          end
+        end
+      end
+
+      def check_dependencies_individually
+        @compat.dependencies.each do |gem_name, requirement|
+          if @compat.rails_release.compats.find_by(dependencies: { gem_name: requirement })&.incompatible?
+            @compat.update! compatible: false
+            return
+          end
+        end
+      end
+
+      def check_with_travis
+        return unless Rails.env.production?
+
         branch_name = @compat.id.to_s
 
         git = CheckOutGitRepo.call

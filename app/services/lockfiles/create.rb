@@ -3,7 +3,6 @@ require 'bundler/lockfile_parser'
 module Lockfiles
   class Create < Services::Base
     CONTENT_REGEX = %r(
-      \A
       GEM
       .+
       DEPENDENCIES

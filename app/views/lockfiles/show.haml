@@ -20,8 +20,7 @@
             &times;
       .modal-body
         %pre
-          - 3.times do
-            = @lockfile.content
+          = @lockfile.content
       .modal-footer
         = link_to 'Close', '#', class: 'btn btn-primary', data: { dismiss: 'modal' }
 

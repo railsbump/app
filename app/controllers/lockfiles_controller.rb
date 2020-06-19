@@ -4,7 +4,7 @@ class LockfilesController < ApplicationController
   end
 
   def create
-    @lockfile = Lockfiles::Create.call(lockfile_params.fetch(:content))
+    @lockfile = Lockfiles::Create.call(lockfile_params.fetch(:content).strip)
   rescue Lockfiles::Create::AlreadyExists => e
     redirect_to e.lockfile
   rescue Lockfiles::Create::Error => e

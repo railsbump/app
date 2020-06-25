@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   namespace :api, path: '', constraints: { subdomain: 'api' } do
     resources :releases, only: :create
     resources :travis_notifications, only: :create
+    resources :github_notifications, only: :create
   end
 end

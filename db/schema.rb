@@ -16,21 +16,30 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
   enable_extension "plpgsql"
 
   create_table "compats", force: :cascade do |t|
+    t.jsonb "dependencies"
     t.boolean "compatible"
+    t.datetime "checked_at"
     t.bigint "rails_release_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "checked_at"
-    t.jsonb "dependencies", default: {}
     t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
   end
 
   create_table "gemmies", force: :cascade do |t|
     t.string "name"
+    t.jsonb "dependencies_and_versions", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "dependencies_and_versions", default: {}
     t.index ["name"], name: "index_gemmies_on_name", unique: true
+  end
+
+  create_table "github_notifications", force: :cascade do |t|
+    t.jsonb "data"
+    t.datetime "processed_at"
+    t.bigint "compat_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["compat_id"], name: "index_github_notifications_on_compat_id"
   end
 
   create_table "lockfile_dependencies", id: false, force: :cascade do |t|
@@ -53,15 +62,6 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["version"], name: "index_rails_releases_on_version", unique: true
-  end
-
-  create_table "travis_notifications", force: :cascade do |t|
-    t.jsonb "data"
-    t.datetime "processed_at"
-    t.bigint "compat_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["compat_id"], name: "index_travis_notifications_on_compat_id"
   end
 
 end

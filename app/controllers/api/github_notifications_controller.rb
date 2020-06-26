@@ -1,7 +1,8 @@
 module API
   class GithubNotificationsController < BaseController
     def create
-      Rollbar.error 'GitHub notification', params: params
+      github_notification = GithubNotification.create!(data: request.request_parameters)
+      GithubNotifications::Process.call_async github_notification
 
       head :ok
     end

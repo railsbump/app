@@ -31,7 +31,7 @@ module Compats
         check_empty_dependencies
         check_rails_gems
         check_dependencies_individually
-        check_with_travis
+        check_with_github
       ).each do |method|
         send method if @compat.compatible.nil?
       end
@@ -69,7 +69,7 @@ module Compats
         end
       end
 
-      def check_with_travis
+      def check_with_github
         return unless Rails.env.production?
 
         branch_name = @compat.id.to_s
@@ -93,34 +93,14 @@ module Compats
         dependencies['rails'] ||= []
         dependencies['rails'] << "= #{@compat.rails_release.version}"
 
-        gemfile_dependencies = dependencies.map do |gem, constraints_group|
+        gemfile_content = dependencies.map do |gem, constraints_group|
           "gem '#{gem}', #{constraints_group.map { |constraints| "'#{constraints}'" }.join(', ')}"
-        end
+        end.unshift("source 'https://rubygems.org'")
 
-        files = {
-          '.travis.yml' => <<~CONTENT,
-                             language: ruby
-                             rvm:
-                               - 2.6
-                             install: bundle lock
-                             script: ""
-                             notifications:
-                               webhooks: #{api_travis_notifications_url}
-                           CONTENT
-          'Gemfile'     => <<~CONTENT
-                             source 'https://rubygems.org'
+        File.write File.join(git.dir.path, 'Gemfile'), gemfile_content
 
-                             #{gemfile_dependencies.join("\n")}
-                           CONTENT
-        }
-
-        files.each do |filename, content|
-          File.write File.join(git.dir.path, filename), content
-          git.add filename
-        end
-
+        git.add 'Gemfile'
         git.commit "Test #{@compat}"
-
         git.push 'origin', branch_name
       ensure
         if git && File.exist?(git.dir.path)

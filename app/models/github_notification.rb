@@ -1,4 +1,4 @@
-class TravisNotification < ApplicationRecord
+class GithubNotification < ApplicationRecord
   include HasTimestamps[:processed_at]
 
   belongs_to :compat, optional: true
@@ -12,7 +12,7 @@ end
 
 # == Schema Information
 #
-# Table name: travis_notifications
+# Table name: github_notifications
 #
 #  id           :bigint           not null, primary key
 #  data         :jsonb

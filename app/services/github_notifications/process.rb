@@ -5,7 +5,9 @@ module GithubNotifications
         raise Error, "GitHub Notification #{github_notification.id} has already been processed."
       end
 
-      action, conclusion = github_notification.data.fetch_values('action', 'conclusion')
+      action     = github_notification.data.fetch('action')
+      conclusion = github_notification.data['check_run'].fetch('conclusion')
+      branch     = github_notification.data['check_run']['check_suite'].fetch('head_branch')
 
       if action == 'completed'
         unless conclusion.in?(%w(success failure))

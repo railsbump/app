@@ -23,7 +23,7 @@ module Lockfiles
 
       if content.present?
         unless CONTENT_REGEX.match?(content)
-          raise Error, 'This does not look like a valid Gemfile.lock.'
+          raise Error, 'This does not look like a valid lockfile.'
         end
 
         parser    = Bundler::LockfileParser.new(content)

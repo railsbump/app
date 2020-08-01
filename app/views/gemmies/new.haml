@@ -1,9 +1,9 @@
 %h1
-  Add gem
+  Check a gem
 
 = form_with model: @gemmy, local: true do |form|
 
   .form-group
     = form.text_field :name, class: 'form-control', placeholder: 'Gem name'
 
-  = form.submit 'Add', class: 'btn btn-primary', data: { disable_with: t(:please_wait) }
+  = form.submit 'Check now', class: 'btn btn-primary', data: { disable_with: t(:please_wait) }

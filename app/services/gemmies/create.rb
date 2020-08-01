@@ -14,7 +14,7 @@ module Gemmies
 
     def call(name)
       if name.blank?
-        raise Error, 'Name is blank.'
+        raise Error, 'Please enter a name.'
       end
 
       if existing_gemmy = Gemmy.find_by(name: name)
@@ -24,7 +24,7 @@ module Gemmies
       begin
         Gems.info name
       rescue Gems::NotFound
-        raise Error, 'Gem does not exist.'
+        raise Error, %(Gem "#{name}" does not exist.)
       end
 
       gemmy = Gemmy.create!(name: name)

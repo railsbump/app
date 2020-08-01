@@ -1,8 +1,8 @@
 %header
   = navbar container: 'lg' do
-    = brand_link 'RailsBump'
+    = brand_link '👊 RailsBump'
     = navbar_collapse class: 'justify-content-end' do
       = navbar_group do
-        =# navbar_item 'Add gem', new_gemmy_path
-        =# navbar_item 'Check Gemfile.lock', new_lockfile_path
-        = navbar_item 'GitHub', 'https://github.com/manuelmeurer/railsbump'
+        = navbar_item 'Check a gem', new_gemmy_path
+        = navbar_item 'Check a lockfile', new_lockfile_path
+        = navbar_item tag.i(class: %w(fab fa-github)), 'https://github.com/manuelmeurer/railsbump', {}, target: '_blank'

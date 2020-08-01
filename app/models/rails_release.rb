@@ -21,7 +21,7 @@ class RailsRelease < ApplicationRecord
   end
 
   scope :latest_major, -> {
-    versions = pluck(:version).group_by { |version| version[/\A\d+/] }
+    versions = pluck(:version).group_by { _1[/\A\d+/] }
                               .values
                               .map(&:max)
     order(:version).where(version: versions)

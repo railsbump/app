@@ -76,7 +76,7 @@ module Compats
 
         git = CheckOutGitRepo.call
 
-        git.branches.select { |branch| branch.name == branch_name }.each do |branch|
+        git.branches.select { _1.name == branch_name }.each do |branch|
           if branch.remote
             git.push 'origin', branch.name, delete: true
           else
@@ -94,7 +94,7 @@ module Compats
         dependencies['rails'] << "= #{@compat.rails_release.version}"
 
         gemfile_content = dependencies.map do |gem, constraints_group|
-          "gem '#{gem}', #{constraints_group.map { |constraints| "'#{constraints}'" }.join(', ')}"
+          "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(', ')}"
         end.unshift("source 'https://rubygems.org'")
 
         File.write File.join(git.dir.path, 'Gemfile'), gemfile_content

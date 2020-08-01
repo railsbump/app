@@ -36,7 +36,7 @@ module HasTimestamps
             if values.any?(&:blank?)
               value = nil
             else
-              values.map! { |v| v.is_a?(String) ? Time.zone.parse(v) : v.to_time }
+              values.map! { _1.is_a?(String) ? Time.zone.parse(_1) : _1.to_time }
               date, time = values
               value = date.change(hour: time.hour, min: time.min, sec: time.sec)
             end

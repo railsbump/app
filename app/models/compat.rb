@@ -9,7 +9,7 @@ class Compat < ApplicationRecord
   scope :incompatible, -> { where(compatible: false) }
 
   def to_s
-    "Compatibility of #{rails_release} with #{dependencies.map { |gem, constraints| "#{gem} #{constraints}" }.to_sentence}"
+    "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"
   end
 
   def incompatible?

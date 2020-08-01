@@ -16,7 +16,7 @@ class GemmiesController < ApplicationController
   end
 
   def index
-    @gemmies = Gemmy.order(:name)
+    @gemmies = Gemmy.order(created_at: :desc).limit(20)
   end
 
   def show

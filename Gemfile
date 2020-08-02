@@ -17,17 +17,9 @@ gem 'rails', '~> 6.0.2'
 # Load common gems
 %w(
   rails
+  redis
 ).each do |m|
   eval_gemfile File.join('common-gems', m, 'Gemfile')
-end
-
-gem 'connection_pool' , '~> 2.0'
-gem 'hiredis'         , '~> 0.6'
-gem 'redis'           , '~> 4.0'
-gem 'redis-namespace' , '~> 1.6'
-
-group :test do
-  gem 'fakeredis', '~> 0.7'
 end
 
 gem 'dotenv-rails',                             '~> 2.7'

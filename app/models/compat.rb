@@ -15,6 +15,11 @@ class Compat < ApplicationRecord
   def incompatible?
     compatible == false
   end
+
+  # Sort dependencies, by default JSONB does not preserve key order.
+  def dependencies
+    super.sort.to_h
+  end
 end
 
 # == Schema Information

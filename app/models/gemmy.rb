@@ -12,7 +12,17 @@ class Gemmy < ApplicationRecord
   delegate :to_param, :to_s, to: :name
 
   def dependencies
-    dependencies_and_versions.keys.map(&JSON.method(:parse))
+    dependencies_and_versions.keys
+                             .map(&JSON.method(:parse))
+  end
+
+  def versions(dependencies = nil)
+    version_groups = dependencies ? dependencies_and_versions.fetch_values(*dependencies.map(&:to_json)) :
+                                    dependencies_and_versions.values
+
+    version_groups.flatten
+                  .map(&Gem::Version.method(:new))
+                  .sort
   end
 end
 

@@ -1,29 +1,33 @@
-%h1
-  Show lockfile check results
+- cache @lockfile do
 
-%p
-  Checked
-  = l @lockfile.created_at, format: :short
-  &middot;
-  = link_to 'Show content', '#', data: { toggle: 'modal', target: '#lockfile-content-modal' }
+  %section
 
-%section
-  = render 'compats/table', gemmies: @lockfile.gemmies
+    %h1
+      Show lockfile check results
 
-%section
-  = render 'email_notifications/form', notifiable: @lockfile
+    %p
+      Checked
+      = l @lockfile.created_at, format: :short
+      &middot;
+      = link_to 'Show content', '#', data: { toggle: 'modal', target: '#lockfile-content-modal' }
 
-#lockfile-content-modal.modal.fade
-  .modal-dialog.modal-dialog-scrollable.modal-lg
-    .modal-content
-      .modal-header
-        %h5.modal-title
-          Lockfile content
-        %button.close{ type: 'button', data: { dismiss: 'modal' } }
-          %span
-            &times;
-      .modal-body
-        %pre
-          = @lockfile.content
-      .modal-footer
-        = link_to 'Close', '#', class: 'btn btn-primary', data: { dismiss: 'modal' }
+  %section
+    = render 'compats/table', gemmies: @lockfile.gemmies
+
+  %section
+    = render 'email_notifications/form', notifiable: @lockfile
+
+  #lockfile-content-modal.modal.fade
+    .modal-dialog.modal-dialog-scrollable.modal-lg
+      .modal-content
+        .modal-header
+          %h5.modal-title
+            Lockfile content
+          %button.close{ type: 'button', data: { dismiss: 'modal' } }
+            %span
+              &times;
+        .modal-body
+          %pre
+            = @lockfile.content
+        .modal-footer
+          = link_to 'Close', '#', class: 'btn btn-primary', data: { dismiss: 'modal' }

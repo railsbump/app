@@ -5,5 +5,5 @@ every 2.minutes do
 end
 
 every :hour do
-  rollbar_runner 'CheckGitBranches.call'
+  rollbar_runner 'Maintenance::CheckGitBranches.call'
 end

@@ -23,9 +23,9 @@ module ApplicationHelper
 
   def compats_status(compats)
     case
-    when compats.none?                 then :checking
-    when compats.all?(&:incompatible?) then :incompatible
-    when compats.any?(&:compatible)    then :compatible
+    when compats.none?              then :checking
+    when compats.any?(&:compatible) then :compatible
+    else                                 :incompatible
     end
   end
 

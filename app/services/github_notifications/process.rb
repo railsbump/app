@@ -11,7 +11,8 @@ module GithubNotifications
 
       if action == 'completed'
         unless conclusion.in?(%w(success failure))
-          raise Error, "Expected conclusion to be 'success' or 'error', but got: #{conclusion}" rescue Rollbar.error $!, github_notification_id: github_notification.id
+          raise Error, "Expected conclusion to be 'success' or 'error', but got: #{conclusion}" \
+            rescue Rollbar.error $!, github_notification_id: github_notification.id
         end
 
         compatible = conclusion == 'success'

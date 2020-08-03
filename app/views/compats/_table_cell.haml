@@ -11,10 +11,8 @@
       - case status
       - when :checking
         %i.fas.fa-spinner.fa-pulse
-        Checking...
       - when :compatible
         %i.far.fa-thumbs-up
-        = label
       - else
         %i.far.fa-thumbs-down
-        none
+      = label

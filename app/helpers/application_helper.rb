@@ -23,18 +23,23 @@ module ApplicationHelper
 
   def compats_status(compats)
     case
-    when compats.none?              then :checking
-    when compats.any?(&:compatible) then :compatible
-    else                                 :incompatible
+    when compats.any?(&:compatible)                then :compatible
+    when compats.none? || compats.any?(&:pending?) then :checking
+    else                                                :incompatible
     end
   end
 
   def compats_label_and_text(compats, gemmy, rails_release)
     compatible_compats = compats.select(&:compatible)
+    pending_compats    = compats.select(&:pending?)
 
-    case compatible_compats
-    when []      then return ['none', "No versions of #{gemmy} are compatible with #{rails_release}."]
-    when compats then return ['all', "All versions of #{gemmy} are compatible with #{rails_release}."]
+    case
+    when compatible_compats.none? && pending_compats.none?
+      return ['none', "No versions of #{gemmy} are compatible with #{rails_release}."]
+    when compatible_compats.none? && pending_compats.any?
+      return ['checking', "#{pluralize pending_compats.size, 'version'} of #{gemmy} are still being checked for compatibility with #{rails_release}."]
+    when compatible_compats == compats
+      return ['all', "All versions of #{gemmy} are compatible with #{rails_release}."]
     end
 
     compatible_versions   = gemmy.versions(compatible_compats.map(&:dependencies))
@@ -68,13 +73,19 @@ module ApplicationHelper
       versions = compatible_versions.map(&:to_s).to_sentence
       [
         label,
-        "Versions #{versions}"
+        "#{'Version'.pluralize(versions.size)} #{versions}"
       ]
+    end
+
+    text = "#{text_prefix} of #{gemmy} #{compatible_versions.many? ? 'are' : 'is'} compatible with #{rails_release}"
+    if pending_compats.any?
+      label << ' (checking)'
+      text  << ", but #{pluralize pending_compats.size, 'other version'} are still being checked"
     end
 
     [
       label,
-      "#{text_prefix} of #{gemmy} are compatible with #{rails_release}."
+      "#{text}."
     ]
   end
 end

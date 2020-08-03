@@ -28,7 +28,7 @@ class CheckOutGitRepo < Services::Base
       git.config 'user.name',  'RailsBump'
       git.config 'user.email', 'hello@railsbump.org'
 
-      git.checkout
+      git.checkout 'main'
     end
   end
 end

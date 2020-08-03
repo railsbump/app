@@ -49,28 +49,32 @@ module ApplicationHelper
     compatible_versions_string, all_versions_string = [compatible_versions, all_versions].map { _1.join(':') }
 
     label, text_prefix = case
-    when all_versions_string.start_with?(compatible_versions_string)
+    when compatible_versions.many? && all_versions_string.start_with?(compatible_versions_string)
       [
         "<= #{compatible_versions.last}",
         "Versions #{compatible_versions.last} and below"
       ]
-    when all_versions_string.end_with?(compatible_versions_string)
+    when compatible_versions.many? && all_versions_string.end_with?(compatible_versions_string)
       [
         ">= #{compatible_versions.first}",
         "Versions #{compatible_versions.first} and above"
       ]
     else
-      major_version_numbers = compatible_versions.map { _1.segments.first }.uniq
-      major_version_numbers.each do |version_number|
-        matching_compatible_versions = compatible_versions.select { _1.is_a?(Gem::Version) && _1.segments.first == version_number }
-        if matching_compatible_versions.size == all_versions.count { _1.segments.first == version_number }
-          index = compatible_versions.index(matching_compatible_versions.first)
-          compatible_versions.delete_if { matching_compatible_versions.include?(_1) }
-          compatible_versions.insert index, "#{version_number}.x"
+      if compatible_versions.many?
+        major_version_numbers = compatible_versions.map { _1.segments.first }.uniq
+        major_version_numbers.each do |version_number|
+          matching_compatible_versions = compatible_versions.select { _1.is_a?(Gem::Version) && _1.segments.first == version_number }
+          if matching_compatible_versions.size == all_versions.count { _1.segments.first == version_number }
+            index = compatible_versions.index(matching_compatible_versions.first)
+            compatible_versions.delete_if { matching_compatible_versions.include?(_1) }
+            compatible_versions.insert index, "#{version_number}.x"
+          end
         end
       end
+
       label    = compatible_versions.size > 3 ? 'some' : compatible_versions.join(', ')
       versions = compatible_versions.map(&:to_s).to_sentence
+
       [
         label,
         "#{'Version'.pluralize(versions.size)} #{versions}"

@@ -8,6 +8,9 @@ module GithubNotifications
       action     = github_notification.data.fetch('action')
       conclusion = github_notification.data['check_run'].fetch('conclusion')
       branch     = github_notification.data['check_run']['check_suite'].fetch('head_branch')
+      compat     = Compat.find(branch)
+
+      github_notification.update! compat: compat
 
       if action == 'completed'
         unless conclusion.in?(%w(success failure))
@@ -16,10 +19,8 @@ module GithubNotifications
         end
 
         compatible = conclusion == 'success'
-        compat     = Compat.find(branch)
 
         compat.update! compatible: compatible
-        github_notification.update! compat: compat
       end
 
       github_notification.processed!

@@ -36,7 +36,7 @@ deploy_setup_db_password:         !vault |
                                   31383064353262363132
 deploy_setup_puma_hosts:          []
 deploy_setup_sidekiq:             yes
-deploy_setup_sidekiq_concurrency: 2
+deploy_setup_sidekiq_concurrency: 5
 setup_fqdn_domain:                railsbump.org
 monit_passwords:
   worker01:                       !vault |

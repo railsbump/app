@@ -4,7 +4,7 @@ Check your Ruby gems for compatibility with all major Rails versions.
 
 ## Usage
 
-The app is live at https://railsbump.org/, where you can check a [individual gem](http://railsbump.org/gems/new) or a [whole Bundler lockfile](http://railsbump.org/lockfiles/new) (Gemfile.lock).
+The app is live at https://railsbump.org/, where you can check an [individual gem](http://railsbump.org/gems/new) or a [whole Bundler lockfile](http://railsbump.org/lockfiles/new) (Gemfile.lock).
 
 ## Behind the scenes
 

@@ -4,7 +4,7 @@ module Maintenance
       check_uniqueness on_error: :return
 
       pending_compats = Compat.pending
-                              .checked_before?(2.hours.ago)
+                              .checked_before(2.hours.ago)
 
       if pending_compats.any?
         raise Error, 'Some compats have been pending for a long time.' \

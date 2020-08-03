@@ -35,9 +35,9 @@ module ApplicationHelper
 
     case
     when compatible_compats.none? && pending_compats.none?
-      return ['none', "No versions of #{gemmy} are compatible with #{rails_release}."]
+      return ['none', "No version of #{gemmy} is compatible with #{rails_release}."]
     when compatible_compats.none? && pending_compats.any?
-      return ['checking', "#{pluralize pending_compats.size, 'version'} of #{gemmy} are still being checked for compatibility with #{rails_release}."]
+      return ['checking', "#{pluralize pending_compats.size, 'version'} of #{gemmy} #{pending_compats.many? ? 'are' : 'is'} still being checked for compatibility with #{rails_release}."]
     when compatible_compats == compats
       return ['all', "All versions of #{gemmy} are compatible with #{rails_release}."]
     end
@@ -84,7 +84,7 @@ module ApplicationHelper
     text = "#{text_prefix} of #{gemmy} #{compatible_versions.many? ? 'are' : 'is'} compatible with #{rails_release}"
     if pending_compats.any?
       label << ' (checking)'
-      text  << ", but #{pluralize pending_compats.size, 'other version'} are still being checked"
+      text  << ", but #{pluralize pending_compats.size, 'other version'} #{pending_compats.many? ? 'are' : 'is'} still being checked"
     end
 
     [

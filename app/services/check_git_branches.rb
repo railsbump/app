@@ -5,8 +5,8 @@ class CheckGitBranches < Services::Base
     threshold = 2.hours.ago
 
     branches.in_groups_of(100, false) do |group|
-      pending_compats, done_compats = Compat.find(group).partition { _1.compatible.nil? } # Use `.find` to make sure an error is raised
-                                                                                          # unless all branches have a corresponding compat
+      pending_compats, done_compats = Compat.find(group).partition(&:pending?) # Use `.find` to make sure an error is raised
+                                                                               # unless all branches have a corresponding compat
 
       long_pending_compats = pending_compats.select { _1.checked_before?(threshold) }
       if long_pending_compats.any?

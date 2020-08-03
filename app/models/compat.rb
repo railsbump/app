@@ -16,6 +16,10 @@ class Compat < ApplicationRecord
     compatible == false
   end
 
+  def pending?
+    compatible.nil?
+  end
+
   # Sort dependencies, by default JSONB does not preserve key order.
   def dependencies
     super.sort.to_h

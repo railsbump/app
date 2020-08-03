@@ -33,7 +33,7 @@ module Compats
         check_dependencies_individually
         check_with_github
       ).each do |method|
-        send method if @compat.compatible.nil?
+        send method if @compat.pending?
       end
 
       compat.checked!

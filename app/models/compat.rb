@@ -7,6 +7,7 @@ class Compat < ApplicationRecord
 
   scope :compatible,   -> { where(compatible: true) }
   scope :incompatible, -> { where(compatible: false) }
+  scope :pending,      -> { where(compatible: nil) }
 
   def to_s
     "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"

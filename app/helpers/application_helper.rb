@@ -64,9 +64,10 @@ module ApplicationHelper
           compatible_versions.insert index, "#{version_number}.x"
         end
       end
+      label    = compatible_versions.size > 3 ? 'some' : compatible_versions.join(', ')
       versions = compatible_versions.map(&:to_s).to_sentence
       [
-        'some',
+        label,
         "Versions #{versions}"
       ]
     end

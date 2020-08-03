@@ -21,6 +21,8 @@ module GithubNotifications
         compatible = conclusion == 'success'
 
         compat.update! compatible: compatible
+
+        EmailNotifications::SendAll.call_async
       end
 
       github_notification.processed!

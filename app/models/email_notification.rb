@@ -2,8 +2,9 @@ class EmailNotification
   include ActiveModel::Model
   include ActiveModel::Validations
 
-  NAMESPACE   = 'email_notifications'
-  EMAIL_REGEX = /.+@.+\..+/
+  NAMESPACE       = 'email_notifications'
+  NAMESPACE_REGEX = /\A#{Regexp.escape NAMESPACE}:(.+)/
+  EMAIL_REGEX     = /.+@.+\..+/
 
   attr_accessor :email, :notifiable
 
@@ -15,16 +16,34 @@ class EmailNotification
       errors.add :email, 'is invalid'
     end
   end
-  validate do
-    if notifiable.present? && !GlobalID::Locator.locate(notifiable)
-      errors.add :notifiable, 'is invalid'
+
+  def self.all
+    Redis.current.keys("#{NAMESPACE}:*").flat_map do |key|
+      unless notifiable = GlobalID::Locator.locate(key[NAMESPACE_REGEX, 1])
+        raise "Could not find notifiable: #{key}"
+      end
+
+      Redis.current.smembers(key).map do |email|
+        new notifiable: notifiable, email: email
+      end
     end
   end
 
   def save
-    if valid?
-      key = [NAMESPACE, notifiable].join(':')
-      Redis.current.sadd key, email
+    unless valid?
+      raise "Email notification is invalid: #{errors.full_messages.join(', ')}"
     end
+
+    Redis.current.sadd key, email
   end
+
+  def delete
+    Redis.current.srem key, email
+  end
+
+  private
+
+    def key
+      [NAMESPACE, notifiable.to_global_id].join(':')
+    end
 end

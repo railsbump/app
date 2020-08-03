@@ -1,13 +1,12 @@
 module API
   class ReleasesController < BaseController
     def create
-      Rollbar.error 'RubyGems release', params: params
-
-      # if params[:name] == 'rails'
-      #   RailsReleases::Create.call(params[:version])
-      # else
-      #   Gemmies::Create.call(params[:name])
-      # end
+      if params[:name] == 'rails'
+        RailsReleases::Create.call_async params[:version]
+      else
+        gemmy = Gemmy.find_by!(name: params[:name])
+        Gemmies::Process.call_async gemmy
+      end
 
       head :ok
     end

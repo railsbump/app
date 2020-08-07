@@ -4,6 +4,10 @@ every 2.minutes do
   rollbar_runner 'Maintenance::CheckSidekiq.call'
 end
 
+every 10.minutes do
+  rollbar_runner 'Compats::CheckAllUnchecked.call'
+end
+
 every :hour do
   rollbar_runner 'Maintenance::CheckGitBranches.call'
   rollbar_runner 'Maintenance::CheckPendingCompats.call'

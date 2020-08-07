@@ -2,22 +2,14 @@
 
 module Maintenance
   class CheckSidekiq < ::Services::Base
-    MAX_ENQUEUED = 10
-
     SidekiqError = Class.new(Error)
 
     def call
       check_uniqueness on_error: :return
 
       10.tries on: SidekiqError, delay: 1 do
-        sidekiq_stats = Sidekiq::Stats.new
-        enqueued      = sidekiq_stats.enqueued
-
-        case
-        when sidekiq_stats.processes_size.zero?
+        if Sidekiq::Stats.new.processes_size.zero?
           raise SidekiqError, 'No Sidekiq processes are running.'
-        when enqueued > MAX_ENQUEUED
-          raise SidekiqError, "More than #{MAX_ENQUEUED} Sidekiq jobs (#{enqueued}) are enqueued."
         end
       end
     rescue SidekiqError => error

@@ -1,4 +1,4 @@
-- if notifiable.compats.none? || notifiable.compats.where(compatible: nil).any?
+- if notifiable.compats.none? || notifiable.compats.pending.any?
 
   %h2
     Notify via email

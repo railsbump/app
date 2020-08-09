@@ -5,9 +5,10 @@ class Compat < ApplicationRecord
 
   validates :dependencies, uniqueness: { scope: :rails_release }
 
-  scope :compatible,   -> { where(compatible: true) }
-  scope :incompatible, -> { where(compatible: false) }
-  scope :pending,      -> { where(compatible: nil) }
+  scope :compatible,     -> { where(compatible: true) }
+  scope :incompatible,   -> { where(compatible: false) }
+  scope :pending,        -> { where(compatible: nil) }
+  scope :with_gem_names, ->(gem_names) { where('dependencies ?& array[:gem_names]', gem_names: gem_names) }
 
   def to_s
     "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"

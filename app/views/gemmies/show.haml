@@ -1,20 +1,18 @@
-- cache @gemmy do
+%section
 
-  %section
+  %h1
+    Gem
+    = @gemmy.name
 
-    %h1
-      Gem
-      = @gemmy.name
+  %p
+    Indexed versions:
+    = @gemmy.versions.size
+    == (#{@gemmy.versions.first} ... #{@gemmy.versions.last})
+    &middot;
+    = link_to 'Show on RubyGems.org', "https://rubygems.org/gems/#{@gemmy.name}", target: '_blank'
 
-    %p
-      Indexed versions:
-      = @gemmy.versions.size
-      == (#{@gemmy.versions.first} ... #{@gemmy.versions.last})
-      &middot;
-      = link_to 'Show on RubyGems.org', "https://rubygems.org/gems/#{@gemmy.name}", target: '_blank'
+%section
+  = render 'compats/table', gemmies: [@gemmy], show_gem_name: false
 
-  %section
-    = render 'compats/table', gemmies: [@gemmy], show_gem_name: false
-
-  %section
-    = render 'email_notifications/form', notifiable: @gemmy
+%section
+  = render 'email_notifications/form', notifiable: @gemmy

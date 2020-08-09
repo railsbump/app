@@ -31,6 +31,7 @@ module Compats
         check_empty_dependencies
         check_rails_gems
         check_dependencies_individually
+        check_dependency_supersets
         check_with_github
       ).each do |method|
         send method if @compat.pending?
@@ -68,6 +69,13 @@ module Compats
             @compat.update! compatible: false
             return
           end
+        end
+      end
+
+      def check_dependency_supersets
+        if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
+          @compat.update! compatible: true
+          return
         end
       end
 

@@ -7,5 +7,7 @@ class CreateCompats < ActiveRecord::Migration[6.0]
       t.references :rails_release
       t.timestamps
     end
+
+    add_index :compats, %i(dependencies rails_release_id), unique: true
   end
 end

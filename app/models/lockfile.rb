@@ -9,6 +9,8 @@ class Lockfile < ApplicationRecord
   validates :gemmies, presence: { if: -> { content.present? } }
 
   delegate :to_param, to: :slug
+
+  scope :with_gemmies, ->(gemmies) { joins(:gemmies).where(gemmies: { id: gemmies }).distinct }
 end
 
 # == Schema Information

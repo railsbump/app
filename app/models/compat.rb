@@ -13,6 +13,14 @@ class Compat < ApplicationRecord
     "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"
   end
 
+  def gemmies
+    Gemmy.with_dependencies(dependencies)
+  end
+
+  def lockfiles
+    Lockfile.with_gemmies(gemmies)
+  end
+
   def incompatible?
     compatible == false
   end

@@ -61,8 +61,10 @@ module Compats
       end
 
       def check_dependencies_individually
+        return if @compat.dependencies.one?
+
         @compat.dependencies.each do |gem_name, requirement|
-          if @compat.rails_release.compats.find_by(dependencies: { gem_name: requirement })&.incompatible?
+          if @compat.rails_release.compats.find_by(dependencies: { gem_name => requirement })&.incompatible?
             @compat.update! compatible: false
             return
           end

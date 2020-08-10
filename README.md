@@ -25,6 +25,10 @@ If you notice a bug or have an idea for an improvement, please open an [issue](h
 
 If you'd like to get involved in the development, get in touch [via email](mailto:hello@railsbump.org)!
 
+## Support
+
+If you find RailsBump useful and would like to support the ongoing development, [buy me a coffee](https://www.buymeacoffee.com/279lcDtbF) or [become a sponsor](https://github.com/sponsors/manuelmeurer)!
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.

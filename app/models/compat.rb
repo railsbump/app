@@ -3,6 +3,8 @@ class Compat < ApplicationRecord
 
   belongs_to :rails_release
 
+  has_one :github_notification
+
   validates :dependencies, uniqueness: { scope: :rails_release }
   validates :compatible_reason, presence: { unless: :pending? }, absence: { if: :pending? }
 

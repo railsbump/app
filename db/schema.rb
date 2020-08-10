@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.bigint "rails_release_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "compatible_reason"
     t.index ["dependencies", "rails_release_id"], name: "index_compats_on_dependencies_and_rails_release_id", unique: true
     t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
   end

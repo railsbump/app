@@ -44,7 +44,7 @@ module Compats
 
       def check_empty_dependencies
         if @compat.dependencies.blank?
-          @compat.update! compatible: true
+          @compat.update! compatible: true, compatible_reason: 'empty_dependencies'
         end
       end
 
@@ -55,7 +55,7 @@ module Compats
             !Gem::Requirement.new(r).satisfied_by?(@compat.rails_release.version)
           end
           if requirement_unmet
-            @compat.update! compatible: false
+            @compat.update! compatible: false, compatible_reason: 'rails_gems'
             return
           end
         end
@@ -66,7 +66,7 @@ module Compats
 
         @compat.dependencies.each do |gem_name, requirement|
           if @compat.rails_release.compats.find_by(dependencies: { gem_name => requirement })&.incompatible?
-            @compat.update! compatible: false
+            @compat.update! compatible: false, compatible_reason: 'individual_dependency'
             return
           end
         end
@@ -74,7 +74,7 @@ module Compats
 
       def check_dependency_supersets
         if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
-          @compat.update! compatible: true
+          @compat.update! compatible: true, compatible_reason: 'dependency_supersets'
           return
         end
       end

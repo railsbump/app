@@ -4,6 +4,7 @@ class Compat < ApplicationRecord
   belongs_to :rails_release
 
   validates :dependencies, uniqueness: { scope: :rails_release }
+  validates :compatible_reason, presence: { unless: :pending? }, absence: { if: :pending? }
 
   scope :compatible,     -> { where(compatible: true) }
   scope :incompatible,   -> { where(compatible: false) }
@@ -40,11 +41,12 @@ end
 #
 # Table name: compats
 #
-#  id               :bigint           not null, primary key
-#  checked_at       :datetime
-#  compatible       :boolean
-#  dependencies     :jsonb
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  rails_release_id :bigint
+#  id                :bigint           not null, primary key
+#  checked_at        :datetime
+#  compatible        :boolean
+#  compatible_reason :string
+#  dependencies      :jsonb
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  rails_release_id  :bigint
 #

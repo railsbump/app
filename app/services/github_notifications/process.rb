@@ -20,7 +20,7 @@ module GithubNotifications
 
         compatible = conclusion == 'success'
 
-        compat.update! compatible: compatible
+        compat.update! compatible: compatible, compatible_reason: 'github_check'
 
         EmailNotifications::SendAll.call_async
       end

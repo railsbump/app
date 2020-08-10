@@ -30,7 +30,7 @@ module Compats
       %i(
         check_empty_dependencies
         check_rails_gems
-        check_dependencies_individually
+        check_dependency_subsets
         check_dependency_supersets
         check_with_github
       ).each do |method|
@@ -61,12 +61,16 @@ module Compats
         end
       end
 
-      def check_dependencies_individually
-        return if @compat.dependencies.one?
+      def check_dependency_subsets
+        return unless (2..10).cover?(@compat.dependencies.size)
 
-        @compat.dependencies.each do |gem_name, requirement|
-          if @compat.rails_release.compats.find_by(dependencies: { gem_name => requirement })&.incompatible?
-            @compat.update! compatible: false, compatible_reason: 'individual_dependency'
+        subsets = (1..@compat.dependencies.size - 1).flat_map do |count|
+          @compat.dependencies.keys.combination(count).map { @compat.dependencies.slice *_1 }
+        end
+
+        subsets.in_groups_of(100, false).each do |group|
+          if @compat.rails_release.compats.where(dependencies: group).incompatible.any?
+            @compat.update! compatible: false, compatible_reason: 'dependency_subsets'
             return
           end
         end

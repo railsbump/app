@@ -1,6 +1,5 @@
 class EmailNotification
   include ActiveModel::Model
-  include ActiveModel::Validations
 
   NAMESPACE       = 'email_notifications'
   NAMESPACE_REGEX = /\A#{Regexp.escape NAMESPACE}:(.+)/
@@ -27,6 +26,10 @@ class EmailNotification
         new notifiable: notifiable, email: email
       end
     end
+  end
+
+  def notifiable_gid=(value)
+    self.notifiable = GlobalID::Locator.locate(value)
   end
 
   def save

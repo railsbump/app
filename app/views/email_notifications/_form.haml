@@ -12,7 +12,7 @@
         %small.form-text.text-muted
           Will only be used for one notification and deleted afterwards.
 
-    = form.hidden_field :notifiable, value: notifiable.to_global_id
+    = form.hidden_field :notifiable_gid, value: notifiable.to_global_id
 
     = form.submit 'Notify me', class: 'btn btn-primary', disable_with: 'Please wait...'
 

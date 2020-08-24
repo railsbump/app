@@ -7,7 +7,11 @@
   %p
     Indexed versions:
     = @gemmy.versions.size
-    == (#{@gemmy.versions.first} ... #{@gemmy.versions.last})
+    = surround '(', ')' do
+      = @gemmy.versions.first
+      - if @gemmy.versions.many?
+        \...
+        = @gemmy.versions.last
     &middot;
     = link_to 'Show on RubyGems.org', "https://rubygems.org/gems/#{@gemmy.name}", target: '_blank'
 

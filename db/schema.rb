@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.bigint "compat_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "conclusion"
+    t.string "action", null: false
+    t.string "branch", null: false
     t.index ["compat_id"], name: "index_github_notifications_on_compat_id"
   end
 

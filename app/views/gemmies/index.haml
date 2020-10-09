@@ -1,16 +1,29 @@
 %section
+  .row
 
-  %h1
-    Welcome to RailsBump! 👋
+    .col-md-8.col-xl-9
+      %h1
+        Welcome to RailsBump! 👋
 
-  %p
-    RailsBump lets you check your Ruby gems for compatibility with all major Rails versions. This is useful if you're planning to upgrade a Rails app to the next major version. You can either check an individual gem or a whole Bundler lockfile (Gemfile.lock).
-    %br
-    Read more about how it works and the history of this project
-    = link_to 'on GitHub', 'https://github.com/manuelmeurer/railsbump', target: '_blank'
-    and please
-    = link_to 'open an issue', 'https://github.com/manuelmeurer/railsbump/issues', target: '_blank'
-    if you encounter a problem.
+      %p
+        RailsBump lets you check your Ruby gems for compatibility with all major Rails versions. This is useful if you're planning to upgrade a Rails app to the next major version. You can either check an individual gem or a whole Bundler lockfile (Gemfile.lock).
+        %br
+        Read more about how it works and the history of this project
+        = link_to 'on GitHub', 'https://github.com/manuelmeurer/railsbump', target: '_blank'
+        and please
+        = link_to 'open an issue', 'https://github.com/manuelmeurer/railsbump/issues', target: '_blank'
+        if you encounter a problem.
+
+    #sponsorship.col-md-4.col-xl-3
+      .card
+        = image_tag 'fastruby-logo.png', class: 'card-img-top'
+        .card-body
+          %p.card-text
+            %strong
+              This project is sponsored by FastRuby.io.
+            They are a team of Ruby on Rails experts that specialize in
+            = succeed '.' do
+              = link_to 'Rails Upgrade Services', 'https://www.fastruby.io/', target: '_blank'
 
 %section
   = link_to 'Check a gem', %i(new gemmy), class: 'btn btn-primary'

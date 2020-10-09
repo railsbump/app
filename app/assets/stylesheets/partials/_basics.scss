@@ -4,6 +4,10 @@ header {
 
 main {
 
+  img {
+    @extend .img-fluid;
+  }
+
   section + section {
     margin-top: 40px;
   }

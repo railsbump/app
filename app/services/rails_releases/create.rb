@@ -3,7 +3,7 @@ module RailsReleases
     def call(version)
       parsed_version = Gem::Version.new(version)
 
-      return if parsed_version.prerelease? || parsed_version < Gem::Version.new('4.0')
+      return if parsed_version.prerelease? || parsed_version < Gem::Version.new('2.3')
 
       major, minor        = parsed_version.canonical_segments
       major_minor_version = "#{major}.#{minor || 0}"

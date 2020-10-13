@@ -1,6 +1,5 @@
 module GithubNotifications
   class Process < Services::Base
-
     def call(github_notification)
       if github_notification.processed?
         raise Error, "GitHub Notification #{github_notification.id} has already been processed."

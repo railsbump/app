@@ -8,7 +8,7 @@ module Maintenance
 
       if pending_compats.any?
         raise Error, 'Some compats have been pending for a long time.' \
-          rescue Rollbar.error $!, compat_ids: pending_compats.map(&:id)
+          rescue Rollbar.error $!, count: pending_compats.size
       end
     end
   end

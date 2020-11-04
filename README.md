@@ -19,6 +19,10 @@ To actually perform the check, [GitHub Actions](https://github.com/features/acti
 RailsBump used to be called Ready4Rails until December 2019, when [Manuel Meurer](https://github.com/manuelmeurer) took over from [Florent Guilleux](https://github.com/Florent2) to automate the service that Ready4Rails had been doing more or less manually until then.
 The relaunch took longer than expected, mainly because of the Coronavirus pandemic, and the first usable version of RailsBump was finally launched in August 2020.
 
+## Stats
+
+You can see live stats from Plausible Analytics here: https://plausible.io/railsbump.org
+
 ## Contributing
 
 If you notice a bug or have an idea for an improvement, please open an [issue](https://github.com/manuelmeurer/railsbump/issues/new) or submit a [PR](https://github.com/manuelmeurer/railsbump/pulls).

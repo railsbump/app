@@ -12,6 +12,7 @@
 
     = stylesheet_link_tag :application, media: 'all'
     = javascript_pack_tag :application, data: { 'turbolinks-track': 'reload' }, defer: true
+    = javascript_include_tag 'https://stats.railsbump.org/js/index.js', async: true, defer: true, data: { domain: 'railsbump.org' }
 
   %body{ class: page_classes }
     = render './header'

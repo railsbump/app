@@ -12,3 +12,7 @@ every :hour do
   rollbar_runner 'Maintenance::CheckGitBranches.call'
   rollbar_runner 'Maintenance::CheckPendingCompats.call'
 end
+
+every :day do
+  rake '-s sitemap:refresh'
+end

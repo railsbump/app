@@ -92,40 +92,36 @@ module Compats
 
         branch_name = @compat.id.to_s
 
-        git = CheckOutGitRepo.call
-
-        git.branches.select { _1.name == branch_name }.each do |branch|
-          if branch.remote
-            git.push 'origin', branch.name, delete: true
-          else
-            branch.delete
+        CheckOutGitRepo.call do |git|
+          git.branches.select { _1.name == branch_name }.each do |branch|
+            if branch.remote
+              git.push 'origin', branch.name, delete: true
+            else
+              branch.delete
+            end
           end
-        end
 
-        git.branch(branch_name).checkout
+          git.branch(branch_name).checkout
 
-        dependencies = @compat.dependencies.dup
-        dependencies.transform_values! do |contraints|
-          contraints.split(/\s*,\s*/)
-        end
-        dependencies['rails'] ||= []
-        dependencies['rails'] << "= #{@compat.rails_release.version}"
-
-        gemfile_content = dependencies
-          .map do |gem, constraints_group|
-            "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(', ')}"
+          dependencies = @compat.dependencies.dup
+          dependencies.transform_values! do |contraints|
+            contraints.split(/\s*,\s*/)
           end
-          .unshift("source 'https://rubygems.org'")
-          .join("\n")
+          dependencies['rails'] ||= []
+          dependencies['rails'] << "= #{@compat.rails_release.version}"
 
-        File.write File.join(git.dir.path, 'Gemfile'), gemfile_content
+          gemfile_content = dependencies
+            .map do |gem, constraints_group|
+              "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(', ')}"
+            end
+            .unshift("source 'https://rubygems.org'")
+            .join("\n")
 
-        git.add 'Gemfile'
-        git.commit "Test #{@compat}"
-        git.push 'origin', branch_name
-      ensure
-        if git && File.exist?(git.dir.path)
-          FileUtils.rm_rf git.dir.path
+          File.write File.join(git.dir.path, 'Gemfile'), gemfile_content
+
+          git.add 'Gemfile'
+          git.commit "Test #{@compat}"
+          git.push 'origin', branch_name
         end
       end
   end

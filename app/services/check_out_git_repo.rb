@@ -24,11 +24,17 @@ class CheckOutGitRepo < Services::Base
       ENV['GIT_SSH_COMMAND'] = "ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
     end
 
-    Git.clone(REPO, dir).tap do |git|
-      git.config 'user.name',  'RailsBump'
-      git.config 'user.email', 'hello@railsbump.org'
+    git = Git.clone(REPO, dir)
 
-      git.checkout 'main'
+    git.config 'user.name',  'RailsBump'
+    git.config 'user.email', 'hello@railsbump.org'
+
+    git.checkout 'main'
+
+    yield git
+  ensure
+    if git && File.exist?(git.dir.path)
+      FileUtils.rm_rf git.dir.path
     end
   end
 end

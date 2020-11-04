@@ -1,17 +1,28 @@
 class Compat < ApplicationRecord
   include HasTimestamps[:checked_at]
 
+  enum status: %i(
+    pending
+    compatible
+    incompatible
+    inconclusive
+  )
+
   belongs_to :rails_release
 
   has_many :github_notifications
 
+  validates :status, presence: true
   validates :dependencies, uniqueness: { scope: :rails_release }
-  validates :compatible_reason, presence: { unless: :pending? }, absence: { if: :pending? }
+  validates :status_determined_by, presence: { unless: :pending? }, absence: { if: :pending? }
 
-  scope :compatible,     -> { where(compatible: true) }
-  scope :incompatible,   -> { where(compatible: false) }
-  scope :pending,        -> { where(compatible: nil) }
   scope :with_gem_names, ->(gem_names) { where('dependencies ?& array[:gem_names]', gem_names: gem_names) }
+
+  after_initialize do
+    if new_record?
+      self.status ||= :pending
+    end
+  end
 
   def to_s
     "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"
@@ -25,14 +36,6 @@ class Compat < ApplicationRecord
     Lockfile.with_gemmies(gemmies)
   end
 
-  def incompatible?
-    compatible == false
-  end
-
-  def pending?
-    compatible.nil?
-  end
-
   # Sort dependencies, by default JSONB does not preserve key order.
   def dependencies
     super.sort.to_h
@@ -43,12 +46,12 @@ end
 #
 # Table name: compats
 #
-#  id                :bigint           not null, primary key
-#  checked_at        :datetime
-#  compatible        :boolean
-#  compatible_reason :string
-#  dependencies      :jsonb
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  rails_release_id  :bigint
+#  id                   :bigint           not null, primary key
+#  checked_at           :datetime
+#  dependencies         :jsonb
+#  status               :integer
+#  status_determined_by :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  rails_release_id     :bigint
 #

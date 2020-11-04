@@ -2,8 +2,8 @@ class CreateCompats < ActiveRecord::Migration[6.0]
   def change
     create_table :compats do |t|
       t.jsonb :dependencies
-      t.boolean :compatible
-      t.string :compatible_reason
+      t.string :status_determined_by
+      t.integer :status
       t.datetime :checked_at
       t.references :rails_release
       t.timestamps

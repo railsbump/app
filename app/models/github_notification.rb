@@ -1,25 +1,14 @@
 class GithubNotification < ApplicationRecord
   include HasTimestamps[:processed_at]
 
-  CONCLUSIONS = {
-    valid:   %w(success failure),
-    invalid: %w(skipped cancelled)
-  }
+  CONCLUSIONS = %w(success failure skipped cancelled)
 
   belongs_to :compat, optional: true
 
   validates :compat, presence: { if: :processed? }
   validates :action, presence: true
   validates :branch, presence: true
-  validates :conclusion, inclusion: { in: CONCLUSIONS.values.flatten, if: -> { action == 'completed' } }
-
-  CONCLUSIONS.each do |conclusion_group, conclusions|
-    scope "#{conclusion_group}_conclusion", -> { where(conclusion: conclusions) }
-
-    define_method "#{conclusion_group}_conclusion?" do
-      conclusion.in?(conclusions)
-    end
-  end
+  validates :conclusion, inclusion: { in: CONCLUSIONS, if: -> { action == 'completed' } }
 
   def self.actions
     pluck(Arel.sql('DISTINCT action')).sort

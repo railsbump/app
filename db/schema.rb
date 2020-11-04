@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
 
   create_table "compats", force: :cascade do |t|
     t.jsonb "dependencies"
-    t.boolean "compatible"
     t.datetime "checked_at"
     t.bigint "rails_release_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "compatible_reason"
+    t.string "status_determined_by"
+    t.integer "status"
     t.index ["dependencies", "rails_release_id"], name: "index_compats_on_dependencies_and_rails_release_id", unique: true
     t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
   end

@@ -21,6 +21,10 @@ module Compats
     def call(compat)
       check_uniqueness
 
+      unless compat.pending?
+        raise Error, 'Compat is not pending anymore.'
+      end
+
       if compat.checked?
         raise Error, 'Compat is already checked.'
       end
@@ -44,7 +48,7 @@ module Compats
 
       def check_empty_dependencies
         if @compat.dependencies.blank?
-          @compat.update! compatible: true, compatible_reason: 'empty_dependencies'
+          @compat.update! status: :compatible, status_determined_by: 'empty_dependencies'
         end
       end
 
@@ -55,7 +59,7 @@ module Compats
             !Gem::Requirement.new(r).satisfied_by?(@compat.rails_release.version)
           end
           if requirement_unmet
-            @compat.update! compatible: false, compatible_reason: 'rails_gems'
+            @compat.update! status: :incompatible, status_determined_by: 'rails_gems'
             return
           end
         end
@@ -70,7 +74,7 @@ module Compats
 
         subsets.in_groups_of(100, false).each do |group|
           if @compat.rails_release.compats.where(dependencies: group).incompatible.any?
-            @compat.update! compatible: false, compatible_reason: 'dependency_subsets'
+            @compat.update! status: :incompatible, status_determined_by: 'dependency_subsets'
             return
           end
         end
@@ -78,7 +82,7 @@ module Compats
 
       def check_dependency_supersets
         if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
-          @compat.update! compatible: true, compatible_reason: 'dependency_supersets'
+          @compat.update! status: :compatible, status_determined_by: 'dependency_supersets'
           return
         end
       end

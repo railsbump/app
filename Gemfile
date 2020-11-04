@@ -24,6 +24,7 @@ gem 'gems',                                     '~> 1.2', require: false
 gem 'git',                                      '~> 1.5'
 gem 'rails_bootstrap_navbar',                   '~> 3.0'
 gem 'sidekiq',                                  '~> 5.0'
+gem 'sitemap_generator',                        '~> 6.1', require: false
 
 group :development do
   gem 'spring',                                 '~> 2.0'

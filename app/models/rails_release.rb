@@ -30,6 +30,10 @@ class RailsRelease < ApplicationRecord
   def to_s
     "Rails #{version}"
   end
+
+  def earlier?
+    !self.class.latest_major.exists?(id: self)
+  end
 end
 
 # == Schema Information

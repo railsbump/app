@@ -83,8 +83,7 @@ module ApplicationHelper
 
     text = "#{text_prefix} of #{gemmy} #{compatible_versions.many? ? 'are' : 'is'} compatible with #{rails_release}"
     if pending_compats.any?
-      label << ' (checking)'
-      text  << ", but #{pluralize pending_compats.size, 'other version'} #{pending_compats.many? ? 'are' : 'is'} still being checked"
+      text << ", but #{pluralize pending_compats.size, 'other version'} #{pending_compats.many? ? 'are' : 'is'} still being checked"
     end
 
     [

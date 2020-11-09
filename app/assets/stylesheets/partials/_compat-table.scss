@@ -1,11 +1,23 @@
 table.compat-table {
 
+  th {
+    white-space: nowrap;
+  }
+
   td {
 
     span {
       padding-bottom: 2px;
       border-bottom: 1px dotted;
     }
+  }
+
+  .toggle-earlier-versions {
+    float: right;
+  }
+
+  .earlier-version {
+    display: none;
   }
 
   .checking {

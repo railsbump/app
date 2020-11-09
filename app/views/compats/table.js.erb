@@ -1,8 +1,0 @@
-<% @compats.each do |gemmy, rails_release| %>
-  var $tableCell = $("[data-gemmy='<%= gemmy.to_global_id %>'][data-rails-release='<%= rails_release.to_global_id %>']")
-  $tableCell.find('[data-toggle="tooltip"]').tooltip('hide')
-  $tableCell.replaceWith("<%= j render 'compats/table_cell', gemmy: gemmy, rails_release: rails_release %>")
-<% end %>
-<% if @compats.any? %>
-  $('[data-toggle="tooltip"]').tooltip()
-<% end %>

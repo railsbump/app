@@ -7,11 +7,6 @@ Rails.application.routes.draw do
 
   resources :gemmies, path: 'gems', only: %i(show new create)
   resources :lockfiles, only: %i(new create show)
-  resources :compats, only: [] do
-    collection do
-      get 'table'
-    end
-  end
   resources :email_notifications, only: :create
 
   namespace :api, path: '', constraints: { subdomain: 'api' } do

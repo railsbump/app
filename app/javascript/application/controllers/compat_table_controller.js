@@ -1,11 +1,11 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = ['earlierVersion']
+  static targets = ['earlierRailsVersion']
 
-  toggleEarlierVersions(event) {
+  toggleEarlierRailsVersions(event) {
     event.preventDefault()
-    $(this.earlierVersionTargets).toggle()
+    $(this.earlierRailsVersionTargets).toggle()
     $(event.currentTarget).text(
       $(event.currentTarget).text()
                            .replace(/^(\w+)/, match => match === 'Show' ? 'Hide' : 'Show')

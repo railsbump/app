@@ -10,11 +10,11 @@
         %th{ rowspan: 2 }
           Gem
       %th{ colspan: RailsRelease.count }
-        = link_to 'Show earlier versions', '#', class: 'toggle-earlier-versions', data: { action: "#{stimulus_controller}#toggleEarlierVersions" }
+        = link_to 'Show earlier Rails versions', '#', class: 'toggle-earlier-rails-versions', data: { action: "#{stimulus_controller}#toggleEarlierRailsVersions" }
         Compatible with...
     %tr
       - rails_releases.each do |rails_release|
-        - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierVersion" }, class: 'earlier-version' } : {}
+        - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierRailsVersion" }, class: 'earlier-version' } : {}
 
         %th{ **cell_params }
           Rails
@@ -31,7 +31,7 @@
 
           - cache [gemmy, compats, rails_release] do
             - status      = compats_status(compats)
-            - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierVersion" }, class: "earlier-version #{status}" } : { class: status }
+            - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierRailsVersion" }, class: "earlier-version #{status}" } : { class: status }
             - label, text = compats_label_and_text(compats, gemmy, rails_release)
 
             %td{ **cell_params }

@@ -1,12 +1,10 @@
 - compats = gemmy.compats.where(rails_release: rails_release)
 
 - cache [gemmy, compats, rails_release] do
-
   - status      = compats_status(compats)
-  - data        = { target: 'compat-table.checking', gemmy: gemmy.to_global_id, 'rails-release': rails_release.to_global_id } if status == :checking
   - label, text = compats_label_and_text(compats, gemmy, rails_release)
 
-  %td{ class: status, data: data }
+  %td{ class: status }
     %span{ data: { toggle: 'tooltip', placement: 'bottom', title: text } }
       - case status
       - when :checking

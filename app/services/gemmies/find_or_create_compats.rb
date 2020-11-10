@@ -6,7 +6,7 @@ module Gemmies
       check_uniqueness gemmy.id, on_error: :return
 
       RailsRelease.find_each do |rails_release|
-        gemmy.dependencies.find_each do |dependencies|
+        gemmy.dependencies.each do |dependencies|
           rails_release.compats.where(dependencies: dependencies).first_or_create!
         end
       end

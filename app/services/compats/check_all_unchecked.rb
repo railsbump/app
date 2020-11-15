@@ -3,7 +3,7 @@ module Compats
     def call
       check_uniqueness on_error: :return
 
-      Compat.unchecked.each do |compat|
+      Compat.unchecked.find_each do |compat|
         Compats::Check.call compat
       end
     end

@@ -12,9 +12,10 @@ class Compat < ApplicationRecord
 
   has_many :github_notifications
 
-  validates :status, presence: true
+  validates :status, presence: true, inclusion: { in: %w(pending), if: :unchecked?, message: 'must be pending if unchecked' }
   validates :dependencies, uniqueness: { scope: :rails_release }
-  validates :status_determined_by, presence: { unless: :pending? }, absence: { if: :pending? }
+  validates :status_determined_by, presence: { unless: :pending? },
+                                   absence:  { if:     :pending? }
 
   scope :with_gem_names, ->(gem_names) { where('dependencies ?& array[:gem_names]', gem_names: gem_names) }
 

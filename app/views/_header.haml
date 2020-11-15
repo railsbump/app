@@ -1,6 +1,5 @@
 %header
-  = navbar container: 'lg' do
-    = brand_link '👊 RailsBump'
+  = navbar container: 'lg', expand_at: 'md', bg: 'dark', brand: '👊 RailsBump' do
     = navbar_collapse class: 'justify-content-end' do
       = navbar_group do
         = navbar_item 'Check a gem', new_gemmy_path

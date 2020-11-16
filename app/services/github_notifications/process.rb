@@ -20,12 +20,7 @@ module GithubNotifications
             compat.unchecked!
             return
           end
-
           status = :inconclusive
-
-          Rollbar.error 'Repeated inconclusive Github notification.', \
-            github_notification_id: github_notification.id,
-            conclusion:             github_notification.conclusion
         else raise Error, "Unexpected conclusion: #{github_notification.conclusion}"
         end
 

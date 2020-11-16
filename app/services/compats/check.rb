@@ -121,7 +121,9 @@ module Compats
 
           git.add 'Gemfile'
           git.commit "Test #{@compat}"
-          git.push 'origin', branch_name
+          5.tries on: Git::GitExecuteError, delay: 1 do
+            git.push 'origin', branch_name
+          end
         end
       end
   end

@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class CheckOutGitRepo < Services::Base
-  REPO = 'git@github.com:manuelmeurer/railsbump-checker.git'
+  REPO = 'git@github.com:railsbump/checker.git'
   TMP  = Rails.root.join('tmp')
 
   def call

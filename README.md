@@ -16,7 +16,7 @@ RailsBump uses a few approaches to check whether a gem version is compatible wit
 
 Since some gems have a lot of versions and each one needs to be checked against multiple Rails releases, this could get out of hand quickly. To minimize the amount of compatibility checks that need to be done, the gem versions are grouped by their dependencies first. If multiple versions (of the same gem or even of different gems) have the same dependencies, a single check is enough to determine whether all of them are compatible with a specific Rails release or not.
 
-To actually perform the check, [GitHub Actions](https://github.com/features/actions) are used. For each check, a new branch is creted in a [separate repository](https://github.com/manuelmeurer/railsbump-checker), which triggers a [workflow](https://github.com/manuelmeurer/railsbump-checker/blob/main/.github/workflows/ci.yml) that essentially tries to run `bundle lock` and reports the result back to the RailsBump app via a [webhook](https://docs.github.com/en/developers/webhooks-and-events/about-webhooks).
+To actually perform the check, [GitHub Actions](https://github.com/features/actions) are used. For each check, a new branch is creted in a [separate repository](https://github.com/railsbump/checker), which triggers a [workflow](https://github.com/railsbump/checker/blob/main/.github/workflows/ci.yml) that essentially tries to run `bundle lock` and reports the result back to the RailsBump app via a [webhook](https://docs.github.com/en/developers/webhooks-and-events/about-webhooks).
 
 ## History
 
@@ -29,7 +29,7 @@ You can see live stats from Plausible Analytics here: https://plausible.io/rails
 
 ## Contributing
 
-If you notice a bug or have an idea for an improvement, please open an [issue](https://github.com/manuelmeurer/railsbump/issues/new) or submit a [PR](https://github.com/manuelmeurer/railsbump/pulls).
+If you notice a bug or have an idea for an improvement, please open an [issue](https://github.com/railsbump/app/issues/new) or submit a [PR](https://github.com/railsbump/app/pulls).
 
 If you'd like to get involved in the development, get in touch [via email](mailto:hello@railsbump.org)!
 

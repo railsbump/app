@@ -34,6 +34,32 @@ class RailsRelease < ApplicationRecord
   def earlier?
     !self.class.latest_major.exists?(id: self)
   end
+
+  def ruby_version
+    if version
+      {
+        '2.3' => '1.9.1',
+        '3.0' => '1.9.3',
+        '3.1' => '1.9.3',
+        '3.2' => '2.2',
+        '4.0' => '2.0',
+        '4.1' => '2.1',
+        '4.2' => '2.2',
+        '5.0' => '2.4',
+        '5.1' => '2.5',
+        '5.2' => '2.5'
+      }[version] || '2.7'
+    end
+  end
+
+  def bundler_version
+    if version
+      {
+        '2.3' => '1.0',
+        '3.0' => '1.0'
+      }[version] || '2'
+    end
+  end
 end
 
 # == Schema Information

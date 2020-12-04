@@ -103,6 +103,13 @@ module Compats
 
           git.branch(branch_name).checkout
 
+          # Update Ruby and Bundler versions in Github Action
+          action_file = File.join(git.dir.path, '.github', 'workflows', 'ci.yml')
+          action_content = File.read(action_file)
+                               .sub('RUBY_VERSION',    @compat.rails_release.ruby_version)
+                               .sub('BUNDLER_VERSION', @compat.rails_release.bundler_version)
+          File.write action_file, action_content
+
           dependencies = @compat.dependencies.dup
           dependencies.transform_values! do |contraints|
             contraints.split(/\s*,\s*/)

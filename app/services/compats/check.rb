@@ -108,7 +108,7 @@ module Compats
             contraints.split(/\s*,\s*/)
           end
           dependencies['rails'] ||= []
-          dependencies['rails'] << "= #{@compat.rails_release.version}"
+          dependencies['rails'] << "#{@compat.rails_release.version.approximate_recommendation}.0"
 
           gemfile_content = dependencies
             .map do |gem, constraints_group|

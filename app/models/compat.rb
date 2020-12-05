@@ -26,7 +26,7 @@ class Compat < ApplicationRecord
   end
 
   def to_s
-    "Compatibility of #{rails_release} with #{dependencies.map { "#{_1} #{_2}" }.to_sentence}"
+    "#{rails_release}, #{dependencies.map { "#{_1} #{_2}" }.join(', ')}"
   end
 
   def gemmies

@@ -1,4 +1,5 @@
 deploy_repo:                      git@github.com:railsbump/app.git
+deploy_setup_app:                 railsbump
 deploy_setup_nginx_server_name:   railsbump.org
 deploy_setup_db_host:             !vault |
                                   $ANSIBLE_VAULT;1.1;AES256

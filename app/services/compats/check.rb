@@ -105,8 +105,8 @@ module Compats
 
           action_file = File.join(git.dir.path, '.github', 'workflows', 'ci.yml')
           action_content = File.read(action_file)
-                               .sub('RUBY_VERSION',    @compat.rails_release.compatible_ruby_version.to_s)
-                               .sub('BUNDLER_VERSION', @compat.rails_release.compatible_bundler_version.to_s)
+                               .gsub('RUBY_VERSION',    @compat.rails_release.compatible_ruby_version.to_s)
+                               .gsub('BUNDLER_VERSION', @compat.rails_release.compatible_bundler_version.to_s)
           File.write action_file, action_content
 
           dependencies = @compat.dependencies.dup

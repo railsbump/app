@@ -103,11 +103,10 @@ module Compats
 
           git.branch(branch_name).checkout
 
-          # Update Ruby and Bundler versions in Github Action
           action_file = File.join(git.dir.path, '.github', 'workflows', 'ci.yml')
           action_content = File.read(action_file)
-                               .sub('RUBY_VERSION',    @compat.rails_release.ruby_version)
-                               .sub('BUNDLER_VERSION', @compat.rails_release.bundler_version)
+                               .sub('RUBY_VERSION',    @compat.rails_release.compatible_ruby_version)
+                               .sub('BUNDLER_VERSION', @compat.rails_release.compatible_bundler_version)
           File.write action_file, action_content
 
           dependencies = @compat.dependencies.dup
@@ -117,17 +116,17 @@ module Compats
           dependencies['rails'] ||= []
           dependencies['rails'] << "#{@compat.rails_release.version.approximate_recommendation}.0"
 
+          gemfile = File.join(git.dir.path, 'Gemfile')
           gemfile_content = dependencies
             .map do |gem, constraints_group|
               "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(', ')}"
             end
             .unshift("source 'https://rubygems.org'")
             .join("\n")
+          File.write gemfile, gemfile_content
 
-          File.write File.join(git.dir.path, 'Gemfile'), gemfile_content
-
-          git.add 'Gemfile'
-          git.commit "Test #{@compat}"
+          git.add [action_file, gemfile]
+          git.commit @compat.to_s
           5.tries on: Git::GitExecuteError, delay: 1 do
             git.push 'origin', branch_name
           end

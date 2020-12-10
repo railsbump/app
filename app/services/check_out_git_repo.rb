@@ -24,7 +24,9 @@ class CheckOutGitRepo < Services::Base
       ENV['GIT_SSH_COMMAND'] = "ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
     end
 
-    git = Git.clone(REPO, dir)
+    git = 5.tries on: Git::GitExecuteError, delay: 1 do
+      Git.clone REPO, dir
+    end
 
     git.config 'user.name',  'RailsBump'
     git.config 'user.email', 'hello@railsbump.org'

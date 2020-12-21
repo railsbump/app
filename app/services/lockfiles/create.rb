@@ -42,6 +42,8 @@ module Lockfiles
         gem_names.each do |gem_name|
           gemmy = Gemmy.find_by(name: gem_name) || Gemmies::Create.call(gem_name)
           lockfile.gemmies << gemmy
+        rescue Gemmies::Create::NotFound
+          next
         end
       end
 

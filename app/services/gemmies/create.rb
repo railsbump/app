@@ -12,6 +12,20 @@ module Gemmies
       end
     end
 
+    class NotFound < Error
+      attr_reader :gemmy_name
+
+      def initialize(gemmy_name)
+        super nil
+
+        @gemmy_name = gemmy_name
+      end
+
+      def message
+        "Gem '#{@gemmy_name}' does not exist."
+      end
+    end
+
     def call(name)
       if name.blank?
         raise Error, 'Please enter a name.'
@@ -24,7 +38,7 @@ module Gemmies
       begin
         Gems.info name
       rescue Gems::NotFound
-        raise Error, %(Gem "#{name}" does not exist.)
+        raise NotFound.new(name)
       end
 
       gemmy = Gemmy.create!(name: name)

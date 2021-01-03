@@ -2,7 +2,7 @@ require 'gems'
 
 module Gemmies
   class Create < Services::Base
-    class AlreadyExists < Error
+    class BaseError < StandardError
       attr_reader :gemmy
 
       def initialize(gemmy)
@@ -12,17 +12,11 @@ module Gemmies
       end
     end
 
-    class NotFound < Error
-      attr_reader :gemmy_name
+    class AlreadyExists < BaseError; end
 
-      def initialize(gemmy_name)
-        super nil
-
-        @gemmy_name = gemmy_name
-      end
-
+    class NotFound < BaseError
       def message
-        "Gem '#{@gemmy_name}' does not exist."
+        "Gem '#{@gemmy.name}' does not exist."
       end
     end
 
@@ -38,7 +32,7 @@ module Gemmies
       begin
         Gems.info name
       rescue Gems::NotFound
-        raise NotFound.new(name)
+        raise NotFound.new(Gemmy.new(name: name))
       end
 
       gemmy = Gemmy.create!(name: name)

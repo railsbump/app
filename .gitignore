@@ -5,3 +5,8 @@ public/packs-test
 spec/examples.txt
 yarn-error.log
 storage
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep

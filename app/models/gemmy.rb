@@ -33,8 +33,9 @@ end
 # Table name: gemmies
 #
 #  id                        :bigint           not null, primary key
-#  name                      :string
+#  compat_ids                :text             default([]), not null, is an Array
 #  dependencies_and_versions :jsonb
+#  name                      :string
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

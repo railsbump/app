@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_222813) do
     t.jsonb "dependencies_and_versions", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "compat_ids", default: [], null: false, array: true
     t.index ["name"], name: "index_gemmies_on_name", unique: true
   end
 

@@ -1,6 +1,6 @@
 module HasCompats
   def compats
-    dependencies = is_a?(Gemmy) ? self.dependencies : gemmies.flat_map(&:dependencies).uniq
-    Compat.where(dependencies: dependencies)
+    gemmies = is_a?(Gemmy) ? self.class.where(id: self) : self.gemmies
+    Compat.where(id: gemmies.select('unnest(compat_ids::bigint[])'))
   end
 end

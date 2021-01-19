@@ -25,6 +25,10 @@ class Compat < ApplicationRecord
     end
   end
 
+  after_create do
+    gemmies.update_all(['compat_ids = array_append(compat_ids, ?)', id.to_s])
+  end
+
   def to_s
     "#{rails_release}, #{dependencies.map { "#{_1} #{_2}" }.join(', ')}"
   end

@@ -38,7 +38,7 @@ module ApplicationHelper
       return ['none', "No version of #{gemmy} is compatible with #{rails_release}."]
     when compatible_compats.none? && pending_compats.any?
       return ['checking', "#{pluralize pending_compats.size, 'version'} of #{gemmy} #{pending_compats.many? ? 'are' : 'is'} still being checked for compatibility with #{rails_release}."]
-    when compatible_compats == compats
+    when compatible_compats.ids == compats.ids
       return ['all', "All versions of #{gemmy} are compatible with #{rails_release}."]
     end
 

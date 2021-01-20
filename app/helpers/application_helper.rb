@@ -23,15 +23,15 @@ module ApplicationHelper
 
   def compats_status(compats)
     case
-    when compats.any?(&:compatible?)               then :compatible
-    when compats.none? || compats.any?(&:pending?) then :checking
-    else                                                :incompatible
+    when compats.compatible.any?               then :compatible
+    when compats.none? || compats.pending.any? then :checking
+    else                                            :incompatible
     end
   end
 
   def compats_label_and_text(compats, gemmy, rails_release)
-    compatible_compats = compats.select(&:compatible?)
-    pending_compats    = compats.select(&:pending?)
+    compatible_compats = compats.compatible
+    pending_compats    = compats.pending
 
     case
     when compatible_compats.none? && pending_compats.none?

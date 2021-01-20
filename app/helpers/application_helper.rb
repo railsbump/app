@@ -34,6 +34,8 @@ module ApplicationHelper
     pending_compats    = compats.pending
 
     case
+    when compats.none?
+      return ['checking', "some versions of #{gemmy} are still being checked for compatibility with #{rails_release}."]
     when compatible_compats.none? && pending_compats.none?
       return ['none', "No version of #{gemmy} is compatible with #{rails_release}."]
     when compatible_compats.none? && pending_compats.any?

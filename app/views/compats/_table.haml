@@ -27,9 +27,11 @@
           %td
             = link_to gemmy.name, gemmy
         - rails_releases.each do |rails_release|
-          - compats = gemmy.compats.merge(rails_release.compats)
-
-          - cache [gemmy, compats, rails_release] do
+          -# `compats` don't have to be included in the cache key since the compat IDs are
+          -# saved on the gemmy, i.e., the gemmy's `updated_at` timestamp will be updated when
+          -# a new compat is added.
+          - cache [gemmy, rails_release] do
+            - compats     = gemmy.compats.merge(rails_release.compats)
             - status      = compats_status(compats)
             - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierRailsVersion" }, class: "earlier-version #{status}" } : { class: status }
             - label, text = compats_label_and_text(compats, gemmy, rails_release)

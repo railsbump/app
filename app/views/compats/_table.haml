@@ -22,17 +22,18 @@
 
   %tbody
     - gemmies.each do |gemmy|
+      - compats = gemmy.compats
+
       %tr
         - if show_gem_name
           %td
             = link_to gemmy.name, gemmy
-        - rails_releases.each do |rails_release|
-          - compats = gemmy.compats.merge(rails_release.compats)
-
-          - cache [gemmy, compats, rails_release] do
-            - status      = compats_status(compats)
-            - cell_params = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierRailsVersion" }, class: "earlier-version #{status}" } : { class: status }
-            - label, text = compats_label_and_text(compats, gemmy, rails_release)
+        - cache [gemmy, compats] do
+          - rails_releases.each do |rails_release|
+            - rails_release_compats = compats.merge(rails_release.compats)
+            - status                = compats_status(rails_release_compats)
+            - cell_params           = rails_release.earlier? ? { data: { target: "#{stimulus_controller}.earlierRailsVersion" }, class: "earlier-version #{status}" } : { class: status }
+            - label, text           = compats_label_and_text(rails_release_compats, gemmy, rails_release)
 
             %td{ **cell_params }
               %span{ data: { toggle: 'tooltip', placement: 'bottom', title: text } }

@@ -375,7 +375,7 @@ DEPENDENCIES
   derailed_benchmarks (~> 1.3)
   dotenv-rails (~> 2.7)
   envkey (~> 1.0, != 1.2.6)
-  factory_bot_rails
+  factory_bot_rails (~> 6.1)
   fakeredis (~> 0.7)
   fast_blank (~> 1.0)
   gems (~> 1.2)

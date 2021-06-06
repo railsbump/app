@@ -9,7 +9,7 @@ class Gemmy < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { allow_blank: true }, exclusion: FORBIDDEN_NAMES
 
-  scope :with_dependencies, ->(dependencies) { where('dependencies_and_versions ? :dependencies', dependencies: dependencies.to_json) }
+  scope :with_dependencies, ->(dependencies) { where('dependencies_and_versions ? :dependencies', dependencies: JSON.generate(dependencies)) }
 
   delegate :to_param, :to_s, to: :name
 
@@ -19,7 +19,7 @@ class Gemmy < ApplicationRecord
   end
 
   def versions(dependencies = nil)
-    version_groups = dependencies ? dependencies_and_versions.fetch_values(*dependencies.map(&:to_json)) :
+    version_groups = dependencies ? dependencies_and_versions.fetch_values(*dependencies.map(&JSON.method(:generate))) :
                                     dependencies_and_versions.values
 
     version_groups.flatten

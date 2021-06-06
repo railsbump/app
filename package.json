@@ -1,6 +1,7 @@
 {
   "name": "railsbump",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "repository": "https://github.com/railsbump/app.git",
   "author": "Manuel Meurer <manuel@krautcomputing.com>",
@@ -17,6 +18,7 @@
     "@fortawesome/pro-light-svg-icons": "^5.12.1",
     "@fortawesome/pro-regular-svg-icons": "^5.12.1",
     "@fortawesome/pro-solid-svg-icons": "^5.12.1",
+    "@rails/ujs": "^6.0.3-2",
     "@rails/webpacker": "^5.1.1",
     "autosize": "^4.0.2",
     "bootstrap": "^4.4.1",
@@ -24,7 +26,6 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "rails-erb-loader": "^5.5.2",
-    "rails-ujs": "^5.2.4-1",
     "rollbar": "^2.14.4",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0",

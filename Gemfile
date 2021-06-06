@@ -8,7 +8,7 @@ ruby '3.0.0'
 # This won't let us access dependencies in common-gems.
 return if is_a?(Bundler::Plugin::DSL)
 
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.1.0'
 
 # Load common gems
 %w(

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org/'
 
-ruby '2.7.2'
+ruby '3.0.0'
 
 # Return early if this file is parsed by the Bundler plugin DSL.
 # This won't let us access dependencies in common-gems.
@@ -19,7 +19,7 @@ gem 'rails', '~> 6.0.2'
 end
 
 gem 'dotenv-rails',                             '~> 2.7'
-gem 'envkey',                                   '~> 1.0', '!= 1.2.6', require: false # v1.2.6 breaks loading env vars in test env
+gem 'envkey',                                   '~> 1.0'
 gem 'gems',                                     '~> 1.2', require: false
 gem 'git',                                      '~> 1.5'
 gem 'rails_bootstrap_navbar',                   '~> 3.0'

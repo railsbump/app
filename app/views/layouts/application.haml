@@ -19,7 +19,7 @@
 
     = stylesheet_link_tag :application, media: 'all'
     = javascript_pack_tag :application, data: { 'turbolinks-track': 'reload' }, defer: true
-    = javascript_include_tag 'https://stats.railsbump.org/js/index.js', async: true, defer: true, data: { domain: 'railsbump.org' }
+    = javascript_include_tag '/qwerty/js/script.js', defer: true, data: { domain: 'railsbump.org', api: '/qwerty/api/event' }
     = javascript_include_tag "https://kit.fontawesome.com/0d43dadb44.js", crossorigin: "anonymous"
 
   %body{ class: page_classes }

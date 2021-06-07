@@ -1,7 +1,7 @@
 require 'gems'
 
 module Gemmies
-  class FindOrCreateCompats < Services::Base
+  class UpdateCompats < Services::Base
     def call(gemmy)
       check_uniqueness gemmy.id, on_error: :return
 

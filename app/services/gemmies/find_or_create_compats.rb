@@ -10,6 +10,9 @@ module Gemmies
           rails_release.compats.where(dependencies: dependencies).first_or_create!
         end
       end
+
+      compats = Compat.where(dependencies: gemmy.dependencies)
+      gemmy.update! compat_ids: compats.pluck(:id).sort
     end
   end
 end

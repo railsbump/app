@@ -14,10 +14,9 @@ module ApplicationHelper
   end
 
   def flash_messages
-    %i(notice alert).map do |level|
-      next if flash[level].blank?
-      alert_level = { notice: 'success', alert: 'danger' }.fetch(level)
-      alert alert_level, flash[level]
+    flash.map do |level, message|
+      level = { notice: 'success', alert: 'danger' }[level] || level
+      alert level, message
     end.compact.join("\n").html_safe
   end
 

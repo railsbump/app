@@ -53,12 +53,12 @@ module ApplicationHelper
     when compatible_versions.many? && all_versions_string.start_with?(compatible_versions_string)
       [
         "<= #{compatible_versions.last}",
-        "Versions #{compatible_versions.last} and below"
+        "#{pluralize compatible_versions.size, 'Version'} #{compatible_versions.last} and below"
       ]
     when compatible_versions.many? && all_versions_string.end_with?(compatible_versions_string)
       [
         ">= #{compatible_versions.first}",
-        "Versions #{compatible_versions.first} and above"
+        "#{pluralize compatible_versions.size, 'Version'} #{compatible_versions.first} and above"
       ]
     else
       if compatible_versions.many?

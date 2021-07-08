@@ -4,7 +4,7 @@
     %h2
       Notify via email
 
-    = form_with model: EmailNotification.new, class: 'email-notification-form' do |form|
+    = form_with model: EmailNotification.new, local: false, class: 'email-notification-form' do |form|
 
       .form-row
         .form-group.col-md-6

@@ -8,7 +8,7 @@ export default class extends Controller {
     $(this.earlierRailsVersionTargets).toggle()
     $(event.currentTarget).text(
       $(event.currentTarget).text()
-                           .replace(/^(\w+)/, match => match === 'Show' ? 'Hide' : 'Show')
+                            .replace(/^(\w+)/, match => match === 'Show' ? 'Hide' : 'Show')
     )
   }
 }

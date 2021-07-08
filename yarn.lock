@@ -1238,10 +1238,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.0.3-2":
-  version: 6.0.3-7
-  resolution: "@rails/ujs@npm:6.0.3-7"
-  checksum: e597dc242e30f7c5ec5dc1923d5a59419c2677f49e18cad5fbcf5f03628fd8e82e68902d94f1b6323b46be0a0b5e80e8adbe1a4fe6da4610a18199643c017dfc
+"@rails/ujs@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@rails/ujs@npm:6.1.4"
+  checksum: 5cc92030ff456615bb34ef7d8e594d33aa9d0f981115f8f335aaa47f926ec0d133f36ac30c43940169dace1fb591e47dcb6efd4396ae6a4f8caa63f215e998a4
   languageName: node
   linkType: hard
 
@@ -7605,7 +7605,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "railsbump@workspace:."
   dependencies:
-    "@rails/ujs": ^6.0.3-2
+    "@rails/ujs": ^6.1.4
     "@rails/webpacker": ^5.1.1
     autosize: ^4.0.2
     bootstrap: ^4.4.1

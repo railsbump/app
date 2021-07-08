@@ -10,7 +10,7 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@rails/ujs": "^6.0.3-2",
+    "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "^5.1.1",
     "autosize": "^4.0.2",
     "bootstrap": "^4.4.1",

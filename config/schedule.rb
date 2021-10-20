@@ -11,7 +11,6 @@ end
 every :hour do
   rollbar_runner 'Maintenance::CheckGitBranches.call'
   rollbar_runner 'Maintenance::CheckPendingCompats.call'
-  rollbar_runner 'Gemmies::UpdateAllCompats.call'
 end
 
 every :day do

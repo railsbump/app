@@ -41,6 +41,11 @@ class Compat < ApplicationRecord
   def dependencies
     super.sort.to_h
   end
+
+  def dependencies=(value)
+    super
+    self.dependencies_key = Digest::MD5.hexdigest(JSON.generate dependencies)
+  end
 end
 
 # == Schema Information
@@ -50,6 +55,7 @@ end
 #  id                   :bigint           not null, primary key
 #  checked_at           :datetime
 #  dependencies         :jsonb
+#  dependencies_key     :uuid
 #  status               :integer
 #  status_determined_by :string
 #  created_at           :datetime         not null

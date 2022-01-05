@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def flash_messages
     flash.map do |level, message|
-      level = { notice: "success", alert: "danger" }[level] || level
+      level = { notice: "success", alert: "danger" }[level.to_sym] || level
       alert level, message
     end.compact.join("\n").html_safe
   end

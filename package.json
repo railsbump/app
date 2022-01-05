@@ -7,7 +7,7 @@
   "author": "Manuel Meurer <manuel@krautcomputing.com>",
   "license": "MIT",
   "engines": {
-    "yarn": "1.x"
+    "node": "16.x"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",

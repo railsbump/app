@@ -1228,6 +1228,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus-webpack-helpers@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@hotwired/stimulus-webpack-helpers@npm:1.0.1"
+  peerDependencies:
+    "@hotwired/stimulus": ">= 3.0"
+  checksum: 4241f935dd43f128dc84c33bba334d50894de52022d292f16e80cf1c05fa80c92f92200d03a65b10bc8c1c8b4a20758ca705ee24cca29b9478a8fa17f3932859
+  languageName: node
+  linkType: hard
+
+"@hotwired/stimulus@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@hotwired/stimulus@npm:3.0.1"
+  checksum: 2c7a36dedb4935aa31924d0b467e5376ba16d18834c36f3199c447b7e2131d9c40fb9b4428d37354fe7c2c19969b32cde0fa08dc0e885c9ad776ed81172cf5e1
+  languageName: node
+  linkType: hard
+
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2"
@@ -1288,38 +1304,6 @@ __metadata:
     webpack-cli: ^3.3.12
     webpack-sources: ^1.4.3
   checksum: 23aaa8ab4d1c4f8d1e6f7877b2163fd2c17b7397bffeed97aa024d277bda5c2ce86f43ccabbf7c868baf9f94a7e81dbb71eabcb0d94347261bc91099b67e09c7
-  languageName: node
-  linkType: hard
-
-"@stimulus/core@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@stimulus/core@npm:1.1.1"
-  dependencies:
-    "@stimulus/mutation-observers": ^1.1.1
-  checksum: 1e9c9599843c83f8bebdb687353562e7fb3113afe40962a09633acec374dc8c2c2bbbe110cf920862d8745224819a307f5483ac42bcb7b72020c53d276cc9e70
-  languageName: node
-  linkType: hard
-
-"@stimulus/multimap@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@stimulus/multimap@npm:1.1.1"
-  checksum: 80755f847a3a3c36e43bca4a0a140a548cbf767638c3e2ed423eede0c118a65e166b519e613e3c2c0b1340ee808c453d074ae3ec5562cdd2be1e6a343fde1d6b
-  languageName: node
-  linkType: hard
-
-"@stimulus/mutation-observers@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@stimulus/mutation-observers@npm:1.1.1"
-  dependencies:
-    "@stimulus/multimap": ^1.1.1
-  checksum: 71f4907e9c9dd1e4d59d274ba4c85168c46cfef2755541d92a19c3ce6b9797ae0a9083bb34e114e55fa2d27ce0d0ad799c7a52090167c2cf4b447ac79db9cc3e
-  languageName: node
-  linkType: hard
-
-"@stimulus/webpack-helpers@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@stimulus/webpack-helpers@npm:1.1.1"
-  checksum: fc08622ab12034fcff30bcd6e6a84be6b6d79bf83372425c2960b0a71880b93e3e480a3b51047b86a92cbb2452c7bcc32fdeb92b77259040b8451bc94ba19ce2
   languageName: node
   linkType: hard
 
@@ -7605,6 +7589,8 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "railsbump@workspace:."
   dependencies:
+    "@hotwired/stimulus": ^3.0.1
+    "@hotwired/stimulus-webpack-helpers": ^1.0.1
     "@rails/ujs": ^6.1.4
     "@rails/webpacker": ^5.1.1
     autosize: ^4.0.2
@@ -7614,7 +7600,6 @@ fsevents@~2.3.1:
     popper.js: ^1.16.0
     rails-erb-loader: ^5.5.2
     rollbar: ^2.14.4
-    stimulus: ^1.1.1
     turbolinks: ^5.2.0
     webpack: ^4.41.4
     webpack-dev-server: ^3.11.0
@@ -8553,16 +8538,6 @@ fsevents@~2.3.1:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: 57735269bf231176a60deb80f6d60214cb4a87663b0937e79497afe9aebe2597f8377fd28893f4d1776205f18dd0b927774a26b72051411ac5108e9e2dfc77d2
-  languageName: node
-  linkType: hard
-
-"stimulus@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "stimulus@npm:1.1.1"
-  dependencies:
-    "@stimulus/core": ^1.1.1
-    "@stimulus/webpack-helpers": ^1.1.1
-  checksum: c5f7ad5e220d3fbb69e352c490d844030affa20d011e2d80fc8c6d849a02139943699fd653fb6de9138d8bed0e0b134fc9565e59575a7341eec197134deee8a0
   languageName: node
   linkType: hard
 

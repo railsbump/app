@@ -1,6 +1,6 @@
 redis_options = {
-  url:       ENV.fetch('REDIS_URL'),
-  namespace: 'sidekiq'
+  url:       ENV.fetch("REDIS_URL"),
+  namespace: "sidekiq"
 }
 
 Sidekiq.configure_server do |config|
@@ -12,5 +12,5 @@ Sidekiq.configure_client do |config|
 end
 
 Sidekiq.default_worker_options = {
-  'retry' => false
+  "retry" => false
 }

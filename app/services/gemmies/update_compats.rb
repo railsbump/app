@@ -1,4 +1,4 @@
-require 'gems'
+require "gems"
 
 module Gemmies
   class UpdateCompats < Services::Base

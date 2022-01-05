@@ -7,7 +7,7 @@ module Maintenance
                               .checked_before(2.hours.ago)
 
       if pending_compats.any?
-        raise Error, 'Some compats have been pending for a long time.' \
+        raise Error, "Some compats have been pending for a long time." \
           rescue Rollbar.error $!, count: pending_compats.size
       end
     end

@@ -7,15 +7,15 @@
   %p
     Indexed versions:
     = @gemmy.versions.size
-    = surround '(', ')' do
+    = surround "(", ")" do
       = @gemmy.versions.first
       - if @gemmy.versions.many?
         \...
         = @gemmy.versions.last
     &middot;
-    = link_to 'Show on RubyGems.org', "https://rubygems.org/gems/#{@gemmy.name}", target: '_blank'
+    = link_to "Show on RubyGems.org", "https://rubygems.org/gems/#{@gemmy.name}", target: "_blank"
 
 %section
-  = render 'compats/table', gemmies: [@gemmy], show_gem_name: false
+  = render "compats/table", gemmies: [@gemmy], show_gem_name: false
 
-= render 'email_notifications/form', notifiable: @gemmy
+= render "email_notifications/form", notifiable: @gemmy

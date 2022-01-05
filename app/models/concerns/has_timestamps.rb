@@ -15,7 +15,7 @@ module HasTimestamps
 
           scope "#{verb}_between", ->(start_time, end_time) {
             if start_time >= end_time
-              raise 'Start time must be before end time.'
+              raise "Start time must be before end time."
             end
             where(attr_with_table_name => start_time..end_time)
           }
@@ -59,7 +59,7 @@ module HasTimestamps
 
         define_method "#{verb}_between?" do |start_time, end_time|
           if start_time >= end_time
-            raise 'Start time must be before end time.'
+            raise "Start time must be before end time."
           end
           public_send("#{verb}?") && (start_time..end_time).cover?(public_send(attr))
         end

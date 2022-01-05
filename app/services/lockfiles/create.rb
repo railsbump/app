@@ -1,4 +1,4 @@
-require 'bundler/lockfile_parser'
+require "bundler/lockfile_parser"
 
 module Lockfiles
   class Create < Services::Base
@@ -23,17 +23,17 @@ module Lockfiles
 
       if content.present?
         unless CONTENT_REGEX.match?(content)
-          raise Error, 'This does not look like a valid lockfile.'
+          raise Error, "This does not look like a valid lockfile."
         end
 
         parser    = Bundler::LockfileParser.new(content)
         gem_names = parser.dependencies.keys - %w(rails)
 
         if gem_names.none?
-          raise Error, 'No gems found in content.'
+          raise Error, "No gems found in content."
         end
 
-        lockfile.slug = Digest::SHA1.hexdigest(gem_names.join('#'))
+        lockfile.slug = Digest::SHA1.hexdigest(gem_names.join("#"))
 
         if existing_lockfile = Lockfile.find_by(slug: lockfile.slug)
           raise AlreadyExists.new(existing_lockfile)

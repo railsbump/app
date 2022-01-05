@@ -4,6 +4,6 @@
 = form_with model: @lockfile, local: true do |form|
 
   .form-group
-    = form.text_area :content, class: 'form-control autosize', placeholder: 'Paste the content of your Gemfile.lock here.'
+    = form.text_area :content, class: "form-control autosize", placeholder: "Paste the content of your Gemfile.lock here."
 
-  = form.submit 'Check now', class: 'btn btn-primary', data: { disable_with: t(:please_wait) }
+  = form.submit "Check now", class: "btn btn-primary", data: { disable_with: t(:please_wait) }

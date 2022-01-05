@@ -1,4 +1,4 @@
-import Rollbar from 'rollbar'
+import Rollbar from "rollbar"
 
 const payload = {
   environment: "<%= Rails.env %>",
@@ -11,8 +11,8 @@ const payload = {
   }
 }
 const checkIgnore = (isUncaught, args, payload) => {
-  if (payload['environment'] === 'development') {
-    console.log('Message to Rollbar', {
+  if (payload["environment"] === "development") {
+    console.log("Message to Rollbar", {
       isUncaught: isUncaught,
       args:       args,
       payload:    payload

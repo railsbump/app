@@ -7,10 +7,10 @@ class GithubNotification < ApplicationRecord
 
   validates :action, presence: true
   validates :branch, presence: true
-  validates :conclusion, inclusion: { in: CONCLUSIONS, if: -> { action == 'completed' } }
+  validates :conclusion, inclusion: { in: CONCLUSIONS, if: -> { action == "completed" } }
 
   def self.actions
-    pluck(Arel.sql('DISTINCT action')).sort
+    pluck(Arel.sql("DISTINCT action")).sort
   end
 
   def method_missing(method, *args, &block)

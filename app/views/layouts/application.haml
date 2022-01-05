@@ -8,7 +8,7 @@
     = csrf_meta_tags
     = csp_meta_tag
 
-    = render './favicons'
+    = render "./favicons"
 
     %meta{ charset: "utf-8" }
 
@@ -17,15 +17,15 @@
 
     %meta{ name: "viewport",                content: "width=device-width, initial-scale=1" }
 
-    = stylesheet_link_tag :application, media: 'all'
-    = javascript_pack_tag :application, data: { 'turbolinks-track': 'reload' }, defer: true
+    = stylesheet_link_tag :application, media: "all"
+    = javascript_pack_tag :application, data: { "turbolinks-track": "reload" }, defer: true
     = javascript_include_tag "https://kit.fontawesome.com/0d43dadb44.js", crossorigin: "anonymous"
 
     - if Rails.env.production?
-      = javascript_include_tag 'https://railsbump.org/qwerty/js/script.js', defer: true, data: { domain: 'railsbump.org', api: '/qwerty/api/event' }
+      = javascript_include_tag "https://railsbump.org/qwerty/js/script.js", defer: true, data: { domain: "railsbump.org", api: "/qwerty/api/event" }
 
   %body{ class: page_classes }
-    = render './header'
+    = render "./header"
     %main.container-lg
       = flash_messages
       = yield

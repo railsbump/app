@@ -16,4 +16,4 @@ production:
   <<: *default
   database: railsbump_production
   username: railsbump
-  password: <%= ENV['RAILSBUMP_DATABASE_PASSWORD'] %>
+  password: <%= ENV["RAILSBUMP_DATABASE_PASSWORD"] %>

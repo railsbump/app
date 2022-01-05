@@ -1,4 +1,4 @@
-require 'gems'
+require "gems"
 
 module Gemmies
   class Create < Services::Base
@@ -22,13 +22,13 @@ module Gemmies
       end
 
       def message
-        "Gem '#{@gemmy_name}' does not exist."
+        %(Gem "#{@gemmy_name}" does not exist.)
       end
     end
 
     def call(name)
       if name.blank?
-        raise Error, 'Please enter a name.'
+        raise Error, "Please enter a name."
       end
 
       if existing_gemmy = Gemmy.find_by(name: name)

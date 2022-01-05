@@ -1,6 +1,6 @@
 class RailsRelease < ApplicationRecord
   composed_of :version,
-    class_name: 'Gem::Version',
+    class_name: "Gem::Version",
     mapping:    %w(version to_s),
     converter:  Gem::Version.method(:new)
 
@@ -15,7 +15,7 @@ class RailsRelease < ApplicationRecord
         scope.where.not(id: id)
       end
       if scope.any?
-        errors.add :version, 'is a duplicate'
+        errors.add :version, "is a duplicate"
       end
     end
   end
@@ -36,12 +36,12 @@ class RailsRelease < ApplicationRecord
   end
 
   def compatible_ruby_version
-    Gem::Version.new('2.7')
+    Gem::Version.new("2.7")
   end
 
   def compatible_bundler_version
     if version
-      Gem::Version.new(version < Gem::Version.new('5') ? '1.17.3' : '2.1.4')
+      Gem::Version.new(version < Gem::Version.new("5") ? "1.17.3" : "2.1.4")
     end
   end
 end

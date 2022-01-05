@@ -1,7 +1,7 @@
 class Lockfile < ApplicationRecord
   include HasCompats
 
-  has_many :dependencies, class_name: 'LockfileDependency', dependent: :destroy
+  has_many :dependencies, class_name: "LockfileDependency", dependent: :destroy
   has_many :gemmies, through: :dependencies
 
   validates :content, presence: true

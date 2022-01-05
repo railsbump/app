@@ -1,3 +1,3 @@
-if ENV.key?('ENVKEY')
-  require 'envkey'
+if ENV.key?("ENVKEY")
+  require "envkey"
 end

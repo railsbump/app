@@ -1,7 +1,7 @@
 %header
-  = navbar container: 'lg', expand_at: 'md', bg: 'dark', brand: '👊 RailsBump' do
-    = navbar_collapse class: 'justify-content-end' do
+  = navbar container: "lg", expand_at: "md", bg: "dark", brand: "👊 RailsBump" do
+    = navbar_collapse class: "justify-content-end" do
       = navbar_group do
-        = navbar_item 'Check a gem', new_gemmy_path
-        = navbar_item 'Check a lockfile', new_lockfile_path
-        = navbar_item tag.i(class: %w(fab fa-github)), 'https://github.com/railsbump/app', {}, target: '_blank'
+        = navbar_item "Check a gem", new_gemmy_path
+        = navbar_item "Check a lockfile", new_lockfile_path
+        = navbar_item tag.i(class: %w(fab fa-github)), "https://github.com/railsbump/app", {}, target: "_blank"

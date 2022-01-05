@@ -7,7 +7,7 @@ module Maintenance
                                                            .created_after(1.hour.ago)
 
       if unprocessed_github_notifications.any?
-        raise Error, 'Some Github notifications are still unprocessed.' \
+        raise Error, "Some Github notifications are still unprocessed." \
           rescue Rollbar.error $!, count: unprocessed_github_notifications.size
       end
     end

@@ -1,14 +1,14 @@
-import { Controller } from 'stimulus'
+import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ['earlierRailsVersion']
+  static targets = ["earlierRailsVersion"]
 
   toggleEarlierRailsVersions(event) {
     event.preventDefault()
     $(this.earlierRailsVersionTargets).toggle()
     $(event.currentTarget).text(
       $(event.currentTarget).text()
-                            .replace(/^(\w+)/, match => match === 'Show' ? 'Hide' : 'Show')
+                            .replace(/^(\w+)/, match => match === "Show" ? "Hide" : "Show")
     )
   }
 }

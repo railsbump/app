@@ -1,4 +1,4 @@
-require 'fileutils'
+require "fileutils"
 
 module Compats
   class Check < Services::Base
@@ -22,7 +22,7 @@ module Compats
       check_uniqueness
 
       if compat.checked?
-        raise Error, 'Compat is already checked.'
+        raise Error, "Compat is already checked."
       end
 
       @compat = compat
@@ -45,7 +45,7 @@ module Compats
       def check_empty_dependencies
         if @compat.dependencies.blank?
           @compat.status               = :compatible
-          @compat.status_determined_by = 'empty_dependencies'
+          @compat.status_determined_by = "empty_dependencies"
         end
       end
 
@@ -57,7 +57,7 @@ module Compats
           end
           if requirement_unmet
             @compat.status               = :incompatible
-            @compat.status_determined_by = 'rails_gems'
+            @compat.status_determined_by = "rails_gems"
             return
           end
         end
@@ -73,7 +73,7 @@ module Compats
         subsets.in_groups_of(100, false).each do |group|
           if @compat.rails_release.compats.where(dependencies: group).incompatible.any?
             @compat.status               = :incompatible
-            @compat.status_determined_by = 'dependency_subsets'
+            @compat.status_determined_by = "dependency_subsets"
             return
           end
         end
@@ -82,7 +82,7 @@ module Compats
       def check_dependency_supersets
         if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
           @compat.status               = :compatible
-          @compat.status_determined_by = 'dependency_supersets'
+          @compat.status_determined_by = "dependency_supersets"
           return
         end
       end
@@ -95,7 +95,7 @@ module Compats
         CheckOutGitRepo.call do |git|
           git.branches.select { _1.name == branch_name }.each do |branch|
             if branch.remote
-              git.push 'origin', branch.name, delete: true
+              git.push "origin", branch.name, delete: true
             else
               branch.delete
             end
@@ -103,23 +103,23 @@ module Compats
 
           git.branch(branch_name).checkout
 
-          action_file = File.join(git.dir.path, '.github', 'workflows', 'ci.yml')
+          action_file = File.join(git.dir.path, ".github", "workflows", "ci.yml")
           action_content = File.read(action_file)
-                               .gsub('RUBY_VERSION',    @compat.rails_release.compatible_ruby_version.to_s)
-                               .gsub('BUNDLER_VERSION', @compat.rails_release.compatible_bundler_version.to_s)
+                               .gsub("RUBY_VERSION",    @compat.rails_release.compatible_ruby_version.to_s)
+                               .gsub("BUNDLER_VERSION", @compat.rails_release.compatible_bundler_version.to_s)
           File.write action_file, action_content
 
           dependencies = @compat.dependencies.dup
           dependencies.transform_values! do |contraints|
             contraints.split(/\s*,\s*/)
           end
-          dependencies['rails'] ||= []
-          dependencies['rails'] << "#{@compat.rails_release.version.approximate_recommendation}.0"
+          dependencies["rails"] ||= []
+          dependencies["rails"] << "#{@compat.rails_release.version.approximate_recommendation}.0"
 
-          gemfile = File.join(git.dir.path, 'Gemfile')
+          gemfile = File.join(git.dir.path, "Gemfile")
           gemfile_content = dependencies
             .map do |gem, constraints_group|
-              "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(', ')}"
+              "gem "#{gem}", #{constraints_group.map { ""#{_1}"" }.join(", ")}"
             end
             .unshift("source 'https://rubygems.org'")
             .join("\n")
@@ -128,7 +128,7 @@ module Compats
           git.add [action_file, gemfile]
           git.commit @compat.to_s
           5.tries on: Git::GitExecuteError, delay: 1 do
-            git.push 'origin', branch_name
+            git.push "origin", branch_name
           end
         end
       end

@@ -9,7 +9,7 @@ module Maintenance
 
       10.tries on: SidekiqError, delay: 1 do
         if Sidekiq::Stats.new.processes_size.zero?
-          raise SidekiqError, 'No Sidekiq processes are running.'
+          raise SidekiqError, "No Sidekiq processes are running."
         end
       end
     rescue SidekiqError => error

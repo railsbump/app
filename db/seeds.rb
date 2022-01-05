@@ -1,11 +1,11 @@
-require 'gems'
+require "gems"
 
 # Rails Releases
 
 RailsRelease.destroy_all
 
-Gems.versions('rails').each do |data|
-  RailsReleases::Create.call(data.fetch('number'))
+Gems.versions("rails").each do |data|
+  RailsReleases::Create.call(data.fetch("number"))
 end
 
 # Gemmies

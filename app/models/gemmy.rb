@@ -9,7 +9,7 @@ class Gemmy < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { allow_blank: true }, exclusion: FORBIDDEN_NAMES
 
-  scope :with_dependencies, ->(dependencies) { where('dependencies_and_versions ? :dependencies', dependencies: JSON.generate(dependencies)) }
+  scope :with_dependencies, ->(dependencies) { where("dependencies_and_versions ? :dependencies", dependencies: JSON.generate(dependencies)) }
 
   delegate :to_param, :to_s, to: :name
 

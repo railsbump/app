@@ -12,7 +12,7 @@ module Maintenance
                                                                # unless all branches have a corresponding compat.
 
           if done_compats.any?
-            git.push 'origin', done_compats.map(&:id), delete: true
+            git.push "origin", done_compats.map(&:id), delete: true
           end
         end
       end

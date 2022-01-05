@@ -1,7 +1,7 @@
 class EmailNotification
   include ActiveModel::Model
 
-  NAMESPACE       = 'email_notifications'
+  NAMESPACE       = "email_notifications"
   NAMESPACE_REGEX = /\A#{Regexp.escape NAMESPACE}:(.+)/
   EMAIL_REGEX     = /.+@.+\..+/
 
@@ -12,7 +12,7 @@ class EmailNotification
 
   validate do
     if email.present? && !EMAIL_REGEX.match?(email)
-      errors.add :email, 'is invalid'
+      errors.add :email, "is invalid"
     end
   end
 
@@ -34,7 +34,7 @@ class EmailNotification
 
   def save
     unless valid?
-      raise "Email notification is invalid: #{errors.full_messages.join(', ')}"
+      raise "Email notification is invalid: #{errors.full_messages.join(", ")}"
     end
 
     Redis.current.sadd key, email
@@ -47,6 +47,6 @@ class EmailNotification
   private
 
     def key
-      [NAMESPACE, notifiable.to_global_id].join(':')
+      [NAMESPACE, notifiable.to_global_id].join(":")
     end
 end

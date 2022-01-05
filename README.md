@@ -12,7 +12,7 @@ RailsBump uses a few approaches to check whether a gem version is compatible wit
 
 - if the gem version has a direct dependency on one of the "Rails gems" (rails, railties, activerecord, activesupport, etc.), it may be clear that it is not compatible with some Rails releases immediately
 - if the gem version has a dependency on a specific version of another gem that we already know is not compatible with a Rails release, this gem version is not compatible either,
-- if all other approaches don't work, RailsBump simply puts the gem version and a Rails release in a Gemfile and lets Bundler figure it out. If the gem can be successfully installed along with the Rails release, it counts as 'compatible'.
+- if all other approaches don't work, RailsBump simply puts the gem version and a Rails release in a Gemfile and lets Bundler figure it out. If the gem can be successfully installed along with the Rails release, it counts as "compatible".
 
 Since some gems have a lot of versions and each one needs to be checked against multiple Rails releases, this could get out of hand quickly. To minimize the amount of compatibility checks that need to be done, the gem versions are grouped by their dependencies first. If multiple versions (of the same gem or even of different gems) have the same dependencies, a single check is enough to determine whether all of them are compatible with a specific Rails release or not.
 

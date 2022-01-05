@@ -4,8 +4,8 @@
 if Rails.env.production?
   Rails.application.config.cache_store = :redis_cache_store, {
     driver:             :hiredis,
-    url:                ENV.fetch('REDIS_URL'),
-    namespace:          'cache',
+    url:                ENV.fetch("REDIS_URL"),
+    namespace:          "cache",
     expires_in:         1.month,
     reconnect_attempts: 1,
     error_handler:      -> (method:, returning:, exception:) { Rollbar.warning(exception, method: method, returning: returning) }

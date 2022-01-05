@@ -1,7 +1,7 @@
-require 'rollbar/rails'
+require "rollbar/rails"
 
 Rollbar.configure do |config|
-  config.access_token = ENV['ROLLBAR_ACCESS_TOKEN_SERVER']
+  config.access_token = ENV["ROLLBAR_ACCESS_TOKEN_SERVER"]
 
   config.enabled = !%w(development test).include?(Rails.env)
 
@@ -23,12 +23,12 @@ Rollbar.configure do |config|
   # change the level that exception is reported at. Note that if an exception
   # has already been reported and logged the level will need to be changed
   # via the rollbar interface.
-  # Valid levels: 'critical', 'error', 'warning', 'info', 'debug', 'ignore'
-  # 'ignore' will cause the exception to not be reported at all.
-  # config.exception_level_filters.merge!('MyCriticalException' => 'critical')
+  # Valid levels: "critical", "error", "warning", "info", "debug", "ignore"
+  # "ignore" will cause the exception to not be reported at all.
+  # config.exception_level_filters.merge!("MyCriticalException" => "critical")
   #
   # You can also specify a callable, which will be called with the exception instance.
-  # config.exception_level_filters.merge!('MyCriticalException' => lambda { |e| 'critical' })
+  # config.exception_level_filters.merge!("MyCriticalException" => lambda { |e| "critical" })
 
   # Enable asynchronous reporting (uses girl_friday or Threading if girl_friday
   # is not installed)
@@ -44,17 +44,17 @@ Rollbar.configure do |config|
   # Enable delayed reporting (using Sidekiq)
   # config.use_sidekiq
   # You can supply custom Sidekiq options:
-  config.use_sidekiq 'queue' => 'default'
+  config.use_sidekiq "queue" => "default"
 
   # If your application runs behind a proxy server, you can set proxy parameters here.
   # If https_proxy is set in your environment, that will be used. Settings here have precedence.
-  # The :host key is mandatory and must include the URL scheme (e.g. 'http://'), all other fields
+  # The :host key is mandatory and must include the URL scheme (e.g. "http://"), all other fields
   # are optional.
   #
   # config.proxy = {
-  #   host: 'http://some.proxy.server',
+  #   host: "http://some.proxy.server",
   #   port: 80,
-  #   user: 'username_if_auth_required',
-  #   password: 'password_if_auth_required'
+  #   user: "username_if_auth_required",
+  #   password: "password_if_auth_required"
   # }
 end

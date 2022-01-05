@@ -23,8 +23,8 @@ module GithubNotifications
         return unless @github_notification.completed?
 
         case @github_notification.conclusion
-        when 'success' then status = :compatible
-        when 'skipped', 'cancelled'
+        when "success" then status = :compatible
+        when "skipped", "cancelled"
           if compat.github_notifications.where(conclusion: @github_notification.conclusion)
                                         .where.not(id: @github_notification)
                                         .none?
@@ -35,7 +35,7 @@ module GithubNotifications
         else raise Error, "Unexpected conclusion: #{@github_notification.conclusion}"
         end
 
-        compat.update! status: status, status_determined_by: 'github_check'
+        compat.update! status: status, status_determined_by: "github_check"
 
         EmailNotifications::SendAll.call_async
       end

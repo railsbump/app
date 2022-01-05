@@ -1,7 +1,7 @@
 module API
   class ReleasesController < BaseController
     def create
-      if params[:name] == 'rails'
+      if params[:name] == "rails"
         RailsReleases::Create.call_async params[:version]
       else
         gemmy = Gemmy.find_by!(name: params[:name])

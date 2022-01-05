@@ -26,6 +26,7 @@ gem 'rails_bootstrap_navbar',                   '~> 3.0'
 gem 'sidekiq',                                  '~> 5.0'
 gem 'sitemap_generator',                        '~> 6.1', require: false
 gem 'aws-sdk-s3',                               '~> 1.83', require: false
+gem 'turbolinks',                               '~> 5.0'
 
 group :development do
   gem 'spring',                                 '~> 2.0'

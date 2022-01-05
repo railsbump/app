@@ -157,8 +157,6 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
-    has_defaults (0.4.4)
-      activerecord
     hiredis (0.6.3)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
@@ -301,9 +299,9 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
-    services (8.0.0)
+    services (9.0.0)
       gem_config (~> 0.3)
-      rails (>= 4.2)
+      rails (>= 6.0)
     sexp_processor (4.15.3)
     shellany (0.0.1)
     sidekiq (5.2.9)
@@ -373,7 +371,6 @@ DEPENDENCIES
   git (~> 1.5)
   guard (~> 2.12)
   haml-rails (~> 2.0)
-  has_defaults (~> 0.4)
   hiredis (~> 0.6)
   letter_opener (~> 1.2)
   lograge (~> 0.3)
@@ -393,7 +390,7 @@ DEPENDENCIES
   rollbar (~> 3.0)
   rspec-rails (~> 4.0.1)
   sassc-rails (~> 2.0)
-  services (~> 8.0)
+  services (~> 9.0)
   sidekiq (~> 5.0)
   sitemap_generator (~> 6.1)
   spring (~> 2.0)
@@ -410,4 +407,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.20
+   2.3.3

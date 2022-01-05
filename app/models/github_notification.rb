@@ -5,7 +5,6 @@ class GithubNotification < ApplicationRecord
 
   belongs_to :compat, optional: true
 
-  validates :compat, presence: { if: :processed? }
   validates :action, presence: true
   validates :branch, presence: true
   validates :conclusion, inclusion: { in: CONCLUSIONS, if: -> { action == 'completed' } }

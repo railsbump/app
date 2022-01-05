@@ -5,31 +5,39 @@ module GithubNotifications
         raise Error, "GitHub Notification #{github_notification.id} has already been processed."
       end
 
-      compat = Compat.find(github_notification.branch)
+      if /\A\d+\z/.match?(github_notification.branch)
+        @github_notification = github_notification
+        do_process
+      end
 
-      github_notification.update! compat: compat
+      github_notification.processed!
+    end
 
-      if github_notification.completed?
-        case github_notification.conclusion
+    private
+
+      def do_process
+        compat = Compat.find(@github_notification.branch)
+
+        @github_notification.update! compat: compat
+
+        return unless @github_notification.completed?
+
+        case @github_notification.conclusion
         when 'success' then status = :compatible
-        when 'failure' then status = :incompatible
         when 'skipped', 'cancelled'
-          if compat.github_notifications.where(conclusion: github_notification.conclusion)
-                                        .where.not(id: github_notification)
+          if compat.github_notifications.where(conclusion: @github_notification.conclusion)
+                                        .where.not(id: @github_notification)
                                         .none?
             compat.unchecked!
             return
           end
           status = :inconclusive
-        else raise Error, "Unexpected conclusion: #{github_notification.conclusion}"
+        else raise Error, "Unexpected conclusion: #{@github_notification.conclusion}"
         end
 
         compat.update! status: status, status_determined_by: 'github_check'
 
         EmailNotifications::SendAll.call_async
       end
-
-      github_notification.processed!
-    end
   end
 end

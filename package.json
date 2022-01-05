@@ -12,7 +12,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
-    "@rails/ujs": "^6.1.4",
+    "@hotwired/turbo-rails": "^7.1.0",
     "@rails/webpacker": "^5.1.1",
     "autosize": "^4.0.2",
     "bootstrap": "^4.4.1",
@@ -21,7 +21,6 @@
     "popper.js": "^1.16.0",
     "rails-erb-loader": "^5.5.2",
     "rollbar": "^2.14.4",
-    "turbolinks": "^5.2.0",
     "webpack": "^4.41.4"
   },
   "devDependencies": {

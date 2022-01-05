@@ -1,0 +1,28 @@
+- email_notification = local_assigns[:email_notification] || EmailNotification.new(notifiable: notifiable)
+
+- if email_notification.notifiable.then { _1.compats.none? || _1.compats.pending.any? }
+
+  = turbo_frame_tag :email_notification_form do
+    %section
+
+      %h2
+        Notify via email
+
+      = form_with model: email_notification do |form|
+
+        - if email_notification.errors.any?
+          .error
+            Oops, an error occurred:
+            %span.message
+              = email_notification.errors.full_messages.join(", ")
+
+        .form-row
+          .form-group.col-md-6
+            = form.label :email, "Enter your email address to receive a notification when all compatibilities are checked."
+            = form.email_field :email, class: "form-control", required: true
+            %small.form-text.text-muted
+              Will only be used for one notification and deleted afterwards.
+
+        = form.hidden_field :notifiable_gid, value: email_notification.notifiable.to_global_id
+
+        = form.submit "Notify me", class: "btn btn-primary", data: { disable_with: t(:please_wait) }

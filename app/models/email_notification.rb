@@ -33,11 +33,10 @@ class EmailNotification
   end
 
   def save
-    unless valid?
-      raise "Email notification is invalid: #{errors.full_messages.join(", ")}"
-    end
+    return false unless valid?
 
     Redis.current.sadd key, email
+    true
   end
 
   def delete

@@ -7,14 +7,16 @@ class LockfilesController < ApplicationController
 
   def create
     @lockfile = Lockfiles::Create.call(lockfile_params.fetch(:content).strip)
-  rescue Lockfiles::Create::AlreadyExists => e
-    redirect_to e.lockfile
-  rescue Lockfiles::Create::Error => e
+  rescue Lockfiles::Create::AlreadyExists => error
+    redirect_to error.lockfile,
+      status: :see_other
+  rescue Lockfiles::Create::Error => error
     @lockfile = Lockfile.new(lockfile_params)
-    flash.now[:alert] = e.message
+    flash.now[:alert] = error.message
     render :new
   else
-    redirect_to @lockfile
+    redirect_to @lockfile,
+      status: :see_other
   end
 
   def show

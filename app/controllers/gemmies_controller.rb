@@ -5,14 +5,17 @@ class GemmiesController < ApplicationController
 
   def create
     @gemmy = Gemmies::Create.call(gemmy_params.fetch(:name))
-  rescue Gemmies::Create::AlreadyExists => e
-    redirect_to e.gemmy
-  rescue Gemmies::Create::Error => e
+  rescue Gemmies::Create::AlreadyExists => error
+    redirect_to error.gemmy,
+      status: :see_other
+  rescue Gemmies::Create::Error => error
     @gemmy = Gemmy.new
-    flash.now[:alert] = e.message
-    render :new
+    flash.now[:alert] = error.message
+    render :new,
+      status: :unprocessable_entity
   else
-    redirect_to @gemmy
+    redirect_to @gemmy,
+      status: :see_other
   end
 
   def index

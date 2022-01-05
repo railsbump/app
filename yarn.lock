@@ -1244,6 +1244,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/turbo-rails@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@hotwired/turbo-rails@npm:7.1.0"
+  dependencies:
+    "@hotwired/turbo": ^7.1.0
+    "@rails/actioncable": ^6.0.0
+  checksum: 2a22f36c2e1b34d369f9d2253b7e3d490c0f18aa7f0cd32fd4a5fcb2568e67e0275452ce878942d15072f58c7bc4713d39bed6525a3e9e3ba614b60bb1b0f100
+  languageName: node
+  linkType: hard
+
+"@hotwired/turbo@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@hotwired/turbo@npm:7.1.0"
+  checksum: 4a0b80aa3ef922a012919cffe4ecb28214810e50d074aa39adc2e49c552058d6bd10e193194dba6ab217f9ca8147e911dc326c98163af4dc0a09defc90231051
+  languageName: node
+  linkType: hard
+
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2"
@@ -1254,10 +1271,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/ujs@npm:^6.1.4":
+"@rails/actioncable@npm:^6.0.0":
   version: 6.1.4
-  resolution: "@rails/ujs@npm:6.1.4"
-  checksum: 5cc92030ff456615bb34ef7d8e594d33aa9d0f981115f8f335aaa47f926ec0d133f36ac30c43940169dace1fb591e47dcb6efd4396ae6a4f8caa63f215e998a4
+  resolution: "@rails/actioncable@npm:6.1.4"
+  checksum: 2039c4ae831225ad2d370b7bed6d590be6b46366911dd40f5cea409114471e70b4d2610379aed1443bc3b327ee3c746b5e5c43f730968e78c7d19335bfe932de
   languageName: node
   linkType: hard
 
@@ -7591,7 +7608,7 @@ fsevents@~2.3.1:
   dependencies:
     "@hotwired/stimulus": ^3.0.1
     "@hotwired/stimulus-webpack-helpers": ^1.0.1
-    "@rails/ujs": ^6.1.4
+    "@hotwired/turbo-rails": ^7.1.0
     "@rails/webpacker": ^5.1.1
     autosize: ^4.0.2
     bootstrap: ^4.4.1
@@ -7600,7 +7617,6 @@ fsevents@~2.3.1:
     popper.js: ^1.16.0
     rails-erb-loader: ^5.5.2
     rollbar: ^2.14.4
-    turbolinks: ^5.2.0
     webpack: ^4.41.4
     webpack-dev-server: ^3.11.0
   languageName: unknown
@@ -8965,13 +8981,6 @@ fsevents@~2.3.1:
   version: 0.0.0
   resolution: "tty-browserify@npm:0.0.0"
   checksum: ef28fe256a17bac17d094e0120a042aee441efca0a44734082caa697b8326cc9888a8042b754cb6830205b65fe716960ba159597fdbcb8b53abf08ae5c9acd7f
-  languageName: node
-  linkType: hard
-
-"turbolinks@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "turbolinks@npm:5.2.0"
-  checksum: d003a6fa2c0dc1b6e95edc3dc7dba292d1021e664be2b0b9e2d76117eaf8d874b7741635c3b4c57702781166d0bfffd60e69e27c02d51bf1cdc5a5e6c2021092
   languageName: node
   linkType: hard
 

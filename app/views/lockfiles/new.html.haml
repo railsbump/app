@@ -1,7 +1,7 @@
 %h1
   Check a lockfile
 
-= form_with model: @lockfile, local: true do |form|
+= form_with model: @lockfile do |form|
 
   .form-group
     = form.text_area :content, class: "form-control autosize", placeholder: "Paste the content of your Gemfile.lock here."

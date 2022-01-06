@@ -4,7 +4,33 @@ class CheckOutGitRepo < Services::Base
   REPO = "git@github.com:railsbump/checker.git"
   TMP  = Rails.root.join("tmp")
 
+  WorkerRepoCheckedOut = Class.new(Error)
+
   def call
+    hostname = Socket.gethostname
+    if hostname.blank?
+      raise Error, "Could not determine hostname."
+    end
+    cache_key = [
+      "worker_repo_checked_out_since",
+      hostname
+    ].join(":")
+    if worker_repo_checked_out_since = Redis.current.get(cache_key)&.then(&Time.zone.method(:parse))
+      if worker_repo_checked_out_since < 10.minutes.ago
+        raise Error, "Worker repo seems to be checked out for a long time already." \
+          rescue Rollbar.error $!, worker_repo_checked_out_since: worker_repo_checked_out_since
+      end
+      if Sidekiq.server?
+        unless @_call_args && @_call_kwargs
+          raise "@_call_args or @_call_kwargs are nil."
+        end
+        self.class.call_in 30.seconds, *@_call_args, **@_call_kwargs
+      end
+      raise WorkerRepoCheckedOut
+    else
+      Redis.current.set(cache_key, Time.current.iso8601)
+    end
+
     dir = TMP.join("railsbump_checker_#{SecureRandom.hex(3)}")
 
     if dir.exist?
@@ -35,6 +61,7 @@ class CheckOutGitRepo < Services::Base
 
     yield git
   ensure
+    Redis.current.del cache_key
     if git && File.exist?(git.dir.path)
       FileUtils.rm_rf git.dir.path
     end

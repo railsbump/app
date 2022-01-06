@@ -24,6 +24,7 @@ module GithubNotifications
 
         case @github_notification.conclusion
         when "success" then status = :compatible
+        when 'failure' then status = :incompatible
         when "skipped", "cancelled"
           if compat.github_notifications.where(conclusion: @github_notification.conclusion)
                                         .where.not(id: @github_notification)

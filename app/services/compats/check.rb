@@ -119,7 +119,7 @@ module Compats
           gemfile = File.join(git.dir.path, "Gemfile")
           gemfile_content = dependencies
             .map do |gem, constraints_group|
-              "gem "#{gem}", #{constraints_group.map { ""#{_1}"" }.join(", ")}"
+              "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(", ")}"
             end
             .unshift("source 'https://rubygems.org'")
             .join("\n")

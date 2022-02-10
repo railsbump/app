@@ -1,6 +1,6 @@
 require "securerandom"
 
-class CheckOutGitRepo < Services::Base
+class CheckOutWorkerRepo < Services::Base
   REPO = "git@github.com:railsbump/checker.git"
   TMP  = Rails.root.join("tmp")
 

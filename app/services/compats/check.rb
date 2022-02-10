@@ -92,7 +92,7 @@ module Compats
 
         branch_name = @compat.id.to_s
 
-        CheckOutGitRepo.call do |git|
+        CheckOutWorkerRepo.call do |git|
           git.branches.select { _1.name == branch_name }.each do |branch|
             if branch.remote
               git.push "origin", branch.name, delete: true

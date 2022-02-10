@@ -3,7 +3,7 @@ module Maintenance
     def call
       check_uniqueness on_error: :return
 
-      CheckOutGitRepo.call do |git|
+      CheckOutWorkerRepo.call do |git|
         branches  = git.branches.remote.map(&:name).grep(/\A\d+\z/)
         threshold = 2.hours.ago
 

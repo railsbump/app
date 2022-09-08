@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateRailsReleases < ActiveRecord::Migration[6.0]
   def change
     create_table :rails_releases do |t|

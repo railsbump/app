@@ -1,5 +1,0 @@
-- cache ["favicons", Rails.configuration.current_version] do
-  - Dir[Rails.root.join("app", "assets", "images", "icons", "*.png")].each do |icon|
-    - next unless size = icon[/-(\d+x\d+)\.png\z/, 1]
-    - rel = /apple-icon/.match?(icon) ? "apple-touch-icon" : "icon"
-    %link{ rel: rel, href: image_path("icons/#{File.basename(icon)}"), sizes: size, type: "image/png" }

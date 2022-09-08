@@ -1,7 +1,0 @@
-.env
-config/database.yml
-public/packs
-public/packs-test
-spec/examples.txt
-yarn-error.log
-storage

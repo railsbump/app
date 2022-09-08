@@ -1,39 +1,37 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org/"
+source "https://rubygems.org"
 
-ruby "3.0.0"
+# git_source :github { "https://github.com/#{_1}.git" }
 
-# Return early if this file is parsed by the Bundler plugin DSL.
-# This won't let us access dependencies in common-gems.
-return if is_a?(Bundler::Plugin::DSL)
+ruby "3.1.2"
 
-gem "rails", "~> 6.1.0"
+gem "rails",                                    "~> 7.0.3"
 
-# Load common gems
-%w(
-  rails
-  redis
-).each do |m|
-  eval_gemfile File.join("common-gems", m, "Gemfile")
-end
-
-gem "dotenv-rails",                             "~> 2.7"
-gem "envkey",                                   "~> 1.0"
-gem "gems",                                     "~> 1.2", require: false
-gem "git",                                      "~> 1.5"
+gem "amazing_print",                            "~> 1.4",  require: false
+gem "bootsnap",                                 "~> 1.13", require: false
+gem "bootstrap",                                "~> 5.2"
+gem "haml",                                     "6.0.0.beta.2"
+gem "importmap-rails",                          "~> 1.1"
+gem "kredis",                                   "~> 1.2"
+gem "pg",                                       "~> 1.4"
+gem "pry",                                      "~> 0.14", require: false
+gem "puma",                                     "~> 5.6"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
-gem "sidekiq",                                  "~> 5.0"
-gem "sitemap_generator",                        "~> 6.1", require: false
-gem "aws-sdk-s3",                               "~> 1.83", require: false
-gem "turbo-rails",                              "~> 1.0"
+gem "redis",                                    "~> 4.0"
+gem "sassc-rails",                              "~> 2.1"
+gem "sidekiq",                                  "~> 6.5"
+gem "sprockets-rails",                          "~> 3.4"
+gem "stimulus-rails",                           "~> 1.1"
+gem "turbo-rails",                              "~> 1.1"
 
 group :development do
-  gem "spring",                                 "~> 2.0"
-  gem "spring-watcher-listen",                  "~> 2.0"
-end
-
-group :development, :test do
-  gem "factory_bot_rails",                      "~> 6.1"
-  gem "rspec-rails",                            "~> 4.0.1"
+  gem "annotate",                               "~> 3.0", require: false
+  gem "better_errors",                          "~> 2.8"
+  gem "binding_of_caller",                      "~> 1.0"
+  gem "database_consistency",                   "~> 1.0", require: false
+  gem "letter_opener",                          "~> 1.2"
+  gem "marginalia",                             "~> 1.4"
+  gem "spring-watcher-listen",                  github: "fcheung/spring-watcher-listen", branch: "support-spring-4" # TODO: Use released gem once Spring 4 is supported: https://github.com/rails/spring-watcher-listen/pull/32
+  gem "spring",                                 "~> 4.0"
 end

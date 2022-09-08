@@ -1,16 +1,14 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails/all"
 
 Bundler.require(*Rails.groups)
 
-module RailsBump
+module Railsbump
   class Application < Rails::Application
-    config.load_defaults 6.1
-    config.current_version = `git rev-parse --short HEAD 2> /dev/null`.chomp
-    config.action_mailer.preview_path = Rails.root.join("lib", "mailer_previews")
-
-    require "cloudflare_proxy"
-    config.middleware.use CloudflareProxy
+    config.load_defaults 7.0
+    config.revision = `git rev-parse --short HEAD 2> /dev/null`.chomp
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GemmiesController < ApplicationController
   def new
     @gemmy = Gemmy.new

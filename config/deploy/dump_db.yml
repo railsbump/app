@@ -1,4 +1,0 @@
-- hosts: worker01
-  remote_user: root
-  roles:
-    - dump_db

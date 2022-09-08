@@ -14,6 +14,7 @@ gem "bootstrap",                                "~> 5.2"
 gem "haml",                                     "6.0.0.beta.2"
 gem "importmap-rails",                          "~> 1.1"
 gem "kredis",                                   "~> 1.2"
+gem "mini_racer",                               "~> 0.6" # Necessary for autoprefixer-rails, which is required by bootstrap.
 gem "pg",                                       "~> 1.4"
 gem "pry",                                      "~> 0.14", require: false
 gem "puma",                                     "~> 5.6"

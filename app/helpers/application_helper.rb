@@ -9,8 +9,8 @@ module ApplicationHelper
   end
 
   def alert(level, text = nil, &block)
-    content_tag :div, class: "alert alert-#{level} alert-dismissible fade show" do
-      concat content_tag(:button, "×", type: "button", class: "close", data: { dismiss: "alert" })
+    tag.div class: "alert alert-#{level} alert-dismissible fade show" do
+      concat tag.button(type: "button", class: "btn-close", data: { bs_dismiss: "alert" })
       concat text&.html_safe || capture_haml(&block)
     end
   end

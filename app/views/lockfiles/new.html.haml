@@ -3,7 +3,7 @@
 
 = form_with model: @lockfile do |form|
 
-  .form-group
+  .mb-3
     = form.text_area :content, class: "form-control autosize", placeholder: "Paste the content of your Gemfile.lock here."
 
   = form.submit "Check now", class: "btn btn-primary", data: { disable_with: t(:please_wait) }

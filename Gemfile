@@ -25,6 +25,7 @@ gem "sidekiq",                                  "~> 6.5"
 gem "sprockets-rails",                          "~> 3.4"
 gem "stimulus-rails",                           "~> 1.1"
 gem "turbo-rails",                              "~> 1.1"
+gem "services",                                 "~> 9.0"
 
 group :development do
   gem "annotate",                               "~> 3.0", require: false

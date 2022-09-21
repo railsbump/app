@@ -218,6 +218,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    services (9.0.0)
+      gem_config (~> 0.3)
+      rails (>= 6.0)
     sidekiq (6.5.7)
       connection_pool (>= 2.2.5)
       rack (~> 2.0)
@@ -272,6 +275,7 @@ DEPENDENCIES
   rails_bootstrap_navbar (~> 3.0)
   redis (~> 4.0)
   sassc-rails (~> 2.1)
+  services (~> 9.0)
   sidekiq (~> 6.5)
   spring (~> 4.0)
   spring-watcher-listen!

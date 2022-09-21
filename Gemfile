@@ -11,7 +11,7 @@ gem "rails",                                    "~> 7.0.3"
 gem "amazing_print",                            "~> 1.4",  require: false
 gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
-gem "haml",                                     "6.0.0.beta.2"
+gem "haml",                                     "~> 6.0"
 gem "importmap-rails",                          "~> 1.1"
 gem "kredis",                                   "~> 1.2"
 gem "mini_racer",                               "~> 0.6" # Necessary for autoprefixer-rails, which is required by bootstrap.

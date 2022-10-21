@@ -6,11 +6,10 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
-gem "rails",                                    "~> 7.0.3"
-
 gem "amazing_print",                            "~> 1.4",  require: false
 gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
+gem "gems",                                     "~> 1.2"
 gem "haml",                                     "~> 6.0"
 gem "importmap-rails",                          "~> 1.1"
 gem "kredis",                                   "~> 1.2"
@@ -19,13 +18,14 @@ gem "pg",                                       "~> 1.4"
 gem "pry",                                      "~> 0.14", require: false
 gem "puma",                                     "~> 6.0"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
+gem "rails",                                    "~> 7.0.3"
 gem "redis",                                    "~> 4.0"
 gem "sassc-rails",                              "~> 2.1"
+gem "services",                                 "~> 9.0"
 gem "sidekiq",                                  "~> 6.5"
 gem "sprockets-rails",                          "~> 3.4"
 gem "stimulus-rails",                           "~> 1.1"
 gem "turbo-rails",                              "~> 1.1"
-gem "services",                                 "~> 9.0"
 
 group :development do
   gem "annotate",                               "~> 3.0", require: false

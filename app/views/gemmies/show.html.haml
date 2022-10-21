@@ -9,12 +9,10 @@
   %p
     Indexed versions:
     = @gemmy.versions.size
-    = surround "(", ")" do
-      = @gemmy.versions.first
-      - if @gemmy.versions.many?
-        \...
-        = @gemmy.versions.last
-    &middot;
+    - if @gemmy.versions.any?
+      = surround "(", ")" do
+        = [@gemmy.versions.first, (@gemmy.versions.last if @gemmy.versions.many?)].compact.join(" ... ")
+    •
     = link_to "Show on RubyGems.org", "https://rubygems.org/gems/#{@gemmy.name}", target: "_blank"
 
 %section

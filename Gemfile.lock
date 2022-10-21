@@ -197,6 +197,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sentry-rails (5.5.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.5.0)
+    sentry-ruby (5.5.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+    sentry-sidekiq (5.5.0)
+      sentry-ruby (~> 5.5.0)
+      sidekiq (>= 3.0)
     services (9.0.0)
       gem_config (~> 0.3)
       rails (>= 6.0)
@@ -253,6 +261,8 @@ DEPENDENCIES
   rails_bootstrap_navbar (~> 3.0)
   redis (~> 4.0)
   sassc-rails (~> 2.1)
+  sentry-rails (~> 5.5)
+  sentry-sidekiq (~> 5.5)
   services (~> 9.0)
   sidekiq (~> 6.5)
   sprockets-rails (~> 3.4)

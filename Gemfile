@@ -2,8 +2,6 @@
 
 source "https://rubygems.org"
 
-# git_source :github { "https://github.com/#{_1}.git" }
-
 ruby "3.1.2"
 
 gem "amazing_print",                            "~> 1.4",  require: false
@@ -34,6 +32,4 @@ group :development do
   gem "database_consistency",                   "~> 1.0", require: false
   gem "letter_opener",                          "~> 1.2"
   gem "marginalia",                             "~> 1.4"
-  gem "spring-watcher-listen",                  github: "fcheung/spring-watcher-listen", branch: "support-spring-4" # TODO: Use released gem once Spring 4 is supported: https://github.com/rails/spring-watcher-listen/pull/32
-  gem "spring",                                 "~> 4.0"
 end

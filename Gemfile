@@ -7,6 +7,7 @@ ruby "3.1.2"
 gem "amazing_print",                            "~> 1.4",  require: false
 gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
+gem "envkey",                                   "~> 1.0"
 gem "gems",                                     "~> 1.2"
 gem "haml",                                     "~> 6.0"
 gem "importmap-rails",                          "~> 1.1"
@@ -34,4 +35,8 @@ group :development do
   gem "database_consistency",                   "~> 1.0", require: false
   gem "letter_opener",                          "~> 1.2"
   gem "marginalia",                             "~> 1.4"
+end
+
+group :development, :test do
+  gem "dotenv-rails",                           "~> 2.8", require: "dotenv/rails-now"
 end

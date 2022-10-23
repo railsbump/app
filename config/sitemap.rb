@@ -9,7 +9,8 @@ SitemapGenerator::Sitemap.adapter      = SitemapGenerator::AwsSdkAdapter.new(
                                            access_key_id:     ENV.fetch("CLOUDFLARE_R2_ACCESS_KEY_ID"),
                                            secret_access_key: ENV.fetch("CLOUDFLARE_R2_SECRET_ACCESS_KEY"),
                                            endpoint:          "https://#{ENV.fetch "CLOUDFLARE_ACCOUNT_ID"}.r2.cloudflarestorage.com",
-                                           region:            "auto"
+                                           region:            "auto",
+                                           acl:               "private"
                                          )
 
 SitemapGenerator::Sitemap.create do

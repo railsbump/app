@@ -2,10 +2,12 @@ import autosize from "autosize"
 
 import "@hotwired/turbo-rails"
 import "@popperjs/core"
-import "bootstrap"
+import { Tooltip } from "bootstrap"
 import "controllers"
 
 document.addEventListener("turbo:load", () => {
   autosize(document.querySelectorAll(".autosize"))
-  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltip => new bootstrap.Tooltip(tooltip))
+
+  document.querySelectorAll('[data-bs-toggle="tooltip"]')
+          .forEach(element => new Tooltip(element))
 })

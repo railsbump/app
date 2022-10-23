@@ -10,13 +10,13 @@
         %th{ rowspan: 2 }
           Gem
       %th{ colspan: RailsRelease.count }
-        = link_to "Show earlier Rails versions", "#", class: "toggle-earlier-rails-versions", data: { action: "#{stimulus_controller}#toggleEarlierRailsVersions" }
+        = link_to "Show earlier Rails versions", "#", class: "float-end", data: { action: "#{stimulus_controller}#toggleEarlierRailsVersions" }
         Compatible with...
     %tr
       - rails_releases.each do |rails_release|
-        - cell_params = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "earlier-version" } : {}
+        - cell_params = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none" } : {}
 
-        %th{ **cell_params }
+        %th.text-nowrap{ **cell_params }
           Rails
           = rails_release.version
 
@@ -32,11 +32,11 @@
           - rails_releases.each do |rails_release|
             - rails_release_compats = compats.merge(rails_release.compats)
             - status                = compats_status(rails_release_compats)
-            - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "earlier-version #{status}" } : { class: status }
+            - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none #{status}" } : { class: status }
             - label, text           = compats_label_and_text(rails_release_compats, gemmy, rails_release)
 
             %td{ **cell_params }
-              %span{ data: { toggle: "tooltip", placement: "bottom", title: text } }
+              %span{ data: { bs_toggle: "tooltip", bs_placement: "bottom", bs_title: text } }
                 - case status
                 - when :checking
                   %i.fas.fa-spinner.fa-pulse

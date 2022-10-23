@@ -9,6 +9,14 @@ main {
     @extend .img-fluid;
   }
 
+  a:not(.btn) {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   section + section {
     margin-top: 40px;
   }

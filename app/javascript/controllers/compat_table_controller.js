@@ -5,10 +5,10 @@ export default class extends Controller {
 
   toggleEarlierRailsVersions(event) {
     event.preventDefault()
-    $(this.earlierRailsVersionTargets).toggle()
-    $(event.currentTarget).text(
-      $(event.currentTarget).text()
-                            .replace(/^(\w+)/, match => match === "Show" ? "Hide" : "Show")
+
+    this.earlierRailsVersionTargets.forEach(element =>
+      element.classList.toggle("d-none")
     )
+    event.target.innerText = event.target.innerText.replace(/^(\w+)/, match => match === "Show" ? "Hide" : "Show")
   }
 }

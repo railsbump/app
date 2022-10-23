@@ -1,34 +1,25 @@
 table.compat-table {
 
-  th {
-    white-space: nowrap;
-  }
+  tbody {
 
-  td {
+    td {
 
-    span {
-      padding-bottom: 2px;
-      border-bottom: 1px dotted;
+      span {
+        padding-bottom: 2px;
+        border-bottom: 1px dotted;
+      }
     }
-  }
 
-  .toggle-earlier-rails-versions {
-    float: right;
-  }
+    .checking {
+      color: $yellow;
+    }
 
-  .earlier-version {
-    display: none;
-  }
+    .incompatible {
+      color: $red;
+    }
 
-  .checking {
-    color: $yellow;
-  }
-
-  .incompatible {
-    color: $red;
-  }
-
-  .compatible {
-    color: $green;
+    .compatible {
+      color: $green;
+    }
   }
 }

@@ -7,7 +7,7 @@
     Checked
     = l @lockfile.created_at, format: :short
     •
-    = link_to "Show content", "#", data: { toggle: "modal", target: "#lockfile-content-modal" }
+    = link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" }
 
 %section
   = render "compats/table", gemmies: @lockfile.gemmies

@@ -17,9 +17,9 @@
               = email_notification.errors.full_messages.join(", ")
 
         .mb-3.col-md-6
-          = form.label :email, "Enter your email address to receive a notification when all compatibilities are checked."
+          = form.label :email, "Enter your email address to receive a notification when all compatibilities are checked.", class: "form-label"
           = form.email_field :email, class: "form-control", required: true
-          %small.form-text.text-muted
+          %small.form-text
             Will only be used for one notification and deleted afterwards.
 
         = form.hidden_field :notifiable_gid, value: email_notification.notifiable.to_global_id

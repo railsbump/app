@@ -5,6 +5,7 @@ source "https://rubygems.org"
 ruby "3.1.2"
 
 gem "amazing_print",                            "~> 1.4",  require: false
+gem "aws-sdk-s3",                               "~> 1.8"
 gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
 gem "envkey",                                   "~> 1.0"

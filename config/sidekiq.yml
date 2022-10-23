@@ -1,0 +1,11 @@
+:schedule:
+  Maintenance::CheckSidekiq:
+    cron: "*/5 * * * *"
+  Compats::CheckAllUnchecked:
+    cron: "*/10 * * * *"
+  Maintenance::CheckGitBranches:
+    cron: 0 * * * *
+  Maintenance::CheckPendingCompats:
+    cron: 0 * * * *
+  RefreshSitemap:
+    cron: 0 1 * * *

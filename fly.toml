@@ -4,7 +4,7 @@ kill_timeout = 5
 
 [processes]
   web = "bin/rails fly:server"
-  worker = "bundle exec sidekiq"
+  worker = "bundle exec sidekiq -C config/sidekiq.yml"
 
 [build]
   [build.args]

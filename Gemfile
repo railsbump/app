@@ -30,6 +30,7 @@ gem "sidekiq",                                  "~> 6.5"
 gem "sitemap_generator",                        "~> 6.3"
 gem "sprockets-rails",                          "~> 3.4"
 gem "stimulus-rails",                           "~> 1.1"
+gem "tries",                                    "~> 0.4"
 gem "turbo-rails",                              "~> 1.1"
 
 group :development do

@@ -1,4 +1,6 @@
 class RefreshSitemap < Services::Base
-  SitemapGenerator.verbose = false
-  SitemapGenerator::Interpreter.run
+  def call
+    SitemapGenerator.verbose = false
+    SitemapGenerator::Interpreter.run
+  end
 end

@@ -1,6 +1,4 @@
 :schedule:
-  Maintenance::CheckSidekiq:
-    cron: "*/5 * * * *"
   Compats::CheckAllUnchecked:
     cron: "*/10 * * * *"
   Maintenance::CheckGitBranches:

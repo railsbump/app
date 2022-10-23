@@ -17,8 +17,8 @@ class CheckOutWorkerRepo < Services::Base
     ].join(":")
     if worker_repo_checked_out_since = Redis.current.get(cache_key)&.then(&Time.zone.method(:parse))
       if worker_repo_checked_out_since < 10.minutes.ago
-        raise Error, "Worker repo seems to be checked out for a long time already." \
-          rescue Rollbar.error $!, worker_repo_checked_out_since: worker_repo_checked_out_since
+        ReportError.call "Worker repo seems to be checked out for a long time already.",
+          worker_repo_checked_out_since: worker_repo_checked_out_since
       end
       if Sidekiq.server?
         unless @_call_args && @_call_kwargs

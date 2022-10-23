@@ -1,11 +1,14 @@
 app = "railsbump"
 kill_signal = "SIGINT"
 kill_timeout = 5
-processes = []
+
+[processes]
+  web = "bin/rails fly:server"
+  worker = "bundle exec sidekiq"
 
 [build]
   [build.args]
-    BUNDLER_VERSION = "2.3.20"
+    BUNDLER_VERSION = "2.3.24"
     RUBY_VERSION = "3.1.2"
 
 [deploy]
@@ -22,7 +25,7 @@ processes = []
 [[services]]
   http_checks = []
   internal_port = 8080
-  processes = ["app"]
+  processes = ["web"]
   protocol = "tcp"
   script_checks = []
 

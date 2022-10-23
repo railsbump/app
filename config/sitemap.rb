@@ -3,7 +3,7 @@
 require "sitemap_generator"
 require "aws-sdk-s3"
 
-SitemapGenerator::Sitemap.default_host = root_url
+SitemapGenerator::Sitemap.default_host = Rails.application.routes.url_helpers.root_url
 SitemapGenerator::Sitemap.adapter      = SitemapGenerator::AwsSdkAdapter.new(
                                            ENV.fetch("CLOUDFLARE_R2_BUCKET"),
                                            access_key_id:     ENV.fetch("CLOUDFLARE_R2_ACCESS_KEY_ID"),

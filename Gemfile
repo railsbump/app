@@ -10,6 +10,7 @@ gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
 gem "envkey",                                   "~> 1.0"
 gem "gems",                                     "~> 1.2"
+gem "git",                                      "~> 1.12"
 gem "haml",                                     "~> 6.0"
 gem "importmap-rails",                          "~> 1.1"
 gem "kredis",                                   "~> 1.2"

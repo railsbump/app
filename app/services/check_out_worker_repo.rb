@@ -15,7 +15,7 @@ class CheckOutWorkerRepo < Services::Base
       "worker_repo_checked_out_since",
       hostname
     ].join(":")
-    if worker_repo_checked_out_since = Redis.current.get(cache_key)&.then(&Time.zone.method(:parse))
+    if worker_repo_checked_out_since = Kredis.redis.get(cache_key)&.then(&Time.zone.method(:parse))
       if worker_repo_checked_out_since < 10.minutes.ago
         ReportError.call "Worker repo seems to be checked out for a long time already.",
           worker_repo_checked_out_since: worker_repo_checked_out_since
@@ -28,7 +28,7 @@ class CheckOutWorkerRepo < Services::Base
       end
       raise WorkerRepoCheckedOut
     else
-      Redis.current.set(cache_key, Time.current.iso8601)
+      Kredis.redis.set(cache_key, Time.current.iso8601)
     end
 
     dir = TMP.join("railsbump_checker_#{SecureRandom.hex(3)}")
@@ -61,7 +61,7 @@ class CheckOutWorkerRepo < Services::Base
 
     yield git
   ensure
-    Redis.current.del cache_key
+    Kredis.redis.del cache_key
     if git && File.exist?(git.dir.path)
       FileUtils.rm_rf git.dir.path
     end

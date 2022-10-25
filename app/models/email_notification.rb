@@ -17,12 +17,12 @@ class EmailNotification
   end
 
   def self.all
-    Redis.current.keys("#{NAMESPACE}:*").flat_map do |key|
+    Kredis.redis.keys("#{NAMESPACE}:*").flat_map do |key|
       unless notifiable = GlobalID::Locator.locate(key[NAMESPACE_REGEX, 1])
         raise "Could not find notifiable: #{key}"
       end
 
-      Redis.current.smembers(key).map do |email|
+      Kredis.redis.smembers(key).map do |email|
         new notifiable: notifiable, email: email
       end
     end
@@ -35,12 +35,12 @@ class EmailNotification
   def save
     return false unless valid?
 
-    Redis.current.sadd key, email
+    Kredis.redis.sadd key, email
     true
   end
 
   def delete
-    Redis.current.srem key, email
+    Kredis.redis.srem key, email
   end
 
   private

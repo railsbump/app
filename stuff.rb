@@ -197,3 +197,9 @@ GithubNotification.unprocessed.find_each do
     GithubNotifications::Process.call(_1)
   end
 end
+
+["6.0","5.2","5.1","5.0","4.2","4.1","4.0","3.2","2.3","3.0","3.1","6.1","7.0"].each do |version|
+  RailsRelease.create! version: version
+end
+
+[#<Gem::Version "6.0">, #<Gem::Version "5.2">, #<Gem::Version "5.1">, #<Gem::Version "5.0">, #<Gem::Version "4.2">, #<Gem::Version "4.1">, #<Gem::Version "4.0">, #<Gem::Version "3.2">, #<Gem::Version "2.3">, #<Gem::Version "3.0">, #<Gem::Version "3.1">, #<Gem::Version "6.1">, #<Gem::Version "7.0">]

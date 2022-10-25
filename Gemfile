@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem 'active_record_extended',                   "~> 3.0"
 gem "amazing_print",                            "~> 1.4",  require: false
 gem "aws-sdk-s3",                               "~> 1.8"
 gem "bootsnap",                                 "~> 1.13", require: false

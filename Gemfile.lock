@@ -46,6 +46,10 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_record_extended (3.0.0)
+      activerecord (>= 5.2, < 7.1.0)
+      ar_outer_joins (~> 0.2)
+      pg (< 3.0)
     activejob (7.0.4)
       activesupport (= 7.0.4)
       globalid (>= 0.3.6)
@@ -72,6 +76,8 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    ar_outer_joins (0.2.0)
+      activerecord (>= 3.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     aws-eventstream (1.2.0)
@@ -292,6 +298,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  active_record_extended (~> 3.0)
   amazing_print (~> 1.4)
   annotate (~> 3.0)
   aws-sdk-s3 (~> 1.8)

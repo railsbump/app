@@ -20,7 +20,7 @@ gem "pg",                                       "~> 1.4"
 gem "postmark-rails",                           "~> 0.22"
 gem "pry",                                      "~> 0.14", require: false
 gem "puma",                                     "~> 6.0"
-gem "rack-cors",                                "2.0.0.rc1"
+gem "rack-cors",                                "~> 1.0"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
 gem "rails",                                    "~> 7.0.3"
 gem "redis-namespace",                          "~> 1.9"

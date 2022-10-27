@@ -16,7 +16,7 @@ module RailsBump
     config.middleware.insert 0, Rack::Cors do
       allow do
         origins "*"
-        resource "*", headers: :any, methods: %i(get post options)
+        resource "*", headers: :any, methods: %i(get options post patch put)
       end
     end
 

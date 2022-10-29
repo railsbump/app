@@ -46,7 +46,7 @@ RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 
 FROM base
 
-ARG PROD_PACKAGES="git postgresql-client file vim curl gzip libsqlite3-0"
+ARG PROD_PACKAGES="git openssh-server postgresql-client file vim curl gzip libsqlite3-0"
 ENV PROD_PACKAGES=${PROD_PACKAGES}
 
 RUN --mount=type=cache,id=prod-apt-cache,sharing=locked,target=/var/cache/apt \

@@ -1,0 +1,12 @@
+default: &default
+  url: <%= ENV.fetch("REDIS_URL") %>
+  timeout: 1
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

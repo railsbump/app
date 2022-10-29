@@ -1,13 +1,13 @@
-- email_notification = local_assigns[:email_notification] || EmailNotification.new(notifiable: notifiable)
+- email_notification = local_assigns.fetch(:email_notification) { EmailNotification.new(notifiable: notifiable) }
 
 - if email_notification.notifiable.then { _1.compats.none? || _1.compats.pending.any? }
 
-  = turbo_frame_tag :email_notification_form do
-    %section
+  %section
 
-      %h2
-        Notify via email
+    %h2
+      Notify via email
 
+    = turbo_frame_tag :email_notification_form do
       = form_with model: email_notification do |form|
 
         - if email_notification.errors.any?

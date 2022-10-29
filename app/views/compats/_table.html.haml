@@ -1,4 +1,4 @@
-- show_gem_name       = true unless local_assigns.key?(:show_gem_name)
+- show_gem_name       = local_assigns.fetch(:show_gem_name) { true }
 - stimulus_controller = "compat-table"
 - rails_releases      = RailsRelease.order(:version)
 

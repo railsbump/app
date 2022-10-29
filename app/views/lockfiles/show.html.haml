@@ -5,7 +5,9 @@
 
   %p
     Checked
-    = l @lockfile.created_at, format: :short
+    = l @lockfile.created_at, format: :long
+    •
+    = pluralize @lockfile.gemmies.size, "gem"
     •
     = link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" }
 
@@ -18,13 +20,11 @@
   .modal-dialog.modal-dialog-scrollable.modal-lg
     .modal-content
       .modal-header
-        %h5.modal-title
+        %h1.modal-title.fs-5
           Lockfile content
-        %button.close{ type: "button", data: { dismiss: "modal" } }
-          %span
-            &times;
+        %button.btn-close{ type: "button", data: { bs_dismiss: "modal" } }
       .modal-body
         %pre
           = @lockfile.content
       .modal-footer
-        = link_to "Close", "#", class: "btn btn-primary", data: { dismiss: "modal" }
+        = link_to "Close", "#", class: "btn btn-primary", data: { bs_dismiss: "modal" }

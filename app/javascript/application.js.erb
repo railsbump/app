@@ -11,3 +11,11 @@ document.addEventListener("turbo:load", () => {
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
           .forEach(element => new Tooltip(element))
 })
+
+Sentry.onLoad(function() {
+  Sentry.init({
+    release:          "<%= Rails.configuration.revision %>",
+    integrations:     [new BrowserTracing()],
+    tracesSampleRate: parseFloat(<%= ENV.fetch "SENTRY_TRACES_SAMPLE_RATE" %>)
+  })
+})

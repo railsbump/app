@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemmies
   class Process < Services::Base
     def call(gemmy)

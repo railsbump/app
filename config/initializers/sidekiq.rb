@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 redis_options = {
   url:       ENV.fetch("REDIS_URL"),
   namespace: "sidekiq"

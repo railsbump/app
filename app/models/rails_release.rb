@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RailsRelease < ApplicationRecord
   composed_of :version,
     class_name: "Gem::Version",

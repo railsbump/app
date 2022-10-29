@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportError < ::Services::Base
   def call(*error, **params)
     raise *error

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GithubNotifications
   class Process < Services::Base
     def call(github_notification)

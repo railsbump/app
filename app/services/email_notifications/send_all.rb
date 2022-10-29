@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EmailNotifications
   class SendAll < Services::Base
     def call

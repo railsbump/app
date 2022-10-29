@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HasTimestamps
   def self.[](*attrs)
     Module.new do

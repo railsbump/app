@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Compats
   class CheckAllUnchecked < Services::Base
     def call

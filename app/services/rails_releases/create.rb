@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsReleases
   class Create < Services::Base
     def call(version)

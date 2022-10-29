@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Gemmy < ApplicationRecord
   include HasCompats
 

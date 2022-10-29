@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 pin "application", preload: true
 
 pin "autosize",                       to: "https://ga.jspm.io/npm:autosize@5.0.1/dist/autosize.esm.js"

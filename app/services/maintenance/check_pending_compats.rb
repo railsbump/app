@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Maintenance
   class CheckPendingCompats < Services::Base
     def call

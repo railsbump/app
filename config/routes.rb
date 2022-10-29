@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   root "gemmies#index"
 
-  resources :gemmies, path: "gems", only: %i(show new create)
+  resources :gemmies, path: "gems", only: %i(show new create) do
+    collection do
+      get :compat_table
+    end
+  end
   resources :lockfiles, only: %i(new create show)
   resources :email_notifications, only: :create
 

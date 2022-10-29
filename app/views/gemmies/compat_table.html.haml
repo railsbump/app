@@ -1,0 +1,48 @@
+- hide_gem_name       = local_assigns.fetch(:hide_gem_name) { false }
+- stimulus_controller = "compat-table"
+- rails_releases      = RailsRelease.order(:version)
+
+= async_turbo_frame :compat_table, src: [:compat_table, :gemmies, { gemmy_ids: gemmies.pluck(:id).join(","), hide_gem_name: hide_gem_name }.compact_blank], target: "_top" do
+  %table.compat-table.table.table-striped{ data: { controller: stimulus_controller } }
+
+    %thead
+      %tr
+        - unless hide_gem_name
+          %th{ rowspan: 2 }
+            Gem
+        %th{ colspan: RailsRelease.count }
+          = link_to "Show earlier Rails versions", "#", class: "float-end", data: { action: "#{stimulus_controller}#toggleEarlierRailsVersions" }
+          Compatible with...
+      %tr
+        - rails_releases.each do |rails_release|
+          - cell_params = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none" } : {}
+
+          %th.text-nowrap{ **cell_params }
+            Rails
+            = rails_release.version
+
+    %tbody
+      - gemmies.each do |gemmy|
+        - compats = gemmy.compats
+
+        %tr
+          - unless hide_gem_name
+            %td
+              = link_to gemmy.name, gemmy
+          - cache [gemmy, compats] do
+            - rails_releases.each do |rails_release|
+              - rails_release_compats = compats.merge(rails_release.compats)
+              - status                = compats_status(rails_release_compats)
+              - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none #{status}" } : { class: status }
+              - label, text           = compats_label_and_text(rails_release_compats, gemmy, rails_release)
+
+              %td{ **cell_params }
+                %span{ data: { bs_toggle: "tooltip", bs_placement: "bottom", bs_title: text } }
+                  - case status
+                  - when :checking
+                    %i.fas.fa-spinner.fa-pulse
+                  - when :compatible
+                    %i.far.fa-thumbs-up
+                  - else
+                    %i.far.fa-thumbs-down
+                  = label

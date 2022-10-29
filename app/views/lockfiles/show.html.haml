@@ -12,7 +12,7 @@
     = link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" }
 
 %section
-  = render "compats/table", gemmies: @lockfile.gemmies
+  = render template: "gemmies/compat_table", locals: { gemmies: @lockfile.gemmies }
 
 = render "email_notifications/form", notifiable: @lockfile
 

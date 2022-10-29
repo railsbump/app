@@ -37,7 +37,7 @@
 %section
   %h2
     Latest checked gems
-  = render "compats/table", gemmies: @gemmies
+  = render template: "gemmies/compat_table", locals: { gemmies: @gemmies }
 
 %section
   %h2

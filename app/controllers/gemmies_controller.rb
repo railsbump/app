@@ -28,6 +28,13 @@ class GemmiesController < ApplicationController
     @gemmy = Gemmy.find_by!(name: params[:id])
   end
 
+  def compat_table
+    render locals: {
+      gemmies:       Gemmy.find(params[:gemmy_ids].split(",")),
+      hide_gem_name: params.key?(:hide_gem_name)
+    }
+  end
+
   private
 
     def gemmy_params

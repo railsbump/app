@@ -13,6 +13,7 @@ gem "envkey",                                   "~> 1.0"
 gem "gems",                                     "~> 1.2"
 gem "git",                                      "~> 1.12"
 gem "haml",                                     "~> 6.0"
+gem "hiredis",                                  "~> 0.6"
 gem "importmap-rails",                          "~> 1.1"
 gem "kredis",                                   "~> 1.2"
 gem "mini_racer",                               "~> 0.6" # Necessary for autoprefixer-rails, which is required by bootstrap.

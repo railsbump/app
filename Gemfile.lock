@@ -143,6 +143,7 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
+    hiredis (0.6.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -314,6 +315,7 @@ DEPENDENCIES
   gems (~> 1.2)
   git (~> 1.12)
   haml (~> 6.0)
+  hiredis (~> 0.6)
   importmap-rails (~> 1.1)
   kredis (~> 1.2)
   letter_opener (~> 1.2)

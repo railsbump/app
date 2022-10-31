@@ -12,10 +12,11 @@ document.addEventListener("turbo:load", () => {
           .forEach(element => new Tooltip(element))
 })
 
-Sentry.onLoad(function() {
-  Sentry.init({
-    release:          "<%= Rails.configuration.revision %>",
-    integrations:     [new BrowserTracing()],
-    tracesSampleRate: parseFloat(<%= ENV.fetch "SENTRY_TRACES_SAMPLE_RATE" %>)
+if (typeof Sentry !== "undefined")
+  Sentry.onLoad(function() {
+    Sentry.init({
+      release:          "<%= Rails.configuration.revision %>",
+      integrations:     [new BrowserTracing()],
+      tracesSampleRate: parseFloat(<%= ENV.fetch "SENTRY_TRACES_SAMPLE_RATE" %>)
+    })
   })
-})

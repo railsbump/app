@@ -1,16 +1,18 @@
 import autosize from "autosize"
-
 import "@hotwired/turbo-rails"
 import "@popperjs/core"
 import { Tooltip } from "bootstrap"
 import "controllers"
 
-document.addEventListener("turbo:load", () => {
-  autosize(document.querySelectorAll(".autosize"))
+const initialize = event => {
+  autosize(event.target.querySelectorAll(".autosize"))
+  event.target
+       .querySelectorAll('[data-bs-toggle="tooltip"]')
+       .forEach(element => new Tooltip(element))
+}
 
-  document.querySelectorAll('[data-bs-toggle="tooltip"]')
-          .forEach(element => new Tooltip(element))
-})
+document.addEventListener("turbo:load",         initialize)
+document.addEventListener("turbo:frame-render", initialize)
 
 if (typeof Sentry !== "undefined")
   Sentry.onLoad(function() {

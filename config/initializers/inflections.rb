@@ -10,6 +10,6 @@
 #   inflect.uncountable %w( fish sheep )
 # end
 
-ActiveSupport::Inflector.inflections(:en) do |inflect|
+ActiveSupport::Inflector.inflections :en do |inflect|
   inflect.acronym "API"
 end

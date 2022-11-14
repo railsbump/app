@@ -3,7 +3,7 @@
 require "gems"
 
 module Gemmies
-  class UpdateDependenciesAndVersions < Services::Base
+  class UpdateDependenciesAndVersions < Baseline::Service
     def call(gemmy)
       dependencies_and_versions = Gems.dependencies(gemmy.name).each_with_object({}) do |data, hash|
         key = JSON.generate(data.fetch(:dependencies).sort.to_h)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RailsReleases
-  class Create < Services::Base
+  class Create < Baseline::Service
     def call(version)
       parsed_version = Gem::Version.new(version)
 

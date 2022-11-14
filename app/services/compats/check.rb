@@ -3,7 +3,7 @@
 require "fileutils"
 
 module Compats
-  class Check < Services::Base
+  class Check < Baseline::Service
     RAILS_GEMS = %w(
       actioncable
       actionmailbox

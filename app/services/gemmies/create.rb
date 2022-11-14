@@ -3,7 +3,7 @@
 require "gems"
 
 module Gemmies
-  class Create < Services::Base
+  class Create < Baseline::Service
     class AlreadyExists < Error
       attr_reader :gemmy
 

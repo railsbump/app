@@ -3,7 +3,7 @@
 require "gems"
 
 module Gemmies
-  class UpdateCompats < Services::Base
+  class UpdateCompats < Baseline::Service
     def call(gemmy)
       check_uniqueness gemmy.id, on_error: :return
 

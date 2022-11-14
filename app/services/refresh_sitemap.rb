@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RefreshSitemap < Services::Base
+class RefreshSitemap < Baseline::Service
   def call
     SitemapGenerator.verbose = false
     SitemapGenerator::Interpreter.run

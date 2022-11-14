@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Maintenance
-  class CheckPendingCompats < Services::Base
+  class CheckPendingCompats < Baseline::Service
     def call
       check_uniqueness on_error: :return
 

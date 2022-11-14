@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module EmailNotifications
-  class SendAll < Services::Base
+  class SendAll < Baseline::Service
     def call
       check_uniqueness on_error: :return
 

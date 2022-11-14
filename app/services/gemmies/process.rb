@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Gemmies
-  class Process < Services::Base
+  class Process < Baseline::Service
     def call(gemmy)
       UpdateDependenciesAndVersions.call(gemmy)
       UpdateCompats.call(gemmy)

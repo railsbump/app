@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Compats
-  class CheckAllUnchecked < Services::Base
+  class CheckAllUnchecked < Baseline::Service
     def call
       check_uniqueness on_error: :return
 

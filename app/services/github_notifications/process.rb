@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module GithubNotifications
-  class Process < Services::Base
+  class Process < Baseline::Service
     def call(github_notification)
       if github_notification.processed?
         raise Error, "GitHub Notification #{github_notification.id} has already been processed."

@@ -3,7 +3,7 @@
 require "gems"
 
 module Gemmies
-  class AddWebhook < Services::Base
+  class AddWebhook < Baseline::Service
     IGNORED_ERROR_MESSAGE = /has already been registered/
 
     def call(gemmy)

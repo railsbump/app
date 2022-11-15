@@ -1,3 +1,4 @@
+:concurrency: 2
 :schedule:
   Compats::CheckAllUnchecked:
     cron: "*/10 * * * *"

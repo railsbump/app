@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby File.read(".ruby-version").strip
 
-gem 'active_record_extended',                   "~> 3.0"
+gem "active_record_extended",                   "~> 3.0"
 gem "amazing_print",                            "~> 1.4",  require: false
 gem "aws-sdk-s3",                               "~> 1.8"
 gem "baseline",                                 github: "manuelmeurer/baseline"

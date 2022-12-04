@@ -11,6 +11,7 @@ module RailsBump
     config.load_defaults 7.0
     config.revision = `git rev-parse --short HEAD 2> /dev/null`.chomp
     config.action_mailer.delivery_method = :postmark
+    config.active_record.query_log_tags_enabled = true
 
     config.middleware.insert 0, Rack::Deflater
     config.middleware.insert 0, Rack::Cors do

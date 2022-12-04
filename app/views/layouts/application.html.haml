@@ -24,7 +24,7 @@
     = javascript_importmap_tags
 
     - if Rails.env.production?
-      = javascript_include_tag "https://railsbump.org/qwerty/js/script.js", defer: true, data: { domain: "railsbump.org", api: "/qwerty/api/event" }
+      = javascript_include_tag "/qwerty/js/script.js", defer: true, data: { domain: "railsbump.org", api: "/qwerty/api/event" }
 
   %body{ class: page_classes }
     = render "shared/header"

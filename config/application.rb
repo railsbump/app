@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module RailsBump
   class Application < Rails::Application
     config.load_defaults 7.0
-    config.revision = `git rev-parse --short HEAD 2> /dev/null`.chomp
+    config.revision = ENV["REVISION"].presence ||
+                      `git rev-parse HEAD 2> /dev/null`.chomp.presence or
+                      raise "Could not determine revision."
+
     config.action_mailer.delivery_method = :postmark
     config.active_record.query_log_tags_enabled = true
 

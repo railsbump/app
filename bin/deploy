@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ -n $RAILS_ENV && $RAILS_ENV != "development" ]]; then
+  echo "Refusing to run in $RAILS_ENV environment."
+  exit 1
+fi
+
+stash_message="deploy-$(date +%s)"
+stash_output="$(git stash save --include-untracked $stash_message)"
+stashed="$(echo $stash_output | grep $stash_message)"
+
+bin/rails runner "Rails.application.eager_load!" &&
+  git push &&
+  fly deploy --build-arg REVISION=$(git rev-parse HEAD) || exit 1
+
+if [[ "$stashed" ]]; then
+  git stash pop
+fi

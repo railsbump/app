@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.1.2"
+ruby File.read(".ruby-version").strip
 
 gem 'active_record_extended',                   "~> 3.0"
 gem "amazing_print",                            "~> 1.4",  require: false

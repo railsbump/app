@@ -42,6 +42,7 @@ RUN gem update --system --no-document && \
     gem install -N bundler -v ${BUNDLER_VERSION}
 
 COPY Gemfile* ./
+COPY .ruby-version ./
 RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 
 FROM base

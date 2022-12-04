@@ -1,9 +1,8 @@
 GIT
   remote: https://github.com/manuelmeurer/baseline.git
-  revision: 0f83864703666fd091b44571c665c2a2b90bdecc
+  revision: 80bf1934b52ee7ca1bf8caaf2f85dd17020fcc44
   specs:
     baseline (1.0)
-      rails (>= 6.0)
 
 GEM
   remote: https://rubygems.org/

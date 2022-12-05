@@ -1,5 +1,5 @@
 default: &default
-  url: <%= ENV.fetch("REDIS_URL") %>
+  url: <%= Baseline::RedisURL.fetch %>
   timeout: 1
 
 development:

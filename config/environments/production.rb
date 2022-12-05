@@ -60,7 +60,7 @@ Rails.application.configure do
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
     driver:             :hiredis,
-    url:                ENV.fetch("REDIS_URL"),
+    url:                Baseline::RedisURL.fetch,
     namespace:          "cache",
     expires_in:         1.month,
     reconnect_attempts: 1,

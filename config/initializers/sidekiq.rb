@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 redis_options = {
-  url:       ENV.fetch("REDIS_URL"),
+  url:       Baseline::RedisURL.fetch,
   namespace: "sidekiq"
 }
 

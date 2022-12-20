@@ -17,8 +17,7 @@ document.addEventListener("turbo:frame-render", initialize)
 // if (typeof Sentry !== "undefined")
 //   Sentry.onLoad(function() {
 //     Sentry.init({
-//       release:          "<%= Rails.configuration.revision %>",
-//       integrations:     [new BrowserTracing()],
-//       tracesSampleRate: parseFloat(<%= ENV.fetch "SENTRY_TRACES_SAMPLE_RATE" %>)
+//       release:      "<%= Rails.configuration.revision %>",
+//       integrations: [new BrowserTracing()]
 //     })
 //   })

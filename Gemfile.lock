@@ -169,6 +169,7 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.1)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
     minitest (5.16.3)
@@ -182,7 +183,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.9-arm64-darwin)
+    nokogiri (1.13.9)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pg (1.4.5)
     popper_js (2.11.6)
@@ -294,7 +296,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
-  arm64-darwin-21
+  arm64-darwin-22
 
 DEPENDENCIES
   active_record_extended (~> 3.0)
@@ -337,7 +339,7 @@ DEPENDENCIES
   turbo-rails (~> 1.1)
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.3.24

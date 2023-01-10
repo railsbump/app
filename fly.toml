@@ -8,15 +8,14 @@ kill_timeout = 5
 
 [build]
   [build.args]
-    BUNDLER_VERSION = "2.3.24"
-    RUBY_VERSION = "3.1.2"
+    BUILD_COMMAND = "bin/rails fly:build"
+    SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
   release_command = "bin/rails fly:release"
 
 [env]
   PORT = "8080"
-  SERVER_COMMAND = "bin/rails fly:server"
 
 [experimental]
   allowed_public_ports = []

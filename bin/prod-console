@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -x
+
+if [[ -n $RAILS_ENV && $RAILS_ENV != "development" ]]; then
+  echo "Refusing to run in $RAILS_ENV environment."
+  exit 1
+fi
+
+fly ssh console -C "app/bin/rails c"

@@ -3,7 +3,7 @@
 module Maintenance
   class CheckGitBranches < Baseline::Service
     def call
-      check_uniqueness on_error: :return
+      check_uniqueness
 
       CheckOutWorkerRepo.call do |git|
         branches  = git.branches.remote.map(&:name).grep(/\A\d+\z/)

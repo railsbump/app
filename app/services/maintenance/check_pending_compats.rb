@@ -3,7 +3,7 @@
 module Maintenance
   class CheckPendingCompats < Baseline::Service
     def call
-      check_uniqueness on_error: :return
+      check_uniqueness
 
       pending_compats = Compat.pending
                               .checked_before(2.hours.ago)

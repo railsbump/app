@@ -3,7 +3,7 @@
 module Compats
   class CheckAllUnchecked < Baseline::Service
     def call
-      check_uniqueness on_error: :return
+      check_uniqueness
 
       Compat.unchecked.find_each do |compat|
         Compats::Check.call compat

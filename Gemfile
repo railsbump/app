@@ -20,7 +20,7 @@ gem "kredis",                                   "~> 1.2"
 gem "mini_racer",                               "~> 0.6" # Necessary for autoprefixer-rails, which is required by bootstrap.
 gem "pg",                                       "~> 1.4"
 gem "postmark-rails",                           "~> 0.22"
-gem "pry",                                      "~> 0.14", require: false
+gem 'pry-rails',                                "~> 0.3"
 gem "puma",                                     "~> 6.0"
 gem "rack-cors",                                "~> 1.0"
 gem "rails_bootstrap_navbar",                   "~> 3.0"

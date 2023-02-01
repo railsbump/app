@@ -193,9 +193,11 @@ GEM
     postmark-rails (0.22.1)
       actionmailer (>= 3.0.0)
       postmark (>= 1.21.3, < 2.0)
-    pry (0.14.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (5.0.0)
     puma (6.0.0)
       nio4r (~> 2.0)
@@ -320,7 +322,7 @@ DEPENDENCIES
   mini_racer (~> 0.6)
   pg (~> 1.4)
   postmark-rails (~> 0.22)
-  pry (~> 0.14)
+  pry-rails (~> 0.3)
   puma (~> 6.0)
   rack-cors (~> 1.0)
   rails (~> 7.0.3)
@@ -342,4 +344,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.3.24
+   2.4.6

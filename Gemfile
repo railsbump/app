@@ -10,7 +10,7 @@ gem "aws-sdk-s3",                               "~> 1.8"
 gem "baseline",                                 github: "manuelmeurer/baseline"
 gem "bootsnap",                                 "~> 1.13", require: false
 gem "bootstrap",                                "~> 5.2"
-gem "envkey",                                   "~> 1.0"
+gem "envkey",                                   "~> 2.0"
 gem "gems",                                     "~> 1.2"
 gem "git",                                      "~> 1.12"
 gem "haml",                                     "~> 6.0"
@@ -43,8 +43,4 @@ group :development do
   gem "better_errors",                          "~> 2.8"
   gem "binding_of_caller",                      "~> 1.0"
   gem "database_consistency",                   "~> 1.0", require: false
-end
-
-group :development, :test do
-  gem "dotenv-rails",                           "~> 2.8", require: "dotenv/rails-now"
 end

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   root "gemmies#index"
 
+  get :health, controller: "application"
+
   resources :gemmies, path: "gems", only: %i(show new create) do
     collection do
       get :compat_table

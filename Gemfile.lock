@@ -122,10 +122,8 @@ GEM
       activerecord (>= 3.2)
     date (3.3.3)
     debug_inspector (1.1.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
+    dockerfile-rails (1.2.5)
+      rails
     envkey (2.3.0)
     erubi (1.12.0)
     et-orbi (1.2.7)
@@ -158,6 +156,7 @@ GEM
       activesupport (>= 6.0.0)
       redis (>= 4.2, < 6)
     libv8-node (16.10.0.0-arm64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     loofah (2.21.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -184,6 +183,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.14.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.3)
     popper_js (2.11.7)
@@ -299,6 +300,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   active_record_extended (~> 3.0)
@@ -311,7 +313,7 @@ DEPENDENCIES
   bootsnap (~> 1.13)
   bootstrap (~> 5.2)
   database_consistency (~> 1.0)
-  dotenv-rails (~> 2.8)
+  dockerfile-rails (~> 1.2)
   envkey (~> 2.0)
   gems (~> 1.2)
   git (~> 1.12)
@@ -341,7 +343,7 @@ DEPENDENCIES
   turbo-rails (~> 1.1)
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.6
+   2.4.13

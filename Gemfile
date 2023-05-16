@@ -43,4 +43,5 @@ group :development do
   gem "better_errors",                          "~> 2.8"
   gem "binding_of_caller",                      "~> 1.0"
   gem "database_consistency",                   "~> 1.0", require: false
+  gem "dockerfile-rails",                       "~> 1.2"
 end

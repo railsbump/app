@@ -1,0 +1,54 @@
+name: Deploy
+concurrency: deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - deploy
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-20.04
+    env:
+      ENVKEY: ${{ secrets.ENVKEY }}
+      RAILS_ENV: production
+
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: railsbump_production
+          POSTGRES_HOST: localhost
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: railsbump
+
+      redis:
+        image: redis
+        options: --entrypoint redis-server
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Load env vars
+        run: bin/load-envkey
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      # - name: Compile and sync assets
+      #   run: bin/sync-assets
+
+      - name: Set up Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Trigger Fly deploy
+        run: flyctl deploy --remote-only --build-arg REVISION=${{ github.sha }}

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -x
+
+BUCKET="https://envkey-releases.s3.amazonaws.com"
+VERSION=$(curl $BUCKET/latest/envkeysource-version.txt)
+
+curl -sSL $BUCKET/envkeysource/release_artifacts/$VERSION/envkey-source_${VERSION}_linux_amd64.tar.gz | tar -xz
+
+# If $GITHUB_ENV is set, we're running in a GitHub Action.
+# https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+if [[ -z "${GITHUB_ENV}" ]]; then
+  eval "$(./envkey-source)"
+else
+  ./envkey-source --dot-env | tr -d "'" >> $GITHUB_ENV
+fi

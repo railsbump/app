@@ -1,4 +1,4 @@
-# syntax = docker/dockerfile:1
+# syntax=docker/dockerfile:1.4
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.2

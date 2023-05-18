@@ -11,7 +11,10 @@ stashed="$(echo $stash_output | grep $stash_message)"
 
 bin/rails runner "Rails.application.eager_load!" &&
   git push &&
-  fly deploy --build-arg REVISION=$(git rev-parse HEAD)
+  git switch deploy &&
+  git reset --hard main &&
+  git push --force &&
+  git checkout main || exit 1
 
 if [[ "$stashed" ]]; then
   git stash pop

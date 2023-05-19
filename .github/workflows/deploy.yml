@@ -36,16 +36,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Load env vars
-        run: $(bundle show baseline)/bin/load-envkey
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
 
-      # - name: Compile and sync assets
-      #   run: bin/sync-assets
+      - name: Load env vars
+        run: $(bundle show baseline)/bin/load-envkey
+
+      - name: Compile and sync assets
+        run: $(bundle show baseline)/bin/sync-assets
 
       - name: Set up Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master

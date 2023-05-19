@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Load env vars
-        run: bin/load-envkey
+        run: $(bundle show baseline)/bin/load-envkey
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1

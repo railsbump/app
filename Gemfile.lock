@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manuelmeurer/baseline.git
-  revision: b059a44b36c26a3bb9ac29aafe95e989cf16b7b5
+  revision: d6f556fadcf817644841a41c942bbafff700cccf
   specs:
     baseline (1.0)
 

@@ -27,18 +27,7 @@ module RailsBump
     end
 
     config.to_prepare do
-      if asset_host = Rails.application.config.asset_host
-        {
-          "packs/manifest.json"  => nil,
-          "assets/manifest.json" => "assets/.sprockets-manifest-#{Digest::MD5.hexdigest Rails.application.config.revision}.json"
-        }.each do |remote_path, local_path|
-          if content = HTTP.get("#{asset_host}/#{remote_path}").then { _1.body.to_s if _1.status.success? }
-            pathname = Rails.root.join("public", local_path || remote_path)
-            FileUtils.mkdir_p pathname.dirname
-            File.write pathname, content
-          end
-        end
-      end
+      Baseline.fetch_manifests_from_asset_host
     end
 
     Rails.application.routes.default_url_options =

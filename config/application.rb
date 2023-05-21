@@ -27,7 +27,6 @@ module RailsBump
     end
 
     config.to_prepare do
-      Rails.logger.info "to_prepare! asset_host: #{Rails.application.config.asset_host}"
       if asset_host = Rails.application.config.asset_host
         {
           "packs/manifest.json"  => nil,

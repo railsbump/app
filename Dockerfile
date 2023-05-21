@@ -6,6 +6,9 @@ FROM ruby:$RUBY_VERSION-slim as base
 
 LABEL fly_launch_runtime="rails"
 
+ARG REVISION
+ENV REVISION=$REVISION
+
 # Rails app lives here
 WORKDIR /rails
 

@@ -33,3 +33,13 @@ module RailsBump
       }
   end
 end
+
+if asset_host = Rails.application.config.asset_host
+  {
+    "packs/manifest.json"  => nil,
+    "assets/manifest.json" => "assets/.sprockets-manifest-#{Digest::MD5.hexdigest Rails.application.config.revision}.json"
+  }.each do |remote_path, local_path|
+    content = HTTP.get("#{asset_host}/#{remote_path}").body
+    File.write "public/#{local_path || remote_path}", content
+  end
+end

@@ -33,11 +33,9 @@ class CheckOutWorkerRepo < Baseline::Service
       Kredis.redis.set(cache_key, Time.current.iso8601)
     end
 
-    dir = TMP.join("railsbump_checker_#{SecureRandom.hex(3)}")
-
-    if dir.exist?
-      raise Error, "Dir #{dir} exists already."
-    end
+    begin
+      dir = TMP.join("railsbump_checker_#{SecureRandom.hex(3)}")
+    end while dir.exist?
 
     ssh_key = ENV["SSH_KEY"]&.dup
     if ssh_key.present?

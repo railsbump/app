@@ -27,7 +27,7 @@ module RailsBump
     end
 
     config.to_prepare do
-      Baseline.fetch_manifests_from_asset_host
+      Baseline.fetch_asset_host_manifests
     end
 
     Rails.application.routes.default_url_options =

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/manuelmeurer/baseline.git
-  revision: d6f556fadcf817644841a41c942bbafff700cccf
+  revision: e122d66948463be0152ff7294b3cbf47637a3f37
   specs:
     baseline (1.0)
 
@@ -366,4 +366,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.13
+   2.4.18

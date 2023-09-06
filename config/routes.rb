@@ -16,7 +16,9 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
-  get ":sitemap", sitemap: /sitemap[A-Za-z\d.]*/, to: redirect { "https://#{ENV.fetch "CLOUDFLARE_R2_BUCKET_URL"}#{_2.path}" }
+  if asset_host = ENV["ASSET_HOST"]
+    get ":sitemap", sitemap: /sitemap[A-Za-z\d.]*/, to: redirect { "#{asset_host}#{_2.path}" }
+  end
 
   root "gemmies#index"
 

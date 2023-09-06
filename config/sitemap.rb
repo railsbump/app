@@ -5,7 +5,7 @@ require "aws-sdk-s3"
 
 SitemapGenerator::Sitemap.default_host = Rails.application.routes.url_helpers.root_url
 SitemapGenerator::Sitemap.adapter      = SitemapGenerator::AwsSdkAdapter.new(
-                                           ENV.fetch("CLOUDFLARE_R2_BUCKET"),
+                                           ENV.fetch("CLOUDFLARE_R2_BUCKET_ASSETS"),
                                            access_key_id:     ENV.fetch("CLOUDFLARE_R2_ACCESS_KEY_ID"),
                                            secret_access_key: ENV.fetch("CLOUDFLARE_R2_SECRET_ACCESS_KEY"),
                                            endpoint:          "https://#{ENV.fetch "CLOUDFLARE_ACCOUNT_ID"}.r2.cloudflarestorage.com",

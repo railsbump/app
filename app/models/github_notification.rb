@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GithubNotification < ApplicationRecord
   include HasTimestamps[:processed_at]
 
@@ -30,13 +28,13 @@ end
 #
 # Table name: github_notifications
 #
-#  id           :bigint           not null, primary key
+#  id           :integer          not null, primary key
 #  action       :string           not null
 #  branch       :string           not null
 #  conclusion   :string
-#  data         :jsonb
+#  data         :json
 #  processed_at :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  compat_id    :bigint
+#  compat_id    :integer
 #

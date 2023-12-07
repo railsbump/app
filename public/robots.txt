@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://railsbump.org/sitemap.xml.gz

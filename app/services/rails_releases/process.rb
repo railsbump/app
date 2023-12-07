@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module RailsReleases
   class Process < Baseline::Service
     def call(rails_release)

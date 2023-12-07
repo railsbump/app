@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Gemmy < ApplicationRecord
   include HasCompats
 
@@ -34,10 +32,10 @@ end
 #
 # Table name: gemmies
 #
-#  id                        :bigint           not null, primary key
-#  compat_ids                :text             default([]), not null, is an Array
-#  dependencies_and_versions :jsonb
-#  name                      :string
+#  id                        :integer          not null, primary key
+#  compat_ids                :json             not null
+#  dependencies_and_versions :json
+#  name                      :text
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #

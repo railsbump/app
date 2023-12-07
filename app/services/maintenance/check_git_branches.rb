@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Maintenance
   class CheckGitBranches < Baseline::Service
     def call

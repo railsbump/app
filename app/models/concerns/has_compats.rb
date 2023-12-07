@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module HasCompats
   def compats
     gemmies = is_a?(Gemmy) ? self.class.where(id: self) : self.gemmies

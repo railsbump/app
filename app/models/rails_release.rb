@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RailsRelease < ApplicationRecord
   composed_of :version,
     class_name: "Gem::Version",
@@ -52,8 +50,8 @@ end
 #
 # Table name: rails_releases
 #
-#  id         :bigint           not null, primary key
-#  version    :string
+#  id         :integer          not null, primary key
+#  version    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

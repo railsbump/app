@@ -10,45 +10,9 @@ on:
 jobs:
 
   deploy:
-    runs-on: ubuntu-20.04
-    env:
-      ENVKEY: ${{ secrets.ENVKEY }}
-      RAILS_ENV: production
-
-    services:
-      postgres:
-        image: postgres:14
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_DB: railsbump_production
-          POSTGRES_HOST: localhost
-          POSTGRES_PASSWORD: password
-          POSTGRES_USER: railsbump
-
-      redis:
-        image: redis
-        options: --entrypoint redis-server
-        ports:
-          - 6379:6379
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: hatchboxio/github-hatchbox-deploy-action@v2
         with:
-          bundler-cache: true
-
-      - name: Load env vars
-        run: $(bundle show baseline)/bin/load-envkey
-
-      - name: Compile and sync assets
-        run: $(bundle show baseline)/bin/sync-assets
-
-      - name: Set up Flyctl
-        uses: superfly/flyctl-actions/setup-flyctl@master
-
-      - name: Trigger Fly deploy
-        run: flyctl deploy --remote-only --build-arg REVISION=${{ github.sha }}
+          deploy_key: ${{ secrets.HATCHBOX_DEPLOY_KEY }}

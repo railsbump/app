@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "sidekiq/web"
 require "sidekiq-scheduler/web"
 
@@ -16,13 +14,9 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
-  if asset_host = ENV["ASSET_HOST"]
-    get ":sitemap", sitemap: /sitemap[A-Za-z\d.]*/, to: redirect { "#{asset_host}#{_2.path}" }
-  end
-
   root "gemmies#index"
 
-  get :health, controller: "application"
+  get "up" => "rails/health#show", as: :rails_health_check
 
   resources :gemmies, path: "gems", only: %i(show new create) do
     collection do

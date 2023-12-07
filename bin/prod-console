@@ -7,4 +7,4 @@ if [[ -n $RAILS_ENV && $RAILS_ENV != "development" ]]; then
   exit 1
 fi
 
-fly ssh console -C "app/bin/rails c"
+ssh -t many-apps "tmux new -A -s console 'cd ~/railsbump/current && bin/rails c'"

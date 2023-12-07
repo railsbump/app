@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Compat < ApplicationRecord
   include HasTimestamps[:checked_at]
 
@@ -39,7 +37,7 @@ class Compat < ApplicationRecord
     Lockfile.with_gemmies(gemmies)
   end
 
-  # Sort dependencies, by default JSONB does not preserve key order.
+  # Sort dependencies, JSON does not preserve key order.
   def dependencies
     super.sort.to_h
   end
@@ -54,13 +52,13 @@ end
 #
 # Table name: compats
 #
-#  id                   :bigint           not null, primary key
+#  id                   :integer          not null, primary key
 #  checked_at           :datetime
-#  dependencies         :jsonb
-#  dependencies_key     :uuid
+#  dependencies         :json
+#  dependencies_key     :text
 #  status               :integer
-#  status_determined_by :string
+#  status_determined_by :text
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  rails_release_id     :bigint
+#  rails_release_id     :integer
 #

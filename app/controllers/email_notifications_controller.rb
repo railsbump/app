@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EmailNotificationsController < ApplicationController
   def create
     email_notification = EmailNotification.new(email_notification_params)

@@ -13,11 +13,3 @@ const initialize = event => {
 
 document.addEventListener("turbo:load",         initialize)
 document.addEventListener("turbo:frame-render", initialize)
-
-// if (typeof Sentry !== "undefined")
-//   Sentry.onLoad(function() {
-//     Sentry.init({
-//       release:      "<%= Rails.configuration.revision %>",
-//       integrations: [new BrowserTracing()]
-//     })
-//   })

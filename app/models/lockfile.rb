@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Lockfile < ApplicationRecord
   include HasCompats
 
@@ -19,9 +17,9 @@ end
 #
 # Table name: lockfiles
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  content    :text
-#  slug       :string
+#  slug       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

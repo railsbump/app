@@ -1,11 +1,5 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
-  layout -> { false if request.format.js? }
+  include Baseline::ControllerExtensions
 
-  def health
-    Gemmy.count
-    expires_now
-    head :ok
-  end
+  layout -> { false if request.format.js? }
 end

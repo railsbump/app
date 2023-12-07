@@ -201,5 +201,57 @@ end
 ["6.0","5.2","5.1","5.0","4.2","4.1","4.0","3.2","2.3","3.0","3.1","6.1","7.0"].each do |version|
   RailsRelease.create! version: version
 end
+# [#<Gem::Version "6.0">, #<Gem::Version "5.2">, #<Gem::Version "5.1">, #<Gem::Version "5.0">, #<Gem::Version "4.2">, #<Gem::Version "4.1">, #<Gem::Version "4.0">, #<Gem::Version "3.2">, #<Gem::Version "2.3">, #<Gem::Version "3.0">, #<Gem::Version "3.1">, #<Gem::Version "6.1">, #<Gem::Version "7.0">]
 
-[#<Gem::Version "6.0">, #<Gem::Version "5.2">, #<Gem::Version "5.1">, #<Gem::Version "5.0">, #<Gem::Version "4.2">, #<Gem::Version "4.1">, #<Gem::Version "4.0">, #<Gem::Version "3.2">, #<Gem::Version "2.3">, #<Gem::Version "3.0">, #<Gem::Version "3.1">, #<Gem::Version "6.1">, #<Gem::Version "7.0">]
+# convert db from postgres to sqlite
+
+# /Users/manuel/Library/Python/3.9/bin/db-to-sqlite "postgresql://railsbump:MUDv4XUUKrpsFGVytPHoduzNZ7ojqY@railsbump.cbqgwmohh80g.eu-central-1.rds.amazonaws.com/railsbump_production" storage/development.sqlite3 --all --progress --skip github_notifications
+
+ActiveRecord::Migration.create_table :github_notifications do |t|
+  t.string :conclusion
+  t.string :action, :branch, null: false
+  t.json :data
+  t.datetime :processed_at
+  t.references :compat
+  t.timestamps
+end
+
+# fix db columns
+
+Rails.application.eager_load!
+ApplicationRecord.descendants.each do |klass|
+  puts klass
+  %w(created_at updated_at).each do |column|
+    puts column
+    next unless klass.columns_hash[column]&.type == :text
+    ActiveRecord::Migration.add_column klass.table_name, "#{column}_new", :datetime
+    klass.where("#{column}_new": nil).update_all "#{column}_new = DATETIME(#{column})"
+    ActiveRecord::Migration.remove_column klass.table_name, column
+    ActiveRecord::Migration.rename_column klass.table_name, "#{column}_new", column
+    ActiveRecord::Migration.change_column_null klass.table_name, column, false
+  end
+end
+
+ActiveRecord::Migration.add_column :compats, :checked_at_new, :datetime
+Compat.where(checked_at_new: nil).update_all "checked_at_new = DATETIME(checked_at)"
+ActiveRecord::Migration.remove_column :compats, :checked_at
+ActiveRecord::Migration.rename_column :compats, :checked_at_new, :checked_at
+
+ActiveRecord::Migration.add_column :compats, :dependencies_new, :json
+Compat.where(dependencies_new: nil).update_all "dependencies_new = JSON(dependencies)"
+ActiveRecord::Migration.remove_column :compats, :dependencies
+ActiveRecord::Migration.rename_column :compats, :dependencies_new, :dependencies
+
+ActiveRecord::Migration.add_column :gemmies, :compat_ids_new, :json
+Gemmy.where(compat_ids_new: nil).update_all "compat_ids_new = JSON(compat_ids)"
+ActiveRecord::Migration.remove_column :gemmies, :compat_ids
+ActiveRecord::Migration.rename_column :gemmies, :compat_ids_new, :compat_ids
+ActiveRecord::Migration.change_table :gemmies do |t|
+  t.check_constraint "JSON_TYPE(compat_ids) = 'array'", name: "gemmy_compat_ids_is_array"
+end
+ActiveRecord::Migration.change_column_null :gemmies, :compat_ids, false
+
+ActiveRecord::Migration.add_column :gemmies, :dependencies_and_versions_new, :json
+Gemmy.where(dependencies_and_versions_new: nil).update_all "dependencies_and_versions_new = JSON(dependencies_and_versions)"
+ActiveRecord::Migration.remove_column :gemmies, :dependencies_and_versions
+ActiveRecord::Migration.rename_column :gemmies, :dependencies_and_versions_new, :dependencies_and_versions

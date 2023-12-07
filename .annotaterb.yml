@@ -1,0 +1,3 @@
+position: after
+show_foreign_keys: false
+show_indexes: false

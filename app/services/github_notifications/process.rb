@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module GithubNotifications
   class Process < Baseline::Service
     def call(github_notification)

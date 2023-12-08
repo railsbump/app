@@ -5,7 +5,7 @@ min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
 
 if ENV["RAILS_ENV"] == "production"
-  bind "tcp://127.0.0.1:#{PORT}"
+  bind "tcp://127.0.0.1:#{ENV.fetch "PORT"}"
 
   require "concurrent-ruby"
   worker_count = Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.physical_processor_count })

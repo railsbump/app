@@ -2,12 +2,13 @@ source "https://rubygems.org"
 
 ruby File.read(".ruby-version").strip
 
+gem "envkey",                                   "~> 2.0"
+
 gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "manuelmeurer/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
 gem "cssbundling-rails",                        "~> 1.3"
-gem "envkey",                                   "~> 2.0"
 gem "gems",                                     "~> 1.2"
 gem "git",                                      "~> 1.12"
 gem "haml",                                     "~> 6.0"

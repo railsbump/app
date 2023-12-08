@@ -38,14 +38,15 @@ on_worker_boot do
     config.redis = {
       url: Baseline::RedisURL.fetch
     }
-    config.scheduler = {
-      schedule: {
-        "Compats::CheckAllUnchecked"       => "*/10 * * * *",
-        "Maintenance::CheckGitBranches"    => "0    * * * *",
-        "Maintenance::CheckPendingCompats" => "0    * * * *",
-        "RefreshSitemap"                   => "0    1 * * *"
-      }.transform_values { { cron: _1 } }
-    }
+    config.merge! \
+      scheduler: {
+        schedule: {
+          "Compats::CheckAllUnchecked"       => "*/10 * * * *",
+          "Maintenance::CheckGitBranches"    => "0    * * * *",
+          "Maintenance::CheckPendingCompats" => "0    * * * *",
+          "RefreshSitemap"                   => "0    1 * * *"
+        }.transform_values { { cron: _1 } }
+      }
   end.tap(&:run)
 end
 

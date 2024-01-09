@@ -1,5 +1,3 @@
-require "securerandom"
-
 class CheckOutWorkerRepo < Baseline::Service
   REPO = "git@github.com:railsbump/checker.git"
   TMP  = Rails.root.join("tmp")

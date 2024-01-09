@@ -6,7 +6,8 @@ gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "manuelmeurer/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
-gem "cssbundling-rails",                        "~> 1.3"
+gem "bootstrap",                                github: "manuelmeurer/bootstrap-rubygem", branch: "propshaft"
+gem "dartsass-rails",                           "~> 0.5"
 gem "envkey",                                   "~> 2.0"
 gem "gems",                                     "~> 1.2"
 gem "git",                                      "~> 1.12"

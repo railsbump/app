@@ -48,8 +48,10 @@ class CheckOutWorkerRepo < Baseline::Service
       ENV["GIT_SSH_COMMAND"] = "ssh -o StrictHostKeyChecking=no -i #{ssh_key_file}"
     end
 
-    git = 5.tries on: Git::GitExecuteError, delay: 1 do
+    git = Octopoller.poll retries: 5 do
       Git.clone REPO, dir
+    rescue Git::GitExecuteError
+      :re_poll
     end
 
     git.config "user.name",  "RailsBump"

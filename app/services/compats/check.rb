@@ -127,8 +127,10 @@ module Compats
 
           git.add [action_file, gemfile]
           git.commit @compat.to_s
-          5.tries on: Git::GitExecuteError, delay: 1 do
+          Octopoller.poll retries: 5 do
             git.push "origin", branch_name
+          rescue Git::GitExecuteError
+            :re_poll
           end
         end
       end

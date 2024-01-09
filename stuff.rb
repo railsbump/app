@@ -250,6 +250,7 @@ ActiveRecord::Migration.change_table :gemmies do |t|
   t.check_constraint "JSON_TYPE(compat_ids) = 'array'", name: "gemmy_compat_ids_is_array"
 end
 ActiveRecord::Migration.change_column_null :gemmies, :compat_ids, false
+ActiveRecord::Migration.change_column_default :gemmies, :compat_ids, []
 
 ActiveRecord::Migration.add_column :gemmies, :dependencies_and_versions_new, :json
 Gemmy.where(dependencies_and_versions_new: nil).update_all "dependencies_and_versions_new = JSON(dependencies_and_versions)"

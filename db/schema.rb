@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2020_02_01_222813) do
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "compat_ids", null: false
+    t.json "compat_ids", default: [], null: false
     t.json "dependencies_and_versions"
     t.check_constraint "JSON_TYPE(compat_ids) = 'array'", name: "gemmy_compat_ids_is_array"
   end

@@ -256,6 +256,7 @@ ActiveRecord::Migration.add_column :gemmies, :dependencies_and_versions_new, :js
 Gemmy.where(dependencies_and_versions_new: nil).update_all "dependencies_and_versions_new = JSON(dependencies_and_versions)"
 ActiveRecord::Migration.remove_column :gemmies, :dependencies_and_versions
 ActiveRecord::Migration.rename_column :gemmies, :dependencies_and_versions_new, :dependencies_and_versions
+ActiveRecord::Migration.change_column_default :gemmies, :dependencies_and_versions, {}
 
 # update compat dependencies keys
 

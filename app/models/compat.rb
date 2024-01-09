@@ -44,7 +44,7 @@ class Compat < ApplicationRecord
 
   def dependencies=(value)
     super
-    self.dependencies_key = Digest::MD5.hexdigest(JSON.generate dependencies)
+    self.dependencies_key = ActiveSupport::Digest.hexdigest(JSON.generate dependencies)
   end
 end
 

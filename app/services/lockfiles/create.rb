@@ -33,7 +33,7 @@ module Lockfiles
           raise Error, "No gems found in content."
         end
 
-        lockfile.slug = Digest::SHA1.hexdigest(gem_names.join("#"))
+        lockfile.slug = ActiveSupport::Digest.hexdigest(gem_names.join("#"))
 
         if existing_lockfile = Lockfile.find_by(slug: lockfile.slug)
           raise AlreadyExists.new(existing_lockfile)

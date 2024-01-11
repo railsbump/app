@@ -30,7 +30,7 @@ class Compat < ApplicationRecord
   end
 
   def gemmies
-    Gemmy.where.contains(compat_ids: [id])
+    Gemmy.from("#{Gemmy.table_name}, json_each(#{Gemmy.table_name}.compat_ids)").where(json_each: { value: id.to_s })
   end
 
   def lockfiles

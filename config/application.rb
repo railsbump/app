@@ -20,6 +20,10 @@ module RailsBump
     config.active_record.query_log_tags_enabled = true
     config.active_record.sqlite3_production_warning = false
 
+    config.assets.excluded_paths.concat [
+      Rails.root.join("app", "assets", "stylesheets")
+    ]
+
     config.i18n.raise_on_missing_translations = true
 
     config.middleware.insert 0, Rack::Deflater

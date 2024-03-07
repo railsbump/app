@@ -10,10 +10,10 @@ class CheckOutWorkerRepo < Baseline::Service
       raise Error, "Could not determine hostname."
     end
     cache_key = [
-      "worker_repo_checked_out_since",
+      :worker_repo_checked_out_since,
       hostname
     ].join(":")
-    if worker_repo_checked_out_since = Kredis.redis.get(cache_key)&.then(&Time.zone.method(:parse))
+    if worker_repo_checked_out_since = Kredis.redis.get(cache_key)&.then { Time.parse _1 }
       if worker_repo_checked_out_since < 10.minutes.ago
         ReportError.call "Worker repo seems to be checked out for a long time already.",
           worker_repo_checked_out_since: worker_repo_checked_out_since

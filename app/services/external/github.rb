@@ -15,6 +15,8 @@ module External
       client.delete_branch \
         REPO,
         name
+    rescue Octokit::UnprocessableEntity
+      false
     end
 
     private

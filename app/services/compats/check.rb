@@ -91,18 +91,13 @@ module Compats
       def check_with_github
         return unless Rails.env.production?
 
-        branch_name = @compat.id.to_s
+        branch = @compat.id.to_s
+
+        # Delete branch if it exists
+        External::Github.delete_branch(page)
 
         CheckOutWorkerRepo.call do |git|
-          git.branches.select { _1.name == branch_name }.each do |branch|
-            if branch.remote
-              git.push "origin", branch.name, delete: true
-            else
-              branch.delete
-            end
-          end
-
-          git.branch(branch_name).checkout
+          git.branch(branch).checkout
 
           action_file = File.join(git.dir.path, ".github", "workflows", "check.yml")
           action_content = File.read(action_file)
@@ -129,7 +124,7 @@ module Compats
           git.add [action_file, gemfile]
           git.commit @compat.to_s
           Octopoller.poll retries: 5 do
-            git.push "origin", branch_name
+            git.push "origin", branch
           rescue Git::GitExecuteError
             :re_poll
           end

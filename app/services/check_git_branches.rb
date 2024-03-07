@@ -2,22 +2,23 @@ class CheckGitBranches < Baseline::Service
   def call
     check_uniqueness
 
-    CheckOutWorkerRepo.call do |git|
-      git
-        .branches
-        .remote
-        .map(&:name)
+    page = 1
+
+    loop do
+      branches = External::Github.list_branches(page)
+
+      break if branches.empty?
+
+      branches
+        .map { _1.fetch(:name) }
         .grep(/\A\d+\z/)
-        .in_groups_of(100, false) do |group|
+        .then { Compat.find(_1).reject(&:pending?) } # Use `.find` to make sure an error is raised unless all branches have a corresponding compat.
+        .each do |compat|
 
-        # Use `.find` to make sure an error is raised
-        # unless all branches have a corresponding compat.
-        done_compats = Compat.find(group).reject(&:pending?)
-
-        if done_compats.any?
-          git.push "origin", done_compats.map(&:id), delete: true
-        end
+        External::Github.delete_branch(compat.id)
       end
+
+      page += 1
     end
   end
 end

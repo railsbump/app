@@ -80,11 +80,12 @@ module Compats
       end
 
       def check_dependency_supersets
-        if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
-          @compat.status               = :compatible
-          @compat.status_determined_by = "dependency_supersets"
-          return
-        end
+        # TODO: How to convert `.contains` to SQLite?
+        # if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
+        #   @compat.status               = :compatible
+        #   @compat.status_determined_by = "dependency_supersets"
+        #   return
+        # end
       end
 
       def check_with_github

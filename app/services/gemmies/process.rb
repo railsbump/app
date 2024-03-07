@@ -4,7 +4,7 @@ module Gemmies
       UpdateDependenciesAndVersions.call(gemmy)
       UpdateCompats.call(gemmy)
 
-      Compats::CheckAllUnchecked.call_async
+      Compats::CheckUnchecked.call_async
     end
   end
 end

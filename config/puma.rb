@@ -39,7 +39,7 @@ on_worker_boot do
     config.merge! \
       scheduler: {
         schedule: {
-          "Compats::CheckAllUnchecked"       => "*/10 * * * *",
+          "Compats::CheckUnchecked"          => "*/10 * * * *",
           "Maintenance::CheckGitBranches"    => "0    * * * *",
           "Maintenance::CheckPendingCompats" => "0    * * * *",
           "RefreshSitemap"                   => "0    1 * * *"

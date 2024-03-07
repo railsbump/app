@@ -1,9 +1,9 @@
 module Compats
-  class CheckAllUnchecked < Baseline::Service
+  class CheckUnchecked < Baseline::Service
     def call
       check_uniqueness
 
-      Compat.unchecked.find_each do |compat|
+      Compat.unchecked.limit(100).find_each do |compat|
         Compats::Check.call compat
       end
     end

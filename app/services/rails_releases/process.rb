@@ -5,7 +5,7 @@ module RailsReleases
         Gemmies::UpdateCompats.call_async(gemmy)
       end
 
-      Compats::CheckAllUnchecked.call_async
+      Compats::CheckUnchecked.call_async
     end
   end
 end

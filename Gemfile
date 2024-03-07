@@ -6,7 +6,7 @@ gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "manuelmeurer/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
-gem "bootstrap",                                github: "manuelmeurer/bootstrap-rubygem", branch: "propshaft"
+gem "bootstrap",                                github: "twbs/bootstrap-rubygem" # TODO: use released version when > 5.3.2 is released
 gem "dartsass-rails",                           "~> 0.5"
 gem "envkey",                                   "~> 2.0"
 gem "gems",                                     "~> 1.2"

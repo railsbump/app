@@ -5,9 +5,8 @@ GIT
     baseline (1.0)
 
 GIT
-  remote: https://github.com/manuelmeurer/bootstrap-rubygem.git
-  revision: 4138d6efc4b9ce830f110ab8f14ded3693576b60
-  branch: propshaft
+  remote: https://github.com/twbs/bootstrap-rubygem.git
+  revision: 90467dee09b0c6e52e7d58de867148fda0dd9f49
   specs:
     bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)

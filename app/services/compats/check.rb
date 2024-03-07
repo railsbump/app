@@ -94,7 +94,7 @@ module Compats
         branch = @compat.id.to_s
 
         # Delete branch if it exists
-        External::Github.delete_branch(page)
+        External::Github.delete_branch(branch)
 
         CheckOutWorkerRepo.call do |git|
           git.branch(branch).checkout

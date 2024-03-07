@@ -1,7 +1,6 @@
 require "sitemap_generator"
 
-# is this needed?
-# SitemapGenerator::Sitemap.default_host = Rails.application.routes.url_helpers.root_url
+SitemapGenerator::Sitemap.default_host = root_url
 
 SitemapGenerator::Sitemap.create do
   add new_gemmy_path

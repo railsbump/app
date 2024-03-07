@@ -41,7 +41,7 @@ class RailsRelease < ApplicationRecord
 
   def compatible_bundler_version
     if version
-      Gem::Version.new(version < Gem::Version.new("5") ? "1.17.3" : Bundler::VERSION)
+      Gem::Version.new(version < Gem::Version.new("5") ? "1.17.3" : "2.1.4")
     end
   end
 end

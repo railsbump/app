@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+bundle install -j $(nproc)
+
 $(bundle show baseline)/bin/build

@@ -33,5 +33,9 @@ module RailsBump
         host:     ENV.fetch("HOST"),
         protocol: "https"
       }
+
+    config.after_initialize do
+      RubyVM::YJIT.enable
+    end
   end
 end

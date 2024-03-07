@@ -5,6 +5,12 @@ GIT
     baseline (1.0)
 
 GIT
+  remote: https://github.com/rubygems/gems.git
+  revision: c20c05888cb2b882bf3b99d3618cc37f69559f6a
+  specs:
+    gems (1.2.0)
+
+GIT
   remote: https://github.com/twbs/bootstrap-rubygem.git
   revision: 90467dee09b0c6e52e7d58de867148fda0dd9f49
   specs:
@@ -143,7 +149,6 @@ GEM
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     gem_config (0.3.2)
-    gems (1.2.0)
     git (1.19.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
@@ -340,7 +345,7 @@ DEPENDENCIES
   bootstrap!
   dartsass-rails (~> 0.5)
   envkey (~> 2.0)
-  gems (~> 1.2)
+  gems!
   git (~> 1.12)
   haml (~> 6.0)
   importmap-rails (~> 2.0)

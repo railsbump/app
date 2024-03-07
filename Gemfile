@@ -9,7 +9,7 @@ gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                github: "twbs/bootstrap-rubygem" # TODO: use released version when > 5.3.2 is released
 gem "dartsass-rails",                           "~> 0.5"
 gem "envkey",                                   "~> 2.0"
-gem "gems",                                     "~> 1.2"
+gem "gems",                                     github: "rubygems/gems" # TODO: use released version when > 1.2.0 is released
 gem "git",                                      "~> 1.12"
 gem "haml",                                     "~> 6.0"
 gem "importmap-rails",                          "~> 2.0"

@@ -104,7 +104,7 @@ module Compats
 
           git.branch(branch_name).checkout
 
-          action_file = File.join(git.dir.path, ".github", "workflows", "ci.yml")
+          action_file = File.join(git.dir.path, ".github", "workflows", "check.yml")
           action_content = File.read(action_file)
                                .gsub("RUBY_VERSION",    @compat.rails_release.compatible_ruby_version.to_s)
                                .gsub("BUNDLER_VERSION", @compat.rails_release.compatible_bundler_version.to_s)

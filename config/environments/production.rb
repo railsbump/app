@@ -48,7 +48,7 @@ Rails.application.configure do
     .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
     .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
-  if Rails.version > "7.1.2"
+  if Rails.version > "7.1.4"
     raise "enable multiple loggers when this bug is fixed: https://github.com/rails/rails/issues/49745"
   end
   # Log to STDOUT and production.log.

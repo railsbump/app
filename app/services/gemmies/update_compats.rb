@@ -7,8 +7,10 @@ module Gemmies
 
       RailsRelease.find_each do |rails_release|
         gemmy.dependencies.each do |dependencies|
-          rails_release.compats.where(dependencies: dependencies)
-                               .first_or_create!
+          rails_release
+            .compats
+            .where(dependencies: dependencies)
+            .first_or_create!
         end
       end
 

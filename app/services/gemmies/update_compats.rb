@@ -14,9 +14,7 @@ module Gemmies
         end
       end
 
-      # Don't use `Compat.where(dependencies: gemmy.dependencies)`, the generated SQL is
-      # missing parentheses around the WHERE conditions and therefore doesn't work.
-      compats = Compat.where(%(dependencies IN (?)), gemmy.dependencies.map(&JSON.method(:generate)))
+      compats = Compat.where(dependencies: gemmy.dependencies)
       gemmy.update! compat_ids: compats.pluck(:id).sort
     end
   end

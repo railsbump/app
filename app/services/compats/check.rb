@@ -95,7 +95,7 @@ module Compats
 
         begin
           gemfile_deps = @compat.dependencies.map {
-            %(gem '#{_1}', #{_2.split(/\s*,\s*/).map { |d| "'#{d}'" }.join(", ")})
+            %(gem '#{_1}', #{_2.split(/\s*,\s*/).map { |d| "'#{d}'" }.join(", ")}, require: false)
           }
           File.write file, <<~SCRIPT
             #!/usr/bin/env ruby
@@ -105,15 +105,17 @@ module Compats
             gemfile true do
               source "https://rubygems.org"
               ruby "#{@compat.rails_release.compatible_ruby_version}"
-              gem "rails", "#{@compat.rails_release.version.approximate_recommendation}.0"
+              gem "rails", "#{@compat.rails_release.version.approximate_recommendation}.0", require: false
               #{gemfile_deps.join("\n")}
             end
           SCRIPT
           File.chmod 0755, file
 
-          stdout, stderr = Open3.popen3 file.to_s do
-            [_2, _3].map do |io|
-              io.readlines.map(&:strip)
+          stdout, stderr = Bundler.with_unbundled_env do
+            Open3.popen3 file.to_s do
+              [_2, _3].map do |io|
+                io.readlines.map(&:strip)
+              end
             end
           end
         ensure

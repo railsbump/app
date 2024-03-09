@@ -3,7 +3,7 @@ module Compats
     LIMIT = 100
 
     def call
-      check_uniqueness
+      check_uniqueness on_error: :return
 
       count = 0
 

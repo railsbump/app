@@ -46,6 +46,13 @@ class Compat < ApplicationRecord
     super
     self.dependencies_key = ActiveSupport::Digest.hexdigest(JSON.generate dependencies)
   end
+
+  def check_locally
+    # Rails < 5 requires older Ruby and Bundler versions
+    # which cannot easily be installed on current Linux systems,
+    # so we'll only check compats for newer Rails versions locally.
+    rails_release.version >= Gem::Version.new("5")
+  end
 end
 
 # == Schema Information

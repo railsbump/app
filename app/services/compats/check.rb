@@ -27,15 +27,7 @@ module Compats
 
       @compat = compat
 
-      %i(
-        check_empty_dependencies
-        check_rails_gems
-        check_dependency_subsets
-        check_dependency_supersets
-        check_with_github
-      ).each do |method|
-        send method if @compat.pending?
-      end
+      call_all_private_methods_without_args
 
       compat.checked!
     end
@@ -43,6 +35,8 @@ module Compats
     private
 
       def check_empty_dependencies
+        return unless @compat.pending?
+
         if @compat.dependencies.blank?
           @compat.status               = :compatible
           @compat.status_determined_by = "empty_dependencies"
@@ -50,6 +44,8 @@ module Compats
       end
 
       def check_rails_gems
+        return unless @compat.pending?
+
         @compat.dependencies.each do |gem_name, requirement|
           next unless RAILS_GEMS.include?(gem_name)
           requirement_unmet = requirement.split(/\s*,\s*/).any? do |r|
@@ -64,7 +60,7 @@ module Compats
       end
 
       def check_dependency_subsets
-        return unless (2..10).cover?(@compat.dependencies.size)
+        return unless @compat.pending? && (2..10).cover?(@compat.dependencies.size)
 
         subsets = (1..@compat.dependencies.size - 1).flat_map do |count|
           @compat.dependencies.keys.combination(count).map { @compat.dependencies.slice *_1 }
@@ -80,6 +76,8 @@ module Compats
       end
 
       def check_dependency_supersets
+        # return unless @compat.pending?
+        #
         # TODO: How to convert `.contains` to SQLite?
         # if @compat.rails_release.compats.where.contains(dependencies: @compat.dependencies).compatible.any?
         #   @compat.status               = :compatible
@@ -88,8 +86,67 @@ module Compats
         # end
       end
 
-      def check_with_github
-        return unless Rails.env.production?
+      def check_with_bundler_locally
+        return unless @compat.pending? && @compat.check_locally
+
+        dir  = Rails.root.join("tmp", "compats")
+        file = dir.join(@compat.id.to_s)
+        FileUtils.mkdir_p dir
+
+        begin
+          gemfile_deps = @compat.dependencies.map {
+            %(gem '#{_1}', #{_2.split(/\s*,\s*/).map { |d| "'#{d}'" }.join(", ")})
+          }
+          File.write file, <<~SCRIPT
+            #!/usr/bin/env ruby
+
+            require "bundler/inline"
+
+            gemfile true do
+              source "https://rubygems.org"
+              ruby "#{@compat.rails_release.compatible_ruby_version}"
+              gem "rails", "#{@compat.rails_release.version.approximate_recommendation}.0"
+              #{gemfile_deps.join("\n")}
+            end
+          SCRIPT
+          File.chmod 0755, file
+
+          stdout, stderr = Open3.popen3 file.to_s do
+            [_2, _3].map do |io|
+              io.readlines.map(&:strip)
+            end
+          end
+        ensure
+          if File.exist?(file)
+            FileUtils.rm_rf file
+          end
+        end
+
+        stdout.each do |line|
+          if match = line.match(/\AInstalling (?<name>\S+) (?<version>\S+)\z/)
+            # TODO: uninstall gem again
+          end
+        end
+
+        if stderr.empty?
+          @compat.status = :compatible
+        else
+          return if stderr.any?(/You have already activated/)
+
+          unless stderr[0].end_with?("Could not find compatible versions (Bundler::SolveFailure)") &&
+            stderr.exclude?("Your bundle requires a different version of Bundler than the one you're running.")
+
+            raise Error, "Unexpected stderr: #{stderr.join("\n")}"
+          end
+
+          @compat.status = :incompatible
+        end
+
+        @compat.status_determined_by = "bundler_local"
+      end
+
+      def check_with_bundler_github
+        return unless @compat.pending? && Rails.env.production?
 
         branch = @compat.id.to_s
 

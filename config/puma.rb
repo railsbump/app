@@ -39,8 +39,8 @@ on_worker_boot do
     config.merge! \
       scheduler: {
         schedule: {
-          "Compats::CheckUnchecked" => "*/10 * * * *",
-          "Maintenance::Hourly"     => "0    * * * *"
+          "Compats::CheckUnchecked" => "*/2 * * * *",
+          "Maintenance::Hourly"     => "0   * * * *"
         }.transform_values { { cron: _1 } }
       }
   end.tap(&:run)

@@ -23,7 +23,12 @@ module Compats
           .each do |compat|
 
           count += 1
-          Compats::Check.call compat
+
+          begin
+            Compats::Check.call compat
+          rescue Compats::Check::Error => error
+            ReportError.call error
+          end
         end
       end
     end

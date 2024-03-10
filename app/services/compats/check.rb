@@ -118,9 +118,10 @@ module Compats
           SCRIPT
           File.chmod 0755, file
 
-          stdout, stderr = Bundler.with_unbundled_env do
+          stderr, stdout = Bundler.with_unbundled_env do
             Open3.popen3 file.to_s do
-              [_2, _3].map do |io|
+              # For some reason, the order matters: readlines must be called on stderr first. 🤷‍♂️
+              [_3, _2].map do |io|
                 io.readlines.map(&:strip)
               end
             end

@@ -94,8 +94,16 @@ module Compats
         FileUtils.mkdir_p dir
 
         begin
-          gemfile_deps = @compat.dependencies.map {
-            %(gem '#{_1}', #{_2.split(/\s*,\s*/).map { |d| "'#{d}'" }.join(", ")}, require: false)
+          deps_with_rails = @compat.dependencies.dup.tap {
+            _1["rails"] = [
+              _1["rails"],
+              "#{@compat.rails_release.version.approximate_recommendation}.0"
+            ].compact
+             .join(", ")
+          }
+          gemfile_deps = deps_with_rails.map {
+            quoted_versions = _2.split(/\s*,\s*/).map { |d| "'#{d}'" }
+            "gem '#{_1}', #{quoted_versions.join(", ")}, require: false"
           }
           File.write file, <<~SCRIPT
             #!/usr/bin/env ruby
@@ -105,7 +113,6 @@ module Compats
             gemfile true do
               source "https://rubygems.org"
               ruby "#{@compat.rails_release.compatible_ruby_version}"
-              gem "rails", "#{@compat.rails_release.version.approximate_recommendation}.0", require: false
               #{gemfile_deps.join("\n")}
             end
           SCRIPT

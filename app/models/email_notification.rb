@@ -44,6 +44,9 @@ class EmailNotification
   private
 
     def key
-      [NAMESPACE, notifiable.to_global_id].join(":")
+      [
+        NAMESPACE,
+        notifiable.to_global_id
+      ].join(":")
     end
 end

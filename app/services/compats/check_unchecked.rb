@@ -27,7 +27,8 @@ module Compats
           begin
             Compats::Check.call compat
           rescue Compats::Check::Error => error
-            ReportError.call error
+            ReportError.call error,
+              compat_id: compat.id
             check_failed!(compat)
           else
             count += 1

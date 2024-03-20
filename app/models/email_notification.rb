@@ -3,18 +3,16 @@ class EmailNotification
 
   NAMESPACE       = "email_notifications"
   NAMESPACE_REGEX = /\A#{Regexp.escape NAMESPACE}:(.+)/
-  EMAIL_REGEX     = /.+@.+\..+/
 
   attr_accessor :email, :notifiable
 
-  validates :email, presence: true
+  validates :email,
+    presence: true,
+    format: {
+      with:        URI::MailTo::EMAIL_REGEXP,
+      allow_blank: true
+    }
   validates :notifiable, presence: true
-
-  validate do
-    if email.present? && !EMAIL_REGEX.match?(email)
-      errors.add :email, "is invalid"
-    end
-  end
 
   def self.all
     Kredis.redis.keys("#{NAMESPACE}:*").flat_map do |key|

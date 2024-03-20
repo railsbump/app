@@ -3,10 +3,14 @@ require "gems"
 module Gemmies
   class UpdateDependenciesAndVersions < Baseline::Service
     def call(gemmy)
-      versions = Gems
-        .versions(gemmy.name)
-        .select { _1.fetch("platform") == "ruby" }
-        .map { _1.fetch "number" }
+      versions = Octopoller.poll retries: 5 do
+        Gems
+          .versions(gemmy.name)
+          .select { _1.fetch("platform") == "ruby" }
+          .map { _1.fetch "number" }
+      rescue Gems::GemError
+        :re_poll
+      end
 
       deps = versions.each_with_object({}) do |version, hash|
         cache_key = [

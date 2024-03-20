@@ -4,7 +4,7 @@ module EmailNotifications
       check_uniqueness
 
       EmailNotification.all.each do |email_notification|
-        if email_notification.notifiable.compats.none?(&:pending?)
+        if email_notification.notifiable.compats.pending.none?
           ApplicationMailer.email_notification(email_notification).deliver_now
           email_notification.delete
         end

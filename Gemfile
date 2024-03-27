@@ -33,7 +33,7 @@ gem "sidekiq",                                  "~> 7.2"
 gem "sitemap_generator",                        "~> 6.3"
 gem "sqlite3",                                  "~> 1.6"
 gem "stimulus-rails",                           "~> 1.3"
-gem "turbo-rails",                              "~> 1.5"
+gem "turbo-rails",                              "~> 2.0"
 
 group :development do
   gem "annotaterb",                             "~> 4.4", require: false

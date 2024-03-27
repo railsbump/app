@@ -105,8 +105,8 @@ GEM
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.899.0)
-    aws-sdk-core (3.191.4)
+    aws-partitions (1.901.0)
+    aws-sdk-core (3.191.5)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.8)
@@ -145,7 +145,7 @@ GEM
     drb (2.2.1)
     envkey (2.4.2)
     erubi (1.12.0)
-    et-orbi (1.2.9)
+    et-orbi (1.2.11)
       tzinfo
     execjs (2.9.1)
     faraday (2.9.0)
@@ -208,9 +208,9 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
+    nio4r (2.7.1)
     nokogiri (1.16.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.3-x86_64-linux)
@@ -243,7 +243,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.10)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -288,15 +288,15 @@ GEM
       zeitwerk (~> 2.6)
     rake (13.1.0)
     rchardet (1.8.0)
-    rdoc (6.6.2)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redis (5.1.0)
       redis-client (>= 0.17.0)
-    redis-client (0.21.0)
+    redis-client (0.21.1)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
-    reline (0.4.3)
+    reline (0.5.0)
       io-console (~> 0.5)
     rouge (4.2.1)
     rufus-scheduler (3.9.1)
@@ -337,7 +337,7 @@ GEM
     thor (1.3.1)
     tilt (2.3.0)
     timeout (0.4.1)
-    turbo-rails (1.5.0)
+    turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -389,7 +389,7 @@ DEPENDENCIES
   sitemap_generator (~> 6.3)
   sqlite3 (~> 1.6)
   stimulus-rails (~> 1.3)
-  turbo-rails (~> 1.5)
+  turbo-rails (~> 2.0)
 
 RUBY VERSION
    ruby 3.3.0p0

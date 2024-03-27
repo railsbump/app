@@ -49,8 +49,6 @@ module GithubNotifications
         end
 
         compat.update! status: status, status_determined_by: "github_check"
-
-        EmailNotifications::SendAll.call_async
       end
   end
 end

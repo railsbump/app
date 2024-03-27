@@ -7,7 +7,8 @@ module Maintenance
         raise_errors: false
 
       [
-        CheckGitBranches
+        CheckGitBranches,
+        EmailNotifications::SendAll
       ].each_with_index do |service, index|
         service.call_in (index + 1).minutes
       end

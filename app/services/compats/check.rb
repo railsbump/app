@@ -138,11 +138,14 @@ module Compats
           end
         end
 
-        if stderr.empty?
+        case
+        when stderr.empty?
           @compat.status = :compatible
+        when stderr.any?(/ERROR: Failed to build gem native extension/)
+          @compat.status = :inconclusive
+        when stderr.any?(/You have already activated/)
+          return
         else
-          return if stderr.any?(/You have already activated/)
-
           unless stderr[0].end_with?("Could not find compatible versions (Bundler::SolveFailure)") &&
             stderr.exclude?("Your bundle requires a different version of Bundler than the one you're running.")
 

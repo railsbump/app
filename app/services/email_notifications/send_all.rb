@@ -1,7 +1,7 @@
 module EmailNotifications
   class SendAll < Baseline::Service
     def call
-      check_uniqueness
+      check_uniqueness on_error: :return
 
       EmailNotification.all.each do |email_notification|
         if email_notification.notifiable.compats.pending.none?

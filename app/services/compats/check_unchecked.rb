@@ -24,6 +24,17 @@ module Compats
 
           next if check_failed?(compat)
 
+          if Date.current > Date.new(2024, 6, 1)
+            ReportError.call "remove this!"
+          end
+          if compat.invalid?
+            compats = Compat.where(dependencies: compat.dependencies)
+            if compats.size == RailsRelease.count && !compats.include?(compat)
+              compat.destroy
+              next
+            end
+          end
+
           begin
             Compats::Check.call compat
           rescue Compats::Check::Error => error

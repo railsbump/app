@@ -22,6 +22,18 @@ module GithubNotifications
 
         return unless @github_notification.completed?
 
+        if Date.current > Date.new(2024, 6, 1)
+          ReportError.call "remove this!"
+        end
+        if compat.invalid?
+          compats = Compat.where(dependencies: compat.dependencies)
+          if compats.size == RailsRelease.count && !compats.include?(compat)
+            compat.destroy
+            @github_notification.destroy
+            return
+          end
+        end
+
         case @github_notification.conclusion
         when "success" then status = :compatible
         when 'failure' then status = :incompatible

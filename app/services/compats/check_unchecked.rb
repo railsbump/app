@@ -65,7 +65,7 @@ module Compats
       def check_failed!(compat)
         Kredis.redis.setex \
           check_failed_cache_key(compat),
-          1.hour,
+          1.week,
           nil
       end
   end

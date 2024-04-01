@@ -1,7 +1,8 @@
 class ApplicationMailer < ActionMailer::Base
-  default from:           "RailsBump <hello@railsbump.org>",
-          template_path:  "mailers",
-          message_stream: :outbound
+  default \
+    from:           "RailsBump <hello@railsbump.org>",
+    template_path:  "mailers",
+    message_stream: :outbound
 
   layout "mailer"
 

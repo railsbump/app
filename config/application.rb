@@ -11,10 +11,10 @@ module RailsBump
 
     config.time_zone = "Berlin"
     config.revision  = begin
-                         ENV.fetch("HATCHBOX_REVISION")
-                       rescue KeyError
-                         `git rev-parse HEAD 2> /dev/null`.chomp
-                       end.presence or raise "Could not load revision."
+      ENV.fetch("HATCHBOX_REVISION")
+    rescue KeyError
+      `git rev-parse HEAD 2> /dev/null`.chomp
+    end.presence or raise "Could not load revision."
 
     config.action_mailer.delivery_method = :postmark
     config.active_record.query_log_tags_enabled = true

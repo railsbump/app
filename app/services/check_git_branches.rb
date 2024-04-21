@@ -20,6 +20,17 @@ class CheckGitBranches < Baseline::Service
         when !compat.pending?
           External::Github.delete_branch(compat.id)
         when compat.checked_before?(1.week.ago)
+          if Date.current > Date.new(2024, 6, 1)
+            ReportError.call "remove this!"
+          end
+          if compat.invalid?
+            compats = Compat.where(dependencies: compat.dependencies)
+            if compats.size == RailsRelease.count && !compats.include?(compat)
+              compat.destroy
+              next
+            end
+          end
+
           compat.unchecked!
           External::Github.delete_branch(compat.id)
           Compats::Check.call_async compat

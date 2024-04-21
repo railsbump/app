@@ -20,9 +20,9 @@ class CheckGitBranches < Baseline::Service
         when !compat.pending?
           External::Github.delete_branch(compat.id)
         when compat.checked_before?(1.week.ago)
-          compat.status = nil
           compat.unchecked!
           External::Github.delete_branch(compat.id)
+          Compats::Check.call_async compat
         end
       end
 

@@ -4,7 +4,7 @@ class CheckGitBranches < Baseline::Service
 
     page = 1
 
-    loop do
+    begin
       branches = External::Github.list_branches(page)
 
       break if branches.empty?
@@ -12,13 +12,21 @@ class CheckGitBranches < Baseline::Service
       branches
         .map { _1.fetch(:name) }
         .grep(/\A\d+\z/)
-        .then { Compat.find(_1).reject(&:pending?) } # Use `.find` to make sure an error is raised unless all branches have a corresponding compat.
-        .each do |compat|
+        .each do |compat_id|
 
-        External::Github.delete_branch(compat.id)
+        compat = Compat.find(compat_id)
+
+        case
+        when !compat.pending?
+          External::Github.delete_branch(compat.id)
+        when compat.checked_before?(1.week.ago)
+          compat.status = nil
+          compat.unchecked!
+          External::Github.delete_branch(compat.id)
+        end
       end
 
       page += 1
-    end
+    end while page <= 10
   end
 end

@@ -14,7 +14,10 @@ class CheckGitBranches < Baseline::Service
         .grep(/\A\d+\z/)
         .each do |compat_id|
 
-        compat = Compat.find(compat_id)
+        unless compat = Compat.find_by(id: compat_id)
+          External::Github.delete_branch(compat_id)
+          next
+        end
 
         case
         when !compat.pending?
@@ -27,6 +30,7 @@ class CheckGitBranches < Baseline::Service
             compats = Compat.where(dependencies: compat.dependencies)
             if compats.size == RailsRelease.count && !compats.include?(compat)
               compat.destroy
+              External::Github.delete_branch(compat.id)
               next
             end
           end

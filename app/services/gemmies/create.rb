@@ -43,7 +43,6 @@ module Gemmies
 
       gemmy = Gemmy.create!(name: name)
 
-      AddWebhook.call_async gemmy
       Process.call_async gemmy
 
       gemmy

@@ -17,8 +17,6 @@ class Compat < ApplicationRecord
   validates :status_determined_by, presence: { unless: :pending? },
                                    absence:  { if:     :pending? }
 
-  scope :with_gem_names, ->(gem_names) { where("dependencies ?& array[:gem_names]", gem_names: gem_names) }
-
   after_initialize do
     if new_record?
       self.status ||= :pending

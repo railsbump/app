@@ -19,8 +19,20 @@ class CheckGitBranches < Baseline::Service
           next
         end
 
+        if Date.current > Date.new(2024, 10, 1)
+          ReportError.call "remove this when all old git branches are gone"
+        end
+        if compat.invalid?
+          compats = Compat.where(dependencies: compat.dependencies)
+          if compats.size == RailsRelease.count && !compats.include?(compat)
+            compat.destroy
+            External::Github.delete_branch(compat.id)
+            next
+          end
+        end
+
         case
-        when !compat.pending?
+        when compat.unchecked? || !compat.pending?
           External::Github.delete_branch(compat.id)
         when compat.checked_before?(1.week.ago)
           compat.unchecked!

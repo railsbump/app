@@ -19,7 +19,7 @@ module Compats
     )
 
     def call(compat)
-      check_uniqueness
+      check_uniqueness on_error: :return
 
       if compat.checked?
         raise Error, "Compat is already checked."

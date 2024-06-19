@@ -37,7 +37,10 @@ class CheckGitBranches < Baseline::Service
         when compat.checked_before?(1.week.ago)
           compat.unchecked!
           External::Github.delete_branch(compat.id)
-          Compats::Check.call_async compat
+
+          if RailsRelease.latest_major.include?(compat.rails_release)
+            Compats::Check.call_async compat
+          end
         end
       end
 

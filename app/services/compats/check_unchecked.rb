@@ -15,8 +15,6 @@ module Compats
         RailsRelease
           .latest_major
           .reverse
-          .concat(RailsRelease.all)
-          .uniq
           .each do |rails_release|
 
           rails_release

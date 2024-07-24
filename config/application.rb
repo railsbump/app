@@ -37,8 +37,8 @@ module RailsBump
     if Rails.version >= "7.2"
       raise "this is not needed anymore, yjit should be enabled by default in rails 7.2."
     end
-    config.after_initialize do
-      RubyVM::YJIT.enable
-    end
+    # config.after_initialize do
+    #   RubyVM::YJIT.enable
+    # end
   end
 end

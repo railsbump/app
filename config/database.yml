@@ -1,16 +1,16 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+  database: rails_bump_development
 
 test:
   <<: *default
-  database: storage/test.sqlite3
+  database: rails_bump_test
 
 production:
   <<: *default
-  database: storage/production.sqlite3
+  database: rails_bump_production

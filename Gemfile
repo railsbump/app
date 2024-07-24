@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby file: ".ruby-version"
 
-gem "activerecord-enhancedsqlite3-adapter",     "~> 0.5"
+# gem "activerecord-enhancedsqlite3-adapter",     "~> 0.5"
 gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "manuelmeurer/baseline"
@@ -32,7 +32,7 @@ gem "sentry-sidekiq",                           "~> 5.5"
 gem "sidekiq-scheduler",                        "~> 5.0"
 gem "sidekiq",                                  "~> 7.2"
 gem "sitemap_generator",                        "~> 6.3"
-gem "sqlite3",                                  "~> 1.7"
+# gem "sqlite3",                                  "~> 1.7"
 gem "stimulus-rails",                           "~> 1.3"
 gem "turbo-rails",                              "~> 2.0"
 
@@ -42,6 +42,4 @@ group :development do
   gem "binding_of_caller",                      "~> 1.0"
 end
 
-group :production do
-  gem "pg"
-end
+gem "pg"

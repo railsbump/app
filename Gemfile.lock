@@ -370,6 +370,7 @@ DEPENDENCIES
   haml (~> 6.0)
   importmap-rails (~> 2.0)
   kredis (~> 1.2)
+  net-protocol
   octokit (~> 9.1)
   octopoller (~> 0.3)
   pg

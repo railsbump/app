@@ -23,6 +23,7 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
+  config.assets.enabled = true
   config.assets.compile = false
   config.assets.digest = true
   config.assets.version = '1.0'

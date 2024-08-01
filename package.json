@@ -1,0 +1,7 @@
+{
+    "name": "rails-bump",
+    "version": "1.0.0",
+    "dependencies": {
+        "yarn": "^1.22.10"
+    }
+}

@@ -42,4 +42,11 @@ group :development do
   gem "binding_of_caller",                      "~> 1.0"
 end
 
+# Run against this stable release
+group :development, :test do
+  gem "byebug",                                  "~> 11.1"
+  gem "factory_bot_rails",                       "~> 6.2"
+  gem "rspec-rails", "~> 6.1.0"
+end
+
 gem "pg"

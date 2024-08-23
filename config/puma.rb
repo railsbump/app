@@ -34,7 +34,8 @@ on_worker_boot do
   sidekiq = Sidekiq.configure_embed do |config|
     config.concurrency = 1
     config.redis = {
-      url: ENV["REDIS_URL"]
+      url: ENV["REDIS_URL"],
+      ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
     }
     config.merge! \
       scheduler: {

@@ -17,7 +17,6 @@ module RailsBump
     #   `git rev-parse HEAD 2> /dev/null`.chomp
     # end.presence or raise "Could not load revision."
 
-    config.action_mailer.delivery_method = :postmark
     config.active_record.query_log_tags_enabled = true
     config.active_record.sqlite3_production_warning = false
 

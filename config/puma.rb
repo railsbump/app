@@ -26,27 +26,27 @@ preload_app!
 
 sidekiq = nil
 
-on_worker_boot do
-  Sidekiq.default_job_options = {
-    "retry" => false
-  }
-  Sidekiq.strict_args!(:warn)
-  sidekiq = Sidekiq.configure_embed do |config|
-    config.concurrency = 1
-    config.redis = {
-      url: ENV["REDIS_URL"],
-      ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
-    }
-    config.merge! \
-      scheduler: {
-        schedule: {
-          "Compats::CheckUnchecked" => "*/2 * * * *",
-          "Maintenance::Hourly"     => "0   * * * *"
-        }.transform_values { { cron: _1 } }
-      }
-  end.tap(&:run)
-end
+# on_worker_boot do
+#   Sidekiq.default_job_options = {
+#     "retry" => false
+#   }
+#   Sidekiq.strict_args!(:warn)
+#   sidekiq = Sidekiq.configure_embed do |config|
+#     config.concurrency = 1
+#     config.redis = {
+#       url: ENV["REDIS_URL"],
+#       ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+#     }
+#     config.merge! \
+#       scheduler: {
+#         schedule: {
+#           "Compats::CheckUnchecked" => "*/2 * * * *",
+#           "Maintenance::Hourly"     => "0   * * * *"
+#         }.transform_values { { cron: _1 } }
+#       }
+#   end.tap(&:run)
+# end
 
-on_worker_shutdown do
-  sidekiq&.stop
-end
+# on_worker_shutdown do
+#   sidekiq&.stop
+# end

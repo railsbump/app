@@ -5,7 +5,7 @@ ruby file: ".ruby-version"
 # gem "activerecord-enhancedsqlite3-adapter",     "~> 0.5"
 gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
-gem "baseline",                                 github: "manuelmeurer/baseline"
+gem "baseline",                                 github: "fastruby/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                "~> 5.3.3"
 gem "dartsass-rails",                           "~> 0.5"

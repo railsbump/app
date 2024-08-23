@@ -34,7 +34,7 @@ on_worker_boot do
   sidekiq = Sidekiq.configure_embed do |config|
     config.concurrency = 1
     config.redis = {
-      url: Baseline::RedisURL.fetch
+      url: ENV["REDIS_URL"]
     }
     config.merge! \
       scheduler: {

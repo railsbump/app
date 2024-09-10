@@ -46,6 +46,8 @@ group :development, :test do
   gem "byebug",                                  "~> 11.1"
   gem "factory_bot_rails",                       "~> 6.2"
   gem "rspec-rails", "~> 6.1.0"
+  gem "rails-controller-testing"
+  gem "simplecov", "~> 0.22", require: false
 end
 
 gem "pg"

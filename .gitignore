@@ -1,0 +1,17 @@
+.byebug_history
+
+.DS_Store
+
+.env
+
+.rspec
+
+node_modules
+
+log
+
+storage
+
+tmp
+
+

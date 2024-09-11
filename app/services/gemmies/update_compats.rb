@@ -9,12 +9,12 @@ module Gemmies
         gemmy.dependencies.each do |dependencies|
           rails_release
             .compats
-            .where(dependencies: dependencies)
+            .where("dependencies::jsonb = ?", dependencies.to_json)
             .first_or_create!
         end
       end
 
-      compats = Compat.where(dependencies: gemmy.dependencies)
+      compats = Compat.where("dependencies::jsonb = ?", gemmy.dependencies.to_json)
       gemmy.update! compat_ids: compats.pluck(:id).sort
     end
   end

@@ -23,7 +23,7 @@ class CheckGitBranches < Baseline::Service
           ReportError.call "remove this when all old git branches are gone"
         end
         if compat.invalid?
-          compats = Compat.where(dependencies: compat.dependencies)
+          compats = Compat.where("dependencies::jsonb = ?", compat.dependencies.to_json)
           if compats.size == RailsRelease.count && !compats.include?(compat)
             compat.destroy
             External::Github.delete_branch(compat.id)

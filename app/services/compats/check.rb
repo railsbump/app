@@ -67,7 +67,7 @@ module Compats
         end
 
         subsets.in_groups_of(100, false).each do |group|
-          if @compat.rails_release.compats.where(dependencies: group).incompatible.any?
+          if @compat.rails_release.compats.where("dependencies::jsonb = ?", group.to_json).incompatible.any?
             @compat.status               = :incompatible
             @compat.status_determined_by = "dependency_subsets"
             return

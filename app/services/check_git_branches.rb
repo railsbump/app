@@ -39,7 +39,7 @@ class CheckGitBranches < Baseline::Service
           External::Github.delete_branch(compat.id)
 
           if RailsRelease.latest_major.include?(compat.rails_release)
-            Compats::Check.call_async compat
+            Compats::Check.perform_async compat
           end
         end
       end

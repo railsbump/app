@@ -4,10 +4,10 @@ module API
       name = params.fetch(:name)
 
       if name == "rails"
-        RailsReleases::Create.call_async params.fetch(:version)
+        RailsReleases::Create.perform_async params.fetch(:version)
       else
         Gemmy.find_by(name: name)&.then {
-          Gemmies::Process.call_async _1
+          Gemmies::Process.perform_async _1
         }
       end
 

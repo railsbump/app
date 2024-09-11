@@ -1,6 +1,7 @@
 module Gemmies
   class Process < Baseline::Service
-    def call(gemmy)
+    def call(gemmy_id)
+      gemmy = Gemmy.find(gemmy_id)
       UpdateDependenciesAndVersions.call(gemmy)
       UpdateCompats.call(gemmy)
 

@@ -1,6 +1,7 @@
 module GithubNotifications
   class Process < Baseline::Service
-    def call(github_notification)
+    def call(github_notification_id)
+      github_notification = GithubNotification.find(github_notification_id)
       if github_notification.processed?
         raise Error, "GitHub Notification #{github_notification.id} has already been processed."
       end

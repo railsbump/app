@@ -13,7 +13,17 @@ class Compat < ApplicationRecord
   has_many :github_notifications
 
   validates :status, presence: true, inclusion: { in: %w(pending), if: :unchecked?, message: "must be pending if unchecked" }
-  validates :dependencies, uniqueness: { scope: :rails_release }
+ 
+  validate :unique_dependencies_for_rails_release
+
+  def unique_dependencies_for_rails_release
+    if Compat.where(rails_release: rails_release)
+             .where("dependencies::jsonb = ?", dependencies.to_json)
+             .exists?
+      errors.add(:dependencies, "must be unique for the given Rails release")
+    end
+  end
+
   validates :status_determined_by, presence: { unless: :pending? },
                                    absence:  { if:     :pending? }
 

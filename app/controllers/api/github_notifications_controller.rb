@@ -10,7 +10,7 @@ module API
         branch:     data.dig("check_run", "check_suite", "head_branch")
       )
 
-      GithubNotifications::Process.perform_async github_notification
+      GithubNotifications::Process.perform_async github_notification.id
 
       head :ok
     end

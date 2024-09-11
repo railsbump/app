@@ -12,7 +12,7 @@ module RailsReleases
 
       rails_release = RailsRelease.create!(version: major_minor_version)
 
-      Process.perform_async rails_release
+      Process.perform_async rails_release.id
 
       rails_release
     end

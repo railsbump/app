@@ -43,7 +43,7 @@ module Gemmies
 
       gemmy = Gemmy.create!(name: name)
 
-      Process.perform_async gemmy
+      Process.perform_async gemmy.id
 
       gemmy
     end

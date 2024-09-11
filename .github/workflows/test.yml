@@ -1,0 +1,30 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - main
+      - 'releases/*'
+  pull_request:
+    branches:
+      - main
+      - 'releases/*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: .ruby-version
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Run tests
+        run: bundle exec rspec spec

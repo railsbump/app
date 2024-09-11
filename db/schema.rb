@@ -10,67 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2020_02_01_222813) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_11_015959) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "compats", force: :cascade do |t|
-    t.jsonb "dependencies"
-    t.string "dependencies_key"
-    t.string "status_determined_by"
-    t.integer "status"
-    t.datetime "checked_at", precision: nil
     t.bigint "rails_release_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dependencies_key", "rails_release_id"], name: "index_compats_on_dependencies_key_and_rails_release_id", unique: true
-    t.index ["rails_release_id"], name: "index_compats_on_rails_release_id"
+    t.text "status_determined_by"
+    t.bigint "status"
+    t.text "dependencies_key"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.timestamptz "checked_at"
+    t.json "dependencies"
   end
 
   create_table "gemmies", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.json "compat_ids", default: []
     t.json "dependencies_and_versions", default: {}
-    t.json "compat_ids", default: [], null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_gemmies_on_name", unique: true
   end
 
   create_table "github_notifications", force: :cascade do |t|
-    t.string "conclusion"
-    t.string "action", null: false
-    t.string "branch", null: false
-    t.jsonb "data"
-    t.datetime "processed_at", precision: nil
+    t.text "conclusion"
+    t.text "action"
+    t.text "branch"
+    t.json "data"
+    t.timestamptz "processed_at"
     t.bigint "compat_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["compat_id"], name: "index_github_notifications_on_compat_id"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.index ["compat_id"], name: "idx_24861_index_github_notifications_on_compat_id"
   end
 
   create_table "lockfile_dependencies", id: false, force: :cascade do |t|
     t.bigint "lockfile_id"
     t.bigint "gemmy_id"
-    t.index ["gemmy_id"], name: "index_lockfile_dependencies_on_gemmy_id"
-    t.index ["lockfile_id"], name: "index_lockfile_dependencies_on_lockfile_id"
   end
 
   create_table "lockfiles", force: :cascade do |t|
     t.text "content"
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_lockfiles_on_slug", unique: true
+    t.text "slug"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
   end
 
   create_table "rails_releases", force: :cascade do |t|
-    t.string "version"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["version"], name: "index_rails_releases_on_version", unique: true
+    t.text "version"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
   end
 
-  add_foreign_key "compats", "rails_releases"
-  add_foreign_key "github_notifications", "compats"
 end

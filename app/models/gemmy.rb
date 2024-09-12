@@ -1,6 +1,4 @@
 class Gemmy < ApplicationRecord
-  include HasCompats
-
   FORBIDDEN_NAMES = %w(
     new
     edit
@@ -10,6 +8,10 @@ class Gemmy < ApplicationRecord
   validates :name, presence: true, uniqueness: { allow_blank: true }, exclusion: FORBIDDEN_NAMES
 
   delegate :to_param, :to_s, to: :name
+
+  def compats
+    Compat.where(id: compat_ids)
+  end
 
   def dependencies
     dependencies_and_versions

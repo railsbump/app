@@ -1,6 +1,4 @@
 class Lockfile < ApplicationRecord
-  include HasCompats
-
   has_many :dependencies, class_name: "LockfileDependency", dependent: :destroy
   has_many :gemmies, through: :dependencies
 
@@ -11,6 +9,10 @@ class Lockfile < ApplicationRecord
   delegate :to_param, to: :slug
 
   scope :with_gemmies, ->(gemmies) { joins(:gemmies).where(gemmies: { id: gemmies }).distinct }
+
+  def compats
+    Compat.where(id: gemmies.flat_map(&:compat_ids))
+  end
 end
 
 # == Schema Information

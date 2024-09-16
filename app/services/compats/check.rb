@@ -171,44 +171,24 @@ module Compats
       def check_with_bundler_github
         return unless @compat.pending? && Rails.env.production?
 
-        branch = @compat.id.to_s
+        dependencies = @compat
+          .dependencies
+          .dup
+          .transform_values {
+            _1.split(/\s*,\s*/)
+          }.then {
+            _1["rails"] ||= []
+            _1["rails"] << "#{@compat.rails_release.version.approximate_recommendation}.0"
+          }
 
-        # Delete branch if it exists
-        External::Github.delete_branch(branch)
-
-        CheckOutWorkerRepo.call do |git|
-          git.branch(branch).checkout
-
-          action_file = File.join(git.dir.path, ".github", "workflows", "check.yml")
-          action_content = File.read(action_file)
-                               .gsub("RUBY_VERSION",    @compat.rails_release.compatible_ruby_version.to_s)
-                               .gsub("BUNDLER_VERSION", @compat.rails_release.compatible_bundler_version.to_s)
-          File.write action_file, action_content
-
-          dependencies = @compat.dependencies.dup
-          dependencies.transform_values! do |contraints|
-            contraints.split(/\s*,\s*/)
-          end
-          dependencies["rails"] ||= []
-          dependencies["rails"] << "#{@compat.rails_release.version.approximate_recommendation}.0"
-
-          gemfile = File.join(git.dir.path, "Gemfile")
-          gemfile_content = dependencies
-            .map do |gem, constraints_group|
-              "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(", ")}"
-            end
-            .unshift("source 'https://rubygems.org'")
-            .join("\n")
-          File.write gemfile, gemfile_content
-
-          git.add [action_file, gemfile]
-          git.commit @compat.to_s
-          Octopoller.poll retries: 5 do
-            git.push "origin", branch
-          rescue Git::GitExecuteError
-            :re_poll
-          end
-        end
+        External::Github.dispatch_workflow \
+          "railsbump/checker",
+          "check.yml",
+          :main,
+          compat_id:       @compat.id.to_s,
+          ruby_version:    @compat.rails_release.compatible_ruby_version.to_s,
+          bundler_version: @compat.rails_release.compatible_bundler_version.to_s,
+          dependencies:    dependencies.to_json
       end
   end
 end

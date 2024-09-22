@@ -1,5 +1,6 @@
 require "fileutils"
 
+# The purpose of this service is to check a compat, i.e. determine whether its set of dependencies is compatible with its Rails release or not. To do so, several approaches are taken, from least to most complex.
 module Compats
   class Check < Baseline::Service
     RAILS_GEMS = %w(
@@ -34,6 +35,7 @@ module Compats
 
     private
 
+      # This method checks for the simplest case: if the compat has no dependencies, it's marked as compatible.
       def check_empty_dependencies
         return unless @compat.pending?
 
@@ -43,6 +45,7 @@ module Compats
         end
       end
 
+      # This method checks if the dependencies include any Rail gems, and if so, if any of them have a different version than the compat's Rails version. If that's the case, the compat is marked as incompatible.
       def check_rails_gems
         return unless @compat.pending?
 
@@ -59,6 +62,7 @@ module Compats
         end
       end
 
+      # This method checks if any other compats exist, that are marked as incompatible and have a subset of the compat's dependencies. If so, the compat must be incompatible and is marked as such.
       def check_dependency_subsets
         return unless @compat.pending? && (2..10).cover?(@compat.dependencies.size)
 
@@ -75,6 +79,7 @@ module Compats
         end
       end
 
+      # This method checks if any other compats exist, that are marked as compatible and have a superset of the compat's dependencies. If so, the compat must be compatible and is marked as such.
       def check_dependency_supersets
         # return unless @compat.pending?
         #
@@ -86,6 +91,7 @@ module Compats
         # end
       end
 
+      # This method checks a compat by actually attempting to install the compat's dependencies with the compat's Rails version locally. If the installation fails, the compat is marked as incompatible. If it succeeds, it is marked as compatible. If any of the dependencies have native extensions that cannot be built, the compat is marked as inconclusive.
       def check_with_bundler_locally
         return unless @compat.pending? && @compat.check_locally
 
@@ -158,6 +164,7 @@ module Compats
         @compat.status_determined_by = "bundler_local"
       end
 
+      # This method checks a compat by creating a new branch in the "checker" repository, adding a Gemfile with the compat's dependencies and pushing it to GitHub. A GitHub Actions workflow is then triggered in the "checker" repo, which tries to run `bundler lock` to resolve the dependencies. Afterwards, GitHub sends a notification to the "github_notifications" API endpoint, which creates a new GithubNotification and processes it in `GithubNotifications::Process`.
       def check_with_bundler_github
         return unless @compat.pending? && Rails.env.production?
 

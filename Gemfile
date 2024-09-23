@@ -49,6 +49,8 @@ group :development, :test do
   gem "rspec-rails", "~> 6.1.0"
   gem "rails-controller-testing"
   gem "simplecov", "~> 0.22", require: false
+  gem "vcr"
+  gem "webmock"
 end
 
 gem "pg"

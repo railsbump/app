@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/next_rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1331'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-e5c1413956cb157af5c914f2d6765be5';
+        style-src 'self' https://fonts.googleapis.com 'nonce-e5c1413956cb157af5c914f2d6765be5';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 199851fe-e280-4c64-b278-738e047d831f
+      X-Runtime:
+      - '0.015837'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 23 Sep 2024 01:25:38 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '1575'
+      X-Served-By:
+      - cache-ewr-kewr1740051-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1727054739.831708,VS0,VE3
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"next_rails","downloads":4945203,"version":"1.3.0","version_created_at":"2023-06-16T19:56:16.212Z","version_downloads":1460082,"platform":"ruby","authors":"Ernesto
+        Tagwerker, Luis Sagastume","info":"A set of handy tools to upgrade your Rails
+        application and keep it up to date","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"31b366af5cb4bd69408f7d613041c9fbc1df154928d0155599b6784982e8db1e","spec_sha":"f109209f7fdcb706ad5abc82defb84e1d4571a5e0431c8f9ce6711e8ec5b09b1","project_uri":"https://rubygems.org/gems/next_rails","gem_uri":"https://rubygems.org/gems/next_rails-1.3.0.gem","homepage_uri":"https://github.com/fastruby/next_rails","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/next_rails/1.3.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"bundler","requirements":"\u003e=
+        1.16, \u003c 3.0"},{"name":"byebug","requirements":"\u003e= 0"},{"name":"rake","requirements":"\u003e=
+        0"},{"name":"rexml","requirements":"= 3.1.7.3"},{"name":"rspec","requirements":"~\u003e
+        3.0"},{"name":"simplecov","requirements":"~\u003e 0.17.1"},{"name":"timecop","requirements":"~\u003e
+        0.9.1"},{"name":"webmock","requirements":"= 3.16.2"}],"runtime":[{"name":"colorize","requirements":"\u003e=
+        0.8.1"}]}}'
+  recorded_at: Mon, 23 Sep 2024 01:25:38 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,2115 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/versions/madmin.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '11077'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-b1cca828a275141bb7d1e003fd363f83';
+        style-src 'self' https://fonts.googleapis.com 'nonce-b1cca828a275141bb7d1e003fd363f83';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - cd52c360-3add-4dba-982a-730a1394e679
+      X-Runtime:
+      - '0.011456'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1049'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740070-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053452.498483,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"authors":"Chris Oliver, Andrea Fomera","built_at":"2024-06-12T00:00:00.000Z","created_at":"2024-06-12T04:01:00.329Z","description":"It''s
+        an admin, obviously.","downloads_count":1880,"metadata":{},"number":"1.2.11","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"355122b6d807982aa3b7cb09837e03a599376d7879b7662476de0604ff441fa0","spec_sha":"eddbe276de52a26dc5befd578b4919a3a40b2cc02f65bc92f4c1aa43c06c63d5"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2024-05-02T00:00:00.000Z","created_at":"2024-05-02T21:30:41.579Z","description":"It''s
+        an admin, obviously.","downloads_count":1769,"metadata":{},"number":"1.2.10","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"a2f8dae81832d5f49fd919691a101774c33e5e17400ed91d7aa61ec786fac673","spec_sha":"495f7821c4031028b26e80164fd310e2ee8a8dac89602b2d66677e866f662ff7"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2024-04-28T00:00:00.000Z","created_at":"2024-04-28T18:05:13.926Z","description":"It''s
+        an admin, obviously.","downloads_count":393,"metadata":{},"number":"1.2.9","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"a3e53f8be52369564f6b5f78d1f96d5be8390907ac36233e117ca444ab3455f7","spec_sha":"2393c0761bd98cd1a4ffc48c33109252b7f6202252756a223960234f03c12c05"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2023-05-10T00:00:00.000Z","created_at":"2023-05-10T20:47:06.274Z","description":"It''s
+        an admin, obviously.","downloads_count":40368,"metadata":{},"number":"1.2.8","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"7800dfc5ef5f57a3296bb9c028269a4df991faa23aa4c0bd55fe2928d5720ec4","spec_sha":"d66527d54a5fbb8e775a5b09d3216829adf98d24e874fa54c6136bb74e832ad1"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2022-09-30T00:00:00.000Z","created_at":"2022-09-30T15:49:15.962Z","description":"It''s
+        an admin, obviously.","downloads_count":22960,"metadata":{},"number":"1.2.7","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"273e2ed20198e09b88dfc829132d9ad1e316a0661a5062c22804c63647ca8d65","spec_sha":"4b9ba86a76da8fde22c01911c176c67cda7320bc51e589a641b341258444c961"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-12-16T00:00:00.000Z","created_at":"2021-12-16T16:22:22.969Z","description":"It''s
+        an admin, obviously.","downloads_count":8523,"metadata":{},"number":"1.2.6","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"93fb89102722c584433faf6b5bdbf37b6f947a6efdfc92437edfe74c5ff3d1a0","spec_sha":"0e8502db03c61ed8e253be8b47ac6fb6ed0ab5d4683d64df9b3519377f30737e"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-09-25T00:00:00.000Z","created_at":"2021-09-25T22:07:21.496Z","description":"It''s
+        an admin, obviously.","downloads_count":3124,"metadata":{},"number":"1.2.5","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"7e8d77196d848a3b3153ec6e80ff7b599dac68819dd41f8a16445c851b3d6901","spec_sha":"ec6b4d8c314ffe691351bf64d312b8c1e9bf6063f40c80ff71732508290382c3"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-09-24T00:00:00.000Z","created_at":"2021-09-24T18:42:04.391Z","description":"It''s
+        an admin, obviously.","downloads_count":1379,"metadata":{},"number":"1.2.4","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"fa4abe216469b97511a43b33a7b86dd2546de6ec17f680a401cef6d4324c4f26","spec_sha":"c12a4f0ffcf87270b7875efc409b6a888a074de324e9c24344db685e517360e3"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-09-24T00:00:00.000Z","created_at":"2021-09-24T17:44:12.190Z","description":"It''s
+        an admin, obviously.","downloads_count":1302,"metadata":{},"number":"1.2.3","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"db15ad4928c024c7d77a7e19891f20db905a4828a69553c7eee5dce845e2fca3","spec_sha":"5b782f86c58b7a867170e9b72e1722e9f9344541f47882351122c1f84ac7af3b"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-09-23T00:00:00.000Z","created_at":"2021-09-23T06:32:58.569Z","description":"It''s
+        an admin, obviously.","downloads_count":1350,"metadata":{},"number":"1.2.2","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"9bfbebf4b0fbe2c5d9fea5d346d23edfb230101a5f4ef04af57b3aa8e1cd9407","spec_sha":"4a86c95f2420501d7427ae3eb9db84b9cc7ac4e93eb3ee58e4a51af19ebc53f6"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-09-09T00:00:00.000Z","created_at":"2021-09-09T13:57:30.463Z","description":"It''s
+        an admin, obviously.","downloads_count":1539,"metadata":{},"number":"1.2.1","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"cba3f601d243b721a88a06dde479a95e494003d3ca862d1cd52cf713e3d94de9","spec_sha":"1e30e9e73f192aa3d40d2983cffe9d1b19787d0b07a095664669618c66cf1075"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-05-05T00:00:00.000Z","created_at":"2021-05-05T15:00:50.356Z","description":"It''s
+        an admin, obviously.","downloads_count":3682,"metadata":{},"number":"1.2.0","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"f269967b73357cb0016f7eed530d05d34bdfc59c7c119ff36bf737be3c0bf6e5","spec_sha":"307962586a1457dbfbca997407a857c3d82d656c546f8d4b983604265f39f656"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-04-22T00:00:00.000Z","created_at":"2021-04-22T16:21:35.443Z","description":"It''s
+        an admin, obviously.","downloads_count":1941,"metadata":{},"number":"1.1.0","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"1f5cba36221b34ffe2a0bfb0ecffb4199af7edbe78431f56cd0e481ef9296ab1","spec_sha":"8785584c0fdb917529105d26d1e551579de83c2a71b585be3dd766ebd39d8c14"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-03-04T00:00:00.000Z","created_at":"2021-03-04T14:38:35.693Z","description":"It''s
+        an admin, obviously.","downloads_count":2611,"metadata":{},"number":"1.0.2","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"b719ea862070f228c666db4bbd5b10aaa7c632bea2d4f7fe7761a1a9253e461c","spec_sha":"f17d814648b8dad234d6d26fa397eee00958c35539c4d4a0fa0991e3119a31da"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-03-04T00:00:00.000Z","created_at":"2021-03-04T13:59:53.843Z","description":"It''s
+        an admin, obviously.","downloads_count":1692,"metadata":{},"number":"1.0.1","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"286ba3e306fd4771024f4c1618e96401bb4757ab9360f42a1ecdd1e4354242a0","spec_sha":"0402b235bcdbd1cf21e89d09451016950f7a4a6c9606e4c1337dc1338e49513c"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T23:00:10.906Z","description":"It''s
+        an admin, obviously.","downloads_count":1560,"metadata":{},"number":"1.0.0","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"f3df45cae5c058acecf9bdd5dcd5505c295e64b759d13319818da98b1092716c","spec_sha":"71f4b92fcbebc205f377439607dc49d190ce0dc94aac9bddf1ba964fae0fca41"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T03:32:58.996Z","description":"It''s
+        an admin, obviously.","downloads_count":1696,"metadata":{},"number":"1.0.0.beta2","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e
+        1.3.1","ruby_version":"\u003e= 2.5.0","prerelease":true,"licenses":["MIT"],"requirements":[],"sha":"81d9a01d2ec9a0a23c8f51425a4de0526e1449efe029715a0aee2df3fb69f371","spec_sha":"d2ade85f2cbb524516979e5dfdedce7188d854c7346e0ed726df0a5905d7d143"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T02:15:26.828Z","description":"It''s
+        an admin, obviously.","downloads_count":1683,"metadata":{},"number":"1.0.0.beta1","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e
+        1.3.1","ruby_version":"\u003e= 2.5.0","prerelease":true,"licenses":["MIT"],"requirements":[],"sha":"8743346f48b89c17251ba76e43e7f023795c1d38076dc48c4c5b624209cd27ba","spec_sha":"0cc81ec77926ae8fb3d1472393724c9865870f2feeac5d47244b1ff8ef2d06f0"},{"authors":"Chris
+        Oliver, Andrea Fomera","built_at":"2021-01-15T00:00:00.000Z","created_at":"2021-01-15T20:49:27.988Z","description":"It''s
+        an admin, obviously.","downloads_count":1443,"metadata":{},"number":"0.1.1","summary":"A
+        modern admin for Ruby on Rails apps","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"4ba0693c5347c5dadab4e6e6bf909b367605738e12367eb1210ace603184faef","spec_sha":"2ba534ecf4be7780fa295ea0f916649711e7009c3df856ea94514565ffb117a1"},{"authors":"Jason
+        Charnes, Chris Oliver, Andrew Fomera","built_at":"2019-10-18T00:00:00.000Z","created_at":"2019-10-18T22:45:12.555Z","description":"Administration
+        for Rails","downloads_count":2150,"metadata":{},"number":"0.1.0","summary":"Administration
+        for Rails","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"c6eecae1aa3a3168aeadcb3e1753f7b0720043281b97c06273d49e25e227a933","spec_sha":"45614cdcaed0194b03b4bf31e9e317391ea414bfc512384b52736b3a4fc42b50"}]'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.11.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1216'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-5cdb422e1e41ca1e3ec10e799e22ec47';
+        style-src 'self' https://fonts.googleapis.com 'nonce-5cdb422e1e41ca1e3ec10e799e22ec47';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 98745acc-2091-4593-9244-870ea898215e
+      X-Runtime:
+      - '0.012787'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1049'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740047-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.532427,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.11","version_created_at":"2024-06-12T04:01:00.329Z","version_downloads":1880,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"355122b6d807982aa3b7cb09837e03a599376d7879b7662476de0604ff441fa0","spec_sha":"eddbe276de52a26dc5befd578b4919a3a40b2cc02f65bc92f4c1aa43c06c63d5","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.11.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.11","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2024-06-12T00:00:00.000Z","created_at":"2024-06-12T04:01:00.329Z","description":"It''s
+        an admin, obviously.","downloads_count":1880,"number":"1.2.11","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.10.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1216'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-4525c6d376e3708420ed5b32e99733f0';
+        style-src 'self' https://fonts.googleapis.com 'nonce-4525c6d376e3708420ed5b32e99733f0';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 0b6d6778-3492-4be4-8127-97303ad292a8
+      X-Runtime:
+      - '0.017617'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1048'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740050-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.568362,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.10","version_created_at":"2024-05-02T21:30:41.579Z","version_downloads":1769,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"a2f8dae81832d5f49fd919691a101774c33e5e17400ed91d7aa61ec786fac673","spec_sha":"495f7821c4031028b26e80164fd310e2ee8a8dac89602b2d66677e866f662ff7","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.10.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.10","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2024-05-02T00:00:00.000Z","created_at":"2024-05-02T21:30:41.579Z","description":"It''s
+        an admin, obviously.","downloads_count":1769,"number":"1.2.10","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.9.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1210'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-0bbb46f007388d594c3ae413cbb241e3';
+        style-src 'self' https://fonts.googleapis.com 'nonce-0bbb46f007388d594c3ae413cbb241e3';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - d8f53c18-49b6-4f34-9764-3c5379acbf90
+      X-Runtime:
+      - '0.016280'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1047'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740033-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.610091,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.9","version_created_at":"2024-04-28T18:05:13.926Z","version_downloads":393,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"a3e53f8be52369564f6b5f78d1f96d5be8390907ac36233e117ca444ab3455f7","spec_sha":"2393c0761bd98cd1a4ffc48c33109252b7f6202252756a223960234f03c12c05","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.9.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.9","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2024-04-28T00:00:00.000Z","created_at":"2024-04-28T18:05:13.926Z","description":"It''s
+        an admin, obviously.","downloads_count":393,"number":"1.2.9","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1214'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-4ba2bb73bf63fce12a3c08f781841c39';
+        style-src 'self' https://fonts.googleapis.com 'nonce-4ba2bb73bf63fce12a3c08f781841c39';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - b21f5252-27da-4697-bc1d-352d24185c1e
+      X-Runtime:
+      - '0.014472'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1047'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740069-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.648056,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.8","version_created_at":"2023-05-10T20:47:06.274Z","version_downloads":40368,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"7800dfc5ef5f57a3296bb9c028269a4df991faa23aa4c0bd55fe2928d5720ec4","spec_sha":"d66527d54a5fbb8e775a5b09d3216829adf98d24e874fa54c6136bb74e832ad1","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.8.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.8","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2023-05-10T00:00:00.000Z","created_at":"2023-05-10T20:47:06.274Z","description":"It''s
+        an admin, obviously.","downloads_count":40368,"number":"1.2.8","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.7.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1226'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-7881a033c367983ff86558744c17fd62';
+        style-src 'self' https://fonts.googleapis.com 'nonce-7881a033c367983ff86558744c17fd62';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - b636eeec-24f2-4746-b3a7-4b95aa51f804
+      X-Runtime:
+      - '0.014650'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1047'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740041-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.685320,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.7","version_created_at":"2022-09-30T15:49:15.962Z","version_downloads":22960,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"273e2ed20198e09b88dfc829132d9ad1e316a0661a5062c22804c63647ca8d65","spec_sha":"4b9ba86a76da8fde22c01911c176c67cda7320bc51e589a641b341258444c961","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.7.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.7","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 6.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2022-09-30T00:00:00.000Z","created_at":"2022-09-30T15:49:15.962Z","description":"It''s
+        an admin, obviously.","downloads_count":22960,"number":"1.2.7","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.6.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-91ad829ddb70d7aad70fd255019a6b81';
+        style-src 'self' https://fonts.googleapis.com 'nonce-91ad829ddb70d7aad70fd255019a6b81';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - b9413108-d85d-4707-8c29-0dd3a7739c03
+      X-Runtime:
+      - '0.013513'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1046'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740029-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.725827,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.6","version_created_at":"2021-12-16T16:22:22.969Z","version_downloads":8523,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"93fb89102722c584433faf6b5bdbf37b6f947a6efdfc92437edfe74c5ff3d1a0","spec_sha":"0e8502db03c61ed8e253be8b47ac6fb6ed0ab5d4683d64df9b3519377f30737e","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.6.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.6","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 6.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-12-16T00:00:00.000Z","created_at":"2021-12-16T16:22:22.969Z","description":"It''s
+        an admin, obviously.","downloads_count":8523,"number":"1.2.6","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.5.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-747ed591af70ea6b3a4a6b44008ce711';
+        style-src 'self' https://fonts.googleapis.com 'nonce-747ed591af70ea6b3a4a6b44008ce711';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - '028886ce-dd2c-4da5-9c9f-526dcf808e44'
+      X-Runtime:
+      - '0.015743'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1046'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740048-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.768889,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.5","version_created_at":"2021-09-25T22:07:21.496Z","version_downloads":3124,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"7e8d77196d848a3b3153ec6e80ff7b599dac68819dd41f8a16445c851b3d6901","spec_sha":"ec6b4d8c314ffe691351bf64d312b8c1e9bf6063f40c80ff71732508290382c3","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.5.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.5","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 5.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-09-25T00:00:00.000Z","created_at":"2021-09-25T22:07:21.496Z","description":"It''s
+        an admin, obviously.","downloads_count":3124,"number":"1.2.5","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.4.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-d1ba804bc7bd1af6ae84732bb8390263';
+        style-src 'self' https://fonts.googleapis.com 'nonce-d1ba804bc7bd1af6ae84732bb8390263';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 1293f328-73c1-472a-85a0-4de54b24e71a
+      X-Runtime:
+      - '0.009959'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1046'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740049-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.809992,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.4","version_created_at":"2021-09-24T18:42:04.391Z","version_downloads":1379,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"fa4abe216469b97511a43b33a7b86dd2546de6ec17f680a401cef6d4324c4f26","spec_sha":"c12a4f0ffcf87270b7875efc409b6a888a074de324e9c24344db685e517360e3","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.4.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.4","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 5.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-09-24T00:00:00.000Z","created_at":"2021-09-24T18:42:04.391Z","description":"It''s
+        an admin, obviously.","downloads_count":1379,"number":"1.2.4","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.3.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-bab4e674980b97ea5b69a0d5ad0be379';
+        style-src 'self' https://fonts.googleapis.com 'nonce-bab4e674980b97ea5b69a0d5ad0be379';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - f0320da4-3423-4281-9111-6d405064beae
+      X-Runtime:
+      - '0.013374'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1045'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740045-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.846402,VS0,VE5
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.3","version_created_at":"2021-09-24T17:44:12.190Z","version_downloads":1302,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"db15ad4928c024c7d77a7e19891f20db905a4828a69553c7eee5dce845e2fca3","spec_sha":"5b782f86c58b7a867170e9b72e1722e9f9344541f47882351122c1f84ac7af3b","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.3.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.3","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 5.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-09-24T00:00:00.000Z","created_at":"2021-09-24T17:44:12.190Z","description":"It''s
+        an admin, obviously.","downloads_count":1302,"number":"1.2.3","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.2.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-83349e7f2e96bbac14764a26798c4036';
+        style-src 'self' https://fonts.googleapis.com 'nonce-83349e7f2e96bbac14764a26798c4036';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 2e40197f-fdf4-4cde-8414-11cf28fd8f54
+      X-Runtime:
+      - '0.012270'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1045'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740023-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.889881,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.2","version_created_at":"2021-09-23T06:32:58.569Z","version_downloads":1350,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"9bfbebf4b0fbe2c5d9fea5d346d23edfb230101a5f4ef04af57b3aa8e1cd9407","spec_sha":"4a86c95f2420501d7427ae3eb9db84b9cc7ac4e93eb3ee58e4a51af19ebc53f6","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.2.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.2","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 5.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-09-23T00:00:00.000Z","created_at":"2021-09-23T06:32:58.569Z","description":"It''s
+        an admin, obviously.","downloads_count":1350,"number":"1.2.2","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-2d9251fe913379862d93fb91e4d61a76';
+        style-src 'self' https://fonts.googleapis.com 'nonce-2d9251fe913379862d93fb91e4d61a76';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - b6f852d3-97f1-4c35-9f39-eb7934293ec5
+      X-Runtime:
+      - '0.013095'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1044'
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740060-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.928061,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.1","version_created_at":"2021-09-09T13:57:30.463Z","version_downloads":1539,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"cba3f601d243b721a88a06dde479a95e494003d3ca862d1cd52cf713e3d94de9","spec_sha":"1e30e9e73f192aa3d40d2983cffe9d1b19787d0b07a095664669618c66cf1075","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.1.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.1","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 5.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-09-09T00:00:00.000Z","created_at":"2021-09-09T13:57:30.463Z","description":"It''s
+        an admin, obviously.","downloads_count":1539,"number":"1.2.1","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.2.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-08459a2011486ec2552e57e238d214d8';
+        style-src 'self' https://fonts.googleapis.com 'nonce-08459a2011486ec2552e57e238d214d8';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 9ca433a8-9067-4d01-a62b-32069e2607a8
+      X-Runtime:
+      - '0.012860'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 23 Sep 2024 01:04:12 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '1044'
+      X-Served-By:
+      - cache-ewr-kewr1740051-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '8'
+      X-Timer:
+      - S1727053453.984419,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.2.0","version_created_at":"2021-05-05T15:00:50.356Z","version_downloads":3682,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"f269967b73357cb0016f7eed530d05d34bdfc59c7c119ff36bf737be3c0bf6e5","spec_sha":"307962586a1457dbfbca997407a857c3d82d656c546f8d4b983604265f39f656","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.2.0.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.2.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-05-05T00:00:00.000Z","created_at":"2021-05-05T15:00:50.356Z","description":"It''s
+        an admin, obviously.","downloads_count":3682,"number":"1.2.0","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:12 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.1.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-a5f06a1c23e48a44215b645cc9f96627';
+        style-src 'self' https://fonts.googleapis.com 'nonce-a5f06a1c23e48a44215b645cc9f96627';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - e2a96ddf-d9e0-463d-b346-33b3ceff9ea5
+      X-Runtime:
+      - '0.010912'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1044'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740060-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.024114,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.1.0","version_created_at":"2021-04-22T16:21:35.443Z","version_downloads":1941,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"1f5cba36221b34ffe2a0bfb0ecffb4199af7edbe78431f56cd0e481ef9296ab1","spec_sha":"8785584c0fdb917529105d26d1e551579de83c2a71b585be3dd766ebd39d8c14","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.1.0.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.1.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-04-22T00:00:00.000Z","created_at":"2021-04-22T16:21:35.443Z","description":"It''s
+        an admin, obviously.","downloads_count":1941,"number":"1.1.0","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.0.2.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-2b8f9ba3440ad94415f2a52d747ebf77';
+        style-src 'self' https://fonts.googleapis.com 'nonce-2b8f9ba3440ad94415f2a52d747ebf77';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 148f0289-2603-4e12-b54b-89de6d6dc1ad
+      X-Runtime:
+      - '0.013876'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '1043'
+      X-Served-By:
+      - cache-ewr-kewr1740022-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1727053453.067134,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.0.2","version_created_at":"2021-03-04T14:38:35.693Z","version_downloads":2611,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"b719ea862070f228c666db4bbd5b10aaa7c632bea2d4f7fe7761a1a9253e461c","spec_sha":"f17d814648b8dad234d6d26fa397eee00958c35539c4d4a0fa0991e3119a31da","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.0.2.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.0.2","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-03-04T00:00:00.000Z","created_at":"2021-03-04T14:38:35.693Z","description":"It''s
+        an admin, obviously.","downloads_count":2611,"number":"1.0.2","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.0.1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-9273eee574727dadfc76e4af1a910c29';
+        style-src 'self' https://fonts.googleapis.com 'nonce-9273eee574727dadfc76e4af1a910c29';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 106a8f47-b49d-491a-afb2-c8d9cb9e068d
+      X-Runtime:
+      - '0.017788'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1043'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740053-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.104158,VS0,VE3
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.0.1","version_created_at":"2021-03-04T13:59:53.843Z","version_downloads":1692,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"286ba3e306fd4771024f4c1618e96401bb4757ab9360f42a1ecdd1e4354242a0","spec_sha":"0402b235bcdbd1cf21e89d09451016950f7a4a6c9606e4c1337dc1338e49513c","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.0.1.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.0.1","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-03-04T00:00:00.000Z","created_at":"2021-03-04T13:59:53.843Z","description":"It''s
+        an admin, obviously.","downloads_count":1692,"number":"1.0.1","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.0.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-5ec7c5ebc4671bb45227ade98e2826f1';
+        style-src 'self' https://fonts.googleapis.com 'nonce-5ec7c5ebc4671bb45227ade98e2826f1';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - '06334856-e327-4e2c-afb7-6fc15003e50b'
+      X-Runtime:
+      - '0.012941'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.238.147.15:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1043'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740030-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.143200,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.0.0","version_created_at":"2021-02-05T23:00:10.906Z","version_downloads":1560,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"f3df45cae5c058acecf9bdd5dcd5505c295e64b759d13319818da98b1092716c","spec_sha":"71f4b92fcbebc205f377439607dc49d190ce0dc94aac9bddf1ba964fae0fca41","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.0.0.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.0.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T23:00:10.906Z","description":"It''s
+        an admin, obviously.","downloads_count":1560,"number":"1.0.0","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.0.0.beta2.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1250'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-bf603d845fe0ae5a272e24ba23dfc1d6';
+        style-src 'self' https://fonts.googleapis.com 'nonce-bf603d845fe0ae5a272e24ba23dfc1d6';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - bb288ea4-c9a3-4462-ab97-450e612e9ef4
+      X-Runtime:
+      - '0.012835'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1042'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740073-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.184826,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.0.0.beta2","version_created_at":"2021-02-05T03:32:58.996Z","version_downloads":1696,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"81d9a01d2ec9a0a23c8f51425a4de0526e1449efe029715a0aee2df3fb69f371","spec_sha":"d2ade85f2cbb524516979e5dfdedce7188d854c7346e0ed726df0a5905d7d143","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.0.0.beta2.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.0.0.beta2","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T03:32:58.996Z","description":"It''s
+        an admin, obviously.","downloads_count":1696,"number":"1.0.0.beta2","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e 1.3.1","ruby_version":"\u003e=
+        2.5.0","prerelease":true,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/1.0.0.beta1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1250'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-6aebd65943420b7cc2b23dd445356d52';
+        style-src 'self' https://fonts.googleapis.com 'nonce-6aebd65943420b7cc2b23dd445356d52';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 4a04309e-aae5-4da2-8dda-579f7d15f053
+      X-Runtime:
+      - '0.012150'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1042'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740077-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.223096,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"1.0.0.beta1","version_created_at":"2021-02-05T02:15:26.828Z","version_downloads":1683,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"8743346f48b89c17251ba76e43e7f023795c1d38076dc48c4c5b624209cd27ba","spec_sha":"0cc81ec77926ae8fb3d1472393724c9865870f2feeac5d47244b1ff8ef2d06f0","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-1.0.0.beta1.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/1.0.0.beta1","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"pagy","requirements":"\u003e=
+        3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e= 6.0.3"}]},"built_at":"2021-02-05T00:00:00.000Z","created_at":"2021-02-05T02:15:26.828Z","description":"It''s
+        an admin, obviously.","downloads_count":1683,"number":"1.0.0.beta1","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e 1.3.1","ruby_version":"\u003e=
+        2.5.0","prerelease":true,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/0.1.1.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1269'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-1f61b5a93c5017dc70930577433f8c77';
+        style-src 'self' https://fonts.googleapis.com 'nonce-1f61b5a93c5017dc70930577433f8c77';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 72dfbcd7-7a35-4cd3-ba28-2ae6468a8dda
+      X-Runtime:
+      - '0.014052'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1041'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740030-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.256198,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"0.1.1","version_created_at":"2021-01-15T20:49:27.988Z","version_downloads":1443,"platform":"ruby","authors":"Chris
+        Oliver, Andrea Fomera","info":"It''s an admin, obviously.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"4ba0693c5347c5dadab4e6e6bf909b367605738e12367eb1210ace603184faef","spec_sha":"2ba534ecf4be7780fa295ea0f916649711e7009c3df856ea94514565ffb117a1","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-0.1.1.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/0.1.1","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"sqlite3","requirements":"\u003e=
+        0"}],"runtime":[{"name":"pagy","requirements":"\u003e= 3.5, \u003c 4.0"},{"name":"rails","requirements":"\u003e=
+        6.0.3"}]},"built_at":"2021-01-15T00:00:00.000Z","created_at":"2021-01-15T20:49:27.988Z","description":"It''s
+        an admin, obviously.","downloads_count":1443,"number":"0.1.1","summary":"A
+        modern admin for Ruby on Rails apps","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        2.5.0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/madmin/versions/0.1.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1307'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Wed, 12 Jun 2024 04:01:00 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-34b151420eeee5aada2b975f52759daf';
+        style-src 'self' https://fonts.googleapis.com 'nonce-34b151420eeee5aada2b975f52759daf';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=foo
+      X-Request-Id:
+      - 95444705-f177-4f6e-89b6-49ec6f436a60
+      X-Runtime:
+      - '0.013430'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1041'
+      Date:
+      - Mon, 23 Sep 2024 01:04:13 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr-kewr1740045-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1727053453.302748,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"fe96063b23237fe313331547976a6bbc"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"madmin","downloads":103045,"version":"0.1.0","version_created_at":"2019-10-18T22:45:12.555Z","version_downloads":2150,"platform":"ruby","authors":"Jason
+        Charnes, Chris Oliver, Andrew Fomera","info":"Administration for Rails","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"c6eecae1aa3a3168aeadcb3e1753f7b0720043281b97c06273d49e25e227a933","spec_sha":"45614cdcaed0194b03b4bf31e9e317391ea414bfc512384b52736b3a4fc42b50","project_uri":"https://rubygems.org/gems/madmin","gem_uri":"https://rubygems.org/gems/madmin-0.1.0.gem","homepage_uri":"https://github.com/excid3/madmin","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/madmin/0.1.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"pry-rails","requirements":"\u003e=
+        0"},{"name":"sqlite3","requirements":"~\u003e 1.3.6"},{"name":"standardrb","requirements":"\u003e=
+        0"}],"runtime":[{"name":"rails","requirements":"\u003e= 5.2"}]},"built_at":"2019-10-18T00:00:00.000Z","created_at":"2019-10-18T22:45:12.555Z","description":"Administration
+        for Rails","downloads_count":2150,"number":"0.1.0","summary":"Administration
+        for Rails","rubygems_version":"\u003e= 0","ruby_version":"\u003e= 0","prerelease":false,"requirements":[]}'
+  recorded_at: Mon, 23 Sep 2024 01:04:13 GMT
+recorded_with: VCR 6.3.1

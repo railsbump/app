@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Gemmies::UpdateCompats do
-  describe "#call" do
+  describe "#call", vcr: { record: :once } do
     let(:gemmy) { FactoryBot.create :gemmy }
     
     before do

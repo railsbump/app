@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe GemmiesController, type: :controller do
-  describe "create" do
+  describe "create", vcr: { record: :once } do
     context "when the gemmy params are valid" do
       it "redirects to the new gemmy page" do
         post :create, params: { gemmy: { name: "next_rails" } }

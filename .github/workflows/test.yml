@@ -10,21 +10,76 @@ on:
       - main
       - 'releases/*'
 
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_HOST: localhost
+  HOST: localhost
+  REDIS_HOST: localhost:6379
+  DATABASE_URL: postgres://postgres:postgres@localhost:5432/rails_bump_test
+  COVERAGE: 'true'
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev redis-tools
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version-file: .ruby-version
 
       - name: Install dependencies
         run: bundle install
+
+      - name: Wait for PostgreSQL
+        run: |
+          echo "Waiting for PostgreSQL to be ready..."
+          while ! pg_isready -h localhost -p 5432 -U postgres; do
+            sleep 1
+          done
+
+      - name: Wait for Redis
+        run: |
+          echo "Waiting for Redis to be ready..."
+          while ! redis-cli ping; do
+            sleep 1
+          done
+
+      - name: Set up the database
+        run: |
+          cp config/database.yml.sample config/database.yml
+          bin/rails db:create
+          bin/rails db:schema:load
+          bin/rails db:test:prepare
 
       - name: Run tests
         run: bundle exec rspec spec

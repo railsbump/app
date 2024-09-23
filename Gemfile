@@ -44,6 +44,7 @@ end
 # Run against this stable release
 group :development, :test do
   gem "byebug",                                  "~> 11.1"
+  gem "database_cleaner-active_record"
   gem "factory_bot_rails",                       "~> 6.2"
   gem "rspec-rails", "~> 6.1.0"
   gem "rails-controller-testing"

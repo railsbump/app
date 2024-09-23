@@ -49,7 +49,9 @@ class Compat < ApplicationRecord
 
   # Sort dependencies, JSON does not preserve key order.
   def dependencies
-    super.sort.to_h
+    deps = super || []
+
+    deps.sort.to_h
   end
 
   def dependencies=(value)

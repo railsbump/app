@@ -4,7 +4,7 @@ module Maintenance
       check_uniqueness
 
       call_all_private_methods_without_args \
-        raise_errors: false
+        raise_errors: true
 
       [
         CheckGitBranches,

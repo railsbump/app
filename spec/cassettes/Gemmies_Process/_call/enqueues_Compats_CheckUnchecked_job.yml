@@ -1,0 +1,299 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/versions/ombu_labs-auth.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1507'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Sat, 30 Sep 2023 14:25:16 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-0c65a6cff83a463bdea00f09a96d531b';
+        style-src 'self' https://fonts.googleapis.com 'nonce-0c65a6cff83a463bdea00f09a96d531b';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Aa76189cd9f02eec717393dfa2a1a65605a4fef8e%2Cenv%3Aproduction%2Ctrace_id%3A4175023458902922831
+      X-Request-Id:
+      - 2965dcf0-0064-469b-9b58-e2517c51c250
+      X-Runtime:
+      - '0.009134'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 24 Sep 2024 18:41:16 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '471'
+      X-Served-By:
+      - cache-ewr-kewr1740024-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1727203277.771413,VS0,VE3
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"2567fe361113f20c99fa6d93a7fa5752"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"authors":"OmbuLabs","built_at":"2023-06-09T00:00:00.000Z","created_at":"2023-06-09T16:52:20.595Z","description":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","downloads_count":734,"metadata":{"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","source_code_uri":"https://github.com/fastruby/ombu_labs-auth","allowed_push_host":"https://rubygems.org"},"number":"1.0.0","summary":"OmbuLabs
+        internal authentication gem","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"7025518b4c73e5b423951f2149333beed4d05a3bcf7f9e6a5bf14663526fd7a6","spec_sha":"080c73b320c7ec6f9c95e445da52d25ca16959f2218ac13f77f9ebe793d7e955"},{"authors":"Ombulabs","built_at":"2022-10-20T00:00:00.000Z","created_at":"2022-10-20T17:11:26.692Z","description":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","downloads_count":565,"metadata":{"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","source_code_uri":"https://github.com/fastruby/ombu_labs-auth","allowed_push_host":"https://rubygems.org"},"number":"0.1.0","summary":"Ombulabs
+        internal authentication gem","platform":"ruby","rubygems_version":"\u003e=
+        0","ruby_version":"\u003e= 0","prerelease":false,"licenses":["MIT"],"requirements":[],"sha":"d2d0253a2da4e1da8e45dfc8c3b256c3f9d16b09a1e467fd8a7a3ded4eb8ee33","spec_sha":"b9a3ec86d6ac50407fc858a9276b1c473eacda11e91b6bc41e4b1336c6861021"}]'
+  recorded_at: Tue, 24 Sep 2024 18:41:16 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/ombu_labs-auth/versions/1.0.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1860'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Sat, 30 Sep 2023 14:25:16 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-65a9faf724647ab94c9ab6776604e130';
+        style-src 'self' https://fonts.googleapis.com 'nonce-65a9faf724647ab94c9ab6776604e130';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Aa76189cd9f02eec717393dfa2a1a65605a4fef8e%2Cenv%3Aproduction%2Ctrace_id%3A2543392069338189785
+      X-Request-Id:
+      - 4c50297e-2828-427b-a1b1-f9707f6cae76
+      X-Runtime:
+      - '0.014796'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 52.38.30.86:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 24 Sep 2024 18:41:16 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '470'
+      X-Served-By:
+      - cache-ewr-kewr1740033-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1727203277.808524,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"2567fe361113f20c99fa6d93a7fa5752"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"ombu_labs-auth","downloads":1299,"version":"1.0.0","version_created_at":"2023-06-09T16:52:20.595Z","version_downloads":734,"platform":"ruby","authors":"OmbuLabs","info":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","source_code_uri":"https://github.com/fastruby/ombu_labs-auth","allowed_push_host":"https://rubygems.org"},"yanked":false,"sha":"7025518b4c73e5b423951f2149333beed4d05a3bcf7f9e6a5bf14663526fd7a6","spec_sha":"080c73b320c7ec6f9c95e445da52d25ca16959f2218ac13f77f9ebe793d7e955","project_uri":"https://rubygems.org/gems/ombu_labs-auth","gem_uri":"https://rubygems.org/gems/ombu_labs-auth-1.0.0.gem","homepage_uri":"https://github.com/fastruby/ombu_labs-auth","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/fastruby/ombu_labs-auth","bug_tracker_uri":null,"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[{"name":"capybara","requirements":"\u003e=
+        0"},{"name":"puma","requirements":"\u003e= 0"},{"name":"webdrivers","requirements":"\u003e=
+        0"}],"runtime":[{"name":"devise","requirements":"~\u003e 4.8.1"},{"name":"omniauth","requirements":"~\u003e
+        2.1.0"},{"name":"omniauth-github","requirements":"~\u003e 2.0.0"},{"name":"omniauth-rails_csrf_protection","requirements":"\u003e=
+        0"},{"name":"rails","requirements":"\u003e= 6.0"}]},"built_at":"2023-06-09T00:00:00.000Z","created_at":"2023-06-09T16:52:20.595Z","description":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","downloads_count":734,"number":"1.0.0","summary":"OmbuLabs
+        internal authentication gem","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        0","prerelease":false,"requirements":[]}'
+  recorded_at: Tue, 24 Sep 2024 18:41:16 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v2/rubygems/ombu_labs-auth/versions/0.1.0.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1653'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Sat, 30 Sep 2023 14:25:16 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-VCdT6ytUhZs84Q7/wv/lrmONG3gBw7A6/v5HLZ1KLfU='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-9dbffdea8046c248f5c3639cabe9fc89';
+        style-src 'self' https://fonts.googleapis.com 'nonce-9dbffdea8046c248f5c3639cabe9fc89';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Aa76189cd9f02eec717393dfa2a1a65605a4fef8e%2Cenv%3Aproduction%2Ctrace_id%3A3310847094239093086
+      X-Request-Id:
+      - a0ec367d-bea2-4b56-8416-6fda56edd5b5
+      X-Runtime:
+      - '0.015957'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.230.138.104:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 24 Sep 2024 18:41:16 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '469'
+      X-Served-By:
+      - cache-ewr-kewr1740048-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1727203277.845978,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"2567fe361113f20c99fa6d93a7fa5752"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"ombu_labs-auth","downloads":1299,"version":"0.1.0","version_created_at":"2022-10-20T17:11:26.692Z","version_downloads":565,"platform":"ruby","authors":"Ombulabs","info":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","source_code_uri":"https://github.com/fastruby/ombu_labs-auth","allowed_push_host":"https://rubygems.org"},"yanked":false,"sha":"d2d0253a2da4e1da8e45dfc8c3b256c3f9d16b09a1e467fd8a7a3ded4eb8ee33","spec_sha":"b9a3ec86d6ac50407fc858a9276b1c473eacda11e91b6bc41e4b1336c6861021","project_uri":"https://rubygems.org/gems/ombu_labs-auth","gem_uri":"https://rubygems.org/gems/ombu_labs-auth-0.1.0.gem","homepage_uri":"https://github.com/fastruby/ombu_labs-auth","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/fastruby/ombu_labs-auth","bug_tracker_uri":null,"changelog_uri":"https://github.com/fastruby/ombu_labs-auth/blob/main/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"devise","requirements":"~\u003e
+        4.8.1"},{"name":"omniauth","requirements":"~\u003e 2.1.0"},{"name":"omniauth-github","requirements":"~\u003e
+        2.0.0"},{"name":"rails","requirements":"\u003e= 6.0"}]},"built_at":"2022-10-20T00:00:00.000Z","created_at":"2022-10-20T17:11:26.692Z","description":"Helps
+        us authenticate teammates using GitHub Oauth and Devise","downloads_count":565,"number":"0.1.0","summary":"Ombulabs
+        internal authentication gem","rubygems_version":"\u003e= 0","ruby_version":"\u003e=
+        0","prerelease":false,"requirements":[]}'
+  recorded_at: Tue, 24 Sep 2024 18:41:16 GMT
+recorded_with: VCR 6.3.1

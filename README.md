@@ -21,6 +21,7 @@ To actually perform the check, [GitHub Actions](https://github.com/features/acti
 ## History
 
 RailsBump used to be called Ready4Rails until December 2019, when [Manuel Meurer](https://github.com/manuelmeurer) took over from [Florent Guilleux](https://github.com/Florent2) to automate the service that Ready4Rails had been doing more or less manually until then.
+
 The relaunch took longer than expected, mainly because of the Coronavirus pandemic, and the first usable version of RailsBump was finally launched in August 2020.
 
 ## Stats
@@ -32,6 +33,28 @@ You can see live stats from Plausible Analytics here: https://plausible.io/rails
 If you notice a bug or have an idea for an improvement, please open an [issue](https://github.com/railsbump/app/issues/new) or submit a [PR](https://github.com/railsbump/app/pulls).
 
 If you'd like to get involved in the development, get in touch [via email](mailto:hello@railsbump.org)!
+
+### Setup 
+
+You will need these services:
+
+- Postgres 16 or higher
+- Redis
+
+In order to set up the application locally: 
+
+1. `git clone git@github.com:railsbump/app.git`
+2. `bin/setup`
+3. `foreman start -f Procfile.dev`
+4. Go to http://localhost:3000
+
+If these steps don't work, please submit a new issue: https://github.com/railsbump/app/issues/new
+
+We recommend running these scheduled tasks:
+
+- `bin/rails runner "Compats::CheckUnchecked.call"` once every 5 to 10 minutes
+
+- `bin/rails runner "Maintenance::Hourly.call"` once an hour
 
 ## Support
 

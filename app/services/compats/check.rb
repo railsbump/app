@@ -19,6 +19,8 @@ module Compats
       railties
     )
 
+    attr_accessor :compat
+
     def call(compat)
       check_uniqueness on_error: :return
 
@@ -92,77 +94,78 @@ module Compats
       end
 
       # This method checks a compat by actually attempting to install the compat's dependencies with the compat's Rails version locally. If the installation fails, the compat is marked as incompatible. If it succeeds, it is marked as compatible. If any of the dependencies have native extensions that cannot be built, the compat is marked as inconclusive.
-      def check_with_bundler_locally
-        return unless @compat.pending? && @compat.check_locally
+      # def check_with_bundler_locally
+      #   return unless @compat.pending? && @compat.check_locally
 
-        dir  = Rails.root.join("tmp", "compats")
-        file = dir.join(@compat.id.to_s)
-        FileUtils.mkdir_p dir
+      #   dir  = Rails.root.join("tmp", "compats")
+      #   file = dir.join(@compat.id.to_s)
+      #   FileUtils.mkdir_p dir
 
-        begin
-          deps_with_rails = @compat.dependencies.dup.tap {
-            _1["rails"] = [
-              _1["rails"],
-              "#{@compat.rails_release.version.approximate_recommendation}.0"
-            ].compact
-             .join(", ")
-          }
-          gemfile_deps = deps_with_rails.map {
-            quoted_versions = _2.split(/\s*,\s*/).map { |d| "'#{d}'" }
-            "gem '#{_1}', #{quoted_versions.join(", ")}, require: false"
-          }
-          File.write file, <<~SCRIPT
-            #!/usr/bin/env ruby
+      #   begin
+      #     deps_with_rails = @compat.dependencies.dup.tap {
+      #       _1["rails"] = [
+      #         _1["rails"],
+      #         "#{@compat.rails_release.version.approximate_recommendation}.0"
+      #       ].compact
+      #        .join(", ")
+      #     }
+      #     gemfile_deps = deps_with_rails.map {
+      #       quoted_versions = _2.split(/\s*,\s*/).map { |d| "'#{d}'" }
+      #       "gem '#{_1}', #{quoted_versions.join(", ")}, require: false"
+      #     }
+      #     File.write file, <<~SCRIPT
+      #       #!/usr/bin/env ruby
 
-            require "bundler/inline"
+      #       require "bundler/inline"
 
-            gemfile true do
-              source "https://rubygems.org"
-              ruby "#{@compat.rails_release.compatible_ruby_version}"
-              #{gemfile_deps.join("\n")}
-            end
-          SCRIPT
-          File.chmod 0755, file
+      #       gemfile true do
+      #         source "https://rubygems.org"
+      #         ruby "#{@compat.rails_release.compatible_ruby_version}"
+      #         #{gemfile_deps.join("\n")}
+      #       end
+      #     SCRIPT
+      #     File.chmod 0755, file
 
-          stderr, stdout = Bundler.with_unbundled_env do
-            Open3.popen3 file.to_s do
-              # For some reason, the order matters: readlines must be called on stderr first. 🤷‍♂️
-              [_3, _2].map do |io|
-                io.readlines.map(&:strip)
-              end
-            end
-          end
-        ensure
-          if File.exist?(file)
-            FileUtils.rm_rf file
-          end
-        end
+      #     stderr, stdout = Bundler.with_unbundled_env do
+      #       Open3.popen3 file.to_s do
+      #         # For some reason, the order matters: readlines must be called on stderr first. 🤷‍♂️
+      #         [_3, _2].map do |io|
+      #           io.readlines.map(&:strip)
+      #         end
+      #       end
+      #     end
+      #   ensure
+      #     if File.exist?(file)
+      #       FileUtils.rm_rf file
+      #     end
+      #   end
 
-        stdout.each do |line|
-          if match = line.match(/\AInstalling (?<name>\S+) (?<version>\S+)\z/)
-            # TODO: uninstall gem again
-          end
-        end
+      #   stdout.each do |line|
+      #     if match = line.match(/\AInstalling (?<name>\S+) (?<version>\S+)\z/)
+      #       # TODO: uninstall gem again
+      #     end
+      #   end
 
-        case
-        when stderr.empty?
-          @compat.status = :compatible
-        when stderr.any?(/ERROR: Failed to build gem native extension/)
-          @compat.status = :inconclusive
-        when stderr.any?(/You have already activated/)
-          return
-        else
-          unless stderr[0].end_with?("Could not find compatible versions (Bundler::SolveFailure)") &&
-            stderr.exclude?("Your bundle requires a different version of Bundler than the one you're running.")
+      #   case
+      #   when stderr.empty?
+      #     @compat.status = :compatible
+      #   when stderr.any?(/ERROR: Failed to build gem native extension/)
+      #     @compat.status = :inconclusive
+      #   when stderr.any?(/You have already activated/)
+      #     return
+      #   else
+      #     unless stderr[0].end_with?("Could not find compatible versions (Bundler::SolveFailure)") &&
+      #       stderr.exclude?("Your bundle requires a different version of Bundler than the one you're running.")
 
-            raise Error, "Unexpected stderr: #{stderr.join("\n")}"
-          end
+      #       raise Error, "Unexpected stderr: #{stderr.join("\n")}"
+      #     end
 
-          @compat.status = :incompatible
-        end
+      #     @compat.status = :incompatible
+      #   end
 
-        @compat.status_determined_by = "bundler_local"
-      end
+      #   require "byebug"; byebug
+      #   @compat.status_determined_by = "bundler_local"
+      # end
 
       # This method checks a compat by creating a new branch in the "checker" repository, adding a Gemfile with the compat's dependencies and pushing it to GitHub. A GitHub Actions workflow is then triggered in the "checker" repo, which tries to run `bundler lock` to resolve the dependencies. Afterwards, GitHub sends a notification to the "github_notifications" API endpoint, which creates a new GithubNotification and processes it in `GithubNotifications::Process`.
       def check_with_bundler_github

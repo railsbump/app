@@ -28,4 +28,47 @@ RSpec.describe Compats::Check, type: :service do
       end
     end
   end
+
+  xdescribe '#check_with_bundler_locally', vcr: { record: :all } do
+    before do
+      FactoryBot.create(:rails_release, version: "7.1")
+      FactoryBot.create(:rails_release, version: "7.2")
+
+      Gemmies::UpdateDependenciesAndVersions.call(gemmy)
+      Gemmies::UpdateCompats.call(gemmy)
+      gemmy.reload
+    end
+
+    context 'when using the skunk gem' do
+      let(:gemmy) { FactoryBot.create(:gemmy, name: 'skunk') }
+
+      it 'marks the compat as compatible' do
+        gemmy.compat_ids.each do |compat_id|
+          compat = Compat.find(compat_id)
+          service = described_class.new
+          service.compat = compat
+          service.send(:check_with_bundler_locally)
+
+          expect(compat.status).to eq('compatible')
+          expect(compat.status_determined_by).to eq('bundler_local')
+        end
+      end
+    end
+
+    context 'when using the win32-api gem' do
+      let(:gemmy) { FactoryBot.create(:gemmy, name: 'win32-api') }
+
+      it 'marks the compat as inconclusive' do
+        gemmy.compat_ids.each do |compat_id|
+          compat = Compat.find(compat_id)
+          service = described_class.new
+          service.compat = compat
+          service.send(:check_with_bundler_locally)
+
+          expect(compat.status).to eq('inconclusive')
+          expect(compat.status_determined_by).to eq('bundler_local')
+        end
+      end
+    end
+  end
 end

@@ -167,28 +167,29 @@ module Compats
       #   @compat.status_determined_by = "bundler_local"
       # end
 
-      # This method checks a compat by creating a new branch in the "checker" repository, adding a Gemfile with the compat's dependencies and pushing it to GitHub. A GitHub Actions workflow is then triggered in the "checker" repo, which tries to run `bundler lock` to resolve the dependencies. Afterwards, GitHub sends a notification to the "github_notifications" API endpoint, which creates a new GithubNotification and processes it in `GithubNotifications::Process`.
+      # This method checks a compat by dispatching the check_bundler workflow
       def check_with_bundler_github
         return unless @compat.pending? && Rails.env.production?
 
-        dependencies = @compat
-          .dependencies
-          .dup
-          .transform_values {
-            _1.split(/\s*,\s*/)
-          }.then {
-            _1["rails"] ||= []
-            _1["rails"] << "#{@compat.rails_release.version.approximate_recommendation}.0"
-          }
+        # Initialize the Octokit client with your GitHub token
+        client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
 
-        External::Github.dispatch_workflow \
-          "railsbump/checker",
-          "check.yml",
-          :main,
-          compat_id:       @compat.id.to_s,
-          ruby_version:    @compat.rails_release.compatible_ruby_version.to_s,
+        # Define the repository, workflow file, and branch
+        repo = 'railsbump/checker'
+        workflow_id = 'check_bundler.yml'
+        ref = 'main'
+
+        # Define the inputs for the workflow
+        inputs = {
+          rails_version: @compat.rails_release.version.to_s,
+          ruby_version: @compat.rails_release.compatible_ruby_version.to_s,
           bundler_version: @compat.rails_release.compatible_bundler_version.to_s,
-          dependencies:    dependencies.to_json
+          dependencies: JSON::dump(@compat.dependencies),
+          compat_id: @compat.id
+        }
+
+        # Trigger the workflow dispatch event
+        client.workflow_dispatch(repo, workflow_id, ref, inputs: inputs)
       end
   end
 end

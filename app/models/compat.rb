@@ -13,8 +13,8 @@ class Compat < ApplicationRecord
   has_many :github_notifications
 
   validates :status, presence: true, inclusion: { in: %w(pending), if: :unchecked?, message: "must be pending if unchecked" }
- 
-  validate :unique_dependencies_for_rails_release
+
+  validate :unique_dependencies_for_rails_release, on: :create
 
   def unique_dependencies_for_rails_release
     if Compat.where(rails_release: rails_release)
@@ -64,6 +64,31 @@ class Compat < ApplicationRecord
     # which cannot easily be installed on current Linux systems,
     # so we'll only check compats for newer Rails versions locally.
     rails_release.version >= Gem::Version.new("5")
+  end
+
+  # Knows how to process a `result` as reported by the railsbump/checker project and an
+  # execution of the GitHub Actions workflow.
+  #
+  # @param [Hash] Attributes that are the result of the compatibility check
+  # @return [Boolean] Whether the status was updated or not
+  def process_result(result)
+    return true unless pending?
+
+    if result[:success]
+      self.update(
+        checked_at: Time.current,
+        status: :compatible,
+        status_determined_by: result[:strategy]
+      )
+    else
+      # TODO: Uncomment this when we're confident on all reporters
+      #
+      # self.update(
+      #   checked_at: Time.current,
+      #   status: :incompatible,
+      #   status_determined_by: result[:strategy]
+      # )
+    end
   end
 end
 

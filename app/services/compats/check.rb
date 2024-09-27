@@ -185,7 +185,7 @@ module Compats
           ruby_version: @compat.rails_release.compatible_ruby_version.to_s,
           bundler_version: @compat.rails_release.compatible_bundler_version.to_s,
           dependencies: JSON::dump(@compat.dependencies),
-          compat_id: @compat.id
+          compat_id: @compat.id.to_s
         }
 
         # Trigger the workflow dispatch event

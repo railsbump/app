@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :email_notifications, only: :create
 
   namespace :api, path: '', constraints: { subdomain: "api" } do
-    resources :releases, only: :create
     resources :github_notifications, only: :create
+    resources :releases, only: :create
+    resources :results, only: :create
   end
 end

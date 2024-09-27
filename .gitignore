@@ -6,6 +6,8 @@
 
 .rspec
 
+config/database.yml
+
 coverage
 
 node_modules

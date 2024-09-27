@@ -19,12 +19,6 @@ module External
       false
     end
 
-    add_method :dispatch_workflow do |repo, id, ref, **inputs|
-      client.workflow_dispatch \
-        repo, id, ref,
-        inputs: inputs
-    end
-
     private
 
       def client

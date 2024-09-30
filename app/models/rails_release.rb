@@ -41,6 +41,16 @@ class RailsRelease < ApplicationRecord
     !self.class.latest_major.exists?(id: self)
   end
 
+  def self.print_all
+    all.each do |release|
+      puts "# #{release}"
+
+      puts "Minimum ruby version: #{release.minimum_ruby_version}"
+      puts "Minimum bundler version: #{release.minimum_bundler_version}"
+      puts "Minimum rubygems version: #{release.minimum_rubygems_version}"
+    end
+  end
+
   def compatible_ruby_version
     if version
       Gem::Version.new(version < Gem::Version.new("5") ? "2.7" : RUBY_VERSION)

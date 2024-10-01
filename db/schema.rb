@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_27_154305) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_30_143554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_27_154305) do
     t.text "version"
     t.timestamptz "created_at"
     t.timestamptz "updated_at"
+    t.string "minimum_ruby_version"
+    t.string "minimum_bundler_version"
+    t.string "minimum_rubygems_version"
+    t.string "maximum_ruby_version"
+    t.string "maximum_bundler_version"
+    t.string "maximum_rubygems_version"
   end
 
 end

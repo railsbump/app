@@ -25,7 +25,7 @@ namespace :data do
   end
 
   desc "Update minimum Ruby versions from Rails 2.3 to 7.2"
-  task update_rails_releases: :environment do
+  task update_rails_releases: :find_or_create_rails_releases do
     min_versions = {
       "2.3" => {
         minimum_ruby_version: "1.8.7",

@@ -24,6 +24,10 @@ module Compats::Checks
     def call
       return unless @compat.pending?
 
+      check!
+    end
+
+    def check!
       @compat.dependencies.each do |gem_name, requirement|
         next unless RAILS_GEMS.include?(gem_name)
         requirement_unmet = requirement.split(/\s*,\s*/).any? do |r|

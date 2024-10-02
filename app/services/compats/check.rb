@@ -12,6 +12,13 @@ module Compats
 
     attr_accessor :compat
 
+    # This method checks a compat by calling all check strategies. It only does checks on pending compats.
+    #
+    # If any of them marks the compat as incompatible, the compat is marked as incompatible.
+    #
+    # If any of them mark the compat as compatible, the compat is marked as compatible.
+    #
+    # @param [Compat] compat The compat to check
     def call(compat)
       check_uniqueness on_error: :return
 
@@ -21,6 +28,20 @@ module Compats
 
       CHECK_STRATEGIES.each do |klass|
         klass.new(compat).call
+      end
+    end
+
+    # This method checks a compat by calling all check strategies. It doesn't care about the compat's current status.
+    # It will override the current status.
+    #
+    # If any of them marks the compat as incompatible, the compat is marked as incompatible.
+    #
+    # If any of them mark the compat as compatible, the compat is marked as compatible.
+    #
+    # @param [Compat] compat The compat to check
+    def check!(compat)
+      CHECK_STRATEGIES.each do |klass|
+        klass.new(compat).check!
       end
     end
 

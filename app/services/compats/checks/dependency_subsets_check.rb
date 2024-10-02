@@ -8,6 +8,10 @@ module Compats::Checks
     def call
       return unless @compat.pending? && (2..10).cover?(@compat.dependencies.size)
 
+      check!
+    end
+
+    def check!
       subsets = (1..@compat.dependencies.size - 1).flat_map do |count|
         @compat.dependencies.keys.combination(count).map { @compat.dependencies.slice *_1 }
       end

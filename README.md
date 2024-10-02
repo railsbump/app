@@ -1,4 +1,6 @@
-# 👊 RailsBump
+# 👊 RailsBump 
+
+[![Test](https://github.com/railsbump/app/actions/workflows/test.yml/badge.svg)](https://github.com/railsbump/app/actions/workflows/test.yml)
 
 Check your Ruby gems for compatibility with all major Rails versions.
 

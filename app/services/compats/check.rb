@@ -3,24 +3,22 @@ require "fileutils"
 # The purpose of this service is to check a compat, i.e. determine whether its set of dependencies is compatible with its Rails release or not. To do so, several approaches are taken, from least to most complex.
 module Compats
   class Check < Baseline::Service
-    RAILS_GEMS = %w(
-      actioncable
-      actionmailbox
-      actionmailer
-      actionpack
-      actiontext
-      actionview
-      activejob
-      activemodel
-      activerecord
-      activestorage
-      activesupport
-      rails
-      railties
-    )
+    CHECK_STRATEGIES = [
+      Compats::Checks::EmptyDependenciesCheck,
+      Compats::Checks::RailsGemsCheck,
+      Compats::Checks::DependencySubsetsCheck,
+      Compats::Checks::BundlerGithubCheck
+    ]
 
     attr_accessor :compat
 
+    # This method checks a compat by calling all check strategies. It only does checks on pending compats.
+    #
+    # If any of them marks the compat as incompatible, the compat is marked as incompatible.
+    #
+    # If any of them mark the compat as compatible, the compat is marked as compatible.
+    #
+    # @param [Compat] compat The compat to check
     def call(compat)
       check_uniqueness on_error: :return
 
@@ -28,58 +26,26 @@ module Compats
         raise Error, "Compat is already checked."
       end
 
-      @compat = compat
+      CHECK_STRATEGIES.each do |klass|
+        klass.new(compat).call
+      end
+    end
 
-      call_all_private_methods_without_args
-
-      compat.checked!
+    # This method checks a compat by calling all check strategies. It doesn't care about the compat's current status.
+    # It will override the current status.
+    #
+    # If any of them marks the compat as incompatible, the compat is marked as incompatible.
+    #
+    # If any of them mark the compat as compatible, the compat is marked as compatible.
+    #
+    # @param [Compat] compat The compat to check
+    def check!(compat)
+      CHECK_STRATEGIES.each do |klass|
+        klass.new(compat).check!
+      end
     end
 
     private
-
-      # This method checks for the simplest case: if the compat has no dependencies, it's marked as compatible.
-      def check_empty_dependencies
-        return unless @compat.pending?
-
-        if @compat.dependencies.blank?
-          @compat.status               = :compatible
-          @compat.status_determined_by = "empty_dependencies"
-        end
-      end
-
-      # This method checks if the dependencies include any Rail gems, and if so, if any of them have a different version than the compat's Rails version. If that's the case, the compat is marked as incompatible.
-      def check_rails_gems
-        return unless @compat.pending?
-
-        @compat.dependencies.each do |gem_name, requirement|
-          next unless RAILS_GEMS.include?(gem_name)
-          requirement_unmet = requirement.split(/\s*,\s*/).any? do |r|
-            !Gem::Requirement.new(r).satisfied_by?(@compat.rails_release.version)
-          end
-          if requirement_unmet
-            @compat.status               = :incompatible
-            @compat.status_determined_by = "rails_gems"
-            return
-          end
-        end
-      end
-
-      # This method checks if any other compats exist, that are marked as incompatible and have a subset of the compat's dependencies. If so, the compat must be incompatible and is marked as such.
-      def check_dependency_subsets
-        return unless @compat.pending? && (2..10).cover?(@compat.dependencies.size)
-
-        subsets = (1..@compat.dependencies.size - 1).flat_map do |count|
-          @compat.dependencies.keys.combination(count).map { @compat.dependencies.slice *_1 }
-        end
-
-        subsets.in_groups_of(100, false).each do |group|
-          if @compat.rails_release.compats.where("dependencies::jsonb = ?", group.to_json).incompatible.any?
-            @compat.status               = :incompatible
-            @compat.status_determined_by = "dependency_subsets"
-            return
-          end
-        end
-      end
 
       # This method checks if any other compats exist, that are marked as compatible and have a superset of the compat's dependencies. If so, the compat must be compatible and is marked as such.
       def check_dependency_supersets
@@ -166,49 +132,5 @@ module Compats
       #   require "byebug"; byebug
       #   @compat.status_determined_by = "bundler_local"
       # end
-
-      # This method checks a compat by creating a new branch in the "checker" repository, adding a Gemfile with the compat's dependencies and pushing it to GitHub. A GitHub Actions workflow is then triggered in the "checker" repo, which tries to run `bundler lock` to resolve the dependencies. Afterwards, GitHub sends a notification to the "github_notifications" API endpoint, which creates a new GithubNotification and processes it in `GithubNotifications::Process`.
-      def check_with_bundler_github
-        return unless @compat.pending? && Rails.env.production?
-
-        branch = @compat.id.to_s
-
-        # Delete branch if it exists
-        External::Github.delete_branch(branch)
-
-        CheckOutWorkerRepo.call do |git|
-          git.branch(branch).checkout
-
-          action_file = File.join(git.dir.path, ".github", "workflows", "check.yml")
-          action_content = File.read(action_file)
-                               .gsub("RUBY_VERSION",    @compat.rails_release.compatible_ruby_version.to_s)
-                               .gsub("BUNDLER_VERSION", @compat.rails_release.compatible_bundler_version.to_s)
-          File.write action_file, action_content
-
-          dependencies = @compat.dependencies.dup
-          dependencies.transform_values! do |contraints|
-            contraints.split(/\s*,\s*/)
-          end
-          dependencies["rails"] ||= []
-          dependencies["rails"] << "#{@compat.rails_release.version.approximate_recommendation}.0"
-
-          gemfile = File.join(git.dir.path, "Gemfile")
-          gemfile_content = dependencies
-            .map do |gem, constraints_group|
-              "gem '#{gem}', #{constraints_group.map { "'#{_1}'" }.join(", ")}"
-            end
-            .unshift("source 'https://rubygems.org'")
-            .join("\n")
-          File.write gemfile, gemfile_content
-
-          git.add [action_file, gemfile]
-          git.commit @compat.to_s
-          Octopoller.poll retries: 5 do
-            git.push "origin", branch
-          rescue Git::GitExecuteError
-            :re_poll
-          end
-        end
-      end
   end
 end

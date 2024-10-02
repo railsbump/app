@@ -3,21 +3,12 @@ require "fileutils"
 # The purpose of this service is to check a compat, i.e. determine whether its set of dependencies is compatible with its Rails release or not. To do so, several approaches are taken, from least to most complex.
 module Compats
   class Check < Baseline::Service
-    RAILS_GEMS = %w(
-      actioncable
-      actionmailbox
-      actionmailer
-      actionpack
-      actiontext
-      actionview
-      activejob
-      activemodel
-      activerecord
-      activestorage
-      activesupport
-      rails
-      railties
-    )
+    CHECK_STRATEGIES = [
+      Compats::Checks::EmptyDependenciesCheck,
+      Compats::Checks::RailsGemsCheck,
+      Compats::Checks::DependencySubsetsCheck,
+      Compats::Checks::BundlerGithubCheck
+    ]
 
     attr_accessor :compat
 
@@ -28,58 +19,12 @@ module Compats
         raise Error, "Compat is already checked."
       end
 
-      @compat = compat
-
-      call_all_private_methods_without_args
-
-      compat.checked!
+      CHECK_STRATEGIES.each do |klass|
+        klass.new(compat).call
+      end
     end
 
     private
-
-      # This method checks for the simplest case: if the compat has no dependencies, it's marked as compatible.
-      def check_empty_dependencies
-        return unless @compat.pending?
-
-        if @compat.dependencies.blank?
-          @compat.status               = :compatible
-          @compat.status_determined_by = "empty_dependencies"
-        end
-      end
-
-      # This method checks if the dependencies include any Rail gems, and if so, if any of them have a different version than the compat's Rails version. If that's the case, the compat is marked as incompatible.
-      def check_rails_gems
-        return unless @compat.pending?
-
-        @compat.dependencies.each do |gem_name, requirement|
-          next unless RAILS_GEMS.include?(gem_name)
-          requirement_unmet = requirement.split(/\s*,\s*/).any? do |r|
-            !Gem::Requirement.new(r).satisfied_by?(@compat.rails_release.version)
-          end
-          if requirement_unmet
-            @compat.status               = :incompatible
-            @compat.status_determined_by = "rails_gems"
-            return
-          end
-        end
-      end
-
-      # This method checks if any other compats exist, that are marked as incompatible and have a subset of the compat's dependencies. If so, the compat must be incompatible and is marked as such.
-      def check_dependency_subsets
-        return unless @compat.pending? && (2..10).cover?(@compat.dependencies.size)
-
-        subsets = (1..@compat.dependencies.size - 1).flat_map do |count|
-          @compat.dependencies.keys.combination(count).map { @compat.dependencies.slice *_1 }
-        end
-
-        subsets.in_groups_of(100, false).each do |group|
-          if @compat.rails_release.compats.where("dependencies::jsonb = ?", group.to_json).incompatible.any?
-            @compat.status               = :incompatible
-            @compat.status_determined_by = "dependency_subsets"
-            return
-          end
-        end
-      end
 
       # This method checks if any other compats exist, that are marked as compatible and have a superset of the compat's dependencies. If so, the compat must be compatible and is marked as such.
       def check_dependency_supersets
@@ -166,30 +111,5 @@ module Compats
       #   require "byebug"; byebug
       #   @compat.status_determined_by = "bundler_local"
       # end
-
-      # This method checks a compat by dispatching the check_bundler workflow
-      def check_with_bundler_github
-        return unless @compat.pending? && Rails.env.production?
-
-        # Initialize the Octokit client with your GitHub token
-        client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
-
-        # Define the repository, workflow file, and branch
-        repo = 'railsbump/checker'
-        workflow_id = 'check_bundler.yml'
-        ref = 'main'
-
-        # Define the inputs for the workflow
-        inputs = {
-          rails_version: @compat.rails_release.version.to_s,
-          ruby_version: @compat.rails_release.compatible_ruby_version.to_s,
-          bundler_version: @compat.rails_release.compatible_bundler_version.to_s,
-          dependencies: JSON::dump(@compat.dependencies),
-          compat_id: @compat.id.to_s
-        }
-
-        # Trigger the workflow dispatch event
-        client.workflow_dispatch(repo, workflow_id, ref, inputs: inputs)
-      end
   end
 end

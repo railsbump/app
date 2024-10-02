@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Compats::Check, type: :service do
-  let(:compat) { instance_double("Compat", checked?: false, pending?: true, dependencies: {}, rails_release: rails_release, check_locally: false) }
-  let(:rails_release) { instance_double("RailsRelease", version: Gem::Version.new("6.0"), compatible_ruby_version: "2.7.2", compatible_bundler_version: "2.1.4") }
+  let(:compat) { FactoryBot.create(:compat, rails_release: rails_release, status: "pending", dependencies: []) }
+  let(:rails_release) { FactoryBot.create(:rails_release) }
   let(:service) { described_class.new }
 
   describe "#call" do
@@ -16,14 +16,12 @@ RSpec.describe Compats::Check, type: :service do
 
     context "when compat is not checked" do
       before do
-        allow(service).to receive(:call_all_private_methods_without_args)
         allow(compat).to receive(:checked!)
       end
 
       it "calls all private methods and marks compat as checked" do
         service.call(compat)
 
-        expect(service).to have_received(:call_all_private_methods_without_args)
         expect(compat).to have_received(:checked!)
       end
     end

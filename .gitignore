@@ -6,6 +6,8 @@
 
 .rspec
 
+.vscode
+
 config/database.yml
 
 coverage

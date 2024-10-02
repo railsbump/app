@@ -5,6 +5,22 @@ module Compats::Checks
   #
   # If that's the case, the compat is marked as incompatible.
   class RailsGemsCheck < Base
+    RAILS_GEMS = %w(
+      actioncable
+      actionmailbox
+      actionmailer
+      actionpack
+      actiontext
+      actionview
+      activejob
+      activemodel
+      activerecord
+      activestorage
+      activesupport
+      rails
+      railties
+    )
+
     def call
       return unless @compat.pending?
 

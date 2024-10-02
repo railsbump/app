@@ -35,7 +35,7 @@ RSpec.describe Compats::Check, type: :service do
       FactoryBot.create(:rails_release, version: "7.2")
 
       Gemmies::UpdateDependenciesAndVersions.call(gemmy)
-      Gemmies::UpdateCompats.call(gemmy)
+      Gemmies::UpdateCompats.call(gemmy.id)
       gemmy.reload
     end
 

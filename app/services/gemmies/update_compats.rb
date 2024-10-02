@@ -2,8 +2,10 @@ require "gems"
 
 module Gemmies
   class UpdateCompats < Baseline::Service
-    def call(gemmy)
-      check_uniqueness gemmy.id
+    def call(gemmy_id)
+      check_uniqueness gemmy_id
+
+      gemmy = Gemmy.find gemmy_id
 
       RailsRelease.find_each do |rails_release|
         gemmy.dependencies.each do |dependencies|

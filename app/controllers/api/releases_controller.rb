@@ -7,7 +7,7 @@ module API
         RailsReleases::Create.perform_async params.fetch(:version)
       else
         Gemmy.find_by(name: name)&.then {
-          Gemmies::Process.perform_async _1
+          Gemmies::Process.perform_async _1.id
         }
       end
 

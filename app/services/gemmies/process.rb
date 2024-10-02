@@ -3,7 +3,7 @@ module Gemmies
     def call(gemmy_id)
       gemmy = Gemmy.find(gemmy_id)
       UpdateDependenciesAndVersions.call(gemmy)
-      UpdateCompats.call(gemmy)
+      UpdateCompats.call(gemmy.id)
 
       Compats::CheckUnchecked.perform_async
     end

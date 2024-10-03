@@ -4,15 +4,18 @@ module API
 
     def create
       @rails_release = RailsRelease.find_by(version: params[:rails_version])
-      @compat = @rails_release.compats.find(params[:compat_id])
-      
+      @compat = @rails_release.compats.find!(params[:compat_id])
+
       if @compat.dependencies == params.require(:dependencies).permit!.to_h
         if @compat.process_result(params[:result])
+          logger.info "Compat #{@compat.id} processed successfully"
           head :ok
         else
+          logger.info "Compat #{@compat.id} process_result failed"
           head :unprocessable_entity
         end
       else
+        logger.info "Compat #{@compat.id} dependencies do not match"
         head :unprocessable_entity
       end
     end
@@ -29,7 +32,7 @@ module API
 
     def invalid_api_key?(api_key)
       return true if api_key.nil?
-      
+
       @api_key = APIKey.find_by(key: api_key)
 
       return true if @api_key.nil?

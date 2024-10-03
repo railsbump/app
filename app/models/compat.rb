@@ -74,20 +74,18 @@ class Compat < ApplicationRecord
   def process_result(result)
     return true unless pending?
 
-    if result[:success]
+    if result[:success] == "true"
       self.update(
         checked_at: Time.current,
         status: :compatible,
-        status_determined_by: result[:strategy]
+        status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
-    else
-      # TODO: Uncomment this when we're confident on all reporters
-      #
-      # self.update(
-      #   checked_at: Time.current,
-      #   status: :incompatible,
-      #   status_determined_by: result[:strategy]
-      # )
+    elsif result[:success] == "false"
+      self.update(
+        checked_at: Time.current,
+        status: :incompatible,
+        status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
+      )
     end
   end
 end

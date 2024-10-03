@@ -11,7 +11,7 @@ module API
           logger.info "Compat #{@compat.id} processed successfully"
           head :ok
         else
-          logger.info "Compat #{@compat.id} process_result failed"
+          logger.info "Compat #{@compat.id} process_result failed: #{@compat.errors.full_messages}"
           head :unprocessable_entity
         end
       else

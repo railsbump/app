@@ -75,17 +75,22 @@ class Compat < ApplicationRecord
     return true unless pending?
 
     if result[:success] == "true"
+      logger.info "Compat #{id} result is not compatible"
       self.update(
         checked_at: Time.current,
         status: :compatible,
         status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
     elsif result[:success] == "false"
+      logger.info "Compat #{id} result is not compatible"
       self.update(
         checked_at: Time.current,
         status: :incompatible,
         status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
+    else
+      logger.info "Compat #{id} result is invalid: #{result[:success].class} -- #{result[:success]}"
+      false
     end
   end
 end

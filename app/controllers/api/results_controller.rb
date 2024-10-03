@@ -4,7 +4,7 @@ module API
 
     def create
       @rails_release = RailsRelease.find_by(version: params[:rails_version])
-      @compat = @rails_release.compats.find!(params[:compat_id])
+      @compat = @rails_release.compats.find_by_id!(params[:compat_id])
 
       if @compat.dependencies == params.require(:dependencies).permit!.to_h
         if @compat.process_result(params[:result])

@@ -1,6 +1,6 @@
 module Compats
   class CheckUnchecked < Baseline::Service
-    LIMIT = 100
+    LIMIT = 10
 
     def call
       do_check

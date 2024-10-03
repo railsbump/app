@@ -74,23 +74,25 @@ class Compat < ApplicationRecord
   def process_result(result)
     return true unless pending?
 
-    if result[:success] == "true"
+    success = ActiveModel::Type::Boolean.new.cast(result[:success])
+
+    if success
       logger.info "Compat #{id} result is not compatible"
       self.update(
         checked_at: Time.current,
         status: :compatible,
         status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
-    elsif result[:success] == "false"
+    elsif result[:success].nil?
+      logger.info "Compat #{id} result is invalid: #{result[:success].class} -- #{result[:success]}"
+      false
+    else
       logger.info "Compat #{id} result is not compatible"
       self.update(
         checked_at: Time.current,
         status: :incompatible,
         status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
-    else
-      logger.info "Compat #{id} result is invalid: #{result[:success].class} -- #{result[:success]}"
-      false
     end
   end
 end

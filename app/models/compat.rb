@@ -83,9 +83,6 @@ class Compat < ApplicationRecord
         status: :compatible,
         status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
       )
-    elsif result[:success].nil?
-      logger.info "Compat #{id} result is invalid: #{result[:success].class} -- #{result[:success]}"
-      false
     else
       logger.info "Compat #{id} result is not compatible"
       self.update(

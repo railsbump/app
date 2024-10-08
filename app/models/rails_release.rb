@@ -1,4 +1,9 @@
 class RailsRelease < ApplicationRecord
+  # Define the repository, workflow file, and branch
+  GITHUB_REPO = 'railsbump/checker'
+  GITHUB_WORKFLOW = 'rails_release_sanity_check.yml'
+  GITHUB_REF = 'main'
+
   composed_of :version,
     class_name: "Gem::Version",
     mapping:    %w(version to_s),
@@ -61,6 +66,25 @@ class RailsRelease < ApplicationRecord
     if version
       Gem::Version.new(version < Gem::Version.new("5") ? "1.17.3" : Bundler::VERSION)
     end
+  end
+
+  def github_actions_sanity_check!
+    # Initialize the Octokit client with your GitHub token
+    client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
+
+    # Trigger the workflow dispatch event
+    client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: github_action_inputs)
+  end
+
+  private
+
+  # Define the github_action_inputs for the workflow
+  def github_action_inputs
+    {
+      rails_version: version.to_s,
+      ruby_version: minimum_ruby_version.to_s,
+      bundler_version: minimum_bundler_version.to_s
+    }
   end
 end
 

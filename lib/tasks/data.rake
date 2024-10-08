@@ -41,80 +41,80 @@ namespace :data do
       },
       "3.1" => {
         minimum_ruby_version: "1.8.7",
-        maximum_ruby_version: "2.1.0",
+        maximum_ruby_version: "2.1.9",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "3.2" => {
         minimum_ruby_version: "1.8.7",
-        maximum_ruby_version: "2.1.0",
+        maximum_ruby_version: "2.1.9",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "4.0" => {
         minimum_ruby_version: "1.9.3",
-        maximum_ruby_version: "2.1.0",
+        maximum_ruby_version: "2.1.9",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "4.1" => {
         minimum_ruby_version: "1.9.3",
-        maximum_ruby_version: "2.1.0",
+        maximum_ruby_version: "2.1.9",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "4.2" => {
         minimum_ruby_version: "1.9.3",
-        maximum_ruby_version: "2.2.0",
+        maximum_ruby_version: "2.2.10",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "5.0" => {
-        minimum_ruby_version: "2.2.2",
-        maximum_ruby_version: "2.5.0",
+        minimum_ruby_version: "2.2.10",
+        maximum_ruby_version: "2.5.9",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "5.1" => {
-        minimum_ruby_version: "2.2.2",
-        maximum_ruby_version: "2.6.0",
+        minimum_ruby_version: "2.2.10",
+        maximum_ruby_version: "2.6.10",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "5.2" => {
-        minimum_ruby_version: "2.2.2",
-        maximum_ruby_version: "2.7.0",
+        minimum_ruby_version: "2.2.10",
+        maximum_ruby_version: "2.7.8",
         minimum_bundler_version: "1.17.3",
         minimum_rubygems_version: "1.3.6"
       },
       "6.0" => {
-        minimum_ruby_version: "2.5.0",
-        maximum_ruby_version: "3.0.0",
+        minimum_ruby_version: "2.5.9",
+        maximum_ruby_version: "3.0.7",
         minimum_bundler_version: "2.3.0",
         minimum_rubygems_version: "2.5.0"
       },
       "6.1" => {
-        minimum_ruby_version: "2.5.0",
-        maximum_ruby_version: "3.0.0",
+        minimum_ruby_version: "2.5.9",
+        maximum_ruby_version: "3.0.7",
         minimum_bundler_version: "2.3.0",
         minimum_rubygems_version: "2.5.0"
       },
       "7.0" => {
-        minimum_ruby_version: "2.7.0",
-        maximum_ruby_version: "3.1.0",
+        minimum_ruby_version: "2.7.8",
+        maximum_ruby_version: "3.1.6",
         minimum_bundler_version: "2.4.0",
         minimum_rubygems_version: "3.0.1"
       },
       "7.1" => {
-        minimum_ruby_version: "2.7.0",
-        maximum_ruby_version: "3.2.0",
+        minimum_ruby_version: "2.7.8",
+        maximum_ruby_version: "3.2.5",
         minimum_bundler_version: "2.4.0",
         maximum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.0.1"
       },
       "7.2" => {
-        minimum_ruby_version: "3.1.0",
-        maximum_ruby_version: "3.3.0",
+        minimum_ruby_version: "3.1.6",
+        maximum_ruby_version: "3.3.5",
         minimum_bundler_version: "2.5.20",
         maximum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.2.3"

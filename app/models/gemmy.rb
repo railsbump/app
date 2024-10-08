@@ -9,6 +9,20 @@ class Gemmy < ApplicationRecord
 
   delegate :to_param, :to_s, to: :name
 
+  # Check all pending compats for compatibility
+  def check_compatibility
+    compats.pending.each do |compat|
+      Compats::Check.new.call(compat)
+    end
+  end
+
+  # Check all compats for compatibility
+  def check_compatibility!
+    compats.each do |compat|
+      Compats::Check.new.check!(compat)
+    end
+  end
+
   def compats
     Compat.where(id: compat_ids)
   end

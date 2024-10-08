@@ -108,7 +108,7 @@ namespace :data do
       "7.1" => {
         minimum_ruby_version: "2.7.8",
         maximum_ruby_version: "3.2.5",
-        minimum_bundler_version: "2.4.0",
+        minimum_bundler_version: "2.3.27",
         maximum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.0.1"
       },

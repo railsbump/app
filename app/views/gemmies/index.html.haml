@@ -36,3 +36,12 @@
   %h2
     Latest checked gems
   = render template: "gemmies/compat_table", locals: { gemmies: @gemmies }
+
+%section
+  %h2
+    Support
+  %p
+    If you find RailsBump useful and would like to support the ongoing development,
+    = link_to "submit a new issue or pull request", "https://www.github.com/railsbump/app"
+    or
+    == #{link_to "become a sponsor", "https://github.com/sponsors/fastruby"}! 🙏

@@ -1,4 +1,4 @@
-# 👊 RailsBump 
+# 👊 RailsBump
 
 [![Test](https://github.com/railsbump/app/actions/workflows/test.yml/badge.svg)](https://github.com/railsbump/app/actions/workflows/test.yml)
 
@@ -36,14 +36,14 @@ If you notice a bug or have an idea for an improvement, please open an [issue](h
 
 If you'd like to get involved in the development, get in touch [via email](mailto:hello@railsbump.org)!
 
-### Setup 
+### Setup
 
 You will need these services:
 
 - Postgres 16 or higher
 - Redis
 
-In order to set up the application locally: 
+In order to set up the application locally:
 
 1. `git clone git@github.com:railsbump/app.git`
 2. `bin/setup`
@@ -60,7 +60,8 @@ We recommend running these scheduled tasks:
 
 ## Support
 
-If you find RailsBump useful and would like to support the ongoing development, [buy me a coffee](https://www.buymeacoffee.com/279lcDtbF) or [become a sponsor](https://github.com/sponsors/manuelmeurer)!
+If you find RailsBump useful and would like to support the ongoing development, please consider
+[submitting an issue](https://github.com/railsbump/app/issues) or [become a sponsor](https://github.com/sponsors/fastruby)!
 
 ## License
 

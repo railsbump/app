@@ -58,10 +58,6 @@ We recommend running these scheduled tasks:
 
 - `bin/rails runner "Maintenance::Hourly.call"` once an hour
 
-## Support
-
-If you find RailsBump useful and would like to support the ongoing development, [buy me a coffee](https://www.buymeacoffee.com/279lcDtbF) or [become a sponsor](https://github.com/sponsors/manuelmeurer)!
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.txt file for details.

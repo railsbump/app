@@ -1,0 +1,4052 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/amazing_print.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '984'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-e87fb8679da8c5ddc3314bcac426dfb5';
+        style-src 'self' https://fonts.googleapis.com 'nonce-e87fb8679da8c5ddc3314bcac426dfb5';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3122719559555357583
+      X-Request-Id:
+      - 0d2ad995-2818-4983-ab16-4e833bd3f887
+      X-Runtime:
+      - '0.048026'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '276'
+      X-Served-By:
+      - cache-ewr-kewr1740064-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.043786,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"amazing_print","downloads":17904640,"version":"1.6.0","version_created_at":"2024-03-08T18:09:50.333Z","version_downloads":1728517,"platform":"ruby","authors":"Michael
+        Dvorkin, Kevin McCormackPatrik Wenger","info":"Great Ruby debugging companion:
+        pretty print Ruby objects to visualize their structure. Supports custom object
+        formatting via plugins","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"9903e93daadc15411c854239f8ca1ca6ce78be279ed99d43fec2bd3b0aa37397","spec_sha":"a0094903a607d841a25a96540eac4216c5cad18b337d5c533ef01e1257b4aaa1","project_uri":"https://rubygems.org/gems/amazing_print","gem_uri":"https://rubygems.org/gems/amazing_print-1.6.0.gem","homepage_uri":"https://github.com/amazing-print/amazing_print","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/amazing_print/1.6.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/annotaterb.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1225'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-f0d78b729ff7973b7cc49db63046613d';
+        style-src 'self' https://fonts.googleapis.com 'nonce-f0d78b729ff7973b7cc49db63046613d';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1884243520528797138
+      X-Request-Id:
+      - 31047a9f-a907-4a95-9f62-b2fb2191fa9d
+      X-Runtime:
+      - '0.022466'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '275'
+      X-Served-By:
+      - cache-ewr-kewr1740034-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.129547,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"annotaterb","downloads":89844,"version":"4.12.0","version_created_at":"2024-09-15T00:28:55.156Z","version_downloads":3937,"platform":"ruby","authors":"Andrew
+        W. Lee","info":"Annotates Rails/ActiveRecord Models, routes, fixtures, and
+        others based on the database schema.","licenses":["BSD-2-Clause"],"metadata":{"homepage_uri":"https://github.com/drwl/annotaterb","changelog_uri":"https://github.com/drwl/annotaterb/blob/master/CHANGELOG.md","bug_tracker_uri":"https://github.com/drwl/annotaterb/issues","source_code_uri":"https://github.com/drwl/annotaterb"},"yanked":false,"sha":"1c87f3365ea54102b6e32c23b3c81f682b4f660477a8b5b2f72e370de82041f8","spec_sha":"69133f8464205616c911ab02828c2eaa47c28e66c0aff02f594be77c68143b30","project_uri":"https://rubygems.org/gems/annotaterb","gem_uri":"https://rubygems.org/gems/annotaterb-4.12.0.gem","homepage_uri":"https://github.com/drwl/annotaterb","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/drwl/annotaterb","bug_tracker_uri":"https://github.com/drwl/annotaterb/issues","changelog_uri":"https://github.com/drwl/annotaterb/blob/master/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/aws-sdk-s3.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1372'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-dc2808e22b5ba9774e4834d137db46b6';
+        style-src 'self' https://fonts.googleapis.com 'nonce-dc2808e22b5ba9774e4834d137db46b6';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3348162394775798845
+      X-Request-Id:
+      - c8f554ca-ba93-4354-a49b-a90e32d1895c
+      X-Runtime:
+      - '0.035026'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '275'
+      X-Served-By:
+      - cache-ewr-kewr1740057-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Timer:
+      - S1728764939.173442,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"aws-sdk-s3","downloads":786598428,"version":"1.167.0","version_created_at":"2024-10-02T19:11:30.214Z","version_downloads":1707396,"platform":"ruby","authors":"Amazon
+        Web Services","info":"Official AWS Ruby gem for Amazon Simple Storage Service
+        (Amazon S3). This gem is part of the AWS SDK for Ruby.","licenses":["Apache-2.0"],"metadata":{"changelog_uri":"https://github.com/aws/aws-sdk-ruby/tree/version-3/gems/aws-sdk-s3/CHANGELOG.md","source_code_uri":"https://github.com/aws/aws-sdk-ruby/tree/version-3/gems/aws-sdk-s3"},"yanked":false,"sha":"a6aab762b07f4d6c7c4e9e98ea8ec5b12b49be3849f29483ecd9a821702096ce","spec_sha":"26aaffc4c8a850d06f8ac63d3e81fd9b7973f9d65a30c5f1efa51dcf19723cdb","project_uri":"https://rubygems.org/gems/aws-sdk-s3","gem_uri":"https://rubygems.org/gems/aws-sdk-s3-1.167.0.gem","homepage_uri":"https://github.com/aws/aws-sdk-ruby","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/aws/aws-sdk-ruby/tree/version-3/gems/aws-sdk-s3","bug_tracker_uri":null,"changelog_uri":"https://github.com/aws/aws-sdk-ruby/tree/version-3/gems/aws-sdk-s3/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"aws-sdk-core","requirements":"~\u003e
+        3, \u003e= 3.207.0"},{"name":"aws-sdk-kms","requirements":"~\u003e 1"},{"name":"aws-sigv4","requirements":"~\u003e
+        1.5"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/baseline.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '804'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-c9204288876a2c209a7e6a0302eb0c97';
+        style-src 'self' https://fonts.googleapis.com 'nonce-c9204288876a2c209a7e6a0302eb0c97';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1234025946612999753
+      X-Request-Id:
+      - 4582a405-e744-42b7-9f7a-c67c0276f5fe
+      X-Runtime:
+      - '0.013861'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '275'
+      X-Served-By:
+      - cache-ewr-kewr1740069-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.206850,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"baseline","downloads":5692,"version":"0.1.0","version_created_at":"2011-01-29T12:47:39.880Z","version_downloads":5692,"platform":"ruby","authors":"John
+        Mair (banisterfiend)","info":"FIX ME","licenses":null,"metadata":{"homepage_uri":"http://banisterfiend.wordpress.com"},"yanked":false,"sha":"c40880a6e9262ed800d6f40860a882d0fbb56b74d5bd38dd18e50dccf1a1599f","spec_sha":"7f0efba7cafbdabaf1e1c4671aad742a2143eaedd185bc32ddc8093bef2fd614","project_uri":"https://rubygems.org/gems/baseline","gem_uri":"https://rubygems.org/gems/baseline-0.1.0.gem","homepage_uri":"http://banisterfiend.wordpress.com","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/better_errors.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1774'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-96adfd6bab78fa2a9aad058bf507c555';
+        style-src 'self' https://fonts.googleapis.com 'nonce-96adfd6bab78fa2a9aad058bf507c555';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A70804423019338176
+      X-Request-Id:
+      - c1c61990-7871-44d7-b607-03479e1030bf
+      X-Runtime:
+      - '0.015736'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '274'
+      X-Served-By:
+      - cache-ewr-kewr1740050-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.248580,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"better_errors","downloads":81880942,"version":"2.10.1","version_created_at":"2023-06-14T18:16:43.441Z","version_downloads":5501800,"platform":"ruby","authors":"Hailey
+        Somerville","info":"Provides a better error page for Rails and other Rack
+        apps. Includes source code inspection, a live REPL and local/instance variable
+        inspection for all stack frames.","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/BetterErrors/better_errors/releases","bug_tracker_uri":"https://github.com/BetterErrors/better_errors/issues","source_code_uri":"https://github.com/BetterErrors/better_errors"},"yanked":false,"sha":"f798f1bac93f3e775925b7fcb24cffbcf0bb62ee2210f5350f161a6b75fc0a73","spec_sha":"650416e5ef1c7905f8563a7109f63cf1f6dd313a8d7ab9fcb5f9f09a0690535e","project_uri":"https://rubygems.org/gems/better_errors","gem_uri":"https://rubygems.org/gems/better_errors-2.10.1.gem","homepage_uri":"https://github.com/BetterErrors/better_errors","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/BetterErrors/better_errors","bug_tracker_uri":"https://github.com/BetterErrors/better_errors/issues","changelog_uri":"https://github.com/BetterErrors/better_errors/releases","funding_uri":null,"dependencies":{"development":[{"name":"kramdown","requirements":"\u003e
+        2.0.0"},{"name":"rake","requirements":"~\u003e 10.0"},{"name":"rspec","requirements":"~\u003e
+        3.5"},{"name":"rspec-html-matchers","requirements":"\u003e= 0"},{"name":"rspec-its","requirements":"\u003e=
+        0"},{"name":"sassc","requirements":"\u003e= 0"},{"name":"yard","requirements":"\u003e=
+        0"}],"runtime":[{"name":"erubi","requirements":"\u003e= 1.0.0"},{"name":"rack","requirements":"\u003e=
+        0.9.0"},{"name":"rouge","requirements":"\u003e= 1.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/binding_of_caller.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1323'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-7f0503247e63e9ab30315187fe2e809c';
+        style-src 'self' https://fonts.googleapis.com 'nonce-7f0503247e63e9ab30315187fe2e809c';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2435742371185647244
+      X-Request-Id:
+      - cc30e69d-10ed-4037-b517-a96a68bd5768
+      X-Runtime:
+      - '0.014549'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '274'
+      X-Served-By:
+      - cache-ewr-kewr1740065-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.283745,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"binding_of_caller","downloads":137629016,"version":"1.0.1","version_created_at":"2024-03-07T16:48:54.779Z","version_downloads":5756155,"platform":"ruby","authors":"John
+        Mair (banisterfiend)","info":"Provides the Binding#of_caller method.\n\nUsing
+        binding_of_caller we can grab bindings from higher up the call stack and evaluate
+        code in that context.\nAllows access to bindings arbitrarily far up the call
+        stack, not limited to just the immediate caller.\n\nRecommended for use only
+        in debugging situations. Do not use this in production apps.\n","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/banister/binding_of_caller/releases"},"yanked":false,"sha":"2b2902abff4246ddcfbc4da9b69bc4a019e22aeb300c2ff6289a173d4b90b29a","spec_sha":"9fabded219e85460661ab09dff06e7c746da914e453d36b7ae72776527fe29d5","project_uri":"https://rubygems.org/gems/binding_of_caller","gem_uri":"https://rubygems.org/gems/binding_of_caller-1.0.1.gem","homepage_uri":"https://github.com/banister/binding_of_caller","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":"https://github.com/banister/binding_of_caller/releases","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"debug_inspector","requirements":"\u003e=
+        1.2.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/bootsnap.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1195'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-bf7389c49341c68fafbcc435637862a1';
+        style-src 'self' https://fonts.googleapis.com 'nonce-bf7389c49341c68fafbcc435637862a1';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2673594783158952364
+      X-Request-Id:
+      - 8ac540d8-98ad-4d95-b0c9-6e2ee550ac96
+      X-Runtime:
+      - '0.022074'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '274'
+      X-Served-By:
+      - cache-ewr-kewr1740069-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.327114,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"bootsnap","downloads":227865878,"version":"1.18.4","version_created_at":"2024-08-05T09:50:48.629Z","version_downloads":5426470,"platform":"ruby","authors":"Burke
+        Libbey","info":"Boot large ruby/rails apps faster","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/Shopify/bootsnap/blob/main/CHANGELOG.md","bug_tracker_uri":"https://github.com/Shopify/bootsnap/issues","source_code_uri":"https://github.com/Shopify/bootsnap","allowed_push_host":"https://rubygems.org"},"yanked":false,"sha":"ac4c42af397f7ee15521820198daeff545e4c360d2772c601fbdc2c07d92af55","spec_sha":"49f2ca7355b487e600701f84dd7cbf2e48a02bab1271095d7e602a93068571dc","project_uri":"https://rubygems.org/gems/bootsnap","gem_uri":"https://rubygems.org/gems/bootsnap-1.18.4.gem","homepage_uri":"https://github.com/Shopify/bootsnap","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/Shopify/bootsnap","bug_tracker_uri":"https://github.com/Shopify/bootsnap/issues","changelog_uri":"https://github.com/Shopify/bootsnap/blob/main/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"msgpack","requirements":"~\u003e
+        1.2"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/bootstrap.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1670'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-09e4ab1c92f285bf2eff379cffd3998c';
+        style-src 'self' https://fonts.googleapis.com 'nonce-09e4ab1c92f285bf2eff379cffd3998c';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A149742642286119914
+      X-Request-Id:
+      - e36aa41a-499b-4290-b2c3-3c372ca24e83
+      X-Runtime:
+      - '0.023870'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '274'
+      X-Served-By:
+      - cache-ewr-kewr1740072-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.370545,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"bootstrap","downloads":19354634,"version":"5.3.3","version_created_at":"2024-04-29T00:52:16.956Z","version_downloads":451228,"platform":"ruby","authors":"Twitter,
+        Inc.","info":"The most popular HTML, CSS, and JavaScript framework for developing
+        responsive, mobile first projects on the web. http://getbootstrap.com","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"008a93c37c42f1490d59a67b1d13f6063951ef66bab44b43dfd3590b66f0d05c","spec_sha":"fbb14ca9ca357c309d4618f1382b91e270094952078283fc96c8f8cc2d74083d","project_uri":"https://rubygems.org/gems/bootstrap","gem_uri":"https://rubygems.org/gems/bootstrap-5.3.3.gem","homepage_uri":"https://github.com/twbs/bootstrap-rubygem","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/bootstrap/5.3.3","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"actionpack","requirements":"\u003e=
+        4.1.5"},{"name":"activesupport","requirements":"\u003e= 4.1.5"},{"name":"capybara","requirements":"\u003e=
+        2.6.0"},{"name":"cuprite","requirements":"\u003e= 0"},{"name":"json","requirements":"\u003e=
+        1.8.1"},{"name":"minitest","requirements":"~\u003e 5.14.4"},{"name":"minitest-reporters","requirements":"~\u003e
+        1.4.3"},{"name":"railties","requirements":"\u003e= 0"},{"name":"rake","requirements":"\u003e=
+        0"},{"name":"sprockets-rails","requirements":"\u003e= 2.3.2"},{"name":"term-ansicolor","requirements":"\u003e=
+        0"},{"name":"uglifier","requirements":"\u003e= 0"}],"runtime":[{"name":"autoprefixer-rails","requirements":"\u003e=
+        9.1.0"},{"name":"popper_js","requirements":"\u003e= 2.11.8, \u003c 3"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/byebug.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1336'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-0ce634817b2ac4e98230e11e0277704d';
+        style-src 'self' https://fonts.googleapis.com 'nonce-0ce634817b2ac4e98230e11e0277704d';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3596757331871418737
+      X-Request-Id:
+      - 3999fdb7-d3f8-4344-87d6-f542308573b8
+      X-Runtime:
+      - '0.023398'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '273'
+      X-Served-By:
+      - cache-ewr-kewr1740040-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.421793,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"byebug","downloads":350200178,"version":"11.1.3","version_created_at":"2020-04-23T10:01:33.453Z","version_downloads":191856590,"platform":"ruby","authors":"David
+        Rodriguez, Kent Sibilev, Mark Moseley","info":"Byebug is a Ruby debugger.
+        It''s implemented using the\n    TracePoint C API for execution control and
+        the Debug Inspector C API for\n    call stack navigation.  The core component
+        provides support that front-ends\n    can build on. It provides breakpoint
+        handling and bindings for stack frames\n    among other things and it comes
+        with an easy to use command line interface.","licenses":["BSD-2-Clause"],"metadata":{},"yanked":false,"sha":"2485944d2bb21283c593d562f9ae1019bf80002143cc3a255aaffd4e9cf4a35b","spec_sha":"520cb10eeae6fc5cd14b4b40eb165b3b4efa964ef25daa1795807b019ec39fbd","project_uri":"https://rubygems.org/gems/byebug","gem_uri":"https://rubygems.org/gems/byebug-11.1.3.gem","homepage_uri":"https://github.com/deivid-rodriguez/byebug","wiki_uri":"","documentation_uri":"https://www.rubydoc.info/gems/byebug/11.1.3","mailing_list_uri":"","source_code_uri":"https://github.com/deivid-rodriguez/byebug","bug_tracker_uri":"https://github.com/deivid-rodriguez/byebug/issues","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"bundler","requirements":"~\u003e
+        2.0"}],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/dartsass-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1021'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-93324c17440a272a47dc2ef634d92083';
+        style-src 'self' https://fonts.googleapis.com 'nonce-93324c17440a272a47dc2ef634d92083';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A234982576558283204
+      X-Request-Id:
+      - 20f66deb-934b-4a6f-98b0-fd7b2405763d
+      X-Runtime:
+      - '0.013842'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '273'
+      X-Served-By:
+      - cache-ewr-kewr1740040-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764939.470987,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"dartsass-rails","downloads":1670633,"version":"0.5.1","version_created_at":"2024-07-30T18:01:34.995Z","version_downloads":89116,"platform":"ruby","authors":"David
+        Heinemeier Hansson","info":"Integrate Dart Sass with the asset pipeline in
+        Rails.","licenses":["MIT"],"metadata":{"homepage_uri":"https://github.com/rails/dartsass-rails","rubygems_mfa_required":"true"},"yanked":false,"sha":"f19510fb1b29c76c1739a06954d615f1d20ad653b6fc668dd7c68542bb303a1a","spec_sha":"df7a29e37acfbae520aa5b5f1033361f461a1785cb015647548264863eeb1da6","project_uri":"https://rubygems.org/gems/dartsass-rails","gem_uri":"https://rubygems.org/gems/dartsass-rails-0.5.1.gem","homepage_uri":"https://github.com/rails/dartsass-rails","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"railties","requirements":"\u003e=
+        6.0.0"},{"name":"sass-embedded","requirements":"~\u003e 1.63"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/database_cleaner-active_record.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1500'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-99792935f8f7b72959eaf295c8505c81';
+        style-src 'self' https://fonts.googleapis.com 'nonce-99792935f8f7b72959eaf295c8505c81';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A81201220512887656
+      X-Request-Id:
+      - 2d7069b3-d088-42a9-a13a-05b435a98596
+      X-Runtime:
+      - '0.024810'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '273'
+      X-Served-By:
+      - cache-ewr-kewr1740027-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.518960,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"database_cleaner-active_record","downloads":68254125,"version":"2.2.0","version_created_at":"2024-07-12T04:11:43.935Z","version_downloads":3742964,"platform":"ruby","authors":"Ernesto
+        Tagwerker, Micah Geisel","info":"Strategies for cleaning databases using ActiveRecord.
+        Can be used to ensure a clean state for testing.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"3228d6d8ec1f2103fd6ab468dae923424318bcfabcf5dd5b02e5fcb0c486e1c7","spec_sha":"a850f360c386aec76075f8bf31e35df58903444eed3e66dec6f83026193d5fd1","project_uri":"https://rubygems.org/gems/database_cleaner-active_record","gem_uri":"https://rubygems.org/gems/database_cleaner-active_record-2.2.0.gem","homepage_uri":"https://github.com/DatabaseCleaner/database_cleaner-active_record","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/database_cleaner-active_record/2.2.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"appraisal","requirements":"\u003e=
+        0"},{"name":"bundler","requirements":"\u003e= 0"},{"name":"mysql2","requirements":"\u003e=
+        0"},{"name":"pg","requirements":"\u003e= 0"},{"name":"rake","requirements":"\u003e=
+        0"},{"name":"rspec","requirements":"\u003e= 0"},{"name":"sqlite3","requirements":"\u003e=
+        0"},{"name":"trilogy","requirements":"\u003e= 0"}],"runtime":[{"name":"activerecord","requirements":"\u003e=
+        5.a"},{"name":"database_cleaner-core","requirements":"~\u003e 2.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/dotenv.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1016'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-7de248fd99d63556bb7806d4d07df36d';
+        style-src 'self' https://fonts.googleapis.com 'nonce-7de248fd99d63556bb7806d4d07df36d';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1654810449107333388
+      X-Request-Id:
+      - 65c62d4a-db22-4ea9-9661-bcd2791d97d6
+      X-Runtime:
+      - '0.016353'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '273'
+      X-Served-By:
+      - cache-ewr-kewr1740022-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.565803,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"dotenv","downloads":359394874,"version":"3.1.4","version_created_at":"2024-09-18T03:54:04.834Z","version_downloads":640526,"platform":"ruby","authors":"Brandon
+        Keepers","info":"Loads environment variables from `.env`.","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/bkeepers/dotenv/releases"},"yanked":false,"sha":"6dc502e718ea0d3542673345da05c7a69039840898e251757adb3405d2b35629","spec_sha":"a4c10bf2cd1963081bb43abdc55760cb9864c2de14aa10402384b89e1947fdc2","project_uri":"https://rubygems.org/gems/dotenv","gem_uri":"https://rubygems.org/gems/dotenv-3.1.4.gem","homepage_uri":"https://github.com/bkeepers/dotenv","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":"https://github.com/bkeepers/dotenv/releases","funding_uri":null,"dependencies":{"development":[{"name":"rake","requirements":"\u003e=
+        0"},{"name":"rspec","requirements":"\u003e= 0"},{"name":"standard","requirements":"\u003e=
+        0"}],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/factory_bot_rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1213'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-ca914b24fbefa4dd38f0c28eb1f46b12';
+        style-src 'self' https://fonts.googleapis.com 'nonce-ca914b24fbefa4dd38f0c28eb1f46b12';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3697759302815480762
+      X-Request-Id:
+      - d0b1735b-f444-4d55-8146-d244f05ef392
+      X-Runtime:
+      - '0.023621'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '272'
+      X-Served-By:
+      - cache-ewr-kewr1740041-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.614087,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"factory_bot_rails","downloads":192205509,"version":"6.4.3","version_created_at":"2023-12-30T00:30:11.217Z","version_downloads":15957548,"platform":"ruby","authors":"Joe
+        Ferris","info":"factory_bot_rails provides integration between factory_bot
+        and rails 5.0 or newer","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/thoughtbot/factory_bot_rails/blob/main/NEWS.md"},"yanked":false,"sha":"ea73ceac1c0ff3dc11fff390bf2ea8a2604066525ed8ecd3b3bc2c267226dcc8","spec_sha":"80414ea1a4aeb5f58985ba493da459b5428fad9c22833d3898c62e2494afa2ef","project_uri":"https://rubygems.org/gems/factory_bot_rails","gem_uri":"https://rubygems.org/gems/factory_bot_rails-6.4.3.gem","homepage_uri":"https://github.com/thoughtbot/factory_bot_rails","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":"https://github.com/thoughtbot/factory_bot_rails/blob/main/NEWS.md","funding_uri":null,"dependencies":{"development":[{"name":"activerecord","requirements":"\u003e=
+        5.0.0"},{"name":"sqlite3","requirements":"\u003e= 0"}],"runtime":[{"name":"factory_bot","requirements":"~\u003e
+        6.4"},{"name":"railties","requirements":"\u003e= 5.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/gems.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '812'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-99e355160e02eb8b17ad8c878ae76897';
+        style-src 'self' https://fonts.googleapis.com 'nonce-99e355160e02eb8b17ad8c878ae76897';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1424351129616525035
+      X-Request-Id:
+      - d9eaff10-55a4-43f6-a73d-f6c60c447cb4
+      X-Runtime:
+      - '0.022330'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '272'
+      X-Served-By:
+      - cache-ewr-kewr1740078-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.660060,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"gems","downloads":34397078,"version":"1.2.0","version_created_at":"2019-09-26T07:12:34.431Z","version_downloads":26506841,"platform":"ruby","authors":"Erik
+        Michaels-Ober","info":"Ruby wrapper for the RubyGems.org API","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"343d74bd54d906f38193f3ccd983f9d08c4b54cd01ee7e5fe8467ab41a9946f0","spec_sha":"fbe30645252fd72a57f747c7387d2baf8007634e27b5a30ea165cb2c25a6f617","project_uri":"https://rubygems.org/gems/gems","gem_uri":"https://rubygems.org/gems/gems-1.2.0.gem","homepage_uri":"https://github.com/rubygems/gems","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/gems/1.2.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/git.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2038'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-642fc689c29c6ff12391a41fa0306992';
+        style-src 'self' https://fonts.googleapis.com 'nonce-642fc689c29c6ff12391a41fa0306992';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3020021779440811779
+      X-Request-Id:
+      - a9867fa1-f182-4738-a466-20d2640fa8ef
+      X-Runtime:
+      - '0.016063'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '272'
+      X-Served-By:
+      - cache-ewr-kewr1740074-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.701055,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"git","downloads":137743764,"version":"2.3.0","version_created_at":"2024-09-01T21:56:10.331Z","version_downloads":207507,"platform":"ruby","authors":"Scott
+        Chacon and others","info":"The git gem provides an API that can be used to\ncreate,
+        read, and manipulate Git repositories by wrapping system calls to the git\ncommand
+        line. The API can be used for working with Git in complex interactions\nincluding
+        branching and merging, object inspection and manipulation, history, patch\ngeneration
+        and more.\n","licenses":["MIT"],"metadata":{"homepage_uri":"http://github.com/ruby-git/ruby-git","changelog_uri":"https://rubydoc.info/gems/git/2.3.0/file/CHANGELOG.md","source_code_uri":"http://github.com/ruby-git/ruby-git","documentation_uri":"https://rubydoc.info/gems/git/2.3.0"},"yanked":false,"sha":"64d3162f2ba73edcb46b966105ff2ec12dd66dfc4ac86e46506ad9938b148e72","spec_sha":"a9a0bc57439dee5211f652ce404d9da44c2d250807a50ec5b81230ee5d84b300","project_uri":"https://rubygems.org/gems/git","gem_uri":"https://rubygems.org/gems/git-2.3.0.gem","homepage_uri":"http://github.com/ruby-git/ruby-git","wiki_uri":null,"documentation_uri":"https://rubydoc.info/gems/git/2.3.0","mailing_list_uri":null,"source_code_uri":"http://github.com/ruby-git/ruby-git","bug_tracker_uri":null,"changelog_uri":"https://rubydoc.info/gems/git/2.3.0/file/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[{"name":"create_github_release","requirements":"~\u003e
+        1.4"},{"name":"minitar","requirements":"~\u003e 0.9"},{"name":"mocha","requirements":"~\u003e
+        2.1"},{"name":"rake","requirements":"~\u003e 13.1"},{"name":"redcarpet","requirements":"~\u003e
+        3.6"},{"name":"test-unit","requirements":"~\u003e 3.6"},{"name":"yard","requirements":"~\u003e
+        0.9, \u003e= 0.9.28"},{"name":"yardstick","requirements":"~\u003e 0.9"}],"runtime":[{"name":"activesupport","requirements":"\u003e=
+        5.0"},{"name":"addressable","requirements":"~\u003e 2.8"},{"name":"process_executer","requirements":"~\u003e
+        1.1"},{"name":"rchardet","requirements":"~\u003e 1.8"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/haml.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1700'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-ed19d256b2b644bf957f4fe4c4531197';
+        style-src 'self' https://fonts.googleapis.com 'nonce-ed19d256b2b644bf957f4fe4c4531197';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1841109156696935956
+      X-Request-Id:
+      - bb226a55-e3c4-4c70-8205-14da6faa98bf
+      X-Runtime:
+      - '0.034262'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '272'
+      X-Served-By:
+      - cache-ewr-kewr1740071-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Timer:
+      - S1728764940.749615,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"haml","downloads":155244923,"version":"6.3.0","version_created_at":"2023-12-10T07:18:47.082Z","version_downloads":3443072,"platform":"ruby","authors":"Natalie
+        Weizenbaum, Hampton Catlin, Norman Clarke, Akira Matsuda, Takashi Kokubun","info":"An
+        elegant, structured (X)HTML/XML templating engine.","licenses":["MIT"],"metadata":{"rubygems_mfa_required":"true"},"yanked":false,"sha":"8e6eb87d869639e348852009e74a2a1663d79663ed7e7dbcb38beb1f12bcdd97","spec_sha":"022c2ee9dba7e067fda053d0408a1bee601ec71340af2026e9f607b80e83c4d9","project_uri":"https://rubygems.org/gems/haml","gem_uri":"https://rubygems.org/gems/haml-6.3.0.gem","homepage_uri":"https://haml.info","wiki_uri":"","documentation_uri":"http://haml.info/docs/yardoc/","mailing_list_uri":"http://groups.google.com/group/haml","source_code_uri":"http://github.com/haml/haml","bug_tracker_uri":"","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"benchmark_driver","requirements":"\u003e=
+        0"},{"name":"bundler","requirements":"\u003e= 0"},{"name":"coffee-script","requirements":"\u003e=
+        0"},{"name":"erubi","requirements":"\u003e= 0"},{"name":"haml","requirements":"\u003e=
+        5"},{"name":"less","requirements":"\u003e= 0"},{"name":"minitest-reporters","requirements":"~\u003e
+        1.1"},{"name":"rails","requirements":"\u003e= 4.0"},{"name":"rake","requirements":"\u003e=
+        0"},{"name":"sass","requirements":"\u003e= 0"},{"name":"slim","requirements":"\u003e=
+        0"},{"name":"string_template","requirements":"\u003e= 0"},{"name":"unindent","requirements":"\u003e=
+        0"}],"runtime":[{"name":"temple","requirements":"\u003e= 0.8.2"},{"name":"thor","requirements":"\u003e=
+        0"},{"name":"tilt","requirements":"\u003e= 0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/importmap-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1188'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-7f430fa4377a189cf71a1a3465877c92';
+        style-src 'self' https://fonts.googleapis.com 'nonce-7f430fa4377a189cf71a1a3465877c92';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1057263232347222251
+      X-Request-Id:
+      - 459005ff-ca14-492a-b87e-e90c9e83db57
+      X-Runtime:
+      - '0.024839'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '271'
+      X-Served-By:
+      - cache-ewr-kewr1740044-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.795516,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"importmap-rails","downloads":17062746,"version":"2.0.3","version_created_at":"2024-10-10T03:39:25.263Z","version_downloads":71813,"platform":"ruby","authors":"David
+        Heinemeier Hansson","info":"Use ESM with importmap to manage modern JavaScript
+        in Rails without transpiling or bundling.","licenses":["MIT"],"metadata":{"homepage_uri":"https://github.com/rails/importmap-rails","source_code_uri":"https://github.com/rails/importmap-rails"},"yanked":false,"sha":"c56764941f9b637791fb87123b38f206f27cc55ef03cb19894f1994184e98cc8","spec_sha":"982edecc4cf74fe493c78bfdf07764d7f7841d5be06924994127ffda44fe4793","project_uri":"https://rubygems.org/gems/importmap-rails","gem_uri":"https://rubygems.org/gems/importmap-rails-2.0.3.gem","homepage_uri":"https://github.com/rails/importmap-rails","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/rails/importmap-rails","bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"actionpack","requirements":"\u003e=
+        6.0.0"},{"name":"activesupport","requirements":"\u003e= 6.0.0"},{"name":"railties","requirements":"\u003e=
+        6.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/kredis.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1061'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-c95d75a284336940c5bc6d34709499b5';
+        style-src 'self' https://fonts.googleapis.com 'nonce-c95d75a284336940c5bc6d34709499b5';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3809339576644456040
+      X-Request-Id:
+      - 5f157ad9-18e0-4d1d-8dc8-f3e9dd696633
+      X-Runtime:
+      - '0.023500'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '271'
+      X-Served-By:
+      - cache-ewr-kewr1740055-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.841699,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"kredis","downloads":1084904,"version":"1.7.0","version_created_at":"2023-12-29T18:56:25.166Z","version_downloads":314588,"platform":"ruby","authors":"Kasper
+        Timm Hansen, David Heinemeier Hansson","info":"Higher-level data structures
+        built on Redis.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"7061de794e065f152c23b402f89158f2d2bc0adc60c2be766ba880856fb60d91","spec_sha":"8d1fa70e08ec189361d1d1cd5eeb529d4875b09a982c04046c60c76749317bde","project_uri":"https://rubygems.org/gems/kredis","gem_uri":"https://rubygems.org/gems/kredis-1.7.0.gem","homepage_uri":"https://github.com/rails/kredis","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/kredis/1.7.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"rails","requirements":"\u003e=
+        6.0.0"}],"runtime":[{"name":"activemodel","requirements":"\u003e= 6.0.0"},{"name":"activesupport","requirements":"\u003e=
+        6.0.0"},{"name":"redis","requirements":"\u003e= 4.2, \u003c 6"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/net-pop.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '970'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-be2723dbc00b83ae36eaa8a132b5a890';
+        style-src 'self' https://fonts.googleapis.com 'nonce-be2723dbc00b83ae36eaa8a132b5a890';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2193919989723011275
+      X-Request-Id:
+      - ce62fef7-c2cc-4955-9036-01bcb0769538
+      X-Runtime:
+      - '0.014765'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '271'
+      X-Served-By:
+      - cache-ewr-kewr1740027-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.890938,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"net-pop","downloads":105296453,"version":"0.1.2","version_created_at":"2022-09-28T09:37:33.259Z","version_downloads":96582841,"platform":"ruby","authors":"Yukihiro
+        Matsumoto","info":"Ruby client library for POP3.","licenses":["Ruby","BSD-2-Clause"],"metadata":{"homepage_uri":"https://github.com/ruby/net-pop","source_code_uri":"https://github.com/ruby/net-pop"},"yanked":false,"sha":"848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3","spec_sha":"aeff9897c84befbe622e8705f0b3163226c80d12ba47fcb66264598441fc2713","project_uri":"https://rubygems.org/gems/net-pop","gem_uri":"https://rubygems.org/gems/net-pop-0.1.2.gem","homepage_uri":"https://github.com/ruby/net-pop","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/ruby/net-pop","bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"net-protocol","requirements":"\u003e=
+        0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/octokit.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '989'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-49ff7c13dd09d0c64f24643b8bf30579';
+        style-src 'self' https://fonts.googleapis.com 'nonce-49ff7c13dd09d0c64f24643b8bf30579';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A4590871458698954575
+      X-Request-Id:
+      - 5d7a495c-7d9e-4c8d-a059-f2ca59c335fe
+      X-Runtime:
+      - '0.031906'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '271'
+      X-Served-By:
+      - cache-ewr-kewr1740070-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.936479,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"octokit","downloads":264819707,"version":"9.1.0","version_created_at":"2024-06-11T15:18:27.548Z","version_downloads":7655575,"platform":"ruby","authors":"Wynn
+        Netherland, Erik Michaels-Ober, Clint Shryock","info":"Simple wrapper for
+        the GitHub API","licenses":["MIT"],"metadata":{"rubygems_mfa_required":"true"},"yanked":false,"sha":"7849a659d2722c629181f48d1d7e567c9539f1a85c9676144dbdbfc6ce288253","spec_sha":"57fa4b96699623ff4449223bff2810cb83752841770f3b4de7441bd94c9f36c1","project_uri":"https://rubygems.org/gems/octokit","gem_uri":"https://rubygems.org/gems/octokit-9.1.0.gem","homepage_uri":"https://github.com/octokit/octokit.rb","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/octokit/9.1.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"faraday","requirements":"\u003e=
+        1, \u003c 3"},{"name":"sawyer","requirements":"~\u003e 0.9"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/octopoller.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1009'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-37b7d3cafbb521983004519c43a204ee';
+        style-src 'self' https://fonts.googleapis.com 'nonce-37b7d3cafbb521983004519c43a204ee';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A639303896217993766
+      X-Request-Id:
+      - 921ccbc0-90b6-47d8-9bf5-7067f74aa2c0
+      X-Runtime:
+      - '0.021452'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:28:59 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '271'
+      X-Served-By:
+      - cache-ewr-kewr1740078-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Timer:
+      - S1728764940.982379,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"octopoller","downloads":276383,"version":"0.3.1","version_created_at":"2023-09-29T17:18:59.983Z","version_downloads":60498,"platform":"ruby","authors":"BenEmdon","info":"A
+        micro gem for polling and retrying, perfect for making repeating requests","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"f4c1e921a5e92a520412647870b5bdc8bf27e175b2f0d471042432691508666c","spec_sha":"79684abc93e430b442211ddea08623598b6827152ea4c25576d00ad7134747e3","project_uri":"https://rubygems.org/gems/octopoller","gem_uri":"https://rubygems.org/gems/octopoller-0.3.1.gem","homepage_uri":"https://github.com/octokit/octopoller.rb","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/octopoller/0.3.1","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"bundler","requirements":"~\u003e
+        2.2.33"},{"name":"rake","requirements":"~\u003e 13.0"},{"name":"rspec","requirements":"~\u003e
+        3.2"}],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:28:59 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/pg.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1160'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-2731369be7c2d58899fa69bb81eeea8c';
+        style-src 'self' https://fonts.googleapis.com 'nonce-2731369be7c2d58899fa69bb81eeea8c';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2233513391353726475
+      X-Request-Id:
+      - ba91f179-9b83-4daa-be93-e9f2ba2ad5f1
+      X-Runtime:
+      - '0.032639'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '270'
+      X-Served-By:
+      - cache-ewr-kewr1740049-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.028714,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"pg","downloads":328626761,"version":"1.5.8","version_created_at":"2024-09-06T15:49:18.730Z","version_downloads":1337642,"platform":"ruby","authors":"Michael
+        Granger, Lars Kanis","info":"Pg is the Ruby interface to the PostgreSQL RDBMS.
+        It works with PostgreSQL 9.3 and later.","licenses":["BSD-2-Clause"],"metadata":{"homepage_uri":"https://github.com/ged/ruby-pg","changelog_uri":"https://github.com/ged/ruby-pg/blob/master/History.md","source_code_uri":"https://github.com/ged/ruby-pg","documentation_uri":"http://deveiate.org/code/pg"},"yanked":false,"sha":"efd71939dd1d6d9f0b434dc61dee6ef64f1d2bfcd3c177598a8797c27e654f37","spec_sha":"c17e0b998d4b901bd6522cfa4ee1f436349ad6b0feec97b1760a84fc594a9922","project_uri":"https://rubygems.org/gems/pg","gem_uri":"https://rubygems.org/gems/pg-1.5.8.gem","homepage_uri":"https://github.com/ged/ruby-pg","wiki_uri":null,"documentation_uri":"http://deveiate.org/code/pg","mailing_list_uri":null,"source_code_uri":"https://github.com/ged/ruby-pg","bug_tracker_uri":null,"changelog_uri":"https://github.com/ged/ruby-pg/blob/master/History.md","funding_uri":null,"dependencies":{"development":[],"runtime":[]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/propshaft.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1056'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-40ca70d1c268c0c2db14f4b437e29668';
+        style-src 'self' https://fonts.googleapis.com 'nonce-40ca70d1c268c0c2db14f4b437e29668';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A4139787200412575045
+      X-Request-Id:
+      - c2560f6c-ee2b-4fb5-a68c-31f4a43203a1
+      X-Runtime:
+      - '0.027257'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '270'
+      X-Served-By:
+      - cache-ewr-kewr1740026-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.077842,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"propshaft","downloads":3014604,"version":"1.1.0","version_created_at":"2024-09-30T21:22:24.339Z","version_downloads":47440,"platform":"ruby","authors":"David
+        Heinemeier Hansson","info":"Deliver assets for Rails.","licenses":["MIT"],"metadata":{"rubygems_mfa_required":"true"},"yanked":false,"sha":"d389361faf66aeb17e8d204828962c1e506edd14a1a17adb3fa475435c070f6b","spec_sha":"77a98e766eae0f5ddc329c278581fecceb9e5ec8d05c5503acde7290f9f33230","project_uri":"https://rubygems.org/gems/propshaft","gem_uri":"https://rubygems.org/gems/propshaft-1.1.0.gem","homepage_uri":"https://github.com/rails/propshaft","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/propshaft/1.1.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"actionpack","requirements":"\u003e=
+        7.0.0"},{"name":"activesupport","requirements":"\u003e= 7.0.0"},{"name":"rack","requirements":"\u003e=
+        0"},{"name":"railties","requirements":"\u003e= 7.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/pry-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '967'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-73ab72c01c4bb0d7b858cf1b09f4f5b9';
+        style-src 'self' https://fonts.googleapis.com 'nonce-73ab72c01c4bb0d7b858cf1b09f4f5b9';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2799559635977460690
+      X-Request-Id:
+      - 49b63953-26af-434c-bb08-c6a663ce6d51
+      X-Runtime:
+      - '0.021573'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '270'
+      X-Served-By:
+      - cache-ewr-kewr1740035-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.128857,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"pry-rails","downloads":170031802,"version":"0.3.11","version_created_at":"2024-06-20T01:31:58.455Z","version_downloads":1897128,"platform":"ruby","authors":"Robin
+        Wenglewski","info":"Use Pry as your rails console","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"a69e28e24a34d75d1f60bcf241192a54253f8f7ef8a62cba1e75750a9653593d","spec_sha":"fd6789f2c0e6b4c6db17ef998190e3f6605ef229a783633cace0cd0ce1c07686","project_uri":"https://rubygems.org/gems/pry-rails","gem_uri":"https://rubygems.org/gems/pry-rails-0.3.11.gem","homepage_uri":"https://github.com/rweng/pry-rails","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/pry-rails/0.3.11","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"appraisal","requirements":"\u003e=
+        0"},{"name":"minitest","requirements":"\u003e= 0"}],"runtime":[{"name":"pry","requirements":"\u003e=
+        0.13.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/puma.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1434'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-199b60149ede4ede14a23be011a5cc38';
+        style-src 'self' https://fonts.googleapis.com 'nonce-199b60149ede4ede14a23be011a5cc38';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1408758364005955261
+      X-Request-Id:
+      - ca648f8f-faa3-461f-9b39-93572e1d936f
+      X-Runtime:
+      - '0.037750'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '270'
+      X-Served-By:
+      - cache-ewr-kewr1740023-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.174295,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"puma","downloads":397944517,"version":"6.4.3","version_created_at":"2024-09-19T05:49:20.526Z","version_downloads":2599724,"platform":"ruby","authors":"Evan
+        Phoenix","info":"Puma is a simple, fast, threaded, and highly parallel HTTP
+        1.1 server for Ruby/Rack applications. Puma is intended for use in both development
+        and production environments. It''s great for highly parallel Ruby implementations
+        such as Rubinius and JRuby as well as as providing process worker support
+        to support CRuby well.","licenses":["BSD-3-Clause"],"metadata":{"homepage_uri":"https://puma.io","changelog_uri":"https://github.com/puma/puma/blob/master/History.md","bug_tracker_uri":"https://github.com/puma/puma/issues","source_code_uri":"https://github.com/puma/puma","rubygems_mfa_required":"true"},"yanked":false,"sha":"24a4645c006811d83f2480057d1f54a96e7627b6b90e1c99b260b9dc630eb43e","spec_sha":"deb54b47bf8427dd971b777fcc83c9bf94e3a2e37f7ebe54e646c2bd26997c6a","project_uri":"https://rubygems.org/gems/puma","gem_uri":"https://rubygems.org/gems/puma-6.4.3.gem","homepage_uri":"https://puma.io","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/puma/puma","bug_tracker_uri":"https://github.com/puma/puma/issues","changelog_uri":"https://github.com/puma/puma/blob/master/History.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"nio4r","requirements":"~\u003e
+        2.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rails-controller-testing.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1206'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-67b4bc0ed5803afc2501dd8ba74f4f6c';
+        style-src 'self' https://fonts.googleapis.com 'nonce-67b4bc0ed5803afc2501dd8ba74f4f6c';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1841062096453140895
+      X-Request-Id:
+      - 117754a3-7754-4618-8246-eed468371fc7
+      X-Runtime:
+      - '0.027199'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '269'
+      X-Served-By:
+      - cache-ewr-kewr1740063-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.220700,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"rails-controller-testing","downloads":134081138,"version":"1.0.5","version_created_at":"2020-06-23T12:38:35.345Z","version_downloads":90695020,"platform":"ruby","authors":"Rails
+        Core Team","info":"Extracting `assigns` and `assert_template` from ActionDispatch.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"741448db59366073e86fc965ba403f881c636b79a2c39a48d0486f2607182e94","spec_sha":"f465f835de351f34a2726d672eeb0a4e6b7bf01421dfdacc860d1830b9bfefb0","project_uri":"https://rubygems.org/gems/rails-controller-testing","gem_uri":"https://rubygems.org/gems/rails-controller-testing-1.0.5.gem","homepage_uri":"https://github.com/rails/rails-controller-testing","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/rails-controller-testing/1.0.5","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"railties","requirements":"\u003e=
+        5.0.1.rc1"},{"name":"sqlite3","requirements":"\u003e= 0"}],"runtime":[{"name":"actionpack","requirements":"\u003e=
+        5.0.1.rc1"},{"name":"actionview","requirements":"\u003e= 5.0.1.rc1"},{"name":"activesupport","requirements":"\u003e=
+        5.0.1.rc1"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rails-i18n.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1210'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-f9de68a704a07cbe36e6b4d20404ac9d';
+        style-src 'self' https://fonts.googleapis.com 'nonce-f9de68a704a07cbe36e6b4d20404ac9d';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A19945256483872698
+      X-Request-Id:
+      - ecd19d94-eddc-4ccf-acea-661dba6f2474
+      X-Runtime:
+      - '0.017955'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '269'
+      X-Served-By:
+      - cache-ewr-kewr1740034-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.272429,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"rails-i18n","downloads":94509873,"version":"7.0.9","version_created_at":"2024-03-13T02:53:17.587Z","version_downloads":7373949,"platform":"ruby","authors":"Rails
+        I18n Group","info":"A set of common locale data and translations to internationalize
+        and/or localize your Rails applications.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"c184db80a7c7bf21c14e0e400fe9e27c4c20312f019aaff5b364a82858dc1369","spec_sha":"53c2393fadd6bb649ab075eaf91a1294279bb95c11403416b05c2059ecb9ee54","project_uri":"https://rubygems.org/gems/rails-i18n","gem_uri":"https://rubygems.org/gems/rails-i18n-7.0.9.gem","homepage_uri":"https://github.com/svenfuchs/rails-i18n","wiki_uri":"","documentation_uri":"https://www.rubydoc.info/gems/rails-i18n/7.0.9","mailing_list_uri":"","source_code_uri":"http://github.com/svenfuchs/rails-i18n","bug_tracker_uri":"","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"i18n-spec","requirements":"~\u003e
+        0.6.0"},{"name":"i18n-tasks","requirements":"~\u003e 0.9.37"},{"name":"rspec-rails","requirements":"~\u003e
+        3.7"}],"runtime":[{"name":"i18n","requirements":"\u003e= 0.7, \u003c 2"},{"name":"railties","requirements":"\u003e=
+        6.0.0, \u003c 8"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rails_bootstrap_navbar.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1327'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-7646fd3f62782e1f3fbc34b4fcc0d3a1';
+        style-src 'self' https://fonts.googleapis.com 'nonce-7646fd3f62782e1f3fbc34b4fcc0d3a1';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2658753562365216040
+      X-Request-Id:
+      - 8feb1322-ba7c-4223-a144-ec3b3a7eb308
+      X-Runtime:
+      - '0.022421'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '269'
+      X-Served-By:
+      - cache-ewr-kewr1740044-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.317962,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"rails_bootstrap_navbar","downloads":221468,"version":"3.0.0","version_created_at":"2017-10-22T11:51:47.307Z","version_downloads":112535,"platform":"ruby","authors":"Manuel
+        Meurer","info":"Easily generate a Bootstrap navbar in your Rails app","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"4acc1707f389df40ed682683bcce8ad6bd910aca5e30262a19e970dabc19f38a","spec_sha":"69a9f0ec51be4b6cc636634a0399ab438d88f9c375fbb107da0c0f1e6a691b3a","project_uri":"https://rubygems.org/gems/rails_bootstrap_navbar","gem_uri":"https://rubygems.org/gems/rails_bootstrap_navbar-3.0.0.gem","homepage_uri":"http://bootstrap-ruby.github.io/rails-bootstrap-navbar","wiki_uri":"https://github.com/bootstrap-ruby/rails-bootstrap-navbar/wiki","documentation_uri":"http://bootstrap-ruby.github.io/rails-bootstrap-navbar","mailing_list_uri":"","source_code_uri":"https://github.com/bootstrap-ruby/rails-bootstrap-navbar","bug_tracker_uri":"https://github.com/bootstrap-ruby/rails-bootstrap-navbar/issues","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"guard-rspec","requirements":"~\u003e
+        3.0"},{"name":"rake","requirements":"\u003c 11.0"},{"name":"rspec","requirements":"~\u003e
+        2.13"}],"runtime":[{"name":"bootstrap-navbar","requirements":"~\u003e 3.0"},{"name":"rails","requirements":"\u003e=
+        3.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/redis.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1534'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-a7f528a75cfa70f11a343bfdb661574c';
+        style-src 'self' https://fonts.googleapis.com 'nonce-a7f528a75cfa70f11a343bfdb661574c';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3870904420198237295
+      X-Request-Id:
+      - 74361ab7-3bfa-4e7a-8f90-974deed60286
+      X-Runtime:
+      - '0.017664'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '269'
+      X-Served-By:
+      - cache-ewr-kewr1740022-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.364411,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"redis","downloads":436345066,"version":"5.3.0","version_created_at":"2024-08-21T06:33:43.985Z","version_downloads":2804501,"platform":"ruby","authors":"Ezra
+        Zygmuntowicz, Taylor Weibley, Matthew Clark, Brian McKinney, Salvatore Sanfilippo,
+        Luca Guidi, Michel Martens, Damian Janowski, Pieter Noordhuis","info":"    A
+        Ruby client that tries to match Redis'' API one-to-one, while still\n    providing
+        an idiomatic interface.\n","licenses":["MIT"],"metadata":{"homepage_uri":"https://github.com/redis/redis-rb","changelog_uri":"https://github.com/redis/redis-rb/blob/master/CHANGELOG.md","bug_tracker_uri":"https://github.com/redis/redis-rb/issues","source_code_uri":"https://github.com/redis/redis-rb/tree/v5.3.0","documentation_uri":"https://www.rubydoc.info/gems/redis/5.3.0"},"yanked":false,"sha":"6bf810c5ae889187f0c45f77db503310980310afa57cf1640d57f419ccda72b1","spec_sha":"04da647d792a6956b9bf0d4f2f103c948dc92b6ea1ba57177d05a2712831d0c6","project_uri":"https://rubygems.org/gems/redis","gem_uri":"https://rubygems.org/gems/redis-5.3.0.gem","homepage_uri":"https://github.com/redis/redis-rb","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/redis/5.3.0","mailing_list_uri":null,"source_code_uri":"https://github.com/redis/redis-rb/tree/v5.3.0","bug_tracker_uri":"https://github.com/redis/redis-rb/issues","changelog_uri":"https://github.com/redis/redis-rb/blob/master/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"redis-client","requirements":"\u003e=
+        0.22.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/redis-namespace.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1661'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-edeaef756ed1d9d18d001ee588e18873';
+        style-src 'self' https://fonts.googleapis.com 'nonce-edeaef756ed1d9d18d001ee588e18873';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3391171624903677813
+      X-Request-Id:
+      - 1c558eea-5fb2-470b-93cb-3f85a622d814
+      X-Runtime:
+      - '0.025670'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '268'
+      X-Served-By:
+      - cache-ewr-kewr1740047-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.410407,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"redis-namespace","downloads":161701175,"version":"1.11.0","version_created_at":"2023-06-08T15:59:04.896Z","version_downloads":13916685,"platform":"ruby","authors":"Chris
+        Wanstrath, Terence Lee, Steve Klabnik, Ryan Biesemeyer, Mike Bianco","info":"Adds
+        a Redis::Namespace class which can be used to namespace calls\nto Redis. This
+        is useful when using a single instance of Redis with\nmultiple, different
+        applications.\n","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/resque/redis-namespace/blob/master/CHANGELOG.md","bug_tracker_uri":"https://github.com/resque/redis-namespace/issues","documentation_uri":"https://www.rubydoc.info/gems/redis-namespace/1.11.0","rubygems_mfa_required":"true"},"yanked":false,"sha":"e91a1aa2b2d888b6dea1d4ab8d39e1ae6fac3426161feb9d91dd5cca598a2239","spec_sha":"8dad34dc003428456090b2ef7befcf9619613fa18a02ea2eaa4a21ab47806f06","project_uri":"https://rubygems.org/gems/redis-namespace","gem_uri":"https://rubygems.org/gems/redis-namespace-1.11.0.gem","homepage_uri":"https://github.com/resque/redis-namespace","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/redis-namespace/1.11.0","mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":"https://github.com/resque/redis-namespace/issues","changelog_uri":"https://github.com/resque/redis-namespace/blob/master/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[{"name":"connection_pool","requirements":"\u003e=
+        0"},{"name":"rake","requirements":"\u003e= 0"},{"name":"rspec","requirements":"~\u003e
+        3.7"},{"name":"rspec-its","requirements":"\u003e= 0"}],"runtime":[{"name":"redis","requirements":"\u003e=
+        4"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rspec-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1885'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-4e0b7780120ad6213e465a2b2a461690';
+        style-src 'self' https://fonts.googleapis.com 'nonce-4e0b7780120ad6213e465a2b2a461690';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3641630261046433197
+      X-Request-Id:
+      - 016ad9ca-1188-4cbd-b0df-81ef15df8afc
+      X-Runtime:
+      - '0.023476'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '268'
+      X-Served-By:
+      - cache-ewr-kewr1740057-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764940.456444,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"rspec-rails","downloads":288312769,"version":"7.0.1","version_created_at":"2024-09-03T12:08:24.826Z","version_downloads":961241,"platform":"ruby","authors":"David
+        Chelimsky, Andy Lindeman","info":"rspec-rails integrates the Rails testing
+        helpers into RSpec.","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/rspec/rspec-rails/blob/v7.0.1/Changelog.md","bug_tracker_uri":"https://github.com/rspec/rspec-rails/issues","source_code_uri":"https://github.com/rspec/rspec-rails","mailing_list_uri":"https://groups.google.com/forum/#!forum/rspec","documentation_uri":"https://rspec.info/documentation/"},"yanked":false,"sha":"ad2b2cb6dabca072260e21b188059645bac10659466c02a674f9ad5fd97b92f9","spec_sha":"775c45412a850a56c7cdcc4dbd688e64e743913f84024d34276b2f4f762c6b4d","project_uri":"https://rubygems.org/gems/rspec-rails","gem_uri":"https://rubygems.org/gems/rspec-rails-7.0.1.gem","homepage_uri":"https://github.com/rspec/rspec-rails","wiki_uri":null,"documentation_uri":"https://rspec.info/documentation/","mailing_list_uri":"https://groups.google.com/forum/#!forum/rspec","source_code_uri":"https://github.com/rspec/rspec-rails","bug_tracker_uri":"https://github.com/rspec/rspec-rails/issues","changelog_uri":"https://github.com/rspec/rspec-rails/blob/v7.0.1/Changelog.md","funding_uri":null,"dependencies":{"development":[{"name":"ammeter","requirements":"~\u003e
+        1.1.5"},{"name":"aruba","requirements":"~\u003e 0.14.12"},{"name":"cucumber","requirements":"~\u003e
+        7.0"}],"runtime":[{"name":"actionpack","requirements":"\u003e= 7.0"},{"name":"activesupport","requirements":"\u003e=
+        7.0"},{"name":"railties","requirements":"\u003e= 7.0"},{"name":"rspec-core","requirements":"~\u003e
+        3.13"},{"name":"rspec-expectations","requirements":"~\u003e 3.13"},{"name":"rspec-mocks","requirements":"~\u003e
+        3.13"},{"name":"rspec-support","requirements":"~\u003e 3.13"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/sentry-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1562'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-3af7ded29fd213e2cd59706e94065236';
+        style-src 'self' https://fonts.googleapis.com 'nonce-3af7ded29fd213e2cd59706e94065236';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A2530143692709311042
+      X-Request-Id:
+      - 7cdfbed1-f868-4a76-b4bc-bc79e6f97de9
+      X-Runtime:
+      - '0.021968'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '269'
+      X-Served-By:
+      - cache-ewr-kewr1740041-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Timer:
+      - S1728764940.499733,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"sentry-rails","downloads":59963681,"version":"5.21.0","version_created_at":"2024-10-07T13:04:51.978Z","version_downloads":80219,"platform":"ruby","authors":"Sentry
+        Team","info":"A gem that provides Rails integration for the Sentry error logger","licenses":["MIT"],"metadata":{"homepage_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-rails","changelog_uri":"https://github.com/getsentry/sentry-ruby/blob/5.21.0/CHANGELOG.md","bug_tracker_uri":"https://github.com/getsentry/sentry-ruby/issues","source_code_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-rails","documentation_uri":"http://www.rubydoc.info/gems/sentry-rails/5.21.0"},"yanked":false,"sha":"b5a943d199aff0d3cb94dbac4eb3e00622dd0c55fd1be0cffd43a7e09f0ad602","spec_sha":"47288da8f7808623f932be991e41d49eb509dc60fb37767dcd211df7d9a3ec69","project_uri":"https://rubygems.org/gems/sentry-rails","gem_uri":"https://rubygems.org/gems/sentry-rails-5.21.0.gem","homepage_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-rails","wiki_uri":null,"documentation_uri":"http://www.rubydoc.info/gems/sentry-rails/5.21.0","mailing_list_uri":null,"source_code_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-rails","bug_tracker_uri":"https://github.com/getsentry/sentry-ruby/issues","changelog_uri":"https://github.com/getsentry/sentry-ruby/blob/5.21.0/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"railties","requirements":"\u003e=
+        5.0"},{"name":"sentry-ruby","requirements":"~\u003e 5.21.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/sentry-sidekiq.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1581'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-ca5edd2e6d764b40e6965d49b63f39e9';
+        style-src 'self' https://fonts.googleapis.com 'nonce-ca5edd2e6d764b40e6965d49b63f39e9';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1588530687818321205
+      X-Request-Id:
+      - 6c658c79-fa87-4955-b1f8-c58fe621d2d6
+      X-Runtime:
+      - '0.024516'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '268'
+      X-Served-By:
+      - cache-ewr-kewr1740060-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.542882,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"sentry-sidekiq","downloads":43072160,"version":"5.21.0","version_created_at":"2024-10-07T13:04:52.002Z","version_downloads":58067,"platform":"ruby","authors":"Sentry
+        Team","info":"A gem that provides Sidekiq integration for the Sentry error
+        logger","licenses":["MIT"],"metadata":{"homepage_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-sidekiq","changelog_uri":"https://github.com/getsentry/sentry-ruby/blob/5.21.0/CHANGELOG.md","bug_tracker_uri":"https://github.com/getsentry/sentry-ruby/issues","source_code_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-sidekiq","documentation_uri":"http://www.rubydoc.info/gems/sentry-sidekiq/5.21.0"},"yanked":false,"sha":"6df54ec79238f69d9d4b7647bcd2a192a4702f3a39edffd63a455203430e90e2","spec_sha":"d585cd03ca3c150362a23f5d28d0eaa927d7b5a6df19af8773f2deb4dbdd5f73","project_uri":"https://rubygems.org/gems/sentry-sidekiq","gem_uri":"https://rubygems.org/gems/sentry-sidekiq-5.21.0.gem","homepage_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-sidekiq","wiki_uri":null,"documentation_uri":"http://www.rubydoc.info/gems/sentry-sidekiq/5.21.0","mailing_list_uri":null,"source_code_uri":"https://github.com/getsentry/sentry-ruby/tree/5.21.0/sentry-sidekiq","bug_tracker_uri":"https://github.com/getsentry/sentry-ruby/issues","changelog_uri":"https://github.com/getsentry/sentry-ruby/blob/5.21.0/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"sentry-ruby","requirements":"~\u003e
+        5.21.0"},{"name":"sidekiq","requirements":"\u003e= 3.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/sidekiq.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1518'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-e775eb883d9a6bbcd767e893b7a47ab2';
+        style-src 'self' https://fonts.googleapis.com 'nonce-e775eb883d9a6bbcd767e893b7a47ab2';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3826082093173097559
+      X-Request-Id:
+      - c84053ef-e844-45d9-a155-eed2a65185b4
+      X-Runtime:
+      - '0.033441'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '268'
+      X-Served-By:
+      - cache-ewr-kewr1740069-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.595420,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"sidekiq","downloads":240936432,"version":"7.3.2","version_created_at":"2024-09-04T23:05:53.783Z","version_downloads":540301,"platform":"ruby","authors":"Mike
+        Perham","info":"Simple, efficient background processing for Ruby.","licenses":["LGPL-3.0"],"metadata":{"homepage_uri":"https://sidekiq.org","changelog_uri":"https://github.com/sidekiq/sidekiq/blob/main/Changes.md","bug_tracker_uri":"https://github.com/sidekiq/sidekiq/issues","source_code_uri":"https://github.com/sidekiq/sidekiq","documentation_uri":"https://github.com/sidekiq/sidekiq/wiki","rubygems_mfa_required":"true"},"yanked":false,"sha":"70c48ad218b57b67ac5743549636dac09c5edfd9dfb004a316f36d9f3d2d5f88","spec_sha":"13836e70e7c5077fc5f465e4bb47e61eb31c047026bfd6d2d934305a9344a4ec","project_uri":"https://rubygems.org/gems/sidekiq","gem_uri":"https://rubygems.org/gems/sidekiq-7.3.2.gem","homepage_uri":"https://sidekiq.org","wiki_uri":null,"documentation_uri":"https://github.com/sidekiq/sidekiq/wiki","mailing_list_uri":null,"source_code_uri":"https://github.com/sidekiq/sidekiq","bug_tracker_uri":"https://github.com/sidekiq/sidekiq/issues","changelog_uri":"https://github.com/sidekiq/sidekiq/blob/main/Changes.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"concurrent-ruby","requirements":"\u003c
+        2"},{"name":"connection_pool","requirements":"\u003e= 2.3.0"},{"name":"logger","requirements":"\u003e=
+        0"},{"name":"rack","requirements":"\u003e= 2.2.4"},{"name":"redis-client","requirements":"\u003e=
+        0.22.2"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/sidekiq-scheduler.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1673'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-6442214aa5aff92c9901e8569766c0ec';
+        style-src 'self' https://fonts.googleapis.com 'nonce-6442214aa5aff92c9901e8569766c0ec';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1226919346009695074
+      X-Request-Id:
+      - 0604cc73-ee91-4c5b-846e-292965aaddcb
+      X-Runtime:
+      - '0.030167'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '268'
+      X-Served-By:
+      - cache-ewr-kewr1740069-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.645608,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"sidekiq-scheduler","downloads":30704937,"version":"5.0.6","version_created_at":"2024-08-01T12:49:00.040Z","version_downloads":388182,"platform":"ruby","authors":"Morton
+        Jonuschat, Moove-it, Marcelo Lauxen","info":"Light weight job scheduling extension
+        for Sidekiq that adds support for queueing jobs in a recurring way.","licenses":["MIT"],"metadata":{"rubygems_mfa_required":"true"},"yanked":false,"sha":"aa49fa982fb0d58e3e94d6bc2e2187be000414b9354a9f35e0cd06de204ad5be","spec_sha":"734340562fcb742e48f69ffe0bad705b87c81759090ee452727c40c64583f2e8","project_uri":"https://rubygems.org/gems/sidekiq-scheduler","gem_uri":"https://rubygems.org/gems/sidekiq-scheduler-5.0.6.gem","homepage_uri":"https://sidekiq-scheduler.github.io/sidekiq-scheduler/","wiki_uri":"","documentation_uri":"https://www.rubydoc.info/gems/sidekiq-scheduler/5.0.6","mailing_list_uri":"","source_code_uri":"https://github.com/moove-it/sidekiq-scheduler","bug_tracker_uri":"https://github.com/moove-it/sidekiq-scheduler/issues","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"activejob","requirements":"\u003e=
+        0"},{"name":"byebug","requirements":"\u003e= 0"},{"name":"mocha","requirements":"\u003e=
+        0"},{"name":"rack","requirements":"\u003c 3"},{"name":"rack-test","requirements":"\u003e=
+        0"},{"name":"rake","requirements":"~\u003e 12.0"},{"name":"rspec","requirements":"\u003e=
+        0"},{"name":"simplecov","requirements":"\u003e= 0"},{"name":"timecop","requirements":"\u003e=
+        0"}],"runtime":[{"name":"rufus-scheduler","requirements":"~\u003e 3.2"},{"name":"sidekiq","requirements":"\u003e=
+        6, \u003c 8"},{"name":"tilt","requirements":"\u003e= 1.4.0, \u003c 3"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/simplecov.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1692'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-60cec827de1fa85c048adb45148ebd13';
+        style-src 'self' https://fonts.googleapis.com 'nonce-60cec827de1fa85c048adb45148ebd13';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A204310537412930194
+      X-Request-Id:
+      - 823e5918-d3b3-4acd-a87d-91abbfafc2bb
+      X-Runtime:
+      - '0.026371'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '267'
+      X-Served-By:
+      - cache-ewr-kewr1740021-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.691434,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"simplecov","downloads":340875449,"version":"0.22.0","version_created_at":"2022-12-23T20:58:19.768Z","version_downloads":55918333,"platform":"ruby","authors":"Christoph
+        Olszowka, Tobias Pfeiffer","info":"Code coverage for Ruby with a powerful
+        configuration library and automatic merging of coverage across test suites","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/simplecov-ruby/simplecov/blob/main/CHANGELOG.md","bug_tracker_uri":"https://github.com/simplecov-ruby/simplecov/issues","source_code_uri":"https://github.com/simplecov-ruby/simplecov/tree/v0.22.0","mailing_list_uri":"https://groups.google.com/forum/#!forum/simplecov","documentation_uri":"https://www.rubydoc.info/gems/simplecov/0.22.0"},"yanked":false,"sha":"fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5","spec_sha":"715ef80fbf92052e677061d4a9d8b57c16f83388de4abb2af45e18682084ba39","project_uri":"https://rubygems.org/gems/simplecov","gem_uri":"https://rubygems.org/gems/simplecov-0.22.0.gem","homepage_uri":"https://github.com/simplecov-ruby/simplecov","wiki_uri":null,"documentation_uri":"https://www.rubydoc.info/gems/simplecov/0.22.0","mailing_list_uri":"https://groups.google.com/forum/#!forum/simplecov","source_code_uri":"https://github.com/simplecov-ruby/simplecov/tree/v0.22.0","bug_tracker_uri":"https://github.com/simplecov-ruby/simplecov/issues","changelog_uri":"https://github.com/simplecov-ruby/simplecov/blob/main/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"docile","requirements":"~\u003e
+        1.1"},{"name":"simplecov-html","requirements":"~\u003e 0.11"},{"name":"simplecov_json_formatter","requirements":"~\u003e
+        0.1"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/sitemap_generator.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1709'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-40e7c4396b6c4b66e9fc7fe41e687fa3';
+        style-src 'self' https://fonts.googleapis.com 'nonce-40e7c4396b6c4b66e9fc7fe41e687fa3';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3645997040605819255
+      X-Request-Id:
+      - 9314649e-eefe-4f8c-90b8-65bbb10ca708
+      X-Runtime:
+      - '0.027616'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '267'
+      X-Served-By:
+      - cache-ewr-kewr1740027-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.737678,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"sitemap_generator","downloads":32711649,"version":"6.3.0","version_created_at":"2022-08-09T21:33:47.374Z","version_downloads":4253072,"platform":"ruby","authors":"Karl
+        Varga","info":"SitemapGenerator is a framework-agnostic XML Sitemap generator
+        written in Ruby with automatic Rails integration.  It supports Video, News,
+        Image, Mobile, PageMap and Alternate Links sitemap extensions and includes
+        Rake tasks for managing your sitemaps, as well as many other great features.","licenses":["MIT"],"metadata":{},"yanked":false,"sha":"1d803cbf03c44736bea05b9e3363d3523fec4e24f3abedad294d9c57cab994f3","spec_sha":"b60d34ac5c0ccb063aa65a00ecaf74548f12640c56c563cefccc75aa36f35b9b","project_uri":"https://rubygems.org/gems/sitemap_generator","gem_uri":"https://rubygems.org/gems/sitemap_generator-6.3.0.gem","homepage_uri":"https://github.com/kjvarga/sitemap_generator","wiki_uri":"","documentation_uri":"http://rubydoc.info/github/kjvarga/sitemap_generator/master/frames","mailing_list_uri":"","source_code_uri":"http://github.com/kjvarga/sitemap_generator","bug_tracker_uri":"http://github.com/kjvarga/sitemap_generator/issues","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[{"name":"aws-sdk-core","requirements":"\u003e=
+        0"},{"name":"aws-sdk-s3","requirements":"\u003e= 0"},{"name":"fog-aws","requirements":"\u003e=
+        0"},{"name":"google-cloud-storage","requirements":"\u003e= 0"},{"name":"nokogiri","requirements":"\u003e=
+        0"},{"name":"rake","requirements":"\u003e= 0"},{"name":"rspec","requirements":"\u003e=
+        0"},{"name":"rspec_junit_formatter","requirements":"\u003e= 0"},{"name":"webmock","requirements":"\u003e=
+        0"}],"runtime":[{"name":"builder","requirements":"~\u003e 3.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/stimulus-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1060'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-cfcef1a378d770aac146a783ee57a5ab';
+        style-src 'self' https://fonts.googleapis.com 'nonce-cfcef1a378d770aac146a783ee57a5ab';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A482617448622194637
+      X-Request-Id:
+      - 50c4e30d-bb04-475b-8610-652f4485e423
+      X-Runtime:
+      - '0.024760'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 54.244.20.143:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '267'
+      X-Served-By:
+      - cache-ewr-kewr1740022-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.789677,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"stimulus-rails","downloads":22963266,"version":"1.3.4","version_created_at":"2024-08-16T23:25:36.380Z","version_downloads":1326983,"platform":"ruby","authors":"Sam
+        Stephenson, Javan Mahkmali, David Heinemeier Hansson","info":"A modest JavaScript
+        framework for the HTML you already have.","licenses":["MIT"],"metadata":{"homepage_uri":"https://stimulus.hotwired.dev","source_code_uri":"https://github.com/hotwired/stimulus-rails"},"yanked":false,"sha":"765676ffa1f33af64ce026d26b48e8ffb2e0b94e0f50e9119e11d6107d67cb06","spec_sha":"d4202f1f9ef3471e3ad58ea4a4a6748e78a9c6120526b0110f1db3243a9e6cfc","project_uri":"https://rubygems.org/gems/stimulus-rails","gem_uri":"https://rubygems.org/gems/stimulus-rails-1.3.4.gem","homepage_uri":"https://stimulus.hotwired.dev","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/hotwired/stimulus-rails","bug_tracker_uri":null,"changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"railties","requirements":"\u003e=
+        6.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/turbo-rails.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1100'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-c0c521b4832b74db3aba3a37cb4663e3';
+        style-src 'self' https://fonts.googleapis.com 'nonce-c0c521b4832b74db3aba3a37cb4663e3';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3158534987180309486
+      X-Request-Id:
+      - cfb09ae3-ceb0-4aee-8909-f52ca5ed0d74
+      X-Runtime:
+      - '0.018650'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 44.236.29.164:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '266'
+      X-Served-By:
+      - cache-ewr-kewr1740029-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.834855,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"turbo-rails","downloads":27656181,"version":"2.0.10","version_created_at":"2024-09-22T16:34:35.708Z","version_downloads":518940,"platform":"ruby","authors":"Sam
+        Stephenson, Javan Mahkmali, David Heinemeier Hansson","info":"The speed of
+        a single-page web application without having to write any JavaScript.","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/hotwired/turbo-rails/releases"},"yanked":false,"sha":"11cde241f9335ef6962322642dfd764178de192d0ba45101963da0f10f8e5738","spec_sha":"e64ac4f9681a359f7b8cc964feafff48c40296e2cf9d81077a5227fb76db0b55","project_uri":"https://rubygems.org/gems/turbo-rails","gem_uri":"https://rubygems.org/gems/turbo-rails-2.0.10.gem","homepage_uri":"https://github.com/hotwired/turbo-rails","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":null,"bug_tracker_uri":null,"changelog_uri":"https://github.com/hotwired/turbo-rails/releases","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"actionpack","requirements":"\u003e=
+        6.0.0"},{"name":"railties","requirements":"\u003e= 6.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/vcr.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1071'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-c21c53dd08d414cdffcd278d5cceddc9';
+        style-src 'self' https://fonts.googleapis.com 'nonce-c21c53dd08d414cdffcd278d5cceddc9';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A3811316593434693666
+      X-Request-Id:
+      - abf1a422-fe79-45e2-9d63-1916591d72f7
+      X-Runtime:
+      - '0.025892'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '266'
+      X-Served-By:
+      - cache-ewr-kewr1740074-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.880970,VS0,VE2
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"vcr","downloads":114990547,"version":"6.3.1","version_created_at":"2024-08-20T09:17:19.419Z","version_downloads":662974,"platform":"ruby","authors":"Myron
+        Marston, Kurtis Rainbolt-Greene, Olle Jonsson","info":"Record your test suite''s
+        HTTP interactions and replay them during future test runs for fast, deterministic,
+        accurate tests.","licenses":["Hippocratic-2.1","MIT"],"metadata":{},"yanked":false,"sha":"37b56e157e720446a3f4d2d39919cabef8cb7b6c45936acffd2ef8229fec03ed","spec_sha":"08120789cb8e0f730d3b021da49e91af70828927263c170b17f25a1c5f1439ce","project_uri":"https://rubygems.org/gems/vcr","gem_uri":"https://rubygems.org/gems/vcr-6.3.1.gem","homepage_uri":"https://benoittgt.github.io/vcr","wiki_uri":"","documentation_uri":"https://www.relishapp.com/vcr/vcr","mailing_list_uri":"http://groups.google.com/group/vcr-ruby","source_code_uri":"https://github.com/vcr/vcr","bug_tracker_uri":"https://github.com/vcr/vcr/issues","changelog_uri":null,"funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"base64","requirements":"\u003e=
+        0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/webmock.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 1.2.0
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2387'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - default-src 'self'; font-src 'self' https://fonts.gstatic.com; img-src 'self'
+        https://secure.gaug.es https://gravatar.com https://www.gravatar.com https://secure.gravatar.com
+        https://*.fastly-insights.com https://avatars.githubusercontent.com; object-src
+        'none'; script-src 'self' 'sha256-+uapLikAlYF9sZ3AxuZSlxj5CODf4ndQXTQSaE5pJfw='
+        https://secure.gaug.es https://www.fastly-insights.com 'nonce-9842f9a10c04c529c858395c91a6b0a4';
+        style-src 'self' https://fonts.googleapis.com 'nonce-9842f9a10c04c529c858395c91a6b0a4';
+        connect-src 'self' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        'self' https://github.com/login/oauth/authorize; frame-ancestors 'self'; base-uri
+        'self'; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3Ae6d71b5150029c7f90fc36fddf4b2ad5f284a94d%2Cenv%3Aproduction%2Ctrace_id%3A1620197574301760435
+      X-Request-Id:
+      - 3858478b-e2a8-477b-85c4-1a41b84494f6
+      X-Runtime:
+      - '0.019766'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Backend:
+      - F_Rails 34.211.84.10:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Sat, 12 Oct 2024 20:29:00 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '265'
+      X-Served-By:
+      - cache-ewr-kewr1740072-EWR
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1728764941.932264,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"webmock","downloads":281384954,"version":"3.24.0","version_created_at":"2024-09-30T19:44:40.310Z","version_downloads":478856,"platform":"ruby","authors":"Bartosz
+        Blimke","info":"WebMock allows stubbing HTTP requests and setting expectations
+        on HTTP requests.","licenses":["MIT"],"metadata":{"wiki_uri":"https://github.com/bblimke/webmock/wiki","changelog_uri":"https://github.com/bblimke/webmock/blob/v3.24.0/CHANGELOG.md","bug_tracker_uri":"https://github.com/bblimke/webmock/issues","source_code_uri":"https://github.com/bblimke/webmock/tree/v3.24.0","documentation_uri":"https://www.rubydoc.info/gems/webmock/3.24.0"},"yanked":false,"sha":"be01357f6fc773606337ca79f3ba332b7d52cbe5c27587671abc0572dbec7122","spec_sha":"020b8581aac25b4ad548e006bfab8d453e79ca0356839b781c9c8e12826d8ff9","project_uri":"https://rubygems.org/gems/webmock","gem_uri":"https://rubygems.org/gems/webmock-3.24.0.gem","homepage_uri":"https://github.com/bblimke/webmock","wiki_uri":"https://github.com/bblimke/webmock/wiki","documentation_uri":"https://www.rubydoc.info/gems/webmock/3.24.0","mailing_list_uri":null,"source_code_uri":"https://github.com/bblimke/webmock/tree/v3.24.0","bug_tracker_uri":"https://github.com/bblimke/webmock/issues","changelog_uri":"https://github.com/bblimke/webmock/blob/v3.24.0/CHANGELOG.md","funding_uri":null,"dependencies":{"development":[{"name":"async-http","requirements":"\u003e=
+        0.48.0"},{"name":"curb","requirements":"\u003e= 0.7.16"},{"name":"em-http-request","requirements":"\u003e=
+        1.0.2"},{"name":"em-synchrony","requirements":"\u003e= 1.0.0"},{"name":"excon","requirements":"\u003e=
+        0.27.5"},{"name":"http","requirements":"\u003e= 0.8.0"},{"name":"httpclient","requirements":"\u003e=
+        2.2.4"},{"name":"minitest","requirements":"\u003e= 5.0.0"},{"name":"mutex_m","requirements":"\u003e=
+        0"},{"name":"patron","requirements":"\u003e= 0.4.18"},{"name":"rack","requirements":"\u003e
+        1.6"},{"name":"rdoc","requirements":"\u003e 3.5.0"},{"name":"rspec","requirements":"\u003e=
+        3.1.0"},{"name":"rspec-retry","requirements":"\u003e= 0"},{"name":"test-unit","requirements":"\u003e=
+        3.0.0"},{"name":"typhoeus","requirements":"\u003e= 0.5.0"},{"name":"webrick","requirements":"\u003e=
+        0"}],"runtime":[{"name":"addressable","requirements":"\u003e= 2.8.0"},{"name":"crack","requirements":"\u003e=
+        0.3.2"},{"name":"hashdiff","requirements":"\u003e= 0.4.0, \u003c 2.0.0"}]}}'
+  recorded_at: Sat, 12 Oct 2024 20:29:00 GMT
+recorded_with: VCR 6.3.1

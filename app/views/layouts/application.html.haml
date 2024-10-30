@@ -23,8 +23,8 @@
     = javascript_importmap_tags
 
     - if Rails.env.production?
-      -# Use the asset host for the API URL, since the Plausible Cloudflare worker doesn't run on railsbump.org but on assets.railsbump.org.
-      = javascript_include_tag "/qwerty/js/script.js", defer: true, data: { domain: "railsbump.org", api: asset_url("/qwerty/api/event") }
+      -# Use the asset host for the API URL, since the Plausible Cloudfront worker doesn't run on railsbump.org but on assets.railsbump.org.
+      = javascript_include_tag "/js/script.js", defer: true, data: { domain: "railsbump.org", api: asset_url("/api/event") }
 
   %body{ class: page_classes }
     = render "shared/header"

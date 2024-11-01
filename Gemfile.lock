@@ -155,6 +155,7 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    excon (1.1.1)
     execjs (2.9.1)
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
@@ -166,6 +167,23 @@ GEM
       logger
     faraday-net_http (3.1.0)
       net-http
+    fog-aws (3.29.0)
+      base64 (~> 0.2.0)
+      fog-core (~> 2.6)
+      fog-json (~> 1.1)
+      fog-xml (~> 0.1)
+    fog-core (2.6.0)
+      builder
+      excon (~> 1.0)
+      formatador (>= 0.2, < 2.0)
+      mime-types
+    fog-json (1.2.0)
+      fog-core
+      multi_json (~> 1.10)
+    fog-xml (0.1.4)
+      fog-core
+      nokogiri (>= 1.5.11, < 2.0.0)
+    formatador (1.1.0)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -214,9 +232,14 @@ GEM
       net-smtp
     marcel (1.0.4)
     method_source (1.1.0)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2024.1001)
     mini_mime (1.1.5)
     minitest (5.24.1)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
@@ -414,6 +437,7 @@ DEPENDENCIES
   database_cleaner-active_record
   dotenv (~> 3.1.2)
   factory_bot_rails (~> 6.2)
+  fog-aws
   gems!
   git (~> 2.1)
   haml (~> 6.0)

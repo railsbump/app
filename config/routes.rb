@@ -14,6 +14,8 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
+  get "/robots.txt" => "static#robots"
+
   root "gemmies#index"
 
   get "up" => "rails/health#show", as: :rails_health_check

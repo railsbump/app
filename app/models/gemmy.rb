@@ -33,6 +33,10 @@ class Gemmy < ApplicationRecord
       .map { JSON.parse _1 }
   end
 
+  def last_checked_at
+    compats.maximum(:checked_at)
+  end
+
   def versions(dependencies = nil)
     version_groups =
       dependencies ?

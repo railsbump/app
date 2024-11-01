@@ -10,6 +10,7 @@ gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                "~> 5.3.3"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
+gem "fog-aws"
 gem "gems",                                     github: "rubygems/gems" # TODO: use released version when > 1.2.0 is released
 gem "git",                                      "~> 2.1"
 gem "haml",                                     "~> 6.0"
@@ -31,7 +32,6 @@ gem "sentry-sidekiq",                           "~> 5.5"
 gem "sidekiq-scheduler",                        "~> 5.0"
 gem "sidekiq",                                  "~> 7.2"
 gem "sitemap_generator",                        "~> 6.3"
-# gem "sqlite3",                                  "~> 1.7"
 gem "stimulus-rails",                           "~> 1.3"
 gem "turbo-rails",                              "~> 2.0"
 

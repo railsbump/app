@@ -14,6 +14,7 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
+  get '/sitemap.xml', to: redirect(ENV["FOG_URL"])
   get "/robots.txt" => "static#robots"
 
   root "gemmies#index"

@@ -29,6 +29,6 @@ SitemapGenerator::Sitemap.create opts do
 
   # Add dynamic paths for all gemmies
   Gemmy.find_each do |gemmy|
-    add gemmy_path(gemmy), lastmod: gemmy.updated_at, changefreq: "weekly", priority: 0.8
+    add gemmy_path(gemmy), lastmod: gemmy.last_checked_at, changefreq: "weekly", priority: 0.8
   end
 end

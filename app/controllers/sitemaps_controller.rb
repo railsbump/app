@@ -5,7 +5,8 @@ class SitemapsController < ApplicationController
   def show
     sitemap_url = ENV["FOG_URL"]
     if sitemap_url.present?
-      send_data open("#{sitemap_url}/sitemap.xml").read, type: "application/xml", disposition: "inline"
+      sitemap_content = URI.open("#{sitemap_url}/sitemap.xml").read
+      send_data sitemap_content, type: "application/xml", disposition: "inline"
     else
       head :not_found
     end

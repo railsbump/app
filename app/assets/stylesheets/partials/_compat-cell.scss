@@ -1,0 +1,24 @@
+body.rails_releases {
+  h2 {
+    font-size: 1em;
+  }
+  section.checking {
+    color: $yellow;
+  }
+
+  section.incompatible {
+    color: $red;
+  }
+
+  section.compatible {
+    color: $green;
+  }
+
+  section.more {
+    margin-top: 8px;
+  }
+
+  section.details {
+    margin-top: 2em;
+  }
+}

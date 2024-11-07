@@ -1,0 +1,63 @@
+%section
+
+  %h1
+    Gem
+    = @gemmy.name
+
+  %p
+    Indexed versions:
+    = @gemmy.versions.size
+    - if @gemmy.versions.any?
+      = surround "(", ")" do
+        = [@gemmy.versions.first, (@gemmy.versions.last if @gemmy.versions.many?)].compact.join(" ... ")
+    •
+    = link_to "Show on RubyGems.org", "https://rubygems.org/gems/#{@gemmy.name}", target: "_blank"
+
+  %h2
+    = "Compatibility with Rails: #{@rails_release.version}:"
+
+  - compats               = @gemmy.compats
+  - rails_release_compats = compats.merge(@rails_release.compats)
+  - status                = compats_status(rails_release_compats)
+  - label, text           = compats_label_and_text(rails_release_compats, @gemmy, @rails_release)
+
+  %section{ class: status }
+    = render "shared/compat_cell", status: status, label: label, text: text
+
+  %section.more
+    = link_to "Show compatibility with other Rails versions", gemmy_path(@gemmy, @rails_release)
+
+%section.details
+  %h3
+    Gem Details
+  %p= "This section describes the dependencies associated with each version of the #{@gemmy} gem. ❤️"
+  %table.compat-table.table.table-striped
+    %thead
+      %tr
+        %th= "#{@gemmy} version"
+        %th Dependencies
+    %tbody
+      - @gemmy.dependencies_and_versions.sort_by { |k, v| v }.each do |dependencies, version|
+        %tr
+          %td= version
+          %td= dependencies
+
+  %section.details
+    %h3
+      Compatibility Details
+    %p
+      This section is meant to be used for debugging compatibility issues. If you see anything that is unexpected, please share this page with the maintainers. ❤️
+    %table.compat-table.table.table-striped
+      %thead
+        %tr
+          %th Status Determined By
+          %th Status
+          %th Checked At
+          %th Dependencies
+      %tbody
+        - compats.each do |compat|
+          %tr
+            %td= compat.status_determined_by
+            %td= compat.status
+            %td= compat.checked_at
+            %td= compat.dependencies

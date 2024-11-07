@@ -73,4 +73,8 @@ module ApplicationHelper
       "#{text}."
     ]
   end
+
+  def head_title
+    "RailsBump.org: Rails Compatibility Checker Tool"
+  end
 end

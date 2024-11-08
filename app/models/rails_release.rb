@@ -76,6 +76,10 @@ class RailsRelease < ApplicationRecord
     client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: github_action_inputs)
   end
 
+  def to_param
+    "rails-#{version.to_s.gsub(".", "-")}"
+  end
+
   private
 
   # Define the github_action_inputs for the workflow

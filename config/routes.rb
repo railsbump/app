@@ -14,7 +14,7 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
-  get '/sitemap.xml', to: redirect(ENV["FOG_URL"])
+  get '/sitemap.xml', to: 'sitemaps#show'
   get "/robots.txt" => "static#robots"
 
   root "gemmies#index"
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :gemmies, path: "gems", only: %i(show new create) do
+    resources :rails_releases, path: "compatibility", only: %i(show)
+
     collection do
       get :compat_table
     end

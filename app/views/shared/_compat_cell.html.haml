@@ -1,0 +1,9 @@
+%span{ data: { bs_toggle: "tooltip", bs_placement: "bottom", bs_title: text } }
+  - case status
+  - when :checking
+    %i.fas.fa-spinner.fa-pulse
+  - when :compatible
+    %i.far.fa-thumbs-up
+  - else
+    %i.far.fa-thumbs-down
+  = label

@@ -21,6 +21,8 @@ opts = {
   sitemaps_path: ""
 }
 
+rails_releases = RailsRelease.order(:version).to_a
+
 SitemapGenerator::Sitemap.create opts do
   # Add static paths
   add root_path, changefreq: "daily", priority: 1.0
@@ -30,5 +32,9 @@ SitemapGenerator::Sitemap.create opts do
   # Add dynamic paths for all gemmies
   Gemmy.find_each do |gemmy|
     add gemmy_path(gemmy), lastmod: gemmy.last_checked_at, changefreq: "weekly", priority: 0.8
+
+    rails_releases.each do |rails_release|
+      add gemmy_rails_release_path(gemmy, rails_release)
+    end
   end
 end

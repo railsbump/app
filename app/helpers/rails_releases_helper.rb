@@ -7,7 +7,7 @@ module RailsReleasesHelper
         rails_releases = RailsRelease.order(:version)
         first_version = rails_releases.first.version
         last_version = rails_releases.last.version
-        "#{@gemmy} gem: Compatibility with Rails versions (from Rails #{first_version} to #{last_version})"
+        "#{@gemmy} gem: Compatibility with Rails #{first_version} to #{last_version}"
       end
     else
       super

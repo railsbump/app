@@ -38,4 +38,4 @@
 
               %td{ **cell_params }
                 = render "shared/compat_cell", status: status, label: label, text: text
-                = link_to "Compatibility with Rails #{rails_release.version}", gemmy_rails_release_path(gemmy, rails_release)
+                = "(#{link_to "more", gemmy_rails_release_path(gemmy, rails_release), title: "#{gemmy} gem: Compatibility with Rails #{rails_release.version}"})"

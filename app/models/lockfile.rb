@@ -30,6 +30,10 @@ class Lockfile < ApplicationRecord
     parser.dependencies.keys - %w(rails)
   end
 
+  def calculated_slug
+    ActiveSupport::Digest.hexdigest(gem_names.join("#"))
+  end
+
   private
 
   def add_gemmies
@@ -45,7 +49,7 @@ class Lockfile < ApplicationRecord
   def generate_slug
     return if self.slug.present?
 
-    self.slug = ActiveSupport::Digest.hexdigest(gem_names.join("#"))
+    self.slug = calculated_slug
   end
 
   def validate_content

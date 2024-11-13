@@ -21,15 +21,11 @@ module Lockfiles
     def build(content)
       result = Lockfile.new(content: content)
 
-      if result.valid?
-        if existing_lockfile = Lockfile.find_by(slug: result.slug)
-          raise AlreadyExists.new(existing_lockfile)
-        end
-
-        result
-      else
-        result
+      if existing_lockfile = Lockfile.find_by(slug: result.calculated_slug)
+        raise AlreadyExists.new(existing_lockfile)
       end
+
+      result
     end
   end
 end

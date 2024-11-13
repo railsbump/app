@@ -19,6 +19,22 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
 
         expect(response).to redirect_to(Lockfile.last)
       end
+
+      context "and Gemfile.lock content was already submitted in the past" do
+        it "redirects to the existing lockfile" do
+          expect do
+            post :create, params: { lockfile: { content: lockfile.content } }
+          end.to change(Lockfile, :count).by(1)
+
+          expect(response).to redirect_to(Lockfile.last)
+
+          expect do
+            post :create, params: { lockfile: { content: lockfile.content } }
+          end.not_to change(Lockfile, :count)
+
+          expect(response).to redirect_to(Lockfile.last)
+        end
+      end
     end
 
     context "when lockfile already exists" do

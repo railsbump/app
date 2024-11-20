@@ -9,6 +9,17 @@ class Gemmy < ApplicationRecord
 
   delegate :to_param, :to_s, to: :name
 
+  # Find existing by case-insensitive name
+  def self.find_by_name(name, raise_error: false)
+    find_by!("LOWER(name) = ?", name.downcase)
+  rescue ActiveRecord::RecordNotFound => e
+    raise e if raise_error
+  end
+
+  def self.find_by_name!(name)
+    find_by_name(name, raise_error: true)
+  end
+
   # Check all pending compats for compatibility
   def check_compatibility
     compats.pending.each do |compat|

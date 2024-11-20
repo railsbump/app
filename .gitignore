@@ -21,3 +21,6 @@ storage
 tmp
 
 public/sitemap.xml.gz
+
+app/assets/builds
+public/assets

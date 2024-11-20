@@ -5,8 +5,8 @@ RSpec.describe GemmiesController, type: :controller do
     context "when the gemmy params are valid" do
       it "redirects to the new gemmy page" do
         post :create, params: { gemmy: { name: "next_rails" } }
-  
-        expect(response).to redirect_to(gemmy_path(Gemmy.find_by(name: "next_rails")))
+
+        expect(response).to redirect_to(gemmy_path(Gemmy.find_by_name("next_rails")))
       end
 
       it "creates a record in the database" do
@@ -18,7 +18,7 @@ RSpec.describe GemmiesController, type: :controller do
       context "when the gemmy params are invalid" do
         it "renders the new gemmy page" do
           post :create, params: { gemmy: { name: "" } }
-  
+
           expect(response).to render_template(:new)
         end
 

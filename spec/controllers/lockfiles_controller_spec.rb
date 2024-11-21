@@ -35,6 +35,18 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
           expect(response).to redirect_to(Lockfile.last)
         end
       end
+
+      context "and Gemfile.lock content has local paths" do
+        it "creates a new Lockfile" do
+          content = File.read("spec/fixtures/Gemfile.local.lock")
+
+          expect do
+            post :create, params: { lockfile: { content: content } }
+          end.to change(Lockfile, :count).by(1)
+
+          expect(response).to redirect_to(Lockfile.last)
+        end
+      end
     end
 
     context "when lockfile already exists" do

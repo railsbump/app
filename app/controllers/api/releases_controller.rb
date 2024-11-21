@@ -6,7 +6,7 @@ module API
       if name == "rails"
         RailsReleases::Create.perform_async params.fetch(:version)
       else
-        Gemmy.find_by(name: name)&.then {
+        Gemmy.find_by_name(name)&.then {
           Gemmies::Process.perform_async _1.id
         }
       end

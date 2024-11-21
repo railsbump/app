@@ -23,7 +23,7 @@ class GemmiesController < ApplicationController
   end
 
   def show
-    @gemmy = Gemmy.find_by!(name: params[:id])
+    @gemmy = Gemmy.find_by_name!(params[:id])
   end
 
   def compat_table

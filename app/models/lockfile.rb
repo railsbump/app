@@ -41,7 +41,7 @@ class Lockfile < ApplicationRecord
     return if gemmies.any?
 
     gem_names.each do |gem_name|
-      gemmy = Gemmy.find_by(name: gem_name) || Gemmies::Create.call(gem_name)
+      gemmy = Gemmy.find_by_name(gem_name) || Gemmies::Create.call(gem_name)
       self.gemmies << gemmy
     end
   end

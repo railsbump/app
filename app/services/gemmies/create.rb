@@ -31,7 +31,7 @@ module Gemmies
         raise Error, "Please enter a name."
       end
 
-      if existing_gemmy = Gemmy.find_by(name: name)
+      if existing_gemmy = Gemmy.find_by_name(name)
         raise AlreadyExists.new(existing_gemmy)
       end
 

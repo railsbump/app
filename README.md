@@ -47,8 +47,9 @@ In order to set up the application locally:
 
 1. `git clone git@github.com:railsbump/app.git`
 2. `bin/setup`
-3. `foreman start -f Procfile.dev`
-4. Go to http://localhost:3000
+3. `rake data:find_or_create_rails_releases`
+4. `foreman start -f Procfile.dev`
+5. Go to http://localhost:3000
 
 If these steps don't work, please submit a new issue: https://github.com/railsbump/app/issues/new
 

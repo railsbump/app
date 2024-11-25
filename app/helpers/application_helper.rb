@@ -77,4 +77,12 @@ module ApplicationHelper
   def head_title
     "RailsBump.org: Rails Compatibility Checker Tool"
   end
+
+  def display_gemmy_name(gemmy)
+    if gemmy.accessible_gem?
+      link_to gemmy.name, gemmy
+    else
+      gemmy.name
+    end
+  end
 end

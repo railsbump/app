@@ -1,0 +1,26 @@
+class InaccessibleGemmy < ApplicationRecord
+  belongs_to :lockfile
+
+  FORBIDDEN_NAMES = %w(
+    new
+    edit
+    rails
+  )
+
+  validates :name, presence: true, uniqueness: { allow_blank: true }
+  validates :name, uniqueness: { scope: :lockfile_id }
+
+  def accessible_gem?
+    false
+  end
+
+  def compats
+    RailsRelease.all.map do |rails_release|
+      Compat.build(rails_release: rails_release, status: 'inconclusive')
+    end.to_a
+  end
+
+  def compats_for_rails_release(rails_release)
+    Compat.build(rails_release: rails_release, status: 'inconclusive')
+  end
+end

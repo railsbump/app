@@ -20,6 +20,7 @@ class GemmiesController < ApplicationController
 
   def index
     @gemmies = Gemmy.order(created_at: :desc).limit(20)
+    @inaccessible_gemmies = []
   end
 
   def show
@@ -29,7 +30,7 @@ class GemmiesController < ApplicationController
   def compat_table
     render locals: {
       gemmies: Gemmy.find(params[:gemmy_ids].split(",")),
-      inaccessible_gemmies: InaccessibleGemmy.find(params[:inaccessible_gemmy_ids].split(",")),
+      inaccessible_gemmies: InaccessibleGemmy.find(inaccessible_gemmy_ids),
       hide_gem_name: params.key?(:hide_gem_name)
     }
   end
@@ -38,5 +39,11 @@ class GemmiesController < ApplicationController
 
     def gemmy_params
       params.require(:gemmy).permit(:name)
+    end
+
+    def inaccessible_gemmy_ids
+      ps = params[:inaccessible_gemmy_ids] || ""
+
+      ps.split(",")
     end
 end

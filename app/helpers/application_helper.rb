@@ -5,6 +5,7 @@ module ApplicationHelper
     case
     when compats.compatible.any?               then :compatible
     when compats.none? || compats.pending.any? then :checking
+    when compats.inconclusive.any?             then :inconclusive
     else                                            :incompatible
     end
   end
@@ -14,6 +15,8 @@ module ApplicationHelper
     pending_compats    = compats.pending
 
     case
+    when gemmy.inaccessible_gem? && compats.inconclusive.any?
+      return ["inconclusive", "We can't determine compatibility of #{gemmy} and #{rails_release} because we don't have access to this gem."]
     when compats.none?
       return ["checking", "Some versions of #{gemmy} are still being checked for compatibility with #{rails_release}."]
     when compatible_compats.none? && pending_compats.none?

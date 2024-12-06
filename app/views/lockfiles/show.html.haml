@@ -7,12 +7,12 @@
     Checked
     = l @lockfile.created_at, format: :long
     •
-    = pluralize @lockfile.gemmies.size, "gem"
+    = pluralize @lockfile.accessible_and_inaccessible_gemmies.size, "gem"
     •
     = link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" }
 
 %section
-  = render template: "gemmies/compat_table", locals: { gemmies: @lockfile.gemmies }
+  = render template: "gemmies/compat_table", locals: { gemmies: @lockfile.gemmies, inaccessible_gemmies: @lockfile.inaccessible_gemmies }
 
 = render "email_notifications/form", notifiable: @lockfile
 

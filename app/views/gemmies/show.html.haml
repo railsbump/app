@@ -14,6 +14,6 @@
     = link_to "Show on RubyGems.org", "https://rubygems.org/gems/#{@gemmy.name}", target: "_blank"
 
 %section
-  = render template: "gemmies/compat_table", locals: { gemmies: [@gemmy], hide_gem_name: true }
+  = render template: "gemmies/compat_table", locals: { gemmies: [@gemmy], inaccessible_gemmies: [], hide_gem_name: true }
 
 = render "email_notifications/form", notifiable: @gemmy

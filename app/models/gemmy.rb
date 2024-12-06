@@ -9,6 +9,18 @@ class Gemmy < ApplicationRecord
 
   delegate :to_param, :to_s, to: :name
 
+  def accessible_gem?
+    true
+  end
+
+  def inaccessible_gem?
+    !accessible_gem?
+  end
+
+  def compats_for_rails_release(rails_release)
+    compats.merge(rails_release.compats)
+  end
+
   # Find existing by case-insensitive name
   def self.find_by_name(name, raise_error: false)
     find_by!("LOWER(name) = ?", name.downcase)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_30_143554) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_25_191510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_30_143554) do
     t.index ["compat_id"], name: "idx_24861_index_github_notifications_on_compat_id"
   end
 
+  create_table "inaccessible_gemmies", force: :cascade do |t|
+    t.text "name"
+    t.bigint "lockfile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lockfile_id", "name"], name: "index_inaccessible_gemmies_on_lockfile_id_and_name", unique: true
+    t.index ["lockfile_id"], name: "index_inaccessible_gemmies_on_lockfile_id"
+  end
+
   create_table "lockfile_dependencies", id: false, force: :cascade do |t|
     t.bigint "lockfile_id"
     t.bigint "gemmy_id"
@@ -78,4 +87,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_30_143554) do
     t.string "maximum_rubygems_version"
   end
 
+  add_foreign_key "inaccessible_gemmies", "lockfiles"
 end

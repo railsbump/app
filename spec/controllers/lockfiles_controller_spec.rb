@@ -35,6 +35,30 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
           expect(response).to redirect_to(Lockfile.last)
         end
       end
+
+      context "and Gemfile.lock content has local paths" do
+        it "creates a new Lockfile" do
+          content = File.read("spec/fixtures/Gemfile.local.lock")
+
+          expect do
+            post :create, params: { lockfile: { content: content } }
+          end.to change(Lockfile, :count).by(1)
+
+          expect(response).to redirect_to(Lockfile.last)
+        end
+
+        it "creates n inaccessible gemmies in the database" do
+          content = File.read("spec/fixtures/Gemfile.local.lock")
+
+          expect do
+            post :create, params: { lockfile: { content: content } }
+          end.to change(InaccessibleGemmy, :count).by(2)
+
+          lockfile = Lockfile.last
+
+          expect(lockfile.inaccessible_gemmies.map(&:name)).to match_array(["gitlab-specific-attr-ancrypted", "openbao_client"])
+        end
+      end
     end
 
     context "when lockfile already exists" do

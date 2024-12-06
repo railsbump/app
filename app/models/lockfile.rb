@@ -1,6 +1,7 @@
 class Lockfile < ApplicationRecord
   has_many :dependencies, class_name: "LockfileDependency", dependent: :destroy
   has_many :gemmies, through: :dependencies
+  has_many :inaccessible_gemmies, dependent: :destroy
 
   validates :content, presence: true
   validates :slug,    presence: { if: -> { content.present? } }, uniqueness: { allow_blank: true }
@@ -34,6 +35,10 @@ class Lockfile < ApplicationRecord
     ActiveSupport::Digest.hexdigest(gem_names.join("#"))
   end
 
+  def accessible_and_inaccessible_gemmies
+    (gemmies + inaccessible_gemmies).sort_by(&:name)
+  end
+
   private
 
   def add_gemmies
@@ -41,8 +46,12 @@ class Lockfile < ApplicationRecord
     return if gemmies.any?
 
     gem_names.each do |gem_name|
-      gemmy = Gemmy.find_by_name(gem_name) || Gemmies::Create.call(gem_name)
-      self.gemmies << gemmy
+      begin
+        gemmy = Gemmy.find_by_name(gem_name) || Gemmies::Create.call(gem_name)
+        self.gemmies << gemmy
+      rescue Gemmies::Create::NotFound
+        self.inaccessible_gemmies.build(name: gem_name)
+      end
     end
   end
 

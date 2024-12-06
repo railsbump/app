@@ -1,8 +1,9 @@
 module ApplicationHelper
   include Baseline::Helper
 
-  def compats_status(compats)
+  def compats_status(gemmy, compats)
     case
+    when gemmy.inaccessible_gem?               then :inconclusive
     when compats.compatible.any?               then :compatible
     when compats.none? || compats.pending.any? then :checking
     else                                            :incompatible
@@ -14,6 +15,8 @@ module ApplicationHelper
     pending_compats    = compats.pending
 
     case
+    when gemmy.inaccessible_gem? && compats.inconclusive.any?
+      return ["inconclusive", "We can't determine compatibility of #{gemmy} and #{rails_release} because we don't have access to this gem."]
     when compats.none?
       return ["checking", "Some versions of #{gemmy} are still being checked for compatibility with #{rails_release}."]
     when compatible_compats.none? && pending_compats.none?
@@ -76,5 +79,13 @@ module ApplicationHelper
 
   def head_title
     "RailsBump.org: Rails Compatibility Checker Tool"
+  end
+
+  def display_gemmy_name(gemmy)
+    if gemmy.accessible_gem?
+      link_to gemmy.name, gemmy
+    else
+      gemmy.name
+    end
   end
 end

@@ -2,7 +2,7 @@
 - stimulus_controller = "compat-table"
 - rails_releases      = local_assigns.key?(:rails_release) ? RailsRelease.where(id: local_assigns.fetch(:rails_release).id) : RailsRelease.order(:version)
 
-= async_turbo_frame :compat_table, src: [:compat_table, :gemmies, { gemmy_ids: gemmies.pluck(:id).join(","), hide_gem_name: hide_gem_name }.compact_blank], target: "_top" do
+= async_turbo_frame :compat_table, src: [:compat_table, :gemmies, { inaccessible_gemmy_ids: inaccessible_gemmies.pluck(:id).join(","), gemmy_ids: gemmies.pluck(:id).join(","), hide_gem_name: hide_gem_name }.compact_blank], target: "_top" do
   %table.compat-table.table.table-striped{ data: { controller: stimulus_controller } }
 
     %thead
@@ -22,20 +22,20 @@
             = rails_release.version
 
     %tbody
-      - gemmies.each do |gemmy|
-        - compats = gemmy.compats
-
+      - all_gemmies = (gemmies + inaccessible_gemmies).sort_by(&:name)
+      - all_gemmies.each do |gemmy|
         %tr
           - unless hide_gem_name
             %td
-              = link_to gemmy.name, gemmy
-          - cache [gemmy, compats] do
+              = display_gemmy_name gemmy
+          - cache [gemmy, gemmy.compats] do
             - rails_releases.each do |rails_release|
-              - rails_release_compats = compats.merge(rails_release.compats)
-              - status                = compats_status(rails_release_compats)
+              - rails_release_compats = gemmy.compats_for_rails_release(rails_release)
+              - status                = compats_status(gemmy, rails_release_compats)
               - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none #{status}" } : { class: status }
               - label, text           = compats_label_and_text(rails_release_compats, gemmy, rails_release)
 
               %td{ **cell_params }
                 = render "shared/compat_cell", status: status, label: label, text: text
-                = "(#{link_to "more", gemmy_rails_release_path(gemmy, rails_release), title: "#{gemmy} gem: Compatibility with Rails #{rails_release.version}"})"
+                - if gemmy.accessible_gem?
+                  = "(#{link_to "more", gemmy_rails_release_path(gemmy, rails_release), title: "#{gemmy} gem: Compatibility with Rails #{rails_release.version}"})"

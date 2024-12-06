@@ -30,8 +30,6 @@
               = display_gemmy_name gemmy
           - cache [gemmy, gemmy.compats] do
             - rails_releases.each do |rails_release|
-              - unless gemmy.accessible_gem?
-                - require 'byebug'; byebug
               - rails_release_compats = gemmy.compats_for_rails_release(rails_release)
               - status                = compats_status(rails_release_compats)
               - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none #{status}" } : { class: status }
@@ -39,4 +37,5 @@
 
               %td{ **cell_params }
                 = render "shared/compat_cell", status: status, label: label, text: text
-                = "(#{link_to "more", gemmy_rails_release_path(gemmy, rails_release), title: "#{gemmy} gem: Compatibility with Rails #{rails_release.version}"})"
+                - if gemmy.accessible_gem?
+                  = "(#{link_to "more", gemmy_rails_release_path(gemmy, rails_release), title: "#{gemmy} gem: Compatibility with Rails #{rails_release.version}"})"

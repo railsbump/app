@@ -13,6 +13,10 @@ class Gemmy < ApplicationRecord
     true
   end
 
+  def inaccessible_gem?
+    !accessible_gem?
+  end
+
   def compats_for_rails_release(rails_release)
     compats.merge(rails_release.compats)
   end

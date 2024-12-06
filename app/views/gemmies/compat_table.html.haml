@@ -31,7 +31,7 @@
           - cache [gemmy, gemmy.compats] do
             - rails_releases.each do |rails_release|
               - rails_release_compats = gemmy.compats_for_rails_release(rails_release)
-              - status                = compats_status(rails_release_compats)
+              - status                = compats_status(gemmy, rails_release_compats)
               - cell_params           = rails_release.earlier? ? { data: { "#{stimulus_controller}-target": "earlierRailsVersion" }, class: "d-none #{status}" } : { class: status }
               - label, text           = compats_label_and_text(rails_release_compats, gemmy, rails_release)
 

@@ -1,11 +1,11 @@
 module ApplicationHelper
   include Baseline::Helper
 
-  def compats_status(compats)
+  def compats_status(gemmy, compats)
     case
+    when gemmy.inaccessible_gem?               then :inconclusive
     when compats.compatible.any?               then :compatible
     when compats.none? || compats.pending.any? then :checking
-    when compats.inconclusive.any?             then :inconclusive
     else                                            :incompatible
     end
   end

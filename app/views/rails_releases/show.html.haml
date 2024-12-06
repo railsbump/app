@@ -18,7 +18,7 @@
 
   - compats               = @gemmy.compats
   - rails_release_compats = compats.merge(@rails_release.compats)
-  - status                = compats_status(gemmy, rails_release_compats)
+  - status                = compats_status(@gemmy, rails_release_compats)
   - label, text           = compats_label_and_text(rails_release_compats, @gemmy, @rails_release)
 
   %section{ class: status }

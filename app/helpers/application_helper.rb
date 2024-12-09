@@ -88,4 +88,8 @@ module ApplicationHelper
       gemmy.name
     end
   end
+
+  def meta_description
+    "RailsBump lets you check your Ruby gems for compatibility with all major and minor Rails versions. Check your Gemfile.lock for compatible Rails versions."
+  end
 end

@@ -39,16 +39,19 @@ group :development do
   gem "annotaterb",                             "~> 4.4", require: false
   gem "better_errors",                          "~> 2.8"
   gem "binding_of_caller",                      "~> 1.0"
+  gem "rails-erd",                              "~> 1.7.2"
 end
 
 # Run against this stable release
 group :development, :test do
   gem "byebug",                                  "~> 11.1"
+  gem "codecov", require: false
   gem "database_cleaner-active_record"
   gem "factory_bot_rails",                       "~> 6.2"
   gem "rspec-rails", "~> 6.1.0"
   gem "rails-controller-testing"
   gem "simplecov", "~> 0.22", require: false
+  gem "simplecov-console", require: false
   gem "vcr"
   gem "webmock"
 end

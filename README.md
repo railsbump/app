@@ -1,6 +1,7 @@
 # 👊 RailsBump
 
 [![Test](https://github.com/railsbump/app/actions/workflows/test.yml/badge.svg)](https://github.com/railsbump/app/actions/workflows/test.yml)
+[![Codecov](https://codecov.io/gh/railsbump/app/branch/main/graph/badge.svg)](https://codecov.io/gh/railsbump/app)
 
 Check your Ruby gems for compatibility with all major Rails versions.
 

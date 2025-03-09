@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev redis-tools
@@ -82,4 +82,6 @@ jobs:
           bin/rails db:test:prepare
 
       - name: Run tests
-        run: bundle exec rspec spec
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: COVERAGE=true bundle exec rspec spec

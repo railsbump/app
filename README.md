@@ -68,3 +68,9 @@ If you find RailsBump useful and would like to support the ongoing development, 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.txt file for details.
+
+## Sponsorship
+
+![FastRuby.io | Technical Debt Remediation Services for Ruby, Rails, and JavaScript](fastruby-logo.png)
+
+RailsBump is supported, maintained, and funded by [FastRuby.io](https://fastruby.io?utm_source=github&utm_campaign=railsbump-sponsorship). The names and logos for FastRuby.io are trademarks of The Lean Software Boutique LLC.

@@ -3,7 +3,7 @@
 [![Test](https://github.com/railsbump/app/actions/workflows/test.yml/badge.svg)](https://github.com/railsbump/app/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/railsbump/app/graph/badge.svg?token=htyQYxjXHT)](https://codecov.io/gh/railsbump/app)
 
-Check your Ruby gems for compatibility with all major Rails versions.
+Check your Ruby gems for compatibility with all Rails minor versions.
 
 ## Usage
 

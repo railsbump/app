@@ -60,6 +60,13 @@ We recommend running these scheduled tasks:
 
 - `bin/rails runner "Maintenance::Hourly.call"` once an hour
 
+#### Seed Data
+In order to have seed data you can run:
+
+1. `rake data:update_rails_releases`
+2. `Gemmies::Create.call('rack')`
+3. After that you can visit `http://localhost:3000/gems/rack` and you can see the info.
+
 ## Support
 
 If you find RailsBump useful and would like to support the ongoing development, please consider

@@ -169,8 +169,12 @@ GEM
     faraday (2.10.0)
       faraday-net_http (>= 2.0, < 3.2)
       logger
+    faraday-multipart (1.1.1)
+      multipart-post (~> 2.0)
     faraday-net_http (3.1.0)
       net-http
+    faraday-retry (2.3.2)
+      faraday (~> 2.0)
     fog-aws (3.29.0)
       base64 (~> 0.2.0)
       fog-core (~> 2.6)
@@ -245,6 +249,7 @@ GEM
     minitest (5.24.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
+    multipart-post (2.4.1)
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
@@ -452,6 +457,8 @@ DEPENDENCIES
   database_cleaner-active_record
   dotenv (~> 3.1.2)
   factory_bot_rails (~> 6.2)
+  faraday-multipart (~> 1.1)
+  faraday-retry (~> 2.3)
   fog-aws
   gems!
   git (~> 2.1)

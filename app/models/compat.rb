@@ -1,12 +1,12 @@
 class Compat < ApplicationRecord
   include HasTimestamps[:checked_at]
 
-  enum status: %i(
-    pending
-    compatible
-    incompatible
-    inconclusive
-  )
+  enum :status, [
+    :pending,
+    :compatible,
+    :incompatible,
+    :inconclusive
+  ]
 
   belongs_to :rails_release
 

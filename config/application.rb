@@ -28,7 +28,6 @@ module RailsBump
     # end.presence or raise "Could not load revision."
 
     config.active_record.query_log_tags_enabled = true
-    config.active_record.sqlite3_production_warning = false
 
     config.assets.excluded_paths.concat [
       Rails.root.join("app", "assets", "stylesheets")
@@ -43,12 +42,5 @@ module RailsBump
         host:     ENV.fetch("HOST"),
         protocol: "https"
       }
-
-    if Rails.version >= "7.2"
-      raise "this is not needed anymore, yjit should be enabled by default in rails 7.2."
-    end
-    # config.after_initialize do
-    #   RubyVM::YJIT.enable
-    # end
   end
 end

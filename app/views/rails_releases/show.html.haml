@@ -50,14 +50,18 @@
     %table.compat-table.table.table-striped
       %thead
         %tr
+          %th Id
           %th Status Determined By
+          %th Rails version
           %th Status
           %th Checked At
           %th Dependencies
       %tbody
         - compats.each do |compat|
           %tr
+            %td= compat.id
             %td= compat.status_determined_by
+            %td= compat.rails_release.version
             %td= compat.status
             %td= compat.checked_at
             %td= compat.dependencies

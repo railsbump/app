@@ -11,7 +11,7 @@
     •
     = link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" }
 
-%section
+%section{ class: "overflow-x-auto" }
   = render template: "gemmies/compat_table", locals: { gemmies: @lockfile.gemmies, inaccessible_gemmies: @lockfile.inaccessible_gemmies }
 
 = render "email_notifications/form", notifiable: @lockfile

@@ -50,8 +50,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Install PostgreSQL client
+      - name: Install PostgreSQL client and Redis tools
         run: |
+          sudo apt-get update -qq
           sudo apt-get -yqq install libpq-dev redis-tools
 
       - name: Set up Ruby

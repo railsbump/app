@@ -499,9 +499,9 @@ DEPENDENCIES
   propshaft (~> 0.8)
   pry-rails (~> 0.3)
   puma (~> 6.4)
-  rails (~> 8.0)
+  rails (~> 8.0.0)
   rails-controller-testing
-  rails-i18n (~> 8.0)
+  rails-i18n (~> 8.0.0)
   rails_bootstrap_navbar (~> 3.0)
   redis (~> 5.0)
   redis-namespace (~> 1.11)

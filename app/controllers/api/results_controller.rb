@@ -12,11 +12,11 @@ module API
           head :ok
         else
           logger.info "Compat #{@compat.id} process_result failed: #{@compat.errors.full_messages}"
-          head :unprocessable_entity
+          head :unprocessable_content
         end
       else
         logger.info "Compat #{@compat.id} dependencies do not match"
-        head :unprocessable_entity
+        head :unprocessable_content
       end
     end
 

@@ -5,7 +5,7 @@ class EmailNotificationsController < ApplicationController
     unless email_notification.save
       render partial: "email_notifications/form",
         locals: { email_notification: email_notification },
-        status: :unprocessable_entity
+        status: :unprocessable_content
     end
   end
 

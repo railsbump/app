@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
   pull_request:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
 
 env:
   POSTGRES_USER: postgres
@@ -17,7 +17,7 @@ env:
   HOST: localhost
   REDIS_HOST: localhost:6379
   DATABASE_URL: postgres://postgres:postgres@localhost:5432/rails_bump_test
-  COVERAGE: 'true'
+  COVERAGE: "true"
 
 jobs:
   test:
@@ -57,9 +57,8 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Install dependencies
-        run: bundle install
+        with:
+          bundler-cache: true
 
       - name: Wait for PostgreSQL
         run: |

@@ -29,7 +29,7 @@ class GemmiesController < ApplicationController
 
   def compat_table
     render locals: {
-      gemmies: Gemmy.find(params[:gemmy_ids].split(",")),
+      gemmies: Gemmy.find(gemmy_ids),
       inaccessible_gemmies: InaccessibleGemmy.find(inaccessible_gemmy_ids),
       hide_gem_name: params.key?(:hide_gem_name)
     }
@@ -39,6 +39,12 @@ class GemmiesController < ApplicationController
 
     def gemmy_params
       params.require(:gemmy).permit(:name)
+    end
+
+    def gemmy_ids
+      ps = params[:gemmy_ids] || ""
+
+      ps.split(",")
     end
 
     def inaccessible_gemmy_ids

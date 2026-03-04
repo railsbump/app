@@ -2,7 +2,10 @@
 - stimulus_controller = "compat-table"
 - rails_releases      = local_assigns.key?(:rails_release) ? RailsRelease.where(id: local_assigns.fetch(:rails_release).id) : RailsRelease.order(:version)
 
-- if gemmies.any? || inaccessible_gemmies.any?
+- if gemmies.empty? || inaccessible_gemmies.empty?
+  %p.text-muted
+    No compatibility information available yet.
+- else
   = async_turbo_frame :compat_table, src: [:compat_table, :gemmies, { inaccessible_gemmy_ids: inaccessible_gemmies.pluck(:id).join(","), gemmy_ids: gemmies.pluck(:id).join(","), hide_gem_name: hide_gem_name }.compact_blank], target: "_top" do
     %table.compat-table.table.table-striped{ data: { controller: stimulus_controller } }
 

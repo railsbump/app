@@ -43,6 +43,7 @@ group :development do
   gem "annotaterb",                             "~> 4.4", require: false
   gem "better_errors",                          "~> 2.8"
   gem "binding_of_caller",                      "~> 1.0"
+  gem "rails-erd"
 end
 
 # Run against this stable release

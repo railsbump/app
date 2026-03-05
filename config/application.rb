@@ -20,6 +20,7 @@ module RailsBump
     config.autoload_lib ignore: %w(assets tasks)
 
     config.time_zone = "Berlin"
+    config.active_support.to_time_preserves_timezone = :zone
     config.revision = ENV.fetch("HEROKU_SLUG_COMMIT") { `git rev-parse HEAD 2> /dev/null`.chomp }
     # config.revision  = begin
     #   ENV.fetch("HATCHBOX_REVISION")

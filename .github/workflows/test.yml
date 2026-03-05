@@ -17,7 +17,8 @@ env:
   HOST: localhost
   REDIS_HOST: localhost:6379
   DATABASE_URL: postgres://postgres:postgres@localhost:5432/rails_bump_test
-  COVERAGE: "true"
+  COVERAGE: 'true'
+  GITHUB_ACCESS_TOKEN: "dummy_token_for_testing"
 
 jobs:
   test:
@@ -48,7 +49,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install PostgreSQL client and Redis tools
         run: |

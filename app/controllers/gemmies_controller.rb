@@ -12,7 +12,7 @@ class GemmiesController < ApplicationController
     @gemmy = Gemmy.new
     flash.now[:alert] = error.message
     render :new,
-      status: :unprocessable_entity
+      status: :unprocessable_content
   else
     redirect_to @gemmy,
       status: :see_other

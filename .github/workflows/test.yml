@@ -18,6 +18,7 @@ env:
   REDIS_HOST: localhost:6379
   DATABASE_URL: postgres://postgres:postgres@localhost:5432/rails_bump_test
   COVERAGE: 'true'
+  GITHUB_ACCESS_TOKEN: "dummy_token_for_testing"
 
 jobs:
   test:

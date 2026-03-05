@@ -55,7 +55,7 @@ RSpec.describe API::ResultsController, type: :controller do
           result: 'some_result'
         }
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
 
@@ -86,7 +86,7 @@ RSpec.describe API::ResultsController, type: :controller do
           result: 'some_result'
         }
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

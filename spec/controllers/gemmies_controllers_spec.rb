@@ -1,6 +1,16 @@
 require "rails_helper"
 
 RSpec.describe GemmiesController, type: :controller do
+  describe "GET #compat_table" do
+    context "when gemmy_ids param is missing" do
+      it "renders successfully with an empty gemmies list" do
+        get :compat_table
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
   describe "create", vcr: { record: :once } do
     context "when the gemmy params are valid" do
       it "redirects to the new gemmy page" do

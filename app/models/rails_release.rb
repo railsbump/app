@@ -12,6 +12,7 @@ class RailsRelease < ApplicationRecord
   has_many :compats, dependent: :destroy
 
   validates :version, presence: true, format: { with: /\A\d+\.\d+\z/, allow_blank: true }
+  validate :github_action_inputs_valid
 
   validate do
     if version
@@ -81,6 +82,18 @@ class RailsRelease < ApplicationRecord
   end
 
   private
+
+  def github_action_inputs_valid
+    inputs = github_action_inputs
+
+    if inputs[:ruby_version].blank?
+      errors.add(:base, "ruby_version is required")
+    end
+
+    if inputs[:bundler_version].blank?
+      errors.add(:base, "bundler_version is required")
+    end
+  end
 
   # Define the github_action_inputs for the workflow
   def github_action_inputs

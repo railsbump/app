@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
   pull_request:
     branches:
       - main
-      - 'releases/*'
+      - "releases/*"
 
 env:
   POSTGRES_USER: postgres
@@ -58,9 +58,9 @@ jobs:
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Install dependencies
-        run: bundle install
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
 
       - name: Wait for PostgreSQL
         run: |

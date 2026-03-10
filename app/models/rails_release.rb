@@ -12,7 +12,6 @@ class RailsRelease < ApplicationRecord
   has_many :compats, dependent: :destroy
 
   validates :version, presence: true, format: { with: /\A\d+\.\d+\z/, allow_blank: true }
-  validate :github_action_inputs_valid
 
   validate do
     if version
@@ -70,11 +69,16 @@ class RailsRelease < ApplicationRecord
   end
 
   def github_actions_sanity_check!
+    inputs = github_action_inputs
+
+    raise ArgumentError, "ruby_version is required" if inputs[:ruby_version].blank?
+    raise ArgumentError, "bundler_version is required" if inputs[:bundler_version].blank?
+
     # Initialize the Octokit client with your GitHub token
     client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
 
     # Trigger the workflow dispatch event
-    client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: github_action_inputs)
+    client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: inputs)
   end
 
   def to_param
@@ -82,18 +86,6 @@ class RailsRelease < ApplicationRecord
   end
 
   private
-
-  def github_action_inputs_valid
-    inputs = github_action_inputs
-
-    if inputs[:ruby_version].blank?
-      errors.add(:base, "ruby_version is required")
-    end
-
-    if inputs[:bundler_version].blank?
-      errors.add(:base, "bundler_version is required")
-    end
-  end
 
   # Define the github_action_inputs for the workflow
   def github_action_inputs

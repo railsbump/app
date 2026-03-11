@@ -18,6 +18,7 @@ namespace :data do
     7.2
     8.0
   )
+    8.1
 
   task find_or_create_rails_releases: :environment do
     SUPPORTED_RAILS_VERSIONS.each do |version|
@@ -127,6 +128,13 @@ namespace :data do
         maximum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.2.3"
        }
+      '8.1' => {
+        minimum_ruby_version: '3.2.0',
+        maximum_ruby_version: '3.4.8',
+        minimum_bundler_version: '2.5.20',
+        maximum_bundler_version: '2.5.20',
+        minimum_rubygems_version: '3.2.3'
+      }
     }
 
     min_versions.each do |version, attrs|

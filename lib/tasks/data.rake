@@ -18,7 +18,7 @@ namespace :data do
     7.2
     8.0
     8.1
-)
+  )
 
   task find_or_create_rails_releases: :environment do
     SUPPORTED_RAILS_VERSIONS.each do |version|

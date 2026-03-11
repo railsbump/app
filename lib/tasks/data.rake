@@ -134,6 +134,7 @@ namespace :data do
         minimum_bundler_version: "2.5.20",
         maximum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.2.3"
+      },
       }
     }
 

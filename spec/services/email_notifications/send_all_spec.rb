@@ -18,4 +18,12 @@ RSpec.describe EmailNotifications::SendAll, type: :service do
     expect(ApplicationMailer).to have_received(:email_notification).with(email_notification)
     expect(email_notification).to have_received(:delete)
   end
+
+  it "returns when another instance is already running" do
+    allow(service).to receive(:check_uniqueness).with(on_error: :return)
+
+    service.call
+
+    expect(service).to have_received(:check_uniqueness).with(on_error: :return)
+  end
 end

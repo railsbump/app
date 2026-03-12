@@ -69,11 +69,16 @@ class RailsRelease < ApplicationRecord
   end
 
   def github_actions_sanity_check!
+    inputs = github_action_inputs
+
+    raise ArgumentError, "ruby_version is required" if inputs[:ruby_version].blank?
+    raise ArgumentError, "bundler_version is required" if inputs[:bundler_version].blank?
+
     # Initialize the Octokit client with your GitHub token
     client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN'])
 
     # Trigger the workflow dispatch event
-    client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: github_action_inputs)
+    client.workflow_dispatch(GITHUB_REPO, GITHUB_WORKFLOW, GITHUB_REF, inputs: inputs)
   end
 
   def to_param

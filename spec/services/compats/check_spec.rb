@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Compats::Check, type: :service do
-  let(:compat) { FactoryBot.create(:compat, rails_release: rails_release, status: "pending", dependencies: []) }
+  let(:compat) { FactoryBot.create(:compat, rails_release: rails_release, status: "pending", dependencies: {}) }
   let(:rails_release) { FactoryBot.create(:rails_release) }
   let(:service) { described_class.new }
 

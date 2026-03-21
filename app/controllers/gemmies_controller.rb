@@ -48,7 +48,7 @@ class GemmiesController < ApplicationController
   private
 
     def gemmy_compatibility_json(gemmy)
-      rails_releases = RailsRelease.order(:version)
+      rails_releases = RailsRelease.all.sort_by { |release| Gem::Version.new(release.version.to_s) }
 
       {
         name: gemmy.name,

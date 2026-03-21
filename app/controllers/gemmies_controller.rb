@@ -49,11 +49,16 @@ class GemmiesController < ApplicationController
 
     def gemmy_compatibility_json(gemmy)
       rails_releases = RailsRelease.all.sort_by { |release| Gem::Version.new(release.version.to_s) }
+      all_compats = Compat.where(
+        gemmy_id: gemmy.id,
+        rails_release_id: rails_releases.select(:id)
+      )
+      compats_by_rails_release_id = all_compats.group_by(&:rails_release_id)
 
       {
         name: gemmy.name,
         compatibility: rails_releases.map { |rails_release|
-          compats = gemmy.compats_for_rails_release(rails_release)
+          compats = compats_by_rails_release_id[rails_release.id] || []
           status = helpers.compats_status(gemmy, compats)
 
           {

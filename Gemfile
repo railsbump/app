@@ -1,6 +1,11 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
 source "https://rubygems.org"
 
 ruby file: ".ruby-version"
+
+gem "next_rails"
 
 # gem "activerecord-enhancedsqlite3-adapter",     "~> 0.5"
 gem "amazing_print",                            "~> 1.5"
@@ -27,8 +32,13 @@ gem "propshaft",                                "~> 0.8"
 gem "pry-rails",                                "~> 0.3"
 gem "puma",                                     "~> 6.4"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
-gem "rails",                                    "~> 8.0.0"
-gem "rails-i18n",                               "~> 8.0.0"
+if next?
+  gem "rails",                                    "~> 8.1.0"
+  gem "rails-i18n",                               "~> 8.x"
+else
+  gem "rails",                                    "~> 8.0.0"
+  gem "rails-i18n",                               "~> 8.0.0"
+end
 gem "redis-namespace",                          "~> 1.11"
 gem "redis",                                    "~> 5.0"
 gem "sentry-rails",                             "~> 5.5"

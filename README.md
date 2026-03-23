@@ -19,7 +19,7 @@ RailsBump uses a few approaches to check whether a gem version is compatible wit
 
 Since some gems have a lot of versions and each one needs to be checked against multiple Rails releases, this could get out of hand quickly. To minimize the amount of compatibility checks that need to be done, the gem versions are grouped by their dependencies first. If multiple versions (of the same gem or even of different gems) have the same dependencies, a single check is enough to determine whether all of them are compatible with a specific Rails release or not.
 
-To actually perform the check, we trigger a [GitHub Actions](https://github.com/features/actions) [workflow](https://github.com/railsbump/checker/blob/main/.github/workflows/check_bundler.yml) in a [separate repository](https://github.com/railsbump/checker) that tries to run `bundle install` and reports the result back to the RailsBump app via a webhook.
+To actually perform the check, we trigger a [GitHub Actions](https://github.com/features/actions) [workflow](https://github.com/railsbump/checker/blob/main/.github/workflows/check_bundler.yml) in a [separate repository](https://github.com/railsbump/checker) that tries to run `bundle install` and reports the result back to the RailsBump app via an API call.
 
 ## History
 

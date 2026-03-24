@@ -1,6 +1,7 @@
 module API
   class ResultsController < BaseController
     before_action :authenticate_api_key!
+    before_action :sanitize_result_params!, only: :create
 
     def create
       @rails_release = RailsRelease.find_by(version: params[:rails_version])
@@ -21,6 +22,15 @@ module API
     end
 
     private
+
+    def sanitize_result_params!
+      if params[:result].is_a?(ActionController::Parameters)
+        params[:result].each_key do |key|
+          value = params[:result][key]
+          params[:result][key] = value.delete("\x00") if value.is_a?(String)
+        end
+      end
+    end
 
     def authenticate_api_key!
       api_key = request.headers['RAILS-BUMP-API-KEY']

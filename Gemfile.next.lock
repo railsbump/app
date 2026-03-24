@@ -286,6 +286,7 @@ GEM
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     octopoller (0.3.1)
+    ostruct (0.6.3)
     pg (1.5.6)
     popper_js (2.11.8)
     pp (0.6.3)
@@ -509,6 +510,7 @@ DEPENDENCIES
   next_rails
   octokit (~> 9.1)
   octopoller (~> 0.3)
+  ostruct
   pg
   propshaft (~> 0.8)
   pry-rails (~> 0.3)

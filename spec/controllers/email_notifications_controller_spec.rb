@@ -51,7 +51,7 @@ RSpec.describe EmailNotificationsController, type: :controller do
         it "renders the form partial with unprocessable entity status" do
           post :create, params: invalid_params
           expect(response).to render_template(partial: "email_notifications/_form")
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:unprocessable_content)
         end
       end
 

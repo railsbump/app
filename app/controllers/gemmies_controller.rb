@@ -24,7 +24,19 @@ class GemmiesController < ApplicationController
   end
 
   def show
-    @gemmy = Gemmy.find_by_name!(params[:id])
+    @gemmy = Gemmy.find_by_name(params[:id])
+
+    if @gemmy
+      respond_to do |format|
+        format.html
+        format.json { render json: gemmy_compatibility_json(@gemmy) }
+      end
+    else
+      respond_to do |format|
+        format.html { head :not_found }
+        format.json { render json: { error: "Gem not found" }, status: :not_found }
+      end
+    end
   end
 
   def compat_table
@@ -36,6 +48,31 @@ class GemmiesController < ApplicationController
   end
 
   private
+
+    def gemmy_compatibility_json(gemmy)
+      rails_releases = RailsRelease.all.sort_by { |release| Gem::Version.new(release.version.to_s) }
+
+      {
+        name: gemmy.name,
+        compatibility: rails_releases.map { |rails_release|
+          compats = gemmy.compats_for_rails_release(rails_release)
+          status = helpers.compats_status(gemmy, compats)
+
+          {
+            rails_version: rails_release.version.to_s,
+            status: status.to_s,
+            compats: compats.map { |compat|
+              {
+                id: compat.id,
+                status: compat.status,
+                dependencies: compat.dependencies,
+                checked_at: compat.checked_at
+              }
+            }
+          }
+        }
+      }
+    end
 
     def gemmy_params
       params.require(:gemmy).permit(:name)

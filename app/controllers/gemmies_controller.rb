@@ -30,11 +30,6 @@ class GemmiesController < ApplicationController
       format.html
       format.json { render json: gemmy_compatibility_json(@gemmy) }
     end
-  rescue ActiveRecord::RecordNotFound
-    respond_to do |format|
-      format.html { raise }
-      format.json { render json: { error: "Gem not found" }, status: :not_found }
-    end
   end
 
   def compat_table

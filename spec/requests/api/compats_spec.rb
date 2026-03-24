@@ -95,13 +95,10 @@ RSpec.describe "Gemmies JSON API", type: :request do
     end
 
     context "when the gem does not exist" do
-      it "returns a 404 error" do
+      it "returns not found and lets Rails handle the response" do
         get "/gems/nonexistent_gem_12345.json"
 
         expect(response).to have_http_status(:not_found)
-
-        json = JSON.parse(response.body)
-        expect(json["error"]).to eq("Gem not found")
       end
     end
   end

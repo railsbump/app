@@ -23,6 +23,10 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gemfile: [Gemfile, Gemfile.next]
     services:
       postgres:
         image: postgres:latest
@@ -61,6 +65,8 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+        env:
+          BUNDLE_GEMFILE: ${{ matrix.gemfile }}
 
       - name: Wait for PostgreSQL
         run: |
@@ -77,6 +83,8 @@ jobs:
           done
 
       - name: Set up the database
+        env:
+          BUNDLE_GEMFILE: ${{ matrix.gemfile }}
         run: |
           cp config/database.yml.sample config/database.yml
           bin/rails db:create
@@ -85,5 +93,6 @@ jobs:
 
       - name: Run tests
         env:
+          BUNDLE_GEMFILE: ${{ matrix.gemfile }}
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: COVERAGE=true bundle exec rspec spec

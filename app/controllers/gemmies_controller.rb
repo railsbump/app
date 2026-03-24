@@ -24,11 +24,18 @@ class GemmiesController < ApplicationController
   end
 
   def show
-    @gemmy = Gemmy.find_by_name!(params[:id])
+    @gemmy = Gemmy.find_by_name(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.json { render json: gemmy_compatibility_json(@gemmy) }
+    if @gemmy
+      respond_to do |format|
+        format.html
+        format.json { render json: gemmy_compatibility_json(@gemmy) }
+      end
+    else
+      respond_to do |format|
+        format.html { head :not_found }
+        format.json { render json: { error: "Gem not found" }, status: :not_found }
+      end
     end
   end
 

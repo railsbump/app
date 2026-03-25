@@ -12,6 +12,8 @@ class RailsRelease < ApplicationRecord
   has_many :compats, dependent: :destroy
 
   validates :version, presence: true, format: { with: /\A\d+\.\d+\z/, allow_blank: true }
+  validates :minimum_ruby_version, presence: true
+  validates :minimum_bundler_version, presence: true
 
   validate do
     if version

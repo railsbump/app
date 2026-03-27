@@ -1,33 +1,7 @@
 # lib/tasks/update_rails_releases.rake
 namespace :data do
-  SUPPORTED_RAILS_VERSIONS = %w(
-    2.3
-    3.0
-    3.1
-    3.2
-    4.0
-    4.1
-    4.2
-    5.0
-    5.1
-    5.2
-    6.0
-    6.1
-    7.0
-    7.1
-    7.2
-    8.0
-    8.1
-  )
-
-  task find_or_create_rails_releases: :environment do
-    SUPPORTED_RAILS_VERSIONS.each do |version|
-      RailsRelease.find_or_create_by(version: version)
-    end
-  end
-
-  desc "Update minimum Ruby versions from Rails 2.3 to 7.2"
-  task update_rails_releases: :find_or_create_rails_releases do
+  desc "Find or create Rails releases and update their version constraints"
+  task sync_rails_releases: :environment do
     min_versions = {
       "2.3" => {
         minimum_ruby_version: "1.8.7",
@@ -138,13 +112,13 @@ namespace :data do
     }
 
     min_versions.each do |version, attrs|
-      if rails_release = RailsRelease.find_by(version: version)
-        puts "Updating Rails Release #{rails_release} with #{attrs}"
-        rails_release.update_columns(attrs)
-        puts "Updated Rails Release versions"
-      else
-        puts "Skipping Rails Release #{version} as it does not exist"
-      end
+      raise "minimum_ruby_version is required for Rails #{version}" if attrs[:minimum_ruby_version].blank?
+      raise "minimum_bundler_version is required for Rails #{version}" if attrs[:minimum_bundler_version].blank?
+
+      rails_release = RailsRelease.find_or_initialize_by(version: version)
+      rails_release.assign_attributes(attrs)
+      puts "Syncing Rails Release #{rails_release} with #{attrs}"
+      rails_release.save!
     end
 
     puts "Rails Releases updated successfully."

@@ -73,6 +73,26 @@ RSpec.describe API::ResultsController, type: :controller do
       end
     end
 
+    context "when result params contain null bytes" do
+      it "strips null bytes and processes successfully" do
+        request.headers.merge!(headers)
+
+        post :create, params: {
+          rails_version: rails_release.version,
+          compat_id: compat.id,
+          dependencies: compat.dependencies,
+          result: {
+            success: true,
+            strategy: "some_strategy",
+            output: "some output\x00with null bytes"
+          }
+        }
+
+        expect(response).to have_http_status(:ok)
+        expect(compat.reload.status).to eq("compatible")
+      end
+    end
+
     context "if result processing fails" do
       it "returns unprocessable entity" do
         allow_any_instance_of(Compat).to receive(:process_result).and_return(false)

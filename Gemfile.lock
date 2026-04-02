@@ -121,8 +121,6 @@ GEM
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
     bigdecimal (3.3.1)
-    binding_of_caller (1.0.1)
-      debug_inspector (>= 1.2.0)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     bootstrap (5.3.3)
@@ -132,11 +130,11 @@ GEM
       gem_config (~> 0.3)
     builder (3.3.0)
     byebug (11.1.3)
+    cgi (0.5.1)
     choice (0.2.0)
     codecov (0.2.12)
       json
       simplecov
-    coderay (1.1.3)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
     crack (1.0.0)
@@ -151,7 +149,6 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.4.1)
-    debug_inspector (1.2.0)
     diff-lcs (1.5.1)
     docile (1.4.1)
     dotenv (3.1.2)
@@ -183,13 +180,13 @@ GEM
     faraday-em_synchrony (1.0.1)
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
-    faraday-multipart (1.1.1)
+    faraday-multipart (1.2.0)
       multipart-post (~> 2.0)
     faraday-net_http (1.0.2)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    faraday-retry (1.0.3)
+    faraday-retry (1.0.4)
     faraday_middleware (1.2.1)
       faraday (~> 1.0)
     fog-aws (3.29.0)
@@ -255,13 +252,15 @@ GEM
       net-pop
       net-smtp
     marcel (1.1.0)
-    method_source (1.1.0)
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.1001)
     mini_mime (1.1.5)
-    minitest (5.26.0)
+    mini_portile2 (2.8.9)
+    minitest (6.0.3)
+      drb (~> 2.0)
+      prism (~> 1.5)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multipart-post (2.4.1)
@@ -273,30 +272,26 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.10-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.18.10-x86_64-linux-gnu)
+    nokogiri (1.18.10)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     octokit (9.2.0)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     octopoller (0.3.1)
+    ostruct (0.6.3)
     pg (1.5.6)
     popper_js (2.11.8)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
+    prism (1.9.0)
     process_executer (1.1.0)
     propshaft (0.9.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-rails (0.3.11)
-      pry (>= 0.13.0)
     psych (5.2.6)
       date
       stringio
@@ -451,9 +446,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.1.4)
-      unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-display_width (3.2.0)
+      unicode-emoji (~> 4.1)
+    unicode-emoji (4.2.0)
     uri (1.0.4)
     useragent (0.16.11)
     vcr (6.3.1)
@@ -469,6 +464,7 @@ GEM
     zeitwerk (2.7.3)
 
 PLATFORMS
+  arm64-darwin-22
   arm64-darwin-23
   arm64-darwin-24
   x86_64-linux
@@ -479,10 +475,10 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1.8)
   baseline!
   better_errors (~> 2.8)
-  binding_of_caller (~> 1.0)
   bootsnap (~> 1.17)
   bootstrap (~> 5.3.3)
   byebug (~> 11.1)
+  cgi
   codecov
   dartsass-rails (~> 0.5)
   database_cleaner-active_record
@@ -501,9 +497,9 @@ DEPENDENCIES
   net-pop!
   octokit (~> 9.1)
   octopoller (~> 0.3)
+  ostruct
   pg
   propshaft (~> 0.8)
-  pry-rails (~> 0.3)
   puma (~> 6.4)
   rails (~> 8.0.0)
   rails-controller-testing
@@ -526,7 +522,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 3.4.7p58
+  ruby 4.0.0p0
 
 BUNDLED WITH
-   2.5.13
+  4.0.9

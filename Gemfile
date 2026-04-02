@@ -8,6 +8,7 @@ gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "fastruby/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                "~> 5.3.3"
+gem "cgi"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
 gem "faraday"
@@ -23,8 +24,9 @@ gem "kredis",                                   "~> 1.2"
 gem "net-pop",                                  github: "ruby/net-pop"
 gem "octokit",                                  "~> 9.1"
 gem "octopoller",                               "~> 0.3"
+gem "ostruct"
 gem "propshaft",                                "~> 0.8"
-gem "pry-rails",                                "~> 0.3"
+gem "pry-rails",                                "~> 0.3" if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("4.0")
 gem "puma",                                     "~> 6.4"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
 gem "rails",                                    "~> 8.0.0"
@@ -42,7 +44,7 @@ gem "turbo-rails",                              "~> 2.0"
 group :development do
   gem "annotaterb",                             "~> 4.4", require: false
   gem "better_errors",                          "~> 2.8"
-  gem "binding_of_caller",                      "~> 1.0"
+  gem "binding_of_caller",                      "~> 1.0" if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("4.0")
   gem "rails-erd"
 end
 

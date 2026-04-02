@@ -92,6 +92,17 @@ class Compat < ApplicationRecord
       )
     end
   end
+
+  def direct_resolver
+    DirectResolver.new(
+      rails_version: rails_release.version,
+      ruby_version: rails_release.minimum_ruby_version,
+      dependencies: dependencies,
+      rubygems_version: Gem::VERSION, # Does this need to be passed in?
+      bundler_version: rails_release.minimum_bundler_version,
+      platform: "ruby"
+    )
+  end
 end
 
 # == Schema Information

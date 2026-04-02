@@ -4,10 +4,11 @@ require "fileutils"
 module Compats
   class Check < Baseline::Service
     CHECK_STRATEGIES = [
-      Compats::Checks::EmptyDependenciesCheck,
-      Compats::Checks::RailsGemsCheck,
-      Compats::Checks::DependencySubsetsCheck,
-      Compats::Checks::BundlerGithubCheck
+      Compats::Checks::CompatibilityCheck
+      # Compats::Checks::EmptyDependenciesCheck,
+      # Compats::Checks::RailsGemsCheck,
+      # Compats::Checks::DependencySubsetsCheck,
+      # Compats::Checks::BundlerGithubCheck
     ]
 
     attr_accessor :compat

@@ -8,7 +8,7 @@ require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-# require "action_cable/engine" # Exclude ActionCable
+require "action_cable/engine"
 # require "active_storage/engine" # Exclude ActiveStorage
 # require "action_mailbox/engine" # Exclude ActionMailbox
 

@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Standalone script for running DirectResolver in an isolated process.
+# Reads JSON config from stdin, writes JSON result to stdout.
+#
+# Usage: echo '{"rails_version":"8.1","ruby_version":"3.4.7","dependencies":{"devise":">= 4.9.0"},"promoter":"earliest"}' | bin/resolve_gem
+# Output: {"compatible":true,"specs":{"devise":"4.9.4",...}}
+#     or: {"compatible":false,"error":"Could not find compatible versions..."}
+
+require "json"
+require_relative "../lib/direct_resolver"
+
+input = JSON.parse($stdin.read)
+
+result = DirectResolver.new(
+  rails_version: input.fetch("rails_version"),
+  ruby_version: input.fetch("ruby_version"),
+  dependencies: input.fetch("dependencies", {}),
+  rubygems_version: input.fetch("rubygems_version", Gem::VERSION),
+  bundler_version: input.fetch("bundler_version", Bundler::VERSION),
+  platform: input.fetch("platform", "ruby"),
+  promoter: input.fetch("promoter", "latest").to_sym
+).call
+
+puts JSON.generate(
+  compatible: result.compatible?,
+  error: result.error,
+  specs: result.specs
+)

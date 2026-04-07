@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_25_191510) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_07_000001) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "api_keys", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_191510) do
     t.timestamptz "updated_at"
     t.timestamptz "checked_at"
     t.json "dependencies"
+  end
+
+  create_table "gem_checks", force: :cascade do |t|
+    t.bigint "lockfile_check_id", null: false
+    t.string "gem_name", null: false
+    t.string "locked_version"
+    t.string "source"
+    t.string "status", default: "pending", null: false
+    t.string "result"
+    t.string "earliest_compatible_version"
+    t.text "error_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lockfile_check_id", "gem_name"], name: "index_gem_checks_on_lockfile_check_id_and_gem_name", unique: true
+    t.index ["lockfile_check_id"], name: "index_gem_checks_on_lockfile_check_id"
   end
 
   create_table "gemmies", force: :cascade do |t|
@@ -63,6 +78,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_191510) do
     t.index ["lockfile_id"], name: "index_inaccessible_gemmies_on_lockfile_id"
   end
 
+  create_table "lockfile_checks", force: :cascade do |t|
+    t.bigint "lockfile_id", null: false
+    t.bigint "rails_release_id", null: false
+    t.string "status", default: "pending", null: false
+    t.string "ruby_version"
+    t.string "rubygems_version"
+    t.string "bundler_version"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lockfile_id", "rails_release_id"], name: "index_lockfile_checks_on_lockfile_id_and_rails_release_id", unique: true
+    t.index ["lockfile_id"], name: "index_lockfile_checks_on_lockfile_id"
+    t.index ["rails_release_id"], name: "index_lockfile_checks_on_rails_release_id"
+  end
+
   create_table "lockfile_dependencies", id: false, force: :cascade do |t|
     t.bigint "lockfile_id"
     t.bigint "gemmy_id"
@@ -87,5 +116,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_191510) do
     t.string "maximum_rubygems_version"
   end
 
+  add_foreign_key "gem_checks", "lockfile_checks"
   add_foreign_key "inaccessible_gemmies", "lockfiles"
+  add_foreign_key "lockfile_checks", "lockfiles"
+  add_foreign_key "lockfile_checks", "rails_releases"
 end

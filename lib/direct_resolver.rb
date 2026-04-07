@@ -6,7 +6,11 @@ require "bundler/resolver/base"
 require "bundler/source/rubygems"
 
 class DirectResolver
-  Result = Struct.new(:compatible?, :error, :specs, keyword_init: true)
+  Result = Struct.new(:compatible?, :error, :specs, keyword_init: true) do
+    def resolved_version(gem_name)
+      specs&.dig(gem_name)
+    end
+  end
 
   TargetRuntime = Struct.new(
     :ruby_version,
@@ -61,19 +65,29 @@ class DirectResolver
     end
   end
 
+  class EarliestVersionPromoter < Bundler::GemVersionPromoter
+    def sort_versions(package, specs)
+      super.reverse
+    end
+  end
+
+  PROMOTERS = {
+    latest: -> { Bundler::GemVersionPromoter.new },
+    earliest: -> { EarliestVersionPromoter.new }
+  }.freeze
+
   def initialize(
     rails_version:,
     ruby_version:,
     dependencies: {},
     rubygems_version: Gem::VERSION,
     bundler_version: Bundler::VERSION,
-    platform: "ruby"
+    platform: "ruby",
+    promoter: :latest
   )
-    # We might want to raise here but the reality is that some compat dependencies come through with Rails.
-    # raise ArgumentError, "Do not include `rails` in dependencies" if dependencies.key?("rails")
-
     @rails_version = rails_version
     @dependencies = dependencies.merge("rails" => "~> #{@rails_version}.0")
+    @promoter_key = promoter
     @runtime = TargetRuntime.new(
       ruby_version: ruby_version,
       rubygems_version: rubygems_version,
@@ -86,10 +100,11 @@ class DirectResolver
     Bundler.with_unbundled_env do
       Bundler.ui.silence do
         specs = Bundler::Resolver.new(resolution_base, gem_version_promoter, nil).start
-        Result.new(compatible?: true, specs: specs.map(&:full_name).sort)
+        versions = specs.each_with_object({}) { |s, h| h[s.name] = s.version.to_s }
+        Result.new(compatible?: true, specs: versions)
       end
     end
-  rescue Bundler::SolveFailure, Bundler::GemNotFound, Bundler::HTTPError => e
+  rescue Bundler::SolveFailure, Bundler::GemNotFound, Bundler::HTTPError, Bundler::CyclicDependencyError => e
     Result.new(compatible?: false, error: e.message)
   end
 
@@ -147,6 +162,6 @@ class DirectResolver
   end
 
   def gem_version_promoter
-    @gem_version_promoter ||= Bundler::GemVersionPromoter.new
+    @gem_version_promoter ||= PROMOTERS.fetch(@promoter_key).call
   end
 end

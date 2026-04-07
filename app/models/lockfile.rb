@@ -2,15 +2,16 @@ class Lockfile < ApplicationRecord
   has_many :dependencies, class_name: "LockfileDependency", dependent: :destroy
   has_many :gemmies, through: :dependencies
   has_many :inaccessible_gemmies, dependent: :destroy
+  has_many :lockfile_checks, dependent: :destroy
 
   validates :content, presence: true
   validates :slug,    presence: { if: -> { content.present? } }, uniqueness: { allow_blank: true }
-  validates :gemmies, presence: { if: -> { content.present? } }
+  validates :gemmies, presence: { if: -> { content.present? && !FeatureFlags.new_check_flow? } }
   validate :validate_content
-  validate :validate_gemmies
+  validate :validate_gemmies, unless: -> { FeatureFlags.new_check_flow? }
 
   before_validation :generate_slug
-  before_validation :add_gemmies
+  before_validation :add_gemmies, unless: -> { FeatureFlags.new_check_flow? }
 
   delegate :to_param, to: :slug
 
@@ -32,7 +33,11 @@ class Lockfile < ApplicationRecord
   end
 
   def calculated_slug
-    ActiveSupport::Digest.hexdigest(gem_names.join("#"))
+    if FeatureFlags.new_check_flow?
+      SecureRandom.hex
+    else
+      ActiveSupport::Digest.hexdigest(gem_names.join("#"))
+    end
   end
 
   def accessible_and_inaccessible_gemmies

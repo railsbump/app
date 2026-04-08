@@ -131,7 +131,6 @@ GEM
     bootstrap-navbar (3.2.2)
       gem_config (~> 0.3)
     builder (3.3.0)
-    byebug (11.1.3)
     choice (0.2.0)
     codecov (0.2.12)
       json
@@ -481,7 +480,6 @@ DEPENDENCIES
   better_errors (~> 2.8)
   bootsnap (~> 1.17)
   bootstrap (~> 5.3.3)
-  byebug (~> 11.1)
   codecov
   dartsass-rails (~> 0.5)
   database_cleaner-active_record

@@ -1,3 +1,6 @@
+def next?
+  File.basename(__FILE__) == "Gemfile.next"
+end
 source "https://rubygems.org"
 
 ruby file: ".ruby-version"
@@ -63,3 +66,4 @@ group :development, :test do
 end
 
 gem "pg"
+gem "next_rails"

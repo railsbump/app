@@ -456,8 +456,7 @@ GEM
     unicode-emoji (4.2.0)
     uri (1.0.4)
     useragent (0.16.11)
-    vcr (6.3.1)
-      base64
+    vcr (6.4.0)
     webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)

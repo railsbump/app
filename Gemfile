@@ -60,6 +60,7 @@ end
 
 # Run against this stable release
 group :development, :test do
+  gem "byebug",                                  "~> 11.1"
   gem "codecov", require: false
   gem "database_cleaner-active_record"
   gem "factory_bot_rails",                       "~> 6.2"

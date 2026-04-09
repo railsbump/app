@@ -15,10 +15,6 @@ gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                "~> 5.3.3"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
-gem "faraday"
-gem "faraday_middleware"
-gem "faraday-multipart"
-gem "faraday-retry"
 gem "fog-aws"
 gem "gems",                                     github: "rubygems/gems" # TODO: use released version when > 1.2.0 is released
 gem "git",                                      "~> 2.1"

@@ -1,7 +1,5 @@
 require "sidekiq/web"
 require "sidekiq-scheduler/web"
-require "coverband"
-
 if Rails.env.production?
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     {
@@ -12,22 +10,9 @@ if Rails.env.production?
   end
 end
 
-coverband_app = Rack::Builder.new do
-  if Rails.env.production?
-    use Rack::Auth::Basic do |username, password|
-      {
-        username => "COVERBAND_USERNAME",
-        password => "COVERBAND_PASSWORD"
-      }.map { ActiveSupport::SecurityUtils.secure_compare _1, ENV.fetch(_2) }
-       .all?
-    end
-  end
-  run Coverband::Reporters::Web.new
-end
-
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
-  mount coverband_app, at: "/coverband"
+  mount Coverband::Reporters::Web.new, at: "/coverband"
 
   get '/sitemap.xml', to: 'sitemaps#show'
   get "/robots.txt" => "static#robots"

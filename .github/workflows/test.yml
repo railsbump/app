@@ -94,5 +94,9 @@ jobs:
       - name: Run tests
         env:
           BUNDLE_GEMFILE: ${{ matrix.gemfile }}
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: COVERAGE=true bundle exec rspec spec
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

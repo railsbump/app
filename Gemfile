@@ -16,10 +16,6 @@ gem "bootstrap",                                "~> 5.3.3"
 gem "cgi"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
-gem "faraday"
-gem "faraday_middleware"
-gem "faraday-multipart"
-gem "faraday-retry"
 gem "fog-aws"
 gem "gems",                                     github: "rubygems/gems" # TODO: use released version when > 1.2.0 is released
 gem "git",                                      "~> 2.1"
@@ -31,7 +27,6 @@ gem "octokit",                                  "~> 9.1"
 gem "octopoller",                               "~> 0.3"
 gem "ostruct"
 gem "propshaft",                                "~> 0.8"
-gem "pry-rails",                                "~> 0.3" if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("4.0")
 gem "puma",                                     "~> 6.4"
 gem "rails_bootstrap_navbar",                   "~> 3.0"
 if next?
@@ -53,15 +48,11 @@ gem "turbo-rails",                              "~> 2.0"
 
 group :development do
   gem "annotaterb",                             "~> 4.4", require: false
-  gem "better_errors",                          "~> 2.8"
-  gem "binding_of_caller",                      "~> 1.0" if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("4.0")
   gem "rails-erd"
 end
 
 # Run against this stable release
 group :development, :test do
-  gem "byebug",                                  "~> 11.1"
-  gem "codecov", require: false
   gem "database_cleaner-active_record"
   gem "factory_bot_rails",                       "~> 6.2"
   gem "rspec-rails", "~> 6.1.0"

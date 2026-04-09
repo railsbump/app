@@ -1,0 +1,63 @@
+<section>
+  <h1>Lockfile Check Results</h1>
+
+  <p>
+    Checked <%= l @lockfile.created_at, format: :long %>
+    &bull;
+    <%= link_to "Show content", "#", data: { bs_toggle: "modal", bs_target: "#lockfile-content-modal" } %>
+  </p>
+</section>
+
+<%= turbo_stream_from @lockfile, :gem_checks %>
+
+<% @lockfile.lockfile_checks.each do |lockfile_check| %>
+  <section class="mt-4">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <h2 class="mb-0">Compatibility with Rails <%= lockfile_check.rails_release.version %></h2>
+      <%= render "lockfile_checks/status_badge", lockfile_check: lockfile_check %>
+    </div>
+
+    <% if lockfile_check.gem_checks.any? %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Gem</th>
+              <th>Locked Version</th>
+              <th>Result</th>
+              <th style="width: 30%;">Earliest Compatible</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "gem_checks/gem_check", collection: lockfile_check.gem_checks.order(:gem_name) %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </section>
+<% end %>
+
+<% if @lockfile.lockfile_checks.empty? %>
+  <section class="mt-4">
+    <div class="alert alert-info">
+      No checks have been run for this lockfile yet.
+    </div>
+  </section>
+<% end %>
+
+<div id="lockfile-content-modal" class="modal fade">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Lockfile content</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <pre><%= @lockfile.content %></pre>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Close", "#", class: "btn btn-primary", data: { bs_dismiss: "modal" } %>
+      </div>
+    </div>
+  </div>
+</div>

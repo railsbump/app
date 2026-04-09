@@ -13,6 +13,7 @@ gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "fastruby/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
 gem "bootstrap",                                "~> 5.3.3"
+gem "cgi"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
 gem "fog-aws"

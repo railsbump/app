@@ -116,10 +116,6 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     benchmark (0.4.1)
-    better_errors (2.10.1)
-      erubi (>= 1.0.0)
-      rack (>= 0.9.0)
-      rouge (>= 1.0.0)
     bigdecimal (3.3.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -369,7 +365,6 @@ GEM
     reline (0.6.2)
       io-console (~> 0.5)
     rexml (3.3.7)
-    rouge (4.3.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.1)
@@ -474,7 +469,6 @@ DEPENDENCIES
   annotaterb (~> 4.4)
   aws-sdk-s3 (~> 1.8)
   baseline!
-  better_errors (~> 2.8)
   bootsnap (~> 1.17)
   bootstrap (~> 5.3.3)
   codecov

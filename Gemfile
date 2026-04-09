@@ -51,7 +51,6 @@ gem "turbo-rails",                              "~> 2.0"
 
 group :development do
   gem "annotaterb",                             "~> 4.4", require: false
-  gem "better_errors",                          "~> 2.8"
   gem "rails-erd"
 end
 

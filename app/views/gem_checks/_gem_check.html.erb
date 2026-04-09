@@ -1,0 +1,26 @@
+<tr id="<%= dom_id(gem_check) %>" class="<%= gem_check_row_class(gem_check.result) %>">
+  <td><%= gem_check.gem_name %></td>
+  <td><%= gem_check.locked_version || "missing" %></td>
+  <td>
+    <span class="badge <%= gem_check_result_badge_class(gem_check.result) %>">
+      <%= gem_check_result_label(gem_check.result) %>
+    </span>
+  </td>
+  <td>
+    <% if gem_check.earliest_compatible_version.present? %>
+      >= <%= gem_check.earliest_compatible_version %>
+    <% elsif gem_check.result == "skipped" && gem_check.source.present? %>
+      <details style="max-width: 300px;">
+        <summary class="text-muted">Source not accessible</summary>
+        <small class="text-muted d-block" style="overflow-wrap: break-word;"><%= gem_check.source %></small>
+      </details>
+    <% elsif gem_check.result == "incompatible" && gem_check.error_message.present? %>
+      <details style="max-width: 300px;">
+        <summary class="text-danger">No compatible version</summary>
+        <small class="text-muted d-block" style="overflow-wrap: break-word;"><%= gem_check.error_message %></small>
+      </details>
+    <% elsif gem_check.result == "compatible" %>
+      &mdash;
+    <% end %>
+  </td>
+</tr>

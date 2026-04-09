@@ -14,6 +14,7 @@ gem "baseline",                                 github: "fastruby/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
 gem "coverband",                                "~> 6.1"
 gem "bootstrap",                                "~> 5.3.3"
+gem "cgi"
 gem "dartsass-rails",                           "~> 0.5"
 gem "dotenv",                                   "~> 3.1.2"
 gem "fog-aws"

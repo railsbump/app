@@ -4,4 +4,6 @@ Coverband.configure do |config|
   )
   config.track_views = true
   config.background_reporting_enabled = true
+  config.web_enable_clear = true
+  config.ignore = %w[config/boot.rb config/environment.rb config/puma.rb bin/]
 end

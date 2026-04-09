@@ -13,8 +13,8 @@ if Rails.env.production?
 
   Coverband::Reporters::Web.use Rack::Auth::Basic do |username, password|
     {
-      username => "SIDEKIQ_USERNAME",
-      password => "SIDEKIQ_PASSWORD"
+      username => "COVERBAND_USERNAME",
+      password => "COVERBAND_PASSWORD"
     }.map { ActiveSupport::SecurityUtils.secure_compare _1, ENV.fetch(_2) }
      .all?
   end

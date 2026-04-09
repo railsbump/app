@@ -130,6 +130,9 @@ GEM
     choice (0.2.0)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
+    coverband (6.2.0)
+      base64
+      redis (>= 3.0)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -452,6 +455,7 @@ DEPENDENCIES
   baseline!
   bootsnap (~> 1.17)
   bootstrap (~> 5.3.3)
+  coverband (~> 6.1)
   dartsass-rails (~> 0.5)
   database_cleaner-active_record
   dotenv (~> 3.1.2)

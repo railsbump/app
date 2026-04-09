@@ -52,7 +52,6 @@ end
 
 # Run against this stable release
 group :development, :test do
-  gem "codecov", require: false
   gem "database_cleaner-active_record"
   gem "factory_bot_rails",                       "~> 6.2"
   gem "rspec-rails", "~> 6.1.0"

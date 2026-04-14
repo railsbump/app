@@ -7,8 +7,8 @@ RSpec.describe Gemmies::Process, type: :service, vcr: { record: :once } do
     let(:service) { described_class.new }
 
     before do
-      FactoryBot.create(:rails_release, version: "7.1")
       FactoryBot.create(:rails_release, version: "7.2")
+      FactoryBot.create(:rails_release, version: "8.0")
 
       allow(Compats::CheckUnchecked).to receive(:perform_async)
 

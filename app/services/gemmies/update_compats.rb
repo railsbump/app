@@ -7,7 +7,7 @@ module Gemmies
 
       gemmy = Gemmy.find gemmy_id
 
-      RailsRelease.find_each do |rails_release|
+      RailsRelease.latest_major.find_each do |rails_release|
         gemmy.dependencies.each do |dependencies|
           unless rails_release.compats.where("dependencies::jsonb = ?", dependencies.to_json).exists?
             rails_release.compats.create! dependencies: dependencies

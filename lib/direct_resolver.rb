@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler"
-require "bundler/resolver"
-require "bundler/resolver/base"
-require "bundler/source/rubygems"
+require "bundler/source/metadata"
 
 class DirectResolver
   Result = Struct.new(:compatible?, :error, :specs, keyword_init: true) do
@@ -29,39 +27,29 @@ class DirectResolver
     end
   end
 
-  class MetadataSource
+  # Subclass of Bundler's own Source::Metadata that provides specs at target
+  # runtime versions instead of the running process's versions.
+  class TargetMetadataSource < Bundler::Source::Metadata
     def initialize(runtime)
       @runtime = runtime
     end
 
     def specs
-      @specs ||= Bundler::Index.build do |index|
-        index << Gem::Specification.new("Ruby\0", @runtime.ruby_version_object.gem_version)
-        index << Gem::Specification.new("RubyGems\0", @runtime.rubygems_version) do |spec|
-          spec.required_rubygems_version = Gem::Requirement.default
+      @specs ||= Bundler::Index.build do |idx|
+        idx << Gem::Specification.new("Ruby\0", @runtime.ruby_version_object.gem_version)
+        idx << Gem::Specification.new("RubyGems\0", @runtime.rubygems_version) do |s|
+          s.required_rubygems_version = Gem::Requirement.default
         end
-        index << Gem::Specification.new do |spec|
-          spec.name = "bundler"
-          spec.version = Gem::Version.new(@runtime.bundler_version)
-          spec.platform = Gem::Platform::RUBY
-          spec.summary = "Synthetic Bundler spec for direct resolution"
-          spec.authors = ["compatibility"]
+        idx << Gem::Specification.new do |s|
+          s.name     = "bundler"
+          s.version  = Gem::Version.new(@runtime.bundler_version)
+          s.platform = Gem::Platform::RUBY
+          s.summary  = "Synthetic Bundler spec for direct resolution"
+          s.authors  = ["compatibility"]
         end
 
-        index.each { |spec| spec.source = self }
+        idx.each { |s| s.source = self }
       end
-    end
-
-    def options = {}
-    def to_s = "synthetic metadata source"
-
-    def ==(other)
-      other.class == self.class
-    end
-    alias eql? ==
-
-    def hash
-      self.class.hash
     end
   end
 
@@ -70,11 +58,6 @@ class DirectResolver
       super.reverse
     end
   end
-
-  PROMOTERS = {
-    latest: -> { Bundler::GemVersionPromoter.new },
-    earliest: -> { EarliestVersionPromoter.new }
-  }.freeze
 
   def initialize(
     rails_version:,
@@ -99,7 +82,9 @@ class DirectResolver
   def call
     Bundler.with_unbundled_env do
       Bundler.ui.silence do
-        specs = Bundler::Resolver.new(resolution_base, gem_version_promoter, nil).start
+        definition = build_definition
+        definition.resolve_remotely!
+        specs = definition.resolve
         versions = specs.each_with_object({}) { |s, h| h[s.name] = s.version.to_s }
         Result.new(compatible?: true, specs: versions)
       end
@@ -110,58 +95,36 @@ class DirectResolver
 
   private
 
-  def resolution_base
-    Bundler::Resolver::Base.new(
-      source_requirements,
-      expanded_dependencies,
-      Bundler::SpecSet.new([]),
-      [@runtime.local_platform],
-      locked_specs: Bundler::SpecSet.new([]),
-      unlock: true,
-      prerelease: gem_version_promoter.pre?,
-      prefer_local: false,
-      new_platforms: []
+  def build_definition
+    source_list = Bundler::SourceList.new
+    source_list.add_global_rubygems_remote("https://rubygems.org")
+    source_list.instance_variable_set(:@metadata_source, TargetMetadataSource.new(@runtime))
+
+    definition = Bundler::Definition.new(
+      Pathname.new("/dev/null/Gemfile.lock"),
+      user_dependencies,
+      source_list,
+      true,
+      @runtime.ruby_version_object
     )
-  end
 
-  def source_requirements
-    {
-      default: rubygems_source,
-      "Ruby\0" => metadata_source,
-      "RubyGems\0" => metadata_source,
-      "bundler" => metadata_source,
-    }
-  end
-
-  def expanded_dependencies
-    [
+    # Definition#metadata_dependencies hardcodes Bundler::RubyVersion.system
+    # and Gem::VERSION. Override to use target runtime versions.
+    definition.instance_variable_set(:@metadata_dependencies, [
       Bundler::Dependency.new("Ruby\0", @runtime.ruby_version_object.gem_version),
       Bundler::Dependency.new("RubyGems\0", @runtime.rubygems_version),
-      Bundler::Dependency.new("bundler", @runtime.bundler_version),
-      *user_dependencies,
-    ]
+    ])
+
+    if @promoter_key == :earliest
+      definition.instance_variable_set(:@gem_version_promoter, EarliestVersionPromoter.new)
+    end
+
+    definition
   end
 
   def user_dependencies
     @dependencies.map do |name, constraint|
       Bundler::Dependency.new(name, constraint.split(",").map(&:strip))
     end
-  end
-
-  def rubygems_source
-    @rubygems_source ||= begin
-      source = Bundler::Source::Rubygems.new("remotes" => ["https://rubygems.org"])
-      source.remote!
-      source.add_dependency_names(@dependencies.keys)
-      source
-    end
-  end
-
-  def metadata_source
-    @metadata_source ||= MetadataSource.new(@runtime)
-  end
-
-  def gem_version_promoter
-    @gem_version_promoter ||= PROMOTERS.fetch(@promoter_key).call
   end
 end

@@ -1,4 +1,4 @@
-unless Rails.env.local?
+if ENV["AWS_ACCESS_KEY_ID"].present?
   require "fog-aws"
 
   SitemapGenerator::Sitemap.default_host = "https://www.railsbump.org"

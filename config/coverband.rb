@@ -7,5 +7,5 @@ Coverband.configure do |config|
   config.background_reporting_enabled = true
   config.web_enable_clear = true
   config.ignore = %w[config/boot.rb config/environment.rb config/puma.rb bin/]
-  config.password = ENV.fetch("COVERBAND_PASSWORD") if Rails.env.production?
+  config.password = ENV["COVERBAND_PASSWORD"] if ENV["COVERBAND_PASSWORD"].present?
 end

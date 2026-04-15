@@ -1,0 +1,84 @@
+# DirectResolver evaluation scenarios.
+#
+# These are NOT deterministic tests. Gem ecosystems evolve, so a scenario
+# marked compatible today could become incompatible if a gem yanks a version
+# or changes its dependency constraints. Failures mean "review what changed",
+# not "code is broken."
+#
+# Run with: bundle exec rspec spec/lib/direct_resolver_eval_spec.rb
+# Update with: EVAL_UPDATE=1 bundle exec rspec spec/lib/direct_resolver_eval_spec.rb
+#
+# Fields:
+#   name:           human-readable label
+#   rails_version:  target Rails major.minor
+#   ruby_version:   target Ruby version
+#   dependencies:   hash of gem_name => version_constraint
+#   promoter:       latest (default) or earliest
+#   expected:       compatible or incompatible
+#   notes:          why we expect this result
+
+- name: "rack with Rails 8.0"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    rack: ">= 2.0"
+  expected: compatible
+  notes: "rack is a Rails dependency, wide constraint should always resolve"
+
+- name: "devise with Rails 8.0"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    devise: ">= 4.9.0"
+  expected: compatible
+  notes: "devise 4.9+ supports Rails 7+, should resolve with Rails 8"
+
+- name: "sidekiq with Rails 8.0"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    sidekiq: ">= 7.0"
+  expected: compatible
+  notes: "sidekiq 7+ is Rails 7+ compatible"
+
+- name: "multiple gems with Rails 8.0"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    devise: ">= 4.9.0"
+    sidekiq: ">= 7.0"
+  expected: compatible
+  notes: "common production stack"
+
+- name: "just Rails 8.0 (no extra deps)"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies: {}
+  expected: compatible
+  notes: "baseline: Rails alone must resolve"
+
+- name: "activesupport < 6.0 conflicts with Rails 8.0"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    activesupport: "< 6.0"
+  expected: incompatible
+  notes: "activesupport is a Rails sub-gem, pinning to < 6 conflicts with Rails 8"
+
+- name: "conflicting Rails pin"
+  rails_version: "8.0"
+  ruby_version: "3.4.2"
+  dependencies:
+    rails: "= 5.0.0"
+    rack: "= 1.0.0"
+  expected: incompatible
+  notes: "explicit conflict: Rails 5 + rack 1 cannot satisfy ~> 8.0.0"
+
+- name: "Rails 7.2 with devise (earliest)"
+  rails_version: "7.2"
+  ruby_version: "3.3.0"
+  dependencies:
+    devise: ">= 4.9.0"
+  promoter: earliest
+  expected: compatible
+  notes: "earliest promoter should still find a solution"

@@ -76,6 +76,14 @@ class DirectResolver
     earliest: -> { EarliestVersionPromoter.new }
   }.freeze
 
+  # Bundler API changed between 2.5.x and newer versions:
+  # - Resolver.new gained a third argument
+  # - Resolver::Package gained :prefer_local and :new_platforms kwargs
+  # - :unlock changed from Array to Boolean
+  RESOLVER_ACCEPTS_THIRD_ARG = Bundler::Resolver.instance_method(:initialize).arity.abs > 2
+  PACKAGE_SUPPORTS_PREFER_LOCAL = Bundler::Resolver::Package
+    .instance_method(:initialize).parameters.map(&:last).include?(:prefer_local)
+
   def initialize(
     rails_version:,
     ruby_version:,
@@ -99,7 +107,9 @@ class DirectResolver
   def call
     Bundler.with_unbundled_env do
       Bundler.ui.silence do
-        specs = Bundler::Resolver.new(resolution_base, gem_version_promoter, nil).start
+        resolver_args = [resolution_base, gem_version_promoter]
+        resolver_args << nil if RESOLVER_ACCEPTS_THIRD_ARG
+        specs = Bundler::Resolver.new(*resolver_args).start
         versions = specs.each_with_object({}) { |s, h| h[s.name] = s.version.to_s }
         Result.new(compatible?: true, specs: versions)
       end
@@ -111,16 +121,23 @@ class DirectResolver
   private
 
   def resolution_base
+    options = {
+      locked_specs: Bundler::SpecSet.new([]),
+      unlock: PACKAGE_SUPPORTS_PREFER_LOCAL ? true : [],
+      prerelease: gem_version_promoter.pre?
+    }
+
+    if PACKAGE_SUPPORTS_PREFER_LOCAL
+      options[:prefer_local] = false
+      options[:new_platforms] = []
+    end
+
     Bundler::Resolver::Base.new(
       source_requirements,
       expanded_dependencies,
       Bundler::SpecSet.new([]),
       [@runtime.local_platform],
-      locked_specs: Bundler::SpecSet.new([]),
-      unlock: true,
-      prerelease: gem_version_promoter.pre?,
-      prefer_local: false,
-      new_platforms: []
+      **options
     )
   end
 

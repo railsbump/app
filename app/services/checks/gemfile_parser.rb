@@ -12,7 +12,7 @@ module Checks
       current_rails_version = detect_rails_version
       return unless current_rails_version
 
-      target_release = find_next_rails_release(current_rails_version)
+      target_release = RailsRelease.newer_than(current_rails_version).first
       return unless target_release
 
       runtime = resolve_runtime_versions(target_release)
@@ -34,15 +34,6 @@ module Checks
     def detect_rails_version
       rails_spec = parser.specs.find { |s| s.name == "rails" }
       rails_spec&.version&.segments&.first(2)&.join(".")
-    end
-
-    def find_next_rails_release(current_version)
-      current = Gem::Version.new(current_version)
-
-      RailsRelease
-        .order(:version)
-        .select { |r| Gem::Version.new(r.version) > current }
-        .first
     end
 
     def resolve_runtime_versions(target_release)

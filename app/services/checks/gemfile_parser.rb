@@ -42,10 +42,8 @@ module Checks
 
       bundler_dep = rails_info.dig("dependencies", "runtime")&.find { |d| d["name"] == "bundler" }
 
-      ruby_min = target_release.minimum_ruby_version.presence ||
-        extract_minimum_version(rails_info["ruby_version"])
-      bundler_min = target_release.minimum_bundler_version.presence ||
-        extract_minimum_version(bundler_dep&.dig("requirements"))
+      ruby_min = release_or_api_min(target_release.minimum_ruby_version, rails_info["ruby_version"])
+      bundler_min = release_or_api_min(target_release.minimum_bundler_version, bundler_dep&.dig("requirements"))
 
       lockfile_ruby = parse_lockfile_ruby_version
       lockfile_bundler = parser.bundler_version.presence
@@ -66,6 +64,10 @@ module Checks
         .select { |v| v["number"].start_with?("#{major_minor}.") && !v["prerelease"] }
         .map { |v| v["number"] }
         .max_by { |v| Gem::Version.new(v) } || "#{major_minor}.0"
+    end
+
+    def release_or_api_min(release_value, api_requirement)
+      release_value.presence || extract_minimum_version(api_requirement)
     end
 
     def extract_minimum_version(requirement_string)

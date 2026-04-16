@@ -6,7 +6,6 @@ module Checks
   class GemfileParser
     def initialize(lockfile)
       @lockfile = lockfile
-      @parser = Bundler::LockfileParser.new(lockfile.content)
     end
 
     def call
@@ -18,7 +17,7 @@ module Checks
 
       runtime = resolve_runtime_versions(target_release)
 
-      lockfile.lockfile_checks.find_or_create_by!(rails_release: target_release) do |check|
+      @lockfile.lockfile_checks.find_or_create_by!(rails_release: target_release) do |check|
         check.status = "pending"
         check.ruby_version = runtime[:ruby_version]
         check.rubygems_version = runtime[:rubygems_version]
@@ -28,14 +27,13 @@ module Checks
 
     private
 
-    attr_reader :lockfile, :parser
+    def parser
+      @parser ||= Bundler::LockfileParser.new(@lockfile.content)
+    end
 
     def detect_rails_version
       rails_spec = parser.specs.find { |s| s.name == "rails" }
-      return unless rails_spec
-
-      version = rails_spec.version
-      "#{version.segments[0]}.#{version.segments[1]}"
+      rails_spec&.version&.segments&.first(2)&.join(".")
     end
 
     def find_next_rails_release(current_version)
@@ -96,11 +94,8 @@ module Checks
       raw[/\d+\.\d+\.\d+/]
     end
 
-    def max_version(a, b)
-      return a if b.nil?
-      return b if a.nil?
-
-      [Gem::Version.new(a), Gem::Version.new(b)].max.to_s
+    def max_version(*versions)
+      versions.compact.max_by { |v| Gem::Version.new(v) }
     end
   end
 end

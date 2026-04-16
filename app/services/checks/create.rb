@@ -9,7 +9,6 @@ module Checks
     end
 
     def call
-      lockfile_check = GemfileParser.new(@lockfile).call
       return unless lockfile_check
 
       parser = Bundler::LockfileParser.new(@lockfile.content)
@@ -37,6 +36,10 @@ module Checks
     end
 
     private
+
+    def lockfile_check
+      @lockfile_check ||= GemfileParser.new(@lockfile).call
+    end
 
     def extract_source(spec)
       return unless spec

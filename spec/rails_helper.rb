@@ -44,6 +44,10 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
+  config.before(:each, new_check_flow: true) do
+    allow(FeatureFlags).to receive(:new_check_flow?).and_return(true)
+  end
+
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run

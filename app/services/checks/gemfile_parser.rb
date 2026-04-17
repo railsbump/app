@@ -9,15 +9,14 @@ module Checks
     end
 
     def call
-      current_rails_version = detect_rails_version
-      return unless current_rails_version
+      return unless lockfile_rails_version
 
-      target_release = RailsRelease.newer_than(current_rails_version).first
+      target_release = RailsRelease.newer_than(lockfile_rails_version).first
       return unless target_release
 
       runtime = RuntimeResolver.new(
         rails_release: target_release,
-        lockfile_ruby: parse_lockfile_ruby_version,
+        lockfile_ruby: lockfile_ruby_version,
         lockfile_bundler: parser.bundler_version.presence
       ).call
 
@@ -35,12 +34,12 @@ module Checks
       @parser ||= Bundler::LockfileParser.new(@lockfile.content)
     end
 
-    def detect_rails_version
+    def lockfile_rails_version
       rails_spec = parser.specs.find { |s| s.name == "rails" }
       rails_spec&.version&.segments&.first(2)&.join(".")
     end
 
-    def parse_lockfile_ruby_version
+    def lockfile_ruby_version
       raw = parser.ruby_version.presence
       return unless raw
 

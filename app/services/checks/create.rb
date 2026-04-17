@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "bundler/lockfile_parser"
-
 module Checks
   class Create
     def initialize(lockfile)
@@ -11,7 +9,6 @@ module Checks
     def call
       return unless lockfile_check
 
-      parser = Bundler::LockfileParser.new(@lockfile.content)
       specs_by_name = parser.specs.each_with_object({}) { |spec, h| h[spec.name] = spec }
       gem_names = parser.dependencies.keys - %w[rails]
 
@@ -37,8 +34,16 @@ module Checks
 
     private
 
+    def gemfile_parser
+      @gemfile_parser ||= GemfileParser.new(@lockfile)
+    end
+
+    def parser
+      gemfile_parser.parser
+    end
+
     def lockfile_check
-      @lockfile_check ||= GemfileParser.new(@lockfile).call
+      @lockfile_check ||= gemfile_parser.call
     end
 
     def extract_source(spec)

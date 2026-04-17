@@ -14,15 +14,7 @@ module Checks
 
     def call
       return unless lockfile_rails_version
-
-      target_release = RailsRelease.newer_than(lockfile_rails_version).first
       return unless target_release
-
-      runtime = RuntimeResolver.new(
-        rails_release: target_release,
-        lockfile_ruby: lockfile_ruby_version,
-        lockfile_bundler: parser.bundler_version.presence
-      ).call
 
       @lockfile.lockfile_checks.find_or_create_by!(rails_release: target_release) do |check|
         check.status = "pending"
@@ -37,6 +29,18 @@ module Checks
     def lockfile_rails_version
       rails_spec = parser.specs.find { |s| s.name == "rails" }
       rails_spec&.version&.segments&.first(2)&.join(".")
+    end
+
+    def target_release
+      @target_release ||= RailsRelease.newer_than(lockfile_rails_version).first
+    end
+
+    def runtime
+      @runtime ||= RuntimeResolver.new(
+        rails_release: target_release,
+        lockfile_ruby: lockfile_ruby_version,
+        lockfile_bundler: parser.bundler_version.presence
+      ).call
     end
 
     def lockfile_ruby_version

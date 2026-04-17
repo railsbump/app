@@ -14,7 +14,7 @@ module Checks
 
     def call
       ruby_min = min_version(pinned: @rails_release.minimum_ruby_version, requirement: rails_info["ruby_version"])
-      bundler_min = min_version(pinned: @rails_release.minimum_bundler_version, requirement: bundler_requirement)
+      bundler_min = min_version(pinned: @rails_release.minimum_bundler_version, requirement: rails_bundler_dependency)
       ruby_version = max_version(@lockfile_ruby, ruby_min)
 
       Runtime.new(
@@ -34,7 +34,7 @@ module Checks
       @rails_info ||= Gems::V2.info("rails", latest_patch_version)
     end
 
-    def bundler_requirement
+    def rails_bundler_dependency
       rails_info.dig("dependencies", "runtime")&.find { |d| d["name"] == "bundler" }&.dig("requirements")
     end
 

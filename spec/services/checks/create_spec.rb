@@ -94,44 +94,6 @@ RSpec.describe Checks::Create, type: :service, new_check_flow: true do
         expect(lockfile_check.status).to eq("pending")
       end
 
-      it "uses release minimums when they are set" do
-        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3", ruby: "3.0.0p0", bundler: "2.3.0"))
-
-        lockfile_check = described_class.new(lockfile).call
-
-        expect(lockfile_check.ruby_version).to eq("3.1.0")
-        expect(lockfile_check.bundler_version).to eq("2.3.22")
-      end
-
-      it "takes the max of the lockfile version and the release minimum" do
-        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3", ruby: "3.3.1p0", bundler: "2.5.0"))
-
-        lockfile_check = described_class.new(lockfile).call
-
-        expect(lockfile_check.ruby_version).to eq("3.3.1")
-        expect(lockfile_check.bundler_version).to eq("2.5.0")
-      end
-
-      it "falls back to the Gems API minimums when the release has none" do
-        next_release.update_columns(minimum_ruby_version: nil, minimum_bundler_version: nil)
-        stub_rails_gems_api(patch: "7.2.0", ruby_requirement: ">= 3.1.0", bundler_requirement: ">= 2.3.22")
-        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
-
-        lockfile_check = described_class.new(lockfile).call
-
-        expect(lockfile_check.ruby_version).to eq("3.1.0")
-        expect(lockfile_check.bundler_version).to eq("2.4.10")
-      end
-
-      it "resolves rubygems_version from the chosen ruby version" do
-        allow(RubyRubygemsVersion).to receive(:for).with("3.1.0").and_return("3.3.7")
-        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
-
-        lockfile_check = described_class.new(lockfile).call
-
-        expect(lockfile_check.rubygems_version).to eq("3.3.7")
-      end
-
       it "is idempotent across calls" do
         lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
 

@@ -16,7 +16,7 @@ module Checks
       return unless target_release
 
       runtime = RuntimeResolver.new(
-        target_release,
+        rails_release: target_release,
         lockfile_ruby: parse_lockfile_ruby_version,
         lockfile_bundler: parser.bundler_version.presence
       ).call

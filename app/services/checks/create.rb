@@ -9,8 +9,8 @@ module Checks
     def call
       return unless lockfile_check
 
-      specs_by_name = parser.specs.each_with_object({}) { |spec, h| h[spec.name] = spec }
-      gem_names = parser.dependencies.keys - %w[rails]
+      specs_by_name = gemfile_parser.specs.each_with_object({}) { |spec, h| h[spec.name] = spec }
+      gem_names = gemfile_parser.dependencies.keys - %w[rails]
 
       gem_names.each do |gem_name|
         spec = specs_by_name[gem_name]
@@ -36,10 +36,6 @@ module Checks
 
     def gemfile_parser
       @gemfile_parser ||= GemfileParser.new(@lockfile)
-    end
-
-    def parser
-      gemfile_parser.parser
     end
 
     def lockfile_check

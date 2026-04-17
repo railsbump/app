@@ -8,8 +8,12 @@ module Checks
       @lockfile = lockfile
     end
 
-    def parser
-      @parser ||= Bundler::LockfileParser.new(@lockfile.content)
+    def specs
+      parser.specs
+    end
+
+    def dependencies
+      parser.dependencies
     end
 
     def call
@@ -25,6 +29,10 @@ module Checks
     end
 
     private
+
+    def parser
+      @parser ||= Bundler::LockfileParser.new(@lockfile.content)
+    end
 
     def lockfile_rails_version
       rails_spec = parser.specs.find { |s| s.name == "rails" }

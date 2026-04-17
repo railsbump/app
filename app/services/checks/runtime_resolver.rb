@@ -27,7 +27,7 @@ module Checks
     private
 
     def min_version(pinned:, requirement:)
-      pinned.presence || parse_requirement_min(requirement)
+      parse_requirement_min(requirement) || pinned.presence
     end
 
     def rails_info

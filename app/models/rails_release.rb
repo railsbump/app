@@ -25,6 +25,11 @@ class RailsRelease < ApplicationRecord
     end
   end
 
+  scope :newer_than, ->(version) {
+    current = Gem::Version.new(version)
+    order(:version).select { |r| Gem::Version.new(r.version) > current }
+  }
+
   scope :latest_major, -> {
     pluck(:version)
       .group_by { _1[/\A\d+/] }

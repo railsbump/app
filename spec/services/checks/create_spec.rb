@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Checks::GemfileParser, type: :service, new_check_flow: true do
+RSpec.describe Checks::Create, type: :service, new_check_flow: true do
   def build_lockfile(content)
     FactoryBot.create(:lockfile, content: content)
   end

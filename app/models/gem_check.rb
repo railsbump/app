@@ -11,22 +11,30 @@ class GemCheck < ApplicationRecord
     source == RUBYGEMS_SOURCE && locked_version.present?
   end
 
-  def check
-    Checks::GemResolver.new(self).call
-  end
+  def perform!
+    result = resolver.call
 
-  def check!
-    resolve(check)
-  end
+    if result.compatible?
+      resolved_version = result.resolved_version(gem_name)
 
-  def resolve(result)
-    return update!(status: "complete", result: "incompatible", error_message: result.error&.truncate(1000)) unless result.compatible?
-
-    resolved_version = result.resolved_version(gem_name)
-    if resolved_version && Gem::Version.new(resolved_version) > Gem::Version.new(locked_version)
-      return update!(status: "complete", result: "upgrade_needed", earliest_compatible_version: resolved_version)
+      if resolved_version && Gem::Version.new(resolved_version) > Gem::Version.new(locked_version)
+        update!(status: "complete", result: "upgrade_needed", earliest_compatible_version: resolved_version)
+      else
+        update!(status: "complete", result: "compatible")
+      end
+    else
+      update!(status: "complete", result: "incompatible", error_message: result.error&.truncate(1000))
     end
+  end
 
-    update!(status: "complete", result: "compatible")
+  def resolver
+    DirectResolver::Subprocess.new(
+      rails_version: lockfile_check.rails_release.version.to_s,
+      ruby_version: lockfile_check.ruby_version,
+      rubygems_version: lockfile_check.rubygems_version,
+      bundler_version: lockfile_check.bundler_version,
+      dependencies: { gem_name => ">= #{locked_version}" },
+      promoter: :earliest
+    )
   end
 end

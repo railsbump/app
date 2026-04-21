@@ -89,6 +89,17 @@ RSpec.describe GemCheck, type: :model, new_check_flow: true do
     end
   end
 
+  describe "#check" do
+    it "runs the resolver and returns the result without touching the record" do
+      result = DirectResolver::Result.new(compatible?: true, specs: { "puma" => "6.0.0" })
+      resolver = instance_double(Checks::GemResolver, call: result)
+      allow(Checks::GemResolver).to receive(:new).with(gem_check).and_return(resolver)
+
+      expect(gem_check.check).to eq(result)
+      expect(gem_check.reload.status).to eq("pending")
+    end
+  end
+
   describe "#check!" do
     it "runs the resolver and applies the result" do
       result = DirectResolver::Result.new(compatible?: true, specs: { "puma" => "6.0.0" })

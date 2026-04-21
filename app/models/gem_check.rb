@@ -11,8 +11,12 @@ class GemCheck < ApplicationRecord
     source == RUBYGEMS_SOURCE && locked_version.present?
   end
 
+  def check
+    Checks::GemResolver.new(self).call
+  end
+
   def check!
-    resolve(Checks::GemResolver.new(self).call)
+    resolve(check)
   end
 
   def resolve(result)

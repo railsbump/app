@@ -84,4 +84,12 @@ RSpec.describe Checks::LockfileParser, type: :service, new_check_flow: true do
       expect(parser.dependencies.keys).to include("rails")
     end
   end
+
+  describe "#platforms" do
+    it "returns the lockfile platforms as strings" do
+      parser = described_class.new(lockfile_content)
+
+      expect(parser.platforms).to eq(["ruby"])
+    end
+  end
 end

@@ -17,6 +17,35 @@
       <%= render "lockfile_checks/status_badge", lockfile_check: lockfile_check %>
     </div>
 
+    <div class="table-responsive mb-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Current Rails</th>
+            <th>Target Rails</th>
+            <th>Ruby</th>
+            <th>Bundler</th>
+            <th>RubyGems</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= lockfile_check.current_rails_version || "—" %></td>
+            <td><%= lockfile_check.rails_release.version %></td>
+            <td><%= lockfile_check.ruby_version %></td>
+            <td><%= lockfile_check.bundler_version %></td>
+            <td><%= lockfile_check.rubygems_version %></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-muted small mb-0">
+        Ruby and Bundler come from the <code>Gemfile.lock</code> you provided,
+        unless the target Rails version requires a newer minimum, in which
+        case we use that minimum instead. RubyGems is derived from the chosen
+        Ruby version.
+      </p>
+    </div>
+
     <% if lockfile_check.gem_checks.any? %>
       <div class="table-responsive">
         <table class="table table-striped">

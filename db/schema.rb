@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_07_000001) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_21_204234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -87,6 +87,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_07_000001) do
     t.string "bundler_version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "current_rails_version"
+    t.string "platforms", default: [], null: false, array: true
     t.index ["lockfile_id", "rails_release_id"], name: "index_lockfile_checks_on_lockfile_id_and_rails_release_id", unique: true
     t.index ["lockfile_id"], name: "index_lockfile_checks_on_lockfile_id"
     t.index ["rails_release_id"], name: "index_lockfile_checks_on_rails_release_id"

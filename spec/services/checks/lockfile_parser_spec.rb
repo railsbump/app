@@ -84,4 +84,36 @@ RSpec.describe Checks::LockfileParser, type: :service, new_check_flow: true do
       expect(parser.dependencies.keys).to include("rails")
     end
   end
+
+  describe "#source_for" do
+    let(:content) do
+      <<~LOCK
+        GEM
+          remote: https://rubygems.org/
+          specs:
+            rake (13.0.6)
+
+        PLATFORMS
+          ruby
+
+        DEPENDENCIES
+          rake
+
+        BUNDLED WITH
+           2.4.10
+      LOCK
+    end
+
+    it "returns the rubygems remote for gems sourced from rubygems.org" do
+      parser = described_class.new(content)
+
+      expect(parser.source_for("rake")).to eq("https://rubygems.org/")
+    end
+
+    it "returns nil when the gem is not in the lockfile" do
+      parser = described_class.new(content)
+
+      expect(parser.source_for("missing")).to be_nil
+    end
+  end
 end

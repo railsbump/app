@@ -6,6 +6,7 @@ require "json"
 class DirectResolver
   class Subprocess
     SCRIPT = File.expand_path("../../../bin/resolve_gem", __FILE__)
+    MUTEX = Mutex.new
 
     def initialize(rails_version:, ruby_version:, dependencies: {}, rubygems_version: Gem::VERSION, bundler_version: Bundler::VERSION, promoter: :latest)
       @config = {
@@ -19,11 +20,13 @@ class DirectResolver
     end
 
     def call
-      stdout, stderr, status = Open3.capture3(
-        { "BUNDLE_GEMFILE" => "" },
-        RbConfig.ruby, SCRIPT,
-        stdin_data: JSON.generate(@config)
-      )
+      stdout, stderr, status = MUTEX.synchronize do
+        Open3.capture3(
+          { "BUNDLE_GEMFILE" => "" },
+          RbConfig.ruby, SCRIPT,
+          stdin_data: JSON.generate(@config)
+        )
+      end
 
       unless status.success?
         return DirectResolver::Result.new(

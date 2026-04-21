@@ -8,19 +8,7 @@ module Checks
 
     def perform(gem_check_id)
       gem_check = GemCheck.find(gem_check_id)
-      result = Checks::GemResolver.new(gem_check).call
-
-      if result.compatible?
-        resolved_version = result.resolved_version(gem_check.gem_name)
-
-        if resolved_version && Gem::Version.new(resolved_version) > Gem::Version.new(gem_check.locked_version)
-          gem_check.update!(status: "complete", result: "upgrade_needed", earliest_compatible_version: resolved_version)
-        else
-          gem_check.update!(status: "complete", result: "compatible")
-        end
-      else
-        gem_check.update!(status: "complete", result: "incompatible", error_message: result.error&.truncate(1000))
-      end
+      gem_check.check!
 
       broadcast_gem_check(gem_check)
       mark_lockfile_check_complete(gem_check.lockfile_check)

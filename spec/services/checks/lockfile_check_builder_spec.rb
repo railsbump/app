@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe Checks::Create, type: :service, new_check_flow: true do
-  def build_lockfile(content)
+RSpec.describe Checks::LockfileCheckBuilder, type: :service, new_check_flow: true do
+  def build_lockfile(content = lockfile_content)
     FactoryBot.create(:lockfile, content: content)
   end
 
@@ -57,8 +57,9 @@ RSpec.describe Checks::Create, type: :service, new_check_flow: true do
 
       it "returns nil" do
         lockfile = build_lockfile(content)
+        parser = Checks::LockfileParser.new(lockfile.content)
 
-        expect(described_class.new(lockfile).call).to be_nil
+        expect(described_class.new(lockfile, parser).call).to be_nil
       end
     end
 
@@ -66,8 +67,9 @@ RSpec.describe Checks::Create, type: :service, new_check_flow: true do
       it "returns nil" do
         FactoryBot.create(:rails_release, version: "7.0")
         lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
+        parser = Checks::LockfileParser.new(lockfile.content)
 
-        expect(described_class.new(lockfile).call).to be_nil
+        expect(described_class.new(lockfile, parser).call).to be_nil
       end
     end
 
@@ -86,24 +88,37 @@ RSpec.describe Checks::Create, type: :service, new_check_flow: true do
 
       it "creates a pending lockfile_check for the next release" do
         lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
+        parser = Checks::LockfileParser.new(lockfile.content)
 
-        lockfile_check = described_class.new(lockfile).call
+        lockfile_check = described_class.new(lockfile, parser).call
 
         expect(lockfile_check).to be_persisted
         expect(lockfile_check.rails_release).to eq(next_release)
         expect(lockfile_check.status).to eq("pending")
       end
 
+      it "assigns runtime versions from RuntimeResolver" do
+        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3", ruby: "3.3.1", bundler: "2.5.0"))
+        parser = Checks::LockfileParser.new(lockfile.content)
+        allow(RubyRubygemsVersion).to receive(:for).with("3.3.1").and_return("3.5.3")
+
+        lockfile_check = described_class.new(lockfile, parser).call
+
+        expect(lockfile_check.ruby_version).to eq("3.3.1")
+        expect(lockfile_check.rubygems_version).to eq("3.5.3")
+        expect(lockfile_check.bundler_version).to eq("2.5.0")
+      end
+
       it "is idempotent across calls" do
         lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
+        parser = Checks::LockfileParser.new(lockfile.content)
 
-        first = described_class.new(lockfile).call
-        second = described_class.new(lockfile).call
+        first = described_class.new(lockfile, parser).call
+        second = described_class.new(lockfile, parser).call
 
         expect(second).to eq(first)
         expect(lockfile.lockfile_checks.count).to eq(1)
       end
     end
   end
-
 end

@@ -8,16 +8,7 @@ module Checks
 
     def perform(gem_check_id)
       gem_check = GemCheck.find(gem_check_id)
-      lockfile_check = gem_check.lockfile_check
-
-      result = DirectResolver::Subprocess.new(
-        rails_version: lockfile_check.rails_release.version.to_s,
-        ruby_version: lockfile_check.ruby_version,
-        rubygems_version: lockfile_check.rubygems_version,
-        bundler_version: lockfile_check.bundler_version,
-        dependencies: { gem_check.gem_name => ">= #{gem_check.locked_version}" },
-        promoter: :earliest
-      ).call
+      result = Checks::GemResolver.new(gem_check).call
 
       if result.compatible?
         resolved_version = result.resolved_version(gem_check.gem_name)
@@ -32,7 +23,7 @@ module Checks
       end
 
       broadcast_gem_check(gem_check)
-      mark_lockfile_check_complete(lockfile_check)
+      mark_lockfile_check_complete(gem_check.lockfile_check)
     end
 
     private

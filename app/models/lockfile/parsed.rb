@@ -4,65 +4,52 @@ require "bundler/lockfile_parser"
 
 class Lockfile
   class Parsed
-    RUBYGEMS_SOURCE = "https://rubygems.org/"
+    RUBYGEMS_SOURCES = ["http://rubygems.org/", "https://rubygems.org/"]
 
-    LockedGem = Struct.new(:name, :version, :source, keyword_init: true) do
-       def resolvable?
-         source == RUBYGEMS_SOURCE && version.present?
-       end
-     end
+    LockedGem = Data.define(:name, :version, :source) do
+      def resolvable?
+        source.in?(RUBYGEMS_SOURCES) && version.present?
+      end
+    end
 
     def initialize(content)
       @parser = Bundler::LockfileParser.new(content)
     end
 
     def rails_version
-      return unless rails_spec
-
-      "#{rails_spec.version.segments[0]}.#{rails_spec.version.segments[1]}"
+      parser.specs.find { |s| s.name == "rails" }&.version&.to_s
     end
 
     def ruby_version
-      raw = @parser.ruby_version.presence
-      return unless raw
-
-      raw[/\d+\.\d+\.\d+/]
+      parser.ruby_version&.slice(/\d+\.\d+\.\d+/)
     end
 
     def bundler_version
-      @parser.bundler_version&.to_s.presence
+      parser.bundler_version&.to_s.presence
     end
 
     def gems
-      @gems ||= top_level_gem_names.map { |name| build_locked_gem(name) }
+      @gems ||= parser.dependencies.keys.without("rails").map { |name| build_locked_gem(name) }
     end
 
     private
 
-    def top_level_gem_names
-      @parser.dependencies.keys - %w[rails]
-    end
-
-    def rails_spec
-      @rails_spec ||= @parser.specs.find { |s| s.name == "rails" }
-    end
-
-    def specs_by_name
-      @specs_by_name ||= @parser.specs.each_with_object({}) { |s, h| h[s.name] = s }
-    end
+    attr_reader :parser
 
     def build_locked_gem(name)
       spec = specs_by_name[name]
-      LockedGem.new(name: name, version: spec&.version&.to_s, source: source_for(spec))
+      LockedGem.new(name: name, version: spec&.version&.to_s, source: source_value(spec&.source))
     end
 
-    def source_for(spec)
-      return unless spec
+    def specs_by_name
+      @specs_by_name ||= parser.specs.each_with_object({}) { |s, h| h[s.name] = s }
+    end
 
-      case spec.source
-      when Bundler::Source::Rubygems then spec.source.remotes.first&.to_s
-      when Bundler::Source::Git then spec.source.uri
-      when Bundler::Source::Path then spec.source.path.to_s
+    def source_value(source)
+      case source
+      when Bundler::Source::Rubygems then source.remotes.first&.to_s
+      when Bundler::Source::Git then source.uri
+      when Bundler::Source::Path then source.path.to_s
       end
     end
   end

@@ -39,6 +39,7 @@ class Lockfile < ApplicationRecord
 
     lockfile_check = LockfileCheck.create_for!(lockfile: self, rails_release: rails_release)
     lockfile_check.enqueue_gem_checks
+    lockfile_check
   end
 
   def compats

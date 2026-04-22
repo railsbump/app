@@ -12,6 +12,39 @@
 
 <% @lockfile.lockfile_checks.each do |lockfile_check| %>
   <section class="mt-4">
+    <div class="row mb-3">
+      <div class="col-md-6 order-2 order-md-1">
+        <table class="table table-sm table-hover mb-0" style="cursor: pointer;">
+          <tbody>
+            <tr>
+              <th scope="row">Target Rails</th>
+              <td class="text-end"><%= lockfile_check.rails_release.version %></td>
+            </tr>
+            <tr>
+              <th scope="row">Ruby</th>
+              <td class="text-end"><%= lockfile_check.ruby_version %></td>
+            </tr>
+            <tr>
+              <th scope="row">Bundler</th>
+              <td class="text-end"><%= lockfile_check.bundler_version %></td>
+            </tr>
+            <tr>
+              <th scope="row">RubyGems</th>
+              <td class="text-end"><%= lockfile_check.rubygems_version %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 d-flex align-items-center mb-3 mb-md-0">
+        <p class="text-muted small mb-0">
+          Ruby and Bundler come from the <code>Gemfile.lock</code> you provided,
+          unless the target Rails version requires a newer minimum, in which
+          case we use that minimum instead. RubyGems is derived from the chosen
+          Ruby version.
+        </p>
+      </div>
+    </div>
+
     <div class="d-flex align-items-center gap-2 mb-3">
       <h2 class="mb-0">Compatibility with Rails <%= lockfile_check.rails_release.version %></h2>
       <%= render "lockfile_checks/status_badge", lockfile_check: lockfile_check %>

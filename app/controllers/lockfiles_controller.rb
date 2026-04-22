@@ -26,7 +26,7 @@ class LockfilesController < ApplicationController
       @lockfile = Lockfile.new(content: lockfile_params.fetch(:content).strip)
 
       if @lockfile.save
-        Checks::Create.new(@lockfile).call
+        @lockfile.run_check!
         redirect_to @lockfile, status: :see_other
       else
         redirect_to new_lockfile_path, flash: { alert: @lockfile.errors.full_messages.join(". ") }

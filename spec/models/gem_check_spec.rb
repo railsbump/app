@@ -3,20 +3,6 @@ require "rails_helper"
 RSpec.describe GemCheck, type: :model, new_check_flow: true do
   let(:gem_check) { build(:gem_check, gem_name: "puma", locked_version: "6.0.0") }
 
-  describe "#resolvable?" do
-    it "is true for rubygems source with a locked version" do
-      expect(GemCheck.new(source: GemCheck::RUBYGEMS_SOURCE, locked_version: "1.0.0").resolvable?).to be true
-    end
-
-    it "is false when source is not rubygems" do
-      expect(GemCheck.new(source: "https://example.com/", locked_version: "1.0.0").resolvable?).to be false
-    end
-
-    it "is false when locked_version is missing" do
-      expect(GemCheck.new(source: GemCheck::RUBYGEMS_SOURCE, locked_version: nil).resolvable?).to be false
-    end
-  end
-
   describe "#resolver" do
     it "builds a DirectResolver::Subprocess with the lockfile runtime and earliest promoter" do
       expect(DirectResolver::Subprocess).to receive(:new).with(

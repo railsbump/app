@@ -23,7 +23,7 @@ class GemCheck < ApplicationRecord
         update!(status: "complete", result: "compatible")
       end
     else
-      update!(status: "complete", result: "incompatible", error_message: result.error&.truncate(1000))
+      update!(status: "complete", result: "incompatible", error_message: result.error)
     end
   end
 

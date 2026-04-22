@@ -31,9 +31,5 @@ module Checks
     def bundler_version
       @parser.bundler_version.presence
     end
-
-    def platforms
-      @parser.platforms.map(&:to_s)
-    end
   end
 end

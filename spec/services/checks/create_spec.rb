@@ -94,15 +94,6 @@ RSpec.describe Checks::Create, type: :service, new_check_flow: true do
         expect(lockfile_check.status).to eq("pending")
       end
 
-      it "stores the lockfile's current Rails version and platforms" do
-        lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
-
-        lockfile_check = described_class.new(lockfile).call
-
-        expect(lockfile_check.current_rails_version).to eq("7.1")
-        expect(lockfile_check.platforms).to eq(["ruby"])
-      end
-
       it "is idempotent across calls" do
         lockfile = build_lockfile(lockfile_content(rails_version: "7.1.3"))
 

@@ -48,8 +48,6 @@ module Checks
 
       @lockfile.lockfile_checks.find_or_create_by!(rails_release: target_release) do |check|
         check.status = "pending"
-        check.current_rails_version = parser.rails_version
-        check.platforms = parser.platforms
         check.ruby_version = runtime.ruby_version
         check.rubygems_version = runtime.rubygems_version
         check.bundler_version = runtime.bundler_version

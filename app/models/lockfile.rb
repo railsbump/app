@@ -31,8 +31,7 @@ class Lockfile < ApplicationRecord
   def next_rails_release
     return unless rails_version
 
-    current = Gem::Version.new(rails_version)
-    RailsRelease.order(:version).select { |r| Gem::Version.new(r.version) > current }.first
+    RailsRelease.next_after(rails_version)
   end
 
   def run_check!(rails_release: next_rails_release)

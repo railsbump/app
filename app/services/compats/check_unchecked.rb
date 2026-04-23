@@ -19,6 +19,7 @@ module Compats
           rails_release
             .compats
             .unchecked
+            .select(Compat.column_names - ["status_determined_by"])
             .find_each do |compat|
 
             return unless count < LIMIT

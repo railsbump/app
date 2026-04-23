@@ -12,7 +12,6 @@ gem "amazing_print",                            "~> 1.5"
 gem "aws-sdk-s3",                               "~> 1.8",  require: false
 gem "baseline",                                 github: "fastruby/baseline"
 gem "bootsnap",                                 "~> 1.17", require: false
-gem "coverband",                                "~> 6.1"
 gem "bootstrap",                                "~> 5.3.3"
 gem "cgi"
 gem "dartsass-rails",                           "~> 0.5"

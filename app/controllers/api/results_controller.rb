@@ -27,8 +27,6 @@ module API
       if params[:result].is_a?(ActionController::Parameters)
         # PROBE: capture :output size, then drop it entirely to test the
         # web-dyno memory leak hypothesis. Revert once confirmed.
-        @output_size = params[:result][:output].to_s.bytesize
-        logger.info "PARAMS_OUTPUT_BYTESIZE #{@output_size}"
         params[:result].delete(:output)
         params[:result].each_key do |key|
           value = params[:result][key]

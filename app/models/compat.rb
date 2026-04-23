@@ -81,14 +81,14 @@ class Compat < ApplicationRecord
       self.update(
         checked_at: Time.current,
         status: :compatible,
-        status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
+        status_determined_by: "#{result[:strategy]}"
       )
     else
       logger.info "Compat #{id} result is not compatible"
       self.update(
         checked_at: Time.current,
         status: :incompatible,
-        status_determined_by: "#{result[:strategy]}\nOutput: #{result[:output]}"
+        status_determined_by: "#{result[:strategy]}"
       )
     end
   end

@@ -1,14 +1,20 @@
 class GemCheck < ApplicationRecord
   belongs_to :lockfile_check
 
-  RUBYGEMS_SOURCE = "https://rubygems.org/"
-
   validates :gem_name, presence: true
   validates :status, inclusion: { in: %w[pending complete] }
   validates :result, inclusion: { in: %w[compatible upgrade_needed incompatible skipped] }, allow_nil: true
 
-  def resolvable?
-    source == RUBYGEMS_SOURCE && locked_version.present?
+  def self.create_for!(lockfile_check:, gem:)
+    attributes = { locked_version: gem.version, source: gem.source }
+
+    if gem.resolvable?
+      attributes.merge!(status: "pending")
+    else
+      attributes.merge!(status: "complete", result: "skipped")
+    end
+
+    create_with(attributes).find_or_create_by!(lockfile_check: lockfile_check, gem_name: gem.name)
   end
 
   def perform!

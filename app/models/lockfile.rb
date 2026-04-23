@@ -14,6 +14,7 @@ class Lockfile < ApplicationRecord
   before_validation :add_gemmies, unless: -> { FeatureFlags.new_check_flow? }
 
   delegate :to_param, to: :slug
+  delegate :rails_version, :ruby_version, :bundler_version, :gems, to: :parsed
 
   scope :with_gemmies, ->(gemmies) { joins(:gemmies).where(gemmies: { id: gemmies }).distinct }
 
@@ -22,6 +23,24 @@ class Lockfile < ApplicationRecord
     .+
     DEPENDENCIES
   )xm.freeze
+
+  def parsed
+    @parsed ||= Parsed.new(content)
+  end
+
+  def next_rails_release
+    return unless rails_version
+
+    RailsRelease.next_after(rails_version)
+  end
+
+  def run_check!(rails_release: next_rails_release)
+    return unless rails_release
+
+    lockfile_check = LockfileCheck.create_for!(lockfile: self, rails_release: rails_release)
+    lockfile_check.enqueue_gem_checks
+    lockfile_check
+  end
 
   def compats
     Compat.where(id: gemmies.flat_map(&:compat_ids))

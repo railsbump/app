@@ -3,7 +3,7 @@ FactoryBot.define do
     lockfile_check
     gem_name { "some_gem" }
     locked_version { "1.0.0" }
-    source { GemCheck::RUBYGEMS_SOURCE }
+    source { "https://rubygems.org/" }
     status { "pending" }
   end
 end

@@ -12,7 +12,6 @@ end
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
-  mount Coverband::Reporters::Web.new, at: "/coverband" if ENV["COVERBAND_PASSWORD"].present?
 
   get '/sitemap.xml', to: 'sitemaps#show'
   get "/robots.txt" => "static#robots"

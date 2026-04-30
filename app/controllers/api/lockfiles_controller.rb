@@ -1,7 +1,7 @@
 module API
   class LockfilesController < BaseController
     def create
-      lockfile = Lockfile.new(lockfile_params)
+      lockfile = Lockfile.new(content: lockfile_content)
 
       if lockfile.save
         lockfile.run_check!
@@ -13,10 +13,8 @@ module API
 
     private
 
-      def lockfile_params
-        permitted = params.require(:lockfile).permit(:content)
-        permitted[:content] = permitted[:content].strip if permitted[:content].is_a?(String)
-        permitted
+      def lockfile_content
+        params.require(:lockfile).fetch(:content, "").to_s.strip
       end
   end
 end

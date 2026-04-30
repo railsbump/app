@@ -44,6 +44,7 @@ class Lockfile
 
       return result(:no_rails_dependency) if lockfile.rails_version.blank?
       return result(:up_to_date)          if lockfile.next_rails_release.nil?
+      return result(:invalid_content)     if lockfile.invalid?
 
       result(:runnable, lockfile: lockfile)
     rescue Bundler::LockfileError

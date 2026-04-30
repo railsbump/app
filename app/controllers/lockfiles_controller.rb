@@ -28,13 +28,9 @@ class LockfilesController < ApplicationController
       case result.reason
       when :runnable
         @lockfile = result.lockfile
-
-        if @lockfile.save
-          @lockfile.run_check!
-          redirect_to @lockfile, status: :see_other
-        else
-          redirect_to new_lockfile_path, flash: { alert: @lockfile.errors.full_messages.join(". ") }
-        end
+        @lockfile.save!
+        @lockfile.run_check!
+        redirect_to @lockfile, status: :see_other
       else
         redirect_to new_lockfile_path, flash: { alert: result.message }
       end

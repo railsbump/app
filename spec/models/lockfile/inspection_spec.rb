@@ -101,6 +101,15 @@ RSpec.describe Lockfile::Inspection, type: :model do
       expect(result.reason).to eq(:invalid_content)
     end
 
+    it "treats model-level validation failures as invalid content" do
+      FactoryBot.create(:rails_release, version: "7.2")
+      allow_any_instance_of(Lockfile).to receive(:valid?).and_return(false)
+
+      result = described_class.call(lockfile_content)
+
+      expect(result.reason).to eq(:invalid_content)
+    end
+
     it "treats Bundler parse errors as invalid content" do
       allow(Bundler::LockfileParser).to receive(:new).and_raise(Bundler::LockfileError, "boom")
 

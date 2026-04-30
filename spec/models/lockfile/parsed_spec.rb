@@ -124,6 +124,34 @@ RSpec.describe Lockfile::Parsed, type: :model, new_check_flow: true do
       expect(mystery_gem.version).to be_nil
       expect(mystery_gem.source).to be_nil
     end
+
+    it "excludes Rails core gems when they appear as top-level dependencies" do
+      content = <<~LOCK
+        GEM
+          remote: https://rubygems.org/
+          specs:
+            actionpack (8.0.5)
+            activerecord (8.0.5)
+            railties (8.0.5)
+            puma (6.4.0)
+
+        PLATFORMS
+          ruby
+
+        DEPENDENCIES
+          actionpack (~> 8.0.0)
+          activerecord (~> 8.0.0)
+          railties (~> 8.0.0)
+          puma
+
+        BUNDLED WITH
+           2.5.0
+      LOCK
+
+      parsed = described_class.new(content)
+
+      expect(parsed.gems.map(&:name)).to contain_exactly("puma")
+    end
   end
 
   describe Lockfile::Parsed::LockedGem do

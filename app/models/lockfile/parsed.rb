@@ -6,6 +6,26 @@ class Lockfile
   class Parsed
     RUBYGEMS_SOURCES = ["http://rubygems.org/", "https://rubygems.org/"]
 
+    # Rails core gems. Excluded from `#gems` because their compatibility with
+    # a target Rails release is determined by the Rails version itself, not
+    # by per-gem resolution — checking each individually would be redundant
+    # and noisy for apps that declare sub-gems directly (e.g. Discourse).
+    RAILS_GEMS = %w(
+      actioncable
+      actionmailbox
+      actionmailer
+      actionpack
+      actiontext
+      actionview
+      activejob
+      activemodel
+      activerecord
+      activestorage
+      activesupport
+      rails
+      railties
+    ).freeze
+
     LockedGem = Data.define(:name, :version, :source) do
       def resolvable?
         source.in?(RUBYGEMS_SOURCES) && version.present?
@@ -35,7 +55,7 @@ class Lockfile
     end
 
     def gems
-      @gems ||= parser.dependencies.keys.without("rails").map { |name| build_locked_gem(name) }
+      @gems ||= (parser.dependencies.keys - RAILS_GEMS).map { |name| build_locked_gem(name) }
     end
 
     private

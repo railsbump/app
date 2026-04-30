@@ -9,6 +9,7 @@ module API
     def as_json(*)
       {
         slug: @lockfile.slug,
+        reason: "runnable",
         status: "pending",
         status_url: @status_url,
         retry_after_seconds: @retry_after_seconds,
@@ -19,7 +20,7 @@ module API
     private
 
       def message
-        "Compatibility check is running. " \
+        "Lockfile saved. Compatibility check is running. " \
           "Wait ~#{@retry_after_seconds} seconds, then GET #{@status_url} to retrieve results. " \
           "Re-poll if status is still 'pending'."
       end

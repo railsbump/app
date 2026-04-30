@@ -16,7 +16,7 @@ module API
         lockfile.run_check!
         render_pending(lockfile)
       else
-        render json: { errors: [result.message] }, status: result.http_status
+        render json: { reason: result.reason, errors: [result.message] }, status: result.http_status
       end
     end
 

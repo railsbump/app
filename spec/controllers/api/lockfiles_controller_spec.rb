@@ -36,10 +36,11 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
 
         json = JSON.parse(response.body)
         expect(json["slug"]).to eq(Lockfile.last.slug)
+        expect(json["reason"]).to eq("runnable")
         expect(json["status"]).to eq("pending")
         expect(json["retry_after_seconds"]).to be_a(Integer).and be_between(30, 600)
         expect(json["status_url"]).to include("/lockfiles/#{Lockfile.last.slug}")
-        expect(json["message"]).to include("GET")
+        expect(json["message"]).to include("Lockfile saved")
       end
 
       it "triggers run_check! on the lockfile" do
@@ -50,29 +51,31 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
     end
 
     context "with invalid content" do
-      it "returns 422 with errors" do
+      it "returns 422 with reason invalid_content and errors" do
         expect do
           post :create, params: { lockfile: { content: "not a lockfile" } }, as: :json
         end.not_to change(Lockfile, :count)
 
         expect(response).to have_http_status(:unprocessable_content)
         json = JSON.parse(response.body)
+        expect(json["reason"]).to eq("invalid_content")
         expect(json["errors"]).to be_present
       end
     end
 
     context "with missing content" do
-      it "returns 422 with errors" do
+      it "returns 422 with reason invalid_content and errors" do
         post :create, params: { lockfile: { content: "" } }, as: :json
 
         expect(response).to have_http_status(:unprocessable_content)
         json = JSON.parse(response.body)
+        expect(json["reason"]).to eq("invalid_content")
         expect(json["errors"]).to be_present
       end
     end
 
     context "when the lockfile is already on the latest known Rails" do
-      it "returns 200 with errors and does not persist the lockfile" do
+      it "returns 200 with reason up_to_date and errors, and does not persist the lockfile" do
         FactoryBot.create(:rails_release, version: "7.1")
 
         expect do
@@ -81,6 +84,7 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
 
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body)
+        expect(json["reason"]).to eq("up_to_date")
         expect(json["errors"]).to be_present
         expect(json["errors"].first).to match(/latest/i)
       end
@@ -105,13 +109,14 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
         LOCK
       end
 
-      it "returns 422 with errors and does not persist the lockfile" do
+      it "returns 422 with reason no_rails_dependency and errors, and does not persist the lockfile" do
         expect do
           post :create, params: { lockfile: { content: no_rails_content } }, as: :json
         end.not_to change(Lockfile, :count)
 
         expect(response).to have_http_status(:unprocessable_content)
         json = JSON.parse(response.body)
+        expect(json["reason"]).to eq("no_rails_dependency")
         expect(json["errors"]).to be_present
         expect(json["errors"].first).to match(/Rails/i)
       end

@@ -85,7 +85,10 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       expect(json["status"]).to eq("pending")
       expect(json["lockfile_checks"].size).to eq(1)
       check = json["lockfile_checks"].first
-      expect(check["rails_version"]).to eq("7.2")
+      expect(check["target_rails_version"]).to eq("7.2")
+      expect(check["ruby_version"]).to eq("3.3.0")
+      expect(check["bundler_version"]).to eq("2.5.0")
+      expect(check["rubygems_version"]).to eq("3.5.0")
       expect(check["status"]).to eq("pending")
       expect(check["gem_checks"].size).to eq(1)
       gc = check["gem_checks"].first

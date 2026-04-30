@@ -29,13 +29,13 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
         end.to change(Lockfile, :count).by(1)
 
         expect(response).to have_http_status(:accepted)
-        expect(response.headers["Retry-After"]).to eq("60")
+        expect(response.headers["Retry-After"]).to match(/\A\d+\z/)
         expect(response.headers["Location"]).to include("/lockfiles/#{Lockfile.last.slug}")
 
         json = JSON.parse(response.body)
         expect(json["slug"]).to eq(Lockfile.last.slug)
         expect(json["status"]).to eq("pending")
-        expect(json["retry_after_seconds"]).to eq(60)
+        expect(json["retry_after_seconds"]).to be_a(Integer).and be_between(30, 600)
         expect(json["status_url"]).to include("/lockfiles/#{Lockfile.last.slug}")
         expect(json["message"]).to include("GET")
       end

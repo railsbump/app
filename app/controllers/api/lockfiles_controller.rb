@@ -1,10 +1,10 @@
 module API
   class LockfilesController < BaseController
-    POLL_AFTER_SECONDS = 60
+    PER_GEM_SECONDS = 5
+    MIN_POLL_SECONDS = 30
+    MAX_POLL_SECONDS = 600
 
-    rescue_from ActiveRecord::RecordNotFound do
-      render json: { errors: ["Lockfile not found"] }, status: :not_found
-    end
+    before_action :set_lockfile, only: :show
 
     def create
       lockfile = Lockfile.new(content: lockfile_content)
@@ -18,20 +18,32 @@ module API
     end
 
     def show
-      lockfile = Lockfile.includes(lockfile_checks: [:rails_release, :gem_checks]).find_by!(slug: params[:id])
-
-      render json: LockfileSerializer.new(lockfile)
+      render json: LockfileSerializer.new(@lockfile)
     end
 
     private
 
+      def set_lockfile
+        @lockfile = Lockfile.includes(lockfile_checks: [:rails_release, :gem_checks]).find_by(slug: params[:id])
+        render json: { errors: ["Lockfile not found"] }, status: :not_found unless @lockfile
+      end
+
       def render_accepted(lockfile)
         status_url = api_lockfile_url(lockfile, host: request.host_with_port)
+        retry_after = poll_after_seconds(lockfile)
         response.headers["Location"] = status_url
-        response.headers["Retry-After"] = POLL_AFTER_SECONDS.to_s
+        response.headers["Retry-After"] = retry_after.to_s
 
-        render json: AcceptedLockfileSerializer.new(lockfile, status_url: status_url, retry_after_seconds: POLL_AFTER_SECONDS),
+        render json: AcceptedLockfileSerializer.new(lockfile, status_url: status_url, retry_after_seconds: retry_after),
                status: :accepted
+      end
+
+      # Rough per-lockfile estimate: gems / concurrency * average per-gem cost,
+      # clamped to a sensible range. Refine once we have production timing data.
+      def poll_after_seconds(lockfile)
+        concurrency = ENV.fetch("SIDEKIQ_CONCURRENCY", 2).to_i.clamp(1, 25)
+        estimate = (lockfile.gems.size * PER_GEM_SECONDS.to_f / concurrency).ceil
+        estimate.clamp(MIN_POLL_SECONDS, MAX_POLL_SECONDS)
       end
 
       def lockfile_content

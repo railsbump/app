@@ -16,8 +16,14 @@ class Lockfile
       @parser = Bundler::LockfileParser.new(content)
     end
 
+    # Apps that skip the `rails` umbrella gem (Discourse, some API-only or
+    # extracted apps) declare `railties` directly. Either signals a Rails app
+    # and both stay in lockstep with the Rails version, so fall back to
+    # railties when rails itself is not a top-level spec.
     def rails_version
-      parser.specs.find { |s| s.name == "rails" }&.version&.to_s
+      spec = parser.specs.find { |s| s.name == "rails" } ||
+             parser.specs.find { |s| s.name == "railties" }
+      spec&.version&.to_s
     end
 
     def ruby_version

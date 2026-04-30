@@ -28,6 +28,28 @@ RSpec.describe Lockfile::Parsed, type: :model, new_check_flow: true do
       expect(parsed.rails_version).to eq("7.1.3")
     end
 
+    it "falls back to the railties version when rails is not declared directly" do
+      content = <<~LOCK
+        GEM
+          remote: https://rubygems.org/
+          specs:
+            actionpack (8.0.5)
+            activerecord (8.0.5)
+            railties (8.0.5)
+
+        PLATFORMS
+          ruby
+
+        DEPENDENCIES
+          railties (~> 8.0.0)
+
+        BUNDLED WITH
+           2.5.0
+      LOCK
+
+      expect(described_class.new(content).rails_version).to eq("8.0.5")
+    end
+
     it "returns nil when there is no rails spec" do
       content = <<~LOCK
         GEM

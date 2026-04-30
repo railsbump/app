@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Hit the API lockfile endpoints with curl.
+#
+# Usage:
+#   bin/api_check_lockfile <Gemfile.lock>     # POST and print { slug, retry_after_seconds, ... }
+#   bin/api_check_lockfile --show <slug>      # GET /lockfiles/:slug as JSON
+#
+# Override host with API_HOST (default: api.localhost:3000):
+#   API_HOST=api.railsbump.org bin/api_check_lockfile Gemfile.lock
+
+set -euo pipefail
+
+HOST="${API_HOST:-api.localhost:3000}"
+SCHEME="${API_SCHEME:-http}"
+BASE="${SCHEME}://${HOST}"
+
+usage() {
+  sed -n '2,/^$/p' "$0" >&2
+  exit 1
+}
+
+[[ $# -ge 1 ]] || usage
+
+if [[ "$1" == "--show" ]]; then
+  [[ $# -eq 2 ]] || usage
+  curl -sS "${BASE}/lockfiles/$2" | jq .
+  exit 0
+fi
+
+LOCKFILE="$1"
+[[ -f "$LOCKFILE" ]] || { echo "Not a file: $LOCKFILE" >&2; exit 1; }
+command -v jq >/dev/null || { echo "jq required" >&2; exit 1; }
+
+curl -sS -X POST "${BASE}/lockfiles" \
+  -H 'Content-Type: application/json' \
+  --data-binary "$(jq -Rs '{lockfile: {content: .}}' < "$LOCKFILE")" | jq .

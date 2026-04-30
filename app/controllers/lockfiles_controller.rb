@@ -23,13 +23,16 @@ class LockfilesController < ApplicationController
   private
 
     def create_new_flow
-      @lockfile = Lockfile.new(content: lockfile_params.fetch(:content).strip)
+      result = Lockfile::Inspection.call(lockfile_params.fetch(:content))
 
-      if @lockfile.save
+      case result.reason
+      when :runnable
+        @lockfile = result.lockfile
+        @lockfile.save!
         @lockfile.run_check!
         redirect_to @lockfile, status: :see_other
       else
-        redirect_to new_lockfile_path, flash: { alert: @lockfile.errors.full_messages.join(". ") }
+        redirect_to new_lockfile_path, flash: { alert: result.message }
       end
     end
 

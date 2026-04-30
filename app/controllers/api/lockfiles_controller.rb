@@ -11,7 +11,7 @@ module API
 
       if lockfile.save
         lockfile.run_check!
-        render_accepted(lockfile)
+        render_pending(lockfile)
       else
         render json: { errors: lockfile.errors.full_messages }, status: :unprocessable_content
       end
@@ -28,7 +28,7 @@ module API
         render json: { errors: ["Lockfile not found"] }, status: :not_found unless @lockfile
       end
 
-      def render_accepted(lockfile)
+      def render_pending(lockfile)
         status_url = api_lockfile_url(lockfile, host: request.host_with_port)
         retry_after = poll_after_seconds(lockfile)
         response.headers["Location"] = status_url

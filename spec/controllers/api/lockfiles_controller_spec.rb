@@ -23,14 +23,21 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
     end
 
     context "with valid content" do
-      it "creates a lockfile and returns 202 with slug" do
+      it "creates a lockfile and returns 202 with slug, status, and polling instructions" do
         expect do
           post :create, params: { lockfile: { content: content } }, as: :json
         end.to change(Lockfile, :count).by(1)
 
         expect(response).to have_http_status(:accepted)
+        expect(response.headers["Retry-After"]).to eq("60")
+        expect(response.headers["Location"]).to include("/lockfiles/#{Lockfile.last.slug}")
+
         json = JSON.parse(response.body)
         expect(json["slug"]).to eq(Lockfile.last.slug)
+        expect(json["status"]).to eq("pending")
+        expect(json["retry_after_seconds"]).to eq(60)
+        expect(json["status_url"]).to include("/lockfiles/#{Lockfile.last.slug}")
+        expect(json["message"]).to include("GET")
       end
 
       it "triggers run_check! on the lockfile" do
@@ -75,6 +82,7 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       expect(response).to have_http_status(:ok)
       json = JSON.parse(response.body)
       expect(json["slug"]).to eq(lockfile.slug)
+      expect(json["status"]).to eq("pending")
       expect(json["lockfile_checks"].size).to eq(1)
       check = json["lockfile_checks"].first
       expect(check["rails_version"]).to eq("7.2")

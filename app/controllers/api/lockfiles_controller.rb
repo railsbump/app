@@ -1,5 +1,7 @@
 module API
   class LockfilesController < BaseController
+    POLL_AFTER_SECONDS = 60
+
     rescue_from ActiveRecord::RecordNotFound do
       render json: { errors: ["Lockfile not found"] }, status: :not_found
     end
@@ -9,7 +11,7 @@ module API
 
       if lockfile.save
         lockfile.run_check!
-        render json: { slug: lockfile.slug }, status: :accepted
+        render_accepted(lockfile)
       else
         render json: { errors: lockfile.errors.full_messages }, status: :unprocessable_content
       end
@@ -23,14 +25,32 @@ module API
 
     private
 
+      def render_accepted(lockfile)
+        status_url = api_lockfile_url(lockfile, host: request.host_with_port)
+        response.headers["Location"] = status_url
+        response.headers["Retry-After"] = POLL_AFTER_SECONDS.to_s
+
+        render json: {
+          slug: lockfile.slug,
+          status: "pending",
+          status_url: status_url,
+          retry_after_seconds: POLL_AFTER_SECONDS,
+          message: "Compatibility check is running. Wait ~#{POLL_AFTER_SECONDS} seconds, then GET #{status_url} to retrieve results. Re-poll if status is still 'pending'."
+        }, status: :accepted
+      end
+
       def lockfile_content
         params.require(:lockfile).fetch(:content, "").to_s.strip
       end
 
       def lockfile_payload(lockfile)
+        checks = lockfile.lockfile_checks
+        overall_status = checks.empty? || checks.any? { |c| c.status == "pending" } ? "pending" : "complete"
+
         {
           slug: lockfile.slug,
-          lockfile_checks: lockfile.lockfile_checks.map { |check| lockfile_check_payload(check) }
+          status: overall_status,
+          lockfile_checks: checks.map { |check| lockfile_check_payload(check) }
         }
       end
 

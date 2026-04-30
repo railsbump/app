@@ -13,14 +13,14 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "sidekiq"
 
-  get '/sitemap.xml', to: 'sitemaps#show'
+  get "/sitemap.xml", to: "sitemaps#show"
   get "/robots.txt" => "static#robots"
 
   root "gemmies#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  namespace :api, path: '', constraints: { subdomain: "api" } do
+  namespace :api, path: "", constraints: { subdomain: "api" } do
     resources :github_notifications, only: :create
     resources :lockfiles, only: %i(create show)
     resources :releases, only: :create

@@ -24,7 +24,7 @@ annoying than a few extra seconds of waiting.
 Implemented in `API::LockfilesController#poll_after_seconds`:
 
 ```ruby
-PER_GEM_SECONDS = 5
+PER_GEM_SECONDS = 2
 MIN_POLL_SECONDS = 30
 MAX_POLL_SECONDS = 600
 
@@ -54,14 +54,14 @@ ones don't suggest "come back tomorrow."
 
 ## Why these constants
 
-### `PER_GEM_SECONDS = 5`
+### `PER_GEM_SECONDS = 2`
 
-A conservative starting point. Real per-gem cost on a developer machine
-benchmarked at ~1.4s/gem (41-gem fixture, concurrency=2, completed in 28s).
-Production hardware is slower than dev laptops and gem complexity varies
-widely (some pull large dependency graphs, some are tiny and resolve
-immediately), so we keep the constant ~3x the observed dev value. Adjust
-once we have production data.
+Picked from two dev benchmarks that agreed on ~1.35s/gem real cost
+(41-gem fixture finished in 28s; 182-gem real-world lockfile finished
+in 123s, both at concurrency=2). Setting the constant to 2 leaves a
+~50% buffer for production variance (slower dynos, slower gems with
+heavy dependency graphs) without grossly over-estimating like the
+initial 5 did. Re-tune once we have production timing data.
 
 ### `MIN_POLL_SECONDS = 30`
 
@@ -74,7 +74,7 @@ default cadence for retry-after.
 
 Ceiling = 10 minutes. Past this, the consumer should suspect something is
 wrong and surface that to the user. With concurrency=2 and
-`PER_GEM_SECONDS=5`, this corresponds to a ~240-gem lockfile — covers
+`PER_GEM_SECONDS=2`, this corresponds to a ~600-gem lockfile — covers
 typical Rails apps (30–80 gems) and even most large ones (80–200 gems).
 Outliers like Mastodon or Discourse (200–400+ gems) hit this ceiling, but
 those are rare (<5% of submissions).

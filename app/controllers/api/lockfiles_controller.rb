@@ -1,6 +1,6 @@
 module API
   class LockfilesController < BaseController
-    PER_GEM_SECONDS = 5
+    PER_GEM_SECONDS = 2
     MIN_POLL_SECONDS = 30
     MAX_POLL_SECONDS = 600
 

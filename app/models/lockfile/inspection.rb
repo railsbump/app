@@ -46,6 +46,8 @@ class Lockfile
       return result(:up_to_date)          if lockfile.next_rails_release.nil?
 
       result(:runnable, lockfile: lockfile)
+    rescue Bundler::LockfileError
+      result(:invalid_content)
     end
 
     private

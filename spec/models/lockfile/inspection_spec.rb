@@ -100,5 +100,13 @@ RSpec.describe Lockfile::Inspection, type: :model do
 
       expect(result.reason).to eq(:invalid_content)
     end
+
+    it "treats Bundler parse errors as invalid content" do
+      allow(Bundler::LockfileParser).to receive(:new).and_raise(Bundler::LockfileError, "boom")
+
+      result = described_class.call(lockfile_content)
+
+      expect(result.reason).to eq(:invalid_content)
+    end
   end
 end

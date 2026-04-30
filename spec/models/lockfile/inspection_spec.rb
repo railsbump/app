@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Lockfile::Inspection, type: :model do
+RSpec.describe Lockfile::Inspection, type: :model, new_check_flow: true do
   def lockfile_content(rails_version: "7.1.3")
     <<~LOCK
       GEM

@@ -34,7 +34,7 @@ module API
         response.headers["Location"] = status_url
         response.headers["Retry-After"] = retry_after.to_s
 
-        render json: AcceptedLockfileSerializer.new(lockfile, status_url: status_url, retry_after_seconds: retry_after),
+        render json: PendingLockfileSerializer.new(lockfile, status_url: status_url, retry_after_seconds: retry_after),
                status: :accepted
       end
 

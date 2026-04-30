@@ -12,9 +12,13 @@ module API
       case result.reason
       when :runnable
         lockfile = result.lockfile
-        lockfile.save!
-        lockfile.run_check!
-        render_pending(lockfile)
+
+        if lockfile.save
+          lockfile.run_check!
+          render_pending(lockfile)
+        else
+          render json: { reason: :invalid_content, errors: lockfile.errors.full_messages }, status: :unprocessable_content
+        end
       else
         render json: { reason: result.reason, errors: [result.message] }, status: result.http_status
       end

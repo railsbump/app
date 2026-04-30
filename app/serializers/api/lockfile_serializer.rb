@@ -16,7 +16,7 @@ module API
 
       def overall_status
         checks = @lockfile.lockfile_checks
-        checks.empty? || checks.any? { |c| c.status == "pending" } ? "pending" : "complete"
+        checks.empty? || checks.any?(&:pending?) ? "pending" : "complete"
       end
   end
 end

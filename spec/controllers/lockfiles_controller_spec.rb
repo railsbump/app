@@ -81,7 +81,7 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
       end
     end
 
-    context "with the new check flow", new_check_flow: true do
+    context "with the new check flow", new_check_flow: true, vcr: false do
       let(:rails_content) do
         <<~LOCK
           GEM

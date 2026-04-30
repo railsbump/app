@@ -25,11 +25,13 @@ module API
 
       def set_lockfile
         @lockfile = Lockfile.includes(lockfile_checks: [:rails_release, :gem_checks]).find_by(slug: params[:id])
-        render json: { errors: ["Lockfile not found"] }, status: :not_found unless @lockfile
+        return if @lockfile
+
+        render json: { errors: ["Lockfile not found"] }, status: :not_found
       end
 
       def render_pending(lockfile)
-        status_url = api_lockfile_url(lockfile, host: request.host_with_port)
+        status_url = api_lockfile_url(lockfile)
         retry_after = poll_after_seconds(lockfile)
         response.headers["Location"] = status_url
         response.headers["Retry-After"] = retry_after.to_s

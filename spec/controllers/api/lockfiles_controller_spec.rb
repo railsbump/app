@@ -98,6 +98,17 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       expect(gc["result"]).to eq("compatible")
     end
 
+    it "returns status 'failed' when any lockfile_check has failed" do
+      lockfile = FactoryBot.create(:lockfile)
+      rails_release = FactoryBot.create(:rails_release, version: "7.2")
+      FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "failed")
+
+      get :show, params: { id: lockfile.slug }, as: :json
+
+      expect(response).to have_http_status(:ok)
+      expect(JSON.parse(response.body)["status"]).to eq("failed")
+    end
+
     it "returns 404 when slug is unknown" do
       get :show, params: { id: "nonexistent" }, as: :json
 

@@ -62,4 +62,37 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       end
     end
   end
+
+  describe "GET #show" do
+    it "returns the lockfile with its checks and gem_checks" do
+      lockfile = FactoryBot.create(:lockfile)
+      rails_release = FactoryBot.create(:rails_release, version: "7.2")
+      lockfile_check = FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "pending")
+      FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "puma", locked_version: "6.4.0", status: "complete", result: "compatible")
+
+      get :show, params: { id: lockfile.slug }, as: :json
+
+      expect(response).to have_http_status(:ok)
+      json = JSON.parse(response.body)
+      expect(json["slug"]).to eq(lockfile.slug)
+      expect(json["lockfile_checks"].size).to eq(1)
+      check = json["lockfile_checks"].first
+      expect(check["rails_version"]).to eq("7.2")
+      expect(check["status"]).to eq("pending")
+      expect(check["gem_checks"].size).to eq(1)
+      gc = check["gem_checks"].first
+      expect(gc["name"]).to eq("puma")
+      expect(gc["locked_version"]).to eq("6.4.0")
+      expect(gc["status"]).to eq("complete")
+      expect(gc["result"]).to eq("compatible")
+    end
+
+    it "returns 404 when slug is unknown" do
+      get :show, params: { id: "nonexistent" }, as: :json
+
+      expect(response).to have_http_status(:not_found)
+      json = JSON.parse(response.body)
+      expect(json["errors"]).to be_present
+    end
+  end
 end

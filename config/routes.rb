@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   namespace :api, path: '', constraints: { subdomain: "api" } do
     resources :github_notifications, only: :create
+    resources :lockfiles, only: :create
     resources :releases, only: :create
     resources :results, only: :create
   end

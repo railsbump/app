@@ -70,4 +70,9 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.hosts << /([a-z]+\.)?#{ENV.fetch "HOST"}/
+
+  # Treat the entire HOST as the TLD in development so that hostnames like
+  # `api.localhost` are parsed with subdomain "api" (matches the production
+  # `api.railsbump.org` routing constraint).
+  config.action_dispatch.tld_length = 0
 end

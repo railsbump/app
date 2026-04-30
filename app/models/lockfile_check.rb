@@ -3,7 +3,7 @@ class LockfileCheck < ApplicationRecord
   belongs_to :rails_release
   has_many :gem_checks, dependent: :destroy
 
-  validates :status, inclusion: { in: %w[pending complete failed] }
+  enum :status, { pending: "pending", complete: "complete", failed: "failed" }, validate: true
 
   def self.create_for!(lockfile:, rails_release:)
     runtime = TargetRuntime.new(lockfile: lockfile, rails_release: rails_release)

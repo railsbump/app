@@ -1,9 +1,10 @@
 class GemCheck < ApplicationRecord
   belongs_to :lockfile_check
 
+  enum :status, { pending: "pending", complete: "complete" }, validate: true
+  enum :result, { compatible: "compatible", upgrade_needed: "upgrade_needed", incompatible: "incompatible", skipped: "skipped" }, validate: { allow_nil: true }
+
   validates :gem_name, presence: true
-  validates :status, inclusion: { in: %w[pending complete] }
-  validates :result, inclusion: { in: %w[compatible upgrade_needed incompatible skipped] }, allow_nil: true
 
   def self.create_for!(lockfile_check:, gem:)
     attributes = { locked_version: gem.version, source: gem.source }

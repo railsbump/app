@@ -38,7 +38,7 @@ class Lockfile
     end
 
     def call
-      return result(:invalid_content) unless valid_content?
+      return result(:invalid_content) unless Lockfile.valid_content?(@content)
 
       lockfile = Lockfile.new(content: @content)
 
@@ -55,10 +55,6 @@ class Lockfile
 
       def result(reason, lockfile: nil)
         Result.new(reason: reason, lockfile: lockfile)
-      end
-
-      def valid_content?
-        Lockfile::CONTENT_REGEX.match?(@content)
       end
   end
 end

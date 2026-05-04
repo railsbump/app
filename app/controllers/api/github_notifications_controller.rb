@@ -1,18 +1,23 @@
 module API
   class GithubNotificationsController < BaseController
     def create
-      data = request.request_parameters
-
-      github_notification = GithubNotification.create!(
-        data:       data,
-        action:     data["action"],
-        conclusion: data.dig("check_run", "conclusion"),
-        branch:     data.dig("check_run", "check_suite", "head_branch")
+      Sentry.capture_message(
+        "POST /api/github_notifications hit while temporarily disabled",
+        level: :info,
+        extra: {
+          action:     request.request_parameters["action"],
+          conclusion: request.request_parameters.dig("check_run", "conclusion"),
+          branch:     request.request_parameters.dig("check_run", "check_suite", "head_branch"),
+          remote_ip:  request.remote_ip,
+          user_agent: request.user_agent,
+          referer:    request.referer
+        }
       )
 
-      GithubNotifications::Process.perform_async github_notification.id
-
-      head :ok
+      render json: {
+        error: "temporarily_disabled",
+        message: "POST /api/github_notifications is temporarily disabled."
+      }, status: :service_unavailable
     end
   end
 end

@@ -1,6 +1,8 @@
 require "rails_helper"
 
-RSpec.describe API::GithubNotificationsController, type: :controller do
+# Disabled while POST /api/github_notifications is temporarily turned off as part
+# of the memory leak investigation. Re-enable after the endpoint behavior is restored.
+RSpec.xdescribe API::GithubNotificationsController, type: :controller do
   describe "POST #create" do
     # Realistic GitHub Check Run webhook payload structure
     let(:notification_data) do

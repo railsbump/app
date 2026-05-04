@@ -7,13 +7,16 @@ module API
     before_action :set_lockfile, only: :show
 
     def create
-      lockfile = Lockfile.new(content: lockfile_content)
+      result = Lockfile::Inspection.call(lockfile_content)
 
-      if lockfile.save
+      case result.reason
+      when :runnable
+        lockfile = result.lockfile
+        lockfile.save!
         lockfile.run_check!
         render_pending(lockfile)
       else
-        render json: { errors: lockfile.errors.full_messages }, status: :unprocessable_content
+        render json: { reason: result.reason, errors: [result.message] }, status: result.http_status
       end
     end
 

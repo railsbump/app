@@ -24,6 +24,10 @@ class Lockfile < ApplicationRecord
     DEPENDENCIES
   )xm.freeze
 
+  def self.valid_content?(content)
+    CONTENT_REGEX.match?(content.to_s)
+  end
+
   def parsed
     @parsed ||= Parsed.new(content)
   end
@@ -86,7 +90,7 @@ class Lockfile < ApplicationRecord
   end
 
   def validate_content
-    unless CONTENT_REGEX.match?(content)
+    unless self.class.valid_content?(content)
       self.errors.add(:content, "does not look like a valid lockfile.")
     end
   end

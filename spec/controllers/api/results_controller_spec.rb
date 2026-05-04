@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe API::ResultsController, type: :controller do
+# Disabled while POST /api/results is temporarily turned off as part of the
+# memory leak investigation. Re-enable after the endpoint behavior is restored.
+RSpec.xdescribe API::ResultsController, type: :controller do
   let(:api_key) { FactoryBot.create(:api_key) }
   let(:rails_release) { FactoryBot.create(:rails_release) }
   let(:compat) { FactoryBot.create(:compat, rails_release: rails_release, status: :pending) }

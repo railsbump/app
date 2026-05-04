@@ -6,6 +6,26 @@ class Lockfile
   class Parsed
     RUBYGEMS_SOURCES = ["http://rubygems.org/", "https://rubygems.org/"]
 
+    # Rails core gems. Excluded from `#gems` because their compatibility with
+    # a target Rails release is determined by the Rails version itself, not
+    # by per-gem resolution — checking each individually would be redundant
+    # and noisy for apps that declare sub-gems directly (e.g. Discourse).
+    RAILS_GEMS = %w(
+      actioncable
+      actionmailbox
+      actionmailer
+      actionpack
+      actiontext
+      actionview
+      activejob
+      activemodel
+      activerecord
+      activestorage
+      activesupport
+      rails
+      railties
+    ).freeze
+
     LockedGem = Data.define(:name, :version, :source) do
       def resolvable?
         source.in?(RUBYGEMS_SOURCES) && version.present?
@@ -16,8 +36,14 @@ class Lockfile
       @parser = Bundler::LockfileParser.new(content)
     end
 
+    # Apps that skip the `rails` umbrella gem (Discourse, some API-only or
+    # extracted apps) declare `railties` directly. Either signals a Rails app
+    # and both stay in lockstep with the Rails version, so fall back to
+    # railties when rails itself is not a top-level spec.
     def rails_version
-      parser.specs.find { |s| s.name == "rails" }&.version&.to_s
+      spec = parser.specs.find { |s| s.name == "rails" } ||
+             parser.specs.find { |s| s.name == "railties" }
+      spec&.version&.to_s
     end
 
     def ruby_version
@@ -29,7 +55,7 @@ class Lockfile
     end
 
     def gems
-      @gems ||= parser.dependencies.keys.without("rails").map { |name| build_locked_gem(name) }
+      @gems ||= (parser.dependencies.keys - RAILS_GEMS).map { |name| build_locked_gem(name) }
     end
 
     private

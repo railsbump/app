@@ -1,17 +1,22 @@
 module API
   class ReleasesController < BaseController
     def create
-      name = params.fetch(:name)
-
-      if name == "rails"
-        RailsReleases::Create.perform_async params.fetch(:version)
-      else
-        Gemmy.find_by_name(name)&.then {
-          Gemmies::Process.perform_async _1.id
+      Sentry.capture_message(
+        "POST /api/releases hit while temporarily disabled",
+        level: :info,
+        extra: {
+          name: params[:name],
+          version: params[:version],
+          remote_ip: request.remote_ip,
+          user_agent: request.user_agent,
+          referer: request.referer
         }
-      end
+      )
 
-      head :ok
+      render json: {
+        error: "temporarily_disabled",
+        message: "POST /api/releases is temporarily disabled."
+      }, status: :service_unavailable
     end
   end
 end

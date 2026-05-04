@@ -1,6 +1,8 @@
 require "rails_helper"
 
-RSpec.describe API::ReleasesController, type: :controller do
+# Disabled while POST /api/releases is temporarily turned off as part of the
+# memory leak investigation. Re-enable after the endpoint behavior is restored.
+RSpec.xdescribe API::ReleasesController, type: :controller do
   describe "POST #create" do
     context "when name is 'rails'" do
       before { allow(RailsReleases::Create).to receive(:perform_async) }

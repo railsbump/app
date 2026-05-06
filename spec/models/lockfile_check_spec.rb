@@ -84,9 +84,9 @@ RSpec.describe LockfileCheck, type: :model, new_check_flow: true do
   end
 
   describe "#enqueue_gem_checks" do
-    before { allow(Checks::ResolveGem).to receive(:perform_async) }
+    before { allow(Checks::ResolveGem).to receive(:perform_bulk) }
 
-    it "enqueues Checks::ResolveGem for each pending gem_check" do
+    it "bulk-enqueues Checks::ResolveGem for each pending gem_check" do
       lockfile_check = FactoryBot.create(:lockfile_check)
       pending_check = FactoryBot.create(:gem_check,
         lockfile_check: lockfile_check,
@@ -95,7 +95,7 @@ RSpec.describe LockfileCheck, type: :model, new_check_flow: true do
 
       lockfile_check.enqueue_gem_checks
 
-      expect(Checks::ResolveGem).to have_received(:perform_async).with(pending_check.id)
+      expect(Checks::ResolveGem).to have_received(:perform_bulk).with([ [pending_check.id] ])
     end
 
     it "does not enqueue complete gem_checks" do
@@ -108,7 +108,7 @@ RSpec.describe LockfileCheck, type: :model, new_check_flow: true do
 
       lockfile_check.enqueue_gem_checks
 
-      expect(Checks::ResolveGem).not_to have_received(:perform_async)
+      expect(Checks::ResolveGem).not_to have_received(:perform_bulk)
     end
   end
 end

@@ -72,30 +72,22 @@ RSpec.describe Lockfile, type: :model, new_check_flow: true do
         minimum_rubygems_version: "3.3.3")
     end
 
-    before { allow(Checks::ResolveGem).to receive(:perform_async) }
+    before { allow(Lockfiles::StartCheck).to receive(:perform_async) }
 
-    it "creates a LockfileCheck targeting the next RailsRelease" do
+    it "enqueues Lockfiles::StartCheck for the next RailsRelease" do
       lockfile = create_lockfile(rails_version: "7.1.3")
 
-      expect do
-        lockfile_check = lockfile.run_check!
-        expect(lockfile_check.rails_release).to eq(next_release)
-      end.to change(LockfileCheck, :count).by(1)
-    end
+      lockfile.run_check!
 
-    it "enqueues resolver jobs for each resolvable gem_check" do
-      lockfile = create_lockfile(rails_version: "7.1.3")
-      lockfile_check = lockfile.run_check!
-      puma_check = lockfile_check.gem_checks.find_by(gem_name: "puma")
-
-      expect(Checks::ResolveGem).to have_received(:perform_async).with(puma_check.id)
+      expect(Lockfiles::StartCheck).to have_received(:perform_async).with(lockfile.id, next_release.id)
     end
 
     it "does nothing when there is no newer RailsRelease" do
       lockfile = create_lockfile(rails_version: "8.0.0")
 
-      expect { lockfile.run_check! }.not_to change(LockfileCheck, :count)
-      expect(Checks::ResolveGem).not_to have_received(:perform_async)
+      lockfile.run_check!
+
+      expect(Lockfiles::StartCheck).not_to have_received(:perform_async)
     end
 
     it "accepts an explicit rails_release argument, overriding next_rails_release" do
@@ -105,9 +97,10 @@ RSpec.describe Lockfile, type: :model, new_check_flow: true do
         minimum_bundler_version: "2.5.20",
         minimum_rubygems_version: "3.2.3")
       lockfile = create_lockfile(rails_version: "7.1.3")
-      lockfile_check = lockfile.run_check!(rails_release: other_release)
 
-      expect(lockfile_check.rails_release).to eq(other_release)
+      lockfile.run_check!(rails_release: other_release)
+
+      expect(Lockfiles::StartCheck).to have_received(:perform_async).with(lockfile.id, other_release.id)
     end
   end
 end

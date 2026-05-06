@@ -18,16 +18,26 @@ class LockfileCheck < ApplicationRecord
       rails_release: rails_release
     )
 
-    lockfile.gems.each do |gem|
-      GemCheck.create_for!(lockfile_check: lockfile_check, gem: gem)
+    now  = Time.current
+    rows = lockfile.gems.map do |gem|
+      if gem.resolvable?
+        { lockfile_check_id: lockfile_check.id, gem_name: gem.name, locked_version: gem.version, source: gem.source&.to_s, status: "pending",  result: nil,       created_at: now, updated_at: now }
+      else
+        { lockfile_check_id: lockfile_check.id, gem_name: gem.name, locked_version: gem.version, source: gem.source&.to_s, status: "complete", result: "skipped", created_at: now, updated_at: now }
+      end
     end
+
+    # insert_all bypasses AR validations and callbacks for performance (N→1 INSERT).
+    # If GemCheck gains a before_create callback or non-DB-level validation, add it here explicitly.
+    # Omitting returning: means inserted IDs are not returned; enqueue_gem_checks does a separate
+    # pluck(:id) to get them. Two round-trips, but keeps this method simple.
+    GemCheck.insert_all(rows) if rows.any?
 
     lockfile_check
   end
 
   def enqueue_gem_checks
-    gem_checks.where(status: "pending").find_each do |gem_check|
-      Checks::ResolveGem.perform_async(gem_check.id)
-    end
+    ids = gem_checks.where(status: "pending").pluck(:id)
+    Checks::ResolveGem.perform_bulk(ids.map { [_1] }) if ids.any?
   end
 end

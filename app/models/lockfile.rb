@@ -38,12 +38,12 @@ class Lockfile < ApplicationRecord
     RailsRelease.next_after(rails_version)
   end
 
+  # Returns the Sidekiq job ID (String), or nil when there is no next release.
+  # Does NOT return a LockfileCheck — work happens asynchronously in Lockfiles::StartCheck.
   def run_check!(rails_release: next_rails_release)
     return unless rails_release
 
-    lockfile_check = LockfileCheck.create_for!(lockfile: self, rails_release: rails_release)
-    lockfile_check.enqueue_gem_checks
-    lockfile_check
+    Lockfiles::StartCheck.perform_async(id, rails_release.id)
   end
 
   def compats

@@ -43,10 +43,12 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
         expect(json["message"]).to include("Lockfile saved")
       end
 
-      it "triggers run_check! on the lockfile" do
-        expect_any_instance_of(Lockfile).to receive(:run_check!)
+      it "enqueues Lockfiles::StartCheck for the saved lockfile" do
+        allow(Lockfiles::StartCheck).to receive(:perform_async)
 
         post :create, params: { lockfile: { content: content } }, as: :json
+
+        expect(Lockfiles::StartCheck).to have_received(:perform_async).with(Lockfile.last.id, anything)
       end
     end
 

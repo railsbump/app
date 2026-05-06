@@ -1,16 +1,14 @@
 class RailsReleasesController < ApplicationController
   def show
     if rand < 0.01
-      Sentry.capture_message(
+      Sentry.logger.info(
         "GET /gems/:gemmy_id/compatibility/:id hit (legacy compat page, 1% sample)",
-        level: :info,
-        extra: {
-          gemmy_id:   params[:gemmy_id],
-          rails_id:   params[:id],
-          remote_ip:  request.remote_ip,
-          user_agent: request.user_agent,
-          referer:    request.referer
-        }
+        gem_name:   params[:gemmy_id],
+        rails_id:   params[:id],
+        remote_ip:  request.remote_ip,
+        user_agent: request.user_agent,
+        referer:    request.referer,
+        format:     request.format.symbol
       )
     end
 

@@ -3,18 +3,16 @@ module API
     before_action :authenticate_api_key!
 
     def create
-      Sentry.capture_message(
+      Sentry.logger.info(
         "POST /api/results hit while temporarily disabled",
-        level: :info,
-        extra: {
-          compat_id:     params[:compat_id],
-          rails_version: params[:rails_version],
-          strategy:      params.dig(:result, :strategy),
-          api_key_name:  @api_key&.name,
-          remote_ip:     request.remote_ip,
-          user_agent:    request.user_agent,
-          referer:       request.referer
-        }
+        compat_id:     params[:compat_id],
+        rails_version: params[:rails_version],
+        strategy:      params.dig(:result, :strategy),
+        success:       params.dig(:result, :success),
+        api_key_name:  @api_key&.name,
+        remote_ip:     request.remote_ip,
+        user_agent:    request.user_agent,
+        referer:       request.referer
       )
 
       render json: {

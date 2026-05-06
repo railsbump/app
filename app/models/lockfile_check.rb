@@ -29,6 +29,8 @@ class LockfileCheck < ApplicationRecord
 
     # insert_all bypasses AR validations and callbacks for performance (N→1 INSERT).
     # If GemCheck gains a before_create callback or non-DB-level validation, add it here explicitly.
+    # Omitting returning: means inserted IDs are not returned; enqueue_gem_checks does a separate
+    # pluck(:id) to get them. Two round-trips, but keeps this method simple.
     GemCheck.insert_all(rows) if rows.any?
 
     lockfile_check

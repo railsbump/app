@@ -49,10 +49,14 @@ RSpec.describe Lockfiles::StartCheck, type: :job, new_check_flow: true do
       expect(Checks::ResolveGem).to have_received(:perform_bulk).with(pending_ids.map { [_1] })
     end
 
-    it "uses next_rails_release when rails_release_id is omitted" do
-      described_class.new.perform(lockfile.id)
+    it "resolves rails_release from the lockfile when rails_release_id is omitted" do
+      rails_release # ensure the 7.2 release exists as next_rails_release for the 7.1.3 lockfile
 
-      expect(Checks::ResolveGem).not_to have_received(:perform_bulk)
+      expect do
+        described_class.new.perform(lockfile.id)
+      end.to change(LockfileCheck, :count).by(1)
+
+      expect(LockfileCheck.last.rails_release).to eq(rails_release)
     end
 
     it "does nothing when there is no next rails release" do
@@ -63,7 +67,7 @@ RSpec.describe Lockfiles::StartCheck, type: :job, new_check_flow: true do
       end.not_to change(LockfileCheck, :count)
     end
 
-    it "is a no-op when the lockfile has been deleted before the job runs" do
+    it "raises RecordNotFound when the lockfile has been deleted before the job runs" do
       id = lockfile.id
       lockfile.destroy
 

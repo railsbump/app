@@ -4,15 +4,15 @@ class GemmiesController < ApplicationController
   end
 
   def create
-    Sentry.capture_message(
+    Sentry.logger.info(
       "POST /gems hit (legacy gem submission)",
-      level: :info,
-      extra: {
-        name:       gemmy_params[:name],
-        remote_ip:  request.remote_ip,
-        user_agent: request.user_agent,
-        referer:    request.referer
-      }
+      gem_name:   gemmy_params[:name],
+      remote_ip:  request.remote_ip,
+      user_agent: request.user_agent,
+      referer:    request.referer,
+      method:     request.method,
+      path:       request.path,
+      format:     request.format.symbol
     )
 
     @gemmy = Gemmies::Create.call(gemmy_params.fetch(:name))
@@ -36,15 +36,13 @@ class GemmiesController < ApplicationController
 
   def show
     if rand < 0.01
-      Sentry.capture_message(
+      Sentry.logger.info(
         "GET /gems/:id hit (legacy gem page, 1% sample)",
-        level: :info,
-        extra: {
-          name:       params[:id],
-          remote_ip:  request.remote_ip,
-          user_agent: request.user_agent,
-          referer:    request.referer
-        }
+        gem_name:   params[:id],
+        remote_ip:  request.remote_ip,
+        user_agent: request.user_agent,
+        referer:    request.referer,
+        format:     request.format.symbol
       )
     end
 
@@ -64,16 +62,15 @@ class GemmiesController < ApplicationController
   end
 
   def compat_table
-    Sentry.capture_message(
+    Sentry.logger.info(
       "GET /gems/compat_table hit (legacy)",
-      level: :info,
-      extra: {
-        gemmy_ids:             params[:gemmy_ids],
-        inaccessible_gemmy_ids: params[:inaccessible_gemmy_ids],
-        remote_ip:             request.remote_ip,
-        user_agent:            request.user_agent,
-        referer:               request.referer
-      }
+      gemmy_ids:              params[:gemmy_ids],
+      inaccessible_gemmy_ids: params[:inaccessible_gemmy_ids],
+      gemmy_count:            gemmy_ids.size,
+      remote_ip:              request.remote_ip,
+      user_agent:             request.user_agent,
+      referer:                request.referer,
+      format:                 request.format.symbol
     )
 
     render locals: {

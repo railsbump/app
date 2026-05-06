@@ -38,8 +38,9 @@ else
 end
 gem "redis-namespace",                          "~> 1.11"
 gem "redis",                                    "~> 5.0"
-gem "sentry-rails",                             "~> 5.5"
-gem "sentry-sidekiq",                           "~> 5.5"
+gem "sentry-ruby",                              "~> 6.5"
+gem "sentry-rails",                             "~> 6.5"
+gem "sentry-sidekiq",                           "~> 6.5"
 gem "sidekiq-scheduler",                        "~> 5.0"
 gem "sidekiq",                                  "~> 7.2"
 gem "sitemap_generator",                        "~> 6.3"

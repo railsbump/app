@@ -1,16 +1,13 @@
 module API
   class ReleasesController < BaseController
     def create
-      Sentry.capture_message(
+      Sentry.logger.info(
         "POST /api/releases hit while temporarily disabled",
-        level: :info,
-        extra: {
-          name: params[:name],
-          version: params[:version],
-          remote_ip: request.remote_ip,
-          user_agent: request.user_agent,
-          referer: request.referer
-        }
+        gem_name:   params[:name],
+        version:    params[:version],
+        remote_ip:  request.remote_ip,
+        user_agent: request.user_agent,
+        referer:    request.referer
       )
 
       render json: {

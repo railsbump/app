@@ -37,6 +37,9 @@ module RailsBump
 
     config.middleware.insert 0, Rack::Deflater
 
+    require Rails.root.join("app/middleware/memory_tracker")
+    config.middleware.use MemoryTracker
+
     Rails.application.routes.default_url_options =
       config.action_mailer.default_url_options = {
         host:     ENV.fetch("HOST"),

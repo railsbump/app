@@ -1,0 +1,32 @@
+# Allow Googlebot and well-behaved crawlers full access
+User-agent: *
+Crawl-delay: 10
+
+# Block Baidu crawlers entirely — heavy crawler traffic causing memory pressure
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Baiduspider-render
+Disallow: /
+
+User-agent: Baiduspider-image
+Disallow: /
+
+User-agent: Baiduspider-video
+Disallow: /
+
+User-agent: Baiduspider-news
+Disallow: /
+
+# Block other aggressive bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

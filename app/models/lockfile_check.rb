@@ -27,6 +27,8 @@ class LockfileCheck < ApplicationRecord
       end
     end
 
+    # insert_all bypasses AR validations and callbacks for performance (N→1 INSERT).
+    # If GemCheck gains a before_create callback or non-DB-level validation, add it here explicitly.
     GemCheck.insert_all(rows) if rows.any?
 
     lockfile_check

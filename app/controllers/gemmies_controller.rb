@@ -4,6 +4,17 @@ class GemmiesController < ApplicationController
   end
 
   def create
+    Sentry.capture_message(
+      "POST /gems hit (legacy gem submission)",
+      level: :info,
+      extra: {
+        name:       gemmy_params[:name],
+        remote_ip:  request.remote_ip,
+        user_agent: request.user_agent,
+        referer:    request.referer
+      }
+    )
+
     @gemmy = Gemmies::Create.call(gemmy_params.fetch(:name))
   rescue Gemmies::Create::AlreadyExists => error
     redirect_to error.gemmy,
@@ -24,6 +35,19 @@ class GemmiesController < ApplicationController
   end
 
   def show
+    if rand < 0.01
+      Sentry.capture_message(
+        "GET /gems/:id hit (legacy gem page, 1% sample)",
+        level: :info,
+        extra: {
+          name:       params[:id],
+          remote_ip:  request.remote_ip,
+          user_agent: request.user_agent,
+          referer:    request.referer
+        }
+      )
+    end
+
     @gemmy = Gemmy.find_by_name(params[:id])
 
     if @gemmy
@@ -40,6 +64,18 @@ class GemmiesController < ApplicationController
   end
 
   def compat_table
+    Sentry.capture_message(
+      "GET /gems/compat_table hit (legacy)",
+      level: :info,
+      extra: {
+        gemmy_ids:             params[:gemmy_ids],
+        inaccessible_gemmy_ids: params[:inaccessible_gemmy_ids],
+        remote_ip:             request.remote_ip,
+        user_agent:            request.user_agent,
+        referer:               request.referer
+      }
+    )
+
     render locals: {
       gemmies: Gemmy.find(gemmy_ids),
       inaccessible_gemmies: InaccessibleGemmy.find(inaccessible_gemmy_ids),

@@ -1,39 +1,29 @@
 module API
   class ResultsController < BaseController
     before_action :authenticate_api_key!
-    before_action :sanitize_result_params!, only: :create
 
     def create
-      @rails_release = RailsRelease.find_by(version: params[:rails_version])
-      @compat = @rails_release.compats.find_by_id!(params[:compat_id])
+      Sentry.capture_message(
+        "POST /api/results hit while temporarily disabled",
+        level: :info,
+        extra: {
+          compat_id:     params[:compat_id],
+          rails_version: params[:rails_version],
+          strategy:      params.dig(:result, :strategy),
+          api_key_name:  @api_key&.name,
+          remote_ip:     request.remote_ip,
+          user_agent:    request.user_agent,
+          referer:       request.referer
+        }
+      )
 
-      if @compat.dependencies == params.require(:dependencies).permit!.to_h
-        if @compat.process_result(params[:result])
-          logger.info "Compat #{@compat.id} processed successfully"
-          head :ok
-        else
-          logger.info "Compat #{@compat.id} process_result failed: #{@compat.errors.full_messages}"
-          head :unprocessable_content
-        end
-      else
-        logger.info "Compat #{@compat.id} dependencies do not match"
-        head :unprocessable_content
-      end
+      render json: {
+        error: "temporarily_disabled",
+        message: "POST /api/results is temporarily disabled while we investigate a memory issue."
+      }, status: :service_unavailable
     end
 
     private
-
-    def sanitize_result_params!
-      if params[:result].is_a?(ActionController::Parameters)
-        # PROBE: capture :output size, then drop it entirely to test the
-        # web-dyno memory leak hypothesis. Revert once confirmed.
-        params[:result].delete(:output)
-        params[:result].each_key do |key|
-          value = params[:result][key]
-          params[:result][key] = value.delete("\x00") if value.is_a?(String)
-        end
-      end
-    end
 
     def authenticate_api_key!
       api_key = request.headers['RAILS-BUMP-API-KEY']

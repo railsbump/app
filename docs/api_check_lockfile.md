@@ -73,10 +73,18 @@ Top-level `status` flips to `"complete"` once every nested
 
 ## Hitting a non-local environment
 
-Set `API_HOST` (and optionally `API_SCHEME`):
+Set `API_HOST`:
 
 ```sh
-API_HOST=api.railsbump.org API_SCHEME=https \
+API_HOST=api.railsbump.org bin/api_check_lockfile path/to/Gemfile.lock
+```
+
+Scheme auto-selects based on the host: `http` for `localhost`/`127.0.0.1`,
+`https` for everything else. Override with `API_SCHEME` only if needed
+(e.g. hitting a remote host over plain HTTP for debugging):
+
+```sh
+API_HOST=staging.example.com API_SCHEME=http \
   bin/api_check_lockfile path/to/Gemfile.lock
 ```
 

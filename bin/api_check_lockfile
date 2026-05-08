@@ -7,11 +7,18 @@
 #
 # Override host with API_HOST (default: api.localhost:3000):
 #   API_HOST=api.railsbump.org bin/api_check_lockfile Gemfile.lock
+#
+# Scheme auto-selects: https for api.railsbump.org, http for localhost.
+# Override with API_SCHEME if needed.
 
 set -euo pipefail
 
 HOST="${API_HOST:-api.localhost:3000}"
-SCHEME="${API_SCHEME:-http}"
+case "$HOST" in
+  *localhost*|127.0.0.1*) DEFAULT_SCHEME="http" ;;
+  *)                      DEFAULT_SCHEME="https" ;;
+esac
+SCHEME="${API_SCHEME:-$DEFAULT_SCHEME}"
 BASE="${SCHEME}://${HOST}"
 
 usage() {

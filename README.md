@@ -49,7 +49,7 @@ You will need these services:
 In order to set up the application locally:
 
 1. `git clone git@github.com:railsbump/app.git`
-2. `cp .env.sample .env` — important: keep `ENABLE_NEW_CHECK_FLOW="1"` (the new check flow is the default; see [`docs/new_check_flow.md`](docs/new_check_flow.md))
+2. `cp .env.sample .env` — important: keep `ENABLE_NEW_CHECK_FLOW="1"` so foreman loads the new check flow (the default in production). Without it you'll be running the legacy flow.
 3. `bin/setup`
 4. `rake data:find_or_create_rails_releases`
 5. `bin/dev` (or `foreman start -f Procfile.dev`)

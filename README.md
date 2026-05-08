@@ -9,6 +9,8 @@ Check your Ruby gems for compatibility with all Rails minor versions.
 
 The app is live at https://railsbump.org/, where you can check an [individual gem](http://railsbump.org/gems/new) or a [whole Bundler lockfile](http://railsbump.org/lockfiles/new) (Gemfile.lock).
 
+You can also submit a `Gemfile.lock` from the shell with the [`bin/api_check_lockfile`](bin/api_check_lockfile) helper, which wraps the `POST /lockfiles` and `GET /lockfiles/:slug` JSON endpoints. Scheme auto-selects (`http` for `localhost`, `https` otherwise). See [`docs/api_check_lockfile.md`](docs/api_check_lockfile.md) for full usage.
+
 ## Behind the scenes
 
 RailsBump uses a few approaches to check whether a gem version is compatible with a specific Rails release:

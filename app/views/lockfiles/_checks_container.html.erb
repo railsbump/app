@@ -1,0 +1,13 @@
+<div id="<%= dom_id(lockfile, :checks) %>">
+  <% lockfile.lockfile_checks.each do |lockfile_check| %>
+    <%= render "lockfiles/lockfile_check_section", lockfile_check: lockfile_check %>
+  <% end %>
+
+  <% if lockfile.lockfile_checks.empty? %>
+    <section class="mt-4">
+      <div class="alert alert-info">
+        Your lockfile is being processed&hellip; results will appear here shortly.
+      </div>
+    </section>
+  <% end %>
+</div>

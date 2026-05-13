@@ -11,6 +11,14 @@ module Lockfiles
 
       lockfile_check = LockfileCheck.create_for!(lockfile: lockfile, rails_release: rails_release)
       lockfile_check.enqueue_gem_checks
+
+      lockfile.lockfile_checks.reload
+      Turbo::StreamsChannel.broadcast_replace_to(
+        lockfile, :gem_checks,
+        target: ActionView::RecordIdentifier.dom_id(lockfile, :checks),
+        partial: "lockfiles/checks_container",
+        locals: { lockfile: lockfile }
+      )
     end
   end
 end

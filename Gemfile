@@ -1,5 +1,5 @@
 def next?
-  File.basename(__FILE__) == "Gemfile.next"
+  ENV["RAILS_NEXT"] == "true"
 end
 source "https://rubygems.org"
 

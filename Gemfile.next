@@ -1,1 +1,2 @@
-Gemfile
+ENV["RAILS_NEXT"] = "true"
+eval_gemfile "Gemfile"

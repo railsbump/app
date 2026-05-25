@@ -1,6 +1,9 @@
 {
     "name": "rails-bump",
     "version": "1.0.0",
+    "engines": {
+        "node": "20.x"
+    },
     "dependencies": {
         "yarn": "^1.22.10"
     }

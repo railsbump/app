@@ -1,7 +1,7 @@
 class GemCheck < ApplicationRecord
   belongs_to :lockfile_check
 
-  enum :status, { pending: "pending", complete: "complete" }, validate: true
+  enum :status, { pending: "pending", complete: "complete", failed: "failed" }, validate: true
   enum :result, { compatible: "compatible", upgrade_needed: "upgrade_needed", incompatible: "incompatible", skipped: "skipped" }, validate: { allow_nil: true }
 
   validates :gem_name, presence: true

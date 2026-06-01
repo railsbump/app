@@ -1,7 +1,5 @@
 <% if lockfile_check.complete? %>
   <span class="badge bg-success">Complete</span>
-<% elsif lockfile_check.failed? %>
-  <span class="badge bg-danger">Failed</span>
 <% else %>
   <span class="badge bg-warning text-dark">Checking...</span>
 <% end %>

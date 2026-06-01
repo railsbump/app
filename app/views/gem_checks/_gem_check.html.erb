@@ -1,10 +1,14 @@
-<tr class="<%= gem_check_row_class(gem_check.result) %>">
+<tr class="<%= gem_check.failed? ? "table-danger" : gem_check_row_class(gem_check.result) %>">
   <td><%= gem_check.gem_name %></td>
   <td><%= gem_check.locked_version || "missing" %></td>
   <td>
-    <span class="badge <%= gem_check_result_badge_class(gem_check.result) %>">
-      <%= gem_check_result_label(gem_check.result) %>
-    </span>
+    <% if gem_check.failed? %>
+      <span class="badge bg-danger">Failed</span>
+    <% else %>
+      <span class="badge <%= gem_check_result_badge_class(gem_check.result) %>">
+        <%= gem_check_result_label(gem_check.result) %>
+      </span>
+    <% end %>
   </td>
   <td>
     <% if gem_check.earliest_compatible_version.present? %>

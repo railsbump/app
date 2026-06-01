@@ -47,22 +47,24 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
       )
     end
 
-    it "marks the lockfile check failed" do
+    it "marks the unresolved gem check failed" do
       run_exhausted
 
-      expect(lockfile_check.reload.status).to eq("failed")
+      expect(gem_check.reload.status).to eq("failed")
     end
 
-    it "does not flip the failed check back to complete when a later gem resolves" do
+    it "completes the lockfile check once the failed gem is its last pending one" do
       run_exhausted
 
-      allow_any_instance_of(GemCheck).to receive(:perform!) do |gc|
-        gc.update!(status: "complete", result: "compatible")
-      end
-      other = FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "rack", status: "pending")
-      described_class.new.perform(other.id)
+      expect(lockfile_check.reload.status).to eq("complete")
+    end
 
-      expect(lockfile_check.reload.status).to eq("failed")
+    it "leaves the lockfile check pending while other gem checks are still pending" do
+      FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "rack", status: "pending")
+
+      run_exhausted
+
+      expect(lockfile_check.reload.status).to eq("pending")
     end
 
     it "broadcasts the failure so the page leaves the spinner" do

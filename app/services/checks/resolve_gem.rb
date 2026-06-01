@@ -8,34 +8,34 @@ module Checks
 
     sidekiq_options retry: 3
 
-    # When all retries are exhausted, the gem could not be resolved. Mark the
-    # whole lockfile check failed and broadcast, so the page leaves "Checking..."
-    # and shows "Failed" instead of hanging on the spinner forever.
+    # When all retries are exhausted, the gem itself could not be resolved.
+    # Mark just that gem failed (the other gems' results are still valid) and
+    # finalize, so the lockfile check leaves "Checking..." once every gem has
+    # reached a terminal state.
     sidekiq_retries_exhausted do |job, _exception|
       gem_check = GemCheck.find_by(id: job["args"].first)
       next unless gem_check
 
-      lockfile_check = gem_check.lockfile_check
-      lockfile_check.failed!
-      lockfile_check.lockfile.broadcast_checks
+      gem_check.failed!
+      finalize(gem_check.lockfile_check)
     end
 
     def perform(gem_check_id)
       gem_check = GemCheck.find(gem_check_id)
       gem_check.perform!
 
-      lockfile_check = gem_check.lockfile_check
-      mark_lockfile_check_complete(lockfile_check)
-      lockfile_check.lockfile.broadcast_checks
+      self.class.finalize(gem_check.lockfile_check)
     end
 
-    private
+    # Completes the lockfile check once no gem checks remain pending (failed
+    # gems count as terminal), then broadcasts the updated state. Shared by the
+    # success path and the retries-exhausted handler.
+    def self.finalize(lockfile_check)
+      if lockfile_check.pending? && lockfile_check.gem_checks.where(status: "pending").none?
+        lockfile_check.update!(status: "complete")
+      end
 
-    def mark_lockfile_check_complete(lockfile_check)
-      return unless lockfile_check.pending?
-      return if lockfile_check.gem_checks.where(status: "pending").exists?
-
-      lockfile_check.update!(status: "complete")
+      lockfile_check.lockfile.broadcast_checks
     end
   end
 end

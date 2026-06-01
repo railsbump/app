@@ -156,12 +156,19 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
     it "returns status 'failed' when any lockfile_check has failed" do
       lockfile = FactoryBot.create(:lockfile)
       rails_release = FactoryBot.create(:rails_release, version: "7.2")
-      FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "failed")
+      lockfile_check = FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "failed")
+      # The gem that could not be resolved stays pending: per-gem checks have
+      # no failure state, so only the parent lockfile_check is marked failed.
+      FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "puma", status: "pending")
 
       get :show, params: { id: lockfile.slug }, as: :json
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)["status"]).to eq("failed")
+      json = JSON.parse(response.body)
+      expect(json["status"]).to eq("failed")
+      check = json["lockfile_checks"].first
+      expect(check["status"]).to eq("failed")
+      expect(check["gem_checks"].first["status"]).to eq("pending")
     end
 
     it "returns 404 when slug is unknown" do

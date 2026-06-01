@@ -68,8 +68,23 @@ Issues `GET /lockfiles/:slug` and pretty-prints:
 }
 ```
 
-Top-level `status` flips to `"complete"` once every nested
-`gem_check.status` is `"complete"`.
+### Status values
+
+Top-level `status` is one of:
+
+- `"pending"` — the check is still running. Keep polling (honor
+  `retry_after_seconds` / the `Retry-After` header).
+- `"complete"` — every nested check resolved. Terminal, stop polling.
+- `"failed"` — a gem could not be resolved after the checker exhausted
+  its retries. Terminal, stop polling.
+
+Treat both `"complete"` and `"failed"` as terminal: poll only while the
+status is `"pending"`.
+
+When the top-level status is `"failed"`, the offending `lockfile_check`
+carries `status: "failed"`; its unresolved `gem_check` may still report
+`status: "pending"`, since per-gem checks have no failure state of their
+own.
 
 ## Hitting a non-local environment
 

@@ -31,10 +31,12 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
       expect(lockfile_check.reload.status).to eq("pending")
     end
 
-    it "broadcasts the updated checks to the lockfile" do
-      expect_any_instance_of(Lockfile).to receive(:broadcast_checks)
+    it "broadcasts the updated checks to the lockfile's stream" do
+      stream = "#{lockfile_check.lockfile.to_gid_param}:gem_checks"
 
-      described_class.new.perform(gem_check.id)
+      expect do
+        described_class.new.perform(gem_check.id)
+      end.to have_broadcasted_to(stream)
     end
   end
 
@@ -51,10 +53,22 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
       expect(lockfile_check.reload.status).to eq("failed")
     end
 
-    it "broadcasts the failure so the page leaves the spinner" do
-      expect_any_instance_of(Lockfile).to receive(:broadcast_checks)
-
+    it "does not flip the failed check back to complete when a later gem resolves" do
       run_exhausted
+
+      allow_any_instance_of(GemCheck).to receive(:perform!) do |gc|
+        gc.update!(status: "complete", result: "compatible")
+      end
+      other = FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "rack", status: "pending")
+      described_class.new.perform(other.id)
+
+      expect(lockfile_check.reload.status).to eq("failed")
+    end
+
+    it "broadcasts the failure so the page leaves the spinner" do
+      stream = "#{lockfile_check.lockfile.to_gid_param}:gem_checks"
+
+      expect { run_exhausted }.to have_broadcasted_to(stream)
     end
 
     it "does nothing when the gem check no longer exists" do

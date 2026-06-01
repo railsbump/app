@@ -53,7 +53,7 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
       expect(gem_check.reload.status).to eq("failed")
     end
 
-    it "completes the lockfile check once the failed gem is its last pending one" do
+    it "completes the lockfile check when the failed gem was the last one pending" do
       run_exhausted
 
       expect(lockfile_check.reload.status).to eq("complete")

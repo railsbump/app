@@ -153,7 +153,7 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       expect(gc["result"]).to eq("compatible")
     end
 
-    it "reports a gem that could not be resolved as failed within a completed check" do
+    it "keeps the check 'complete' while marking the unresolved gem 'failed'" do
       lockfile = FactoryBot.create(:lockfile)
       rails_release = FactoryBot.create(:rails_release, version: "7.2")
       lockfile_check = FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "complete")

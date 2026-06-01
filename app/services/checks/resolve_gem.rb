@@ -27,9 +27,6 @@ module Checks
       self.class.finalize(gem_check.lockfile_check)
     end
 
-    # Completes the lockfile check once no gem checks remain pending (failed
-    # gems count as terminal), then broadcasts the updated state. Shared by the
-    # success path and the retries-exhausted handler.
     def self.finalize(lockfile_check)
       if lockfile_check.pending? && lockfile_check.gem_checks.where(status: "pending").none?
         lockfile_check.update!(status: "complete")

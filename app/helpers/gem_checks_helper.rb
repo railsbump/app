@@ -32,9 +32,6 @@ module GemChecksHelper
 
   private
 
-    # Collapses the two enums (status + result) into the single concept the
-    # row renders. failed lives on status; the verdicts live on result; a gem
-    # with no result yet is pending.
     def gem_check_display_state(gem_check)
       gem_check.failed? ? :failed : (gem_check.result&.to_sym || :pending)
     end

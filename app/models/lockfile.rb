@@ -56,7 +56,7 @@ class Lockfile < ApplicationRecord
   # the current DB state (sections appear, rows update, empty-state clears).
   def broadcast_checks
     broadcast_replace_to(
-      [self, :gem_checks],
+      self, :gem_checks,
       target: "lockfile_checks",
       partial: "lockfiles/checks",
       locals: { lockfile: self }

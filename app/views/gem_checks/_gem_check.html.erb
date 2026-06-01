@@ -9,17 +9,17 @@
   <td>
     <% if gem_check.earliest_compatible_version.present? %>
       >= <%= gem_check.earliest_compatible_version %>
-    <% elsif gem_check.result == "skipped" && gem_check.source.present? %>
+    <% elsif gem_check.skipped? && gem_check.source.present? %>
       <details style="max-width: 300px;">
         <summary class="text-muted">Source not accessible</summary>
         <small class="text-muted d-block" style="overflow-wrap: break-word;"><%= gem_check.source %></small>
       </details>
-    <% elsif gem_check.result == "incompatible" && gem_check.error_message.present? %>
+    <% elsif gem_check.incompatible? && gem_check.error_message.present? %>
       <details style="max-width: 300px;">
         <summary class="text-danger">No compatible version</summary>
         <small class="text-muted d-block" style="overflow-wrap: break-word;"><%= gem_check.error_message %></small>
       </details>
-    <% elsif gem_check.result == "compatible" %>
+    <% elsif gem_check.compatible? %>
       &mdash;
     <% end %>
   </td>

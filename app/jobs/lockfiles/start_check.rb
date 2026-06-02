@@ -10,6 +10,7 @@ module Lockfiles
       return unless rails_release
 
       lockfile_check = LockfileCheck.create_for!(lockfile: lockfile, rails_release: rails_release)
+      lockfile.broadcast_checks
       lockfile_check.enqueue_gem_checks
     end
   end

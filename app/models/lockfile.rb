@@ -50,6 +50,15 @@ class Lockfile < ApplicationRecord
     Compat.where(id: gemmies.flat_map(&:compat_ids))
   end
 
+  def broadcast_checks
+    broadcast_replace_to(
+      self, :gem_checks,
+      target: "lockfile_checks",
+      partial: "lockfiles/checks",
+      locals: { lockfile: self }
+    )
+  end
+
   def gem_names
     parser = Bundler::LockfileParser.new(content)
     parser.dependencies.keys - %w(rails)

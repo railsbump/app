@@ -10,9 +10,8 @@ module Checks
       gem_check = GemCheck.find(gem_check_id)
       gem_check.perform!
 
-      lockfile_check = gem_check.lockfile_check
       broadcast_gem_check(gem_check)
-      mark_lockfile_check_complete(lockfile_check)
+      mark_lockfile_check_complete(gem_check.lockfile_check)
     end
 
     private

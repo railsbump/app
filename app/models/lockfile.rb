@@ -50,10 +50,6 @@ class Lockfile < ApplicationRecord
     Compat.where(id: gemmies.flat_map(&:compat_ids))
   end
 
-  # Re-renders the whole #lockfile_checks container over Turbo Streams.
-  # Used instead of granular replaces so the target always exists: subscribers
-  # render the container on initial load, and every broadcast rebuilds it from
-  # the current DB state (sections appear, rows update, empty-state clears).
   def broadcast_checks
     broadcast_replace_to(
       self, :gem_checks,

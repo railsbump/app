@@ -10,7 +10,7 @@
 
 <%= turbo_stream_from @lockfile, :gem_checks %>
 
-<%= render "lockfiles/checks", lockfile: @lockfile %>
+<%= render partial: "lockfiles/checks", locals: { lockfile: @lockfile } %>
 
 <div id="lockfile-content-modal" class="modal fade">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">

@@ -1,4 +1,4 @@
-<tr class="<%= gem_check_row_class(gem_check.result) %>">
+<tr id="<%= dom_id(gem_check) %>" class="<%= gem_check_row_class(gem_check.result) %>">
   <td><%= gem_check.gem_name %></td>
   <td><%= gem_check.locked_version || "missing" %></td>
   <td>
@@ -8,7 +8,7 @@
   </td>
   <td>
     <% if gem_check.earliest_compatible_version.present? %>
-      >= <%= gem_check.earliest_compatible_version %>
+      <%= gem_check.earliest_compatible_version %>
     <% elsif gem_check.skipped? && gem_check.source.present? %>
       <details style="max-width: 300px;">
         <summary class="text-muted">Source not accessible</summary>

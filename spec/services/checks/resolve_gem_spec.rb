@@ -36,7 +36,7 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
 
       expect do
         described_class.new.perform(gem_check.id)
-      end.to have_broadcasted_to(stream)
+      end.to have_broadcasted_to(stream).at_least(:once)
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe Checks::ResolveGem, type: :job, new_check_flow: true do
     it "broadcasts the failure so the page leaves the spinner" do
       stream = "#{lockfile_check.lockfile.to_gid_param}:gem_checks"
 
-      expect { run_exhausted }.to have_broadcasted_to(stream)
+      expect { run_exhausted }.to have_broadcasted_to(stream).at_least(:once)
     end
 
     it "does nothing when the gem check no longer exists" do

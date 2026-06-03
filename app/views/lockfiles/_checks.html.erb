@@ -36,7 +36,7 @@
 
       <div class="d-flex align-items-center gap-2 mb-3">
         <h2 class="mb-0">Compatibility with Rails <%= lockfile_check.rails_release.version %></h2>
-        <%= render "lockfile_checks/status_badge", lockfile_check: lockfile_check %>
+        <%= render partial: "lockfile_checks/status_badge", locals: { lockfile_check: lockfile_check } %>
       </div>
 
       <% if lockfile_check.gem_checks.any? %>

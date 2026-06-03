@@ -17,6 +17,7 @@ module Checks
       next unless gem_check
 
       gem_check.failed!
+      broadcast_gem_check(gem_check)
       finalize(gem_check.lockfile_check)
     end
 
@@ -24,15 +25,31 @@ module Checks
       gem_check = GemCheck.find(gem_check_id)
       gem_check.perform!
 
+      self.class.broadcast_gem_check(gem_check)
       self.class.finalize(gem_check.lockfile_check)
     end
 
-    def self.finalize(lockfile_check)
-      if lockfile_check.pending? && lockfile_check.gem_checks.where(status: "pending").none?
-        lockfile_check.update!(status: "complete")
-      end
+    def self.broadcast_gem_check(gem_check)
+      Turbo::StreamsChannel.broadcast_replace_to(
+        gem_check.lockfile_check.lockfile, :gem_checks,
+        target: ActionView::RecordIdentifier.dom_id(gem_check),
+        partial: "gem_checks/gem_check",
+        locals: { gem_check: gem_check }
+      )
+    end
 
-      lockfile_check.lockfile.broadcast_checks
+    def self.finalize(lockfile_check)
+      return unless lockfile_check.pending?
+      return if lockfile_check.gem_checks.where(status: "pending").exists?
+
+      lockfile_check.update!(status: "complete")
+
+      Turbo::StreamsChannel.broadcast_replace_to(
+        lockfile_check.lockfile, :gem_checks,
+        target: ActionView::RecordIdentifier.dom_id(lockfile_check, :status),
+        partial: "lockfile_checks/status_badge",
+        locals: { lockfile_check: lockfile_check }
+      )
     end
   end
 end

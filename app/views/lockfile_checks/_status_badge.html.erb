@@ -1,5 +1,7 @@
-<% if lockfile_check.complete? %>
-  <span class="badge bg-success">Complete</span>
-<% else %>
-  <span class="badge bg-warning text-dark">Checking...</span>
-<% end %>
+<span id="<%= dom_id(lockfile_check, :status) %>">
+  <% if lockfile_check.complete? %>
+    <span class="badge bg-success">Complete</span>
+  <% else %>
+    <span class="badge bg-warning text-dark">Checking...</span>
+  <% end %>
+</span>

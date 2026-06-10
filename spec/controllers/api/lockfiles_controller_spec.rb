@@ -153,15 +153,23 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       expect(gc["result"]).to eq("compatible")
     end
 
-    it "returns status 'failed' when any lockfile_check has failed" do
+    it "keeps the check 'complete' while marking the unresolved gem 'failed'" do
       lockfile = FactoryBot.create(:lockfile)
       rails_release = FactoryBot.create(:rails_release, version: "7.2")
-      FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "failed")
+      lockfile_check = FactoryBot.create(:lockfile_check, lockfile: lockfile, rails_release: rails_release, status: "complete")
+      # Failure is per-gem: the check itself completes, the offending gem is failed.
+      FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "puma", status: "complete", result: "compatible")
+      FactoryBot.create(:gem_check, lockfile_check: lockfile_check, gem_name: "rack", status: "failed")
 
       get :show, params: { id: lockfile.slug }, as: :json
 
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)["status"]).to eq("failed")
+      json = JSON.parse(response.body)
+      expect(json["status"]).to eq("complete")
+      check = json["lockfile_checks"].first
+      expect(check["status"]).to eq("complete")
+      statuses = check["gem_checks"].map { |gc| [gc["name"], gc["status"]] }.to_h
+      expect(statuses).to eq("puma" => "complete", "rack" => "failed")
     end
 
     it "returns 404 when slug is unknown" do

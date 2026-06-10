@@ -1,9 +1,9 @@
-<tr id="<%= dom_id(gem_check) %>" class="<%= gem_check_row_class(gem_check.result) %>">
+<tr id="<%= dom_id(gem_check) %>" class="<%= gem_check_row_class(gem_check) %>">
   <td><%= gem_check.gem_name %></td>
   <td><%= gem_check.locked_version || "missing" %></td>
   <td>
-    <span class="badge <%= gem_check_result_badge_class(gem_check.result) %>">
-      <%= gem_check_result_label(gem_check.result) %>
+    <span class="badge <%= gem_check_result_badge_class(gem_check) %>">
+      <%= gem_check_result_label(gem_check) %>
     </span>
   </td>
   <td>

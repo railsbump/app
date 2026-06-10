@@ -6,28 +6,40 @@ module Checks
   class ResolveGem
     include Sidekiq::Job
 
+    sidekiq_options retry: 3
+
+    # When all retries are exhausted, the gem itself could not be resolved.
+    # Mark just that gem failed (the other gems' results are still valid) and
+    # finalize, so the lockfile check leaves "Checking..." once every gem has
+    # reached a terminal state.
+    sidekiq_retries_exhausted do |job, _exception|
+      gem_check = GemCheck.find_by(id: job["args"].first)
+      next unless gem_check
+
+      gem_check.failed!
+      broadcast_gem_check(gem_check)
+      finalize(gem_check.lockfile_check)
+    end
+
     def perform(gem_check_id)
       gem_check = GemCheck.find(gem_check_id)
       gem_check.perform!
 
-      broadcast_gem_check(gem_check)
-      mark_lockfile_check_complete(gem_check.lockfile_check)
+      self.class.broadcast_gem_check(gem_check)
+      self.class.finalize(gem_check.lockfile_check)
     end
 
-    private
-
-    def broadcast_gem_check(gem_check)
-      lockfile = gem_check.lockfile_check.lockfile
-
+    def self.broadcast_gem_check(gem_check)
       Turbo::StreamsChannel.broadcast_replace_to(
-        lockfile, :gem_checks,
+        gem_check.lockfile_check.lockfile, :gem_checks,
         target: ActionView::RecordIdentifier.dom_id(gem_check),
         partial: "gem_checks/gem_check",
         locals: { gem_check: gem_check }
       )
     end
 
-    def mark_lockfile_check_complete(lockfile_check)
+    def self.finalize(lockfile_check)
+      return unless lockfile_check.pending?
       return if lockfile_check.gem_checks.where(status: "pending").exists?
 
       lockfile_check.update!(status: "complete")

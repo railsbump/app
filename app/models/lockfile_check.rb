@@ -38,6 +38,10 @@ class LockfileCheck < ApplicationRecord
 
   def enqueue_gem_checks
     ids = gem_checks.where(status: "pending").pluck(:id)
-    Checks::ResolveGem.perform_bulk(ids.map { [_1] }) if ids.any?
+    if ids.any?
+      Checks::ResolveGem.perform_bulk(ids.map { [_1] })
+    else
+      complete!
+    end
   end
 end

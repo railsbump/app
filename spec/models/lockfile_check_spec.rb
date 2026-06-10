@@ -110,5 +110,18 @@ RSpec.describe LockfileCheck, type: :model, new_check_flow: true do
 
       expect(Checks::ResolveGem).not_to have_received(:perform_bulk)
     end
+
+    it "sets status to completed if there are no gem_checks to enqueue" do
+      lockfile_check = FactoryBot.create(:lockfile_check)
+      FactoryBot.create(:gem_check,
+        lockfile_check: lockfile_check,
+        gem_name: "puma",
+        status: "complete",
+        result: "skipped")
+
+      lockfile_check.enqueue_gem_checks
+
+      expect(lockfile_check).to be_complete
+    end
   end
 end

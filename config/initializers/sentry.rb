@@ -6,5 +6,5 @@ Sentry.init do |config|
   config.send_default_pii        = true
   config.traces_sample_rate      = 0.05
   config.profiles_sample_rate    = 0.05
-  config.enable_logs             = true
+  config.enable_logs             = false
 end

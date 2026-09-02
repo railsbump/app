@@ -76,6 +76,26 @@ RSpec.describe API::LockfilesController, type: :controller, new_check_flow: true
       end
     end
 
+    context "when lockfile is sent as a scalar instead of a hash" do
+      it "returns 422 with reason invalid_content instead of raising" do
+        expect {
+          post :create, params: { lockfile: "not a hash" }, as: :json
+        }.not_to raise_error
+
+        expect(response).to have_http_status(:unprocessable_content)
+        expect(JSON.parse(response.body)["reason"]).to eq("invalid_content")
+      end
+    end
+
+    context "when the lockfile param is missing entirely" do
+      it "returns 422 with reason invalid_content" do
+        post :create, params: {}, as: :json
+
+        expect(response).to have_http_status(:unprocessable_content)
+        expect(JSON.parse(response.body)["reason"]).to eq("invalid_content")
+      end
+    end
+
     context "when the lockfile is already on the latest known Rails" do
       it "returns 200 with reason up_to_date and errors, and does not persist the lockfile" do
         FactoryBot.create(:rails_release, version: "7.1")

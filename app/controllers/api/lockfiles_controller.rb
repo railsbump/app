@@ -51,8 +51,16 @@ module API
         estimate.clamp(MIN_POLL_SECONDS, MAX_POLL_SECONDS)
       end
 
+      # Some requests arrive with `lockfile` as a bare scalar instead of the
+      # nested `lockfile[content]` hash. Accept both and let Inspection
+      # reject anything that is not a Gemfile.lock.
       def lockfile_content
-        params.require(:lockfile).fetch(:content, "").to_s.strip
+        lockfile = params[:lockfile]
+
+        case lockfile
+        when ActionController::Parameters then lockfile[:content]
+        when String                       then lockfile
+        end.to_s.strip
       end
   end
 end

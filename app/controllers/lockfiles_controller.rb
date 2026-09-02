@@ -53,6 +53,6 @@ class LockfilesController < ApplicationController
     end
 
     def lockfile_params
-      params.require(:lockfile).permit(:content)
+      params.expect(lockfile: [:content])
     end
 end

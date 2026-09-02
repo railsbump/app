@@ -187,4 +187,12 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
       }.to raise_error(ActionController::UnknownFormat)
     end
   end
+
+  describe "POST #create with a scalar lockfile param" do
+    it "raises ParameterMissing (400) instead of NoMethodError" do
+      expect {
+        post :create, params: { lockfile: "not a hash" }
+      }.to raise_error(ActionController::ParameterMissing)
+    end
+  end
 end

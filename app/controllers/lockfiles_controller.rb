@@ -12,11 +12,15 @@ class LockfilesController < ApplicationController
   end
 
   def show
-    if FeatureFlags.new_check_flow?
-      @lockfile = Lockfile.includes(lockfile_checks: [:rails_release, :gem_checks]).find_by!(slug: params[:id])
-      render :show_new
-    else
-      @lockfile = Lockfile.find_by!(slug: params[:id])
+    respond_to do |format|
+      format.html do
+        if FeatureFlags.new_check_flow?
+          @lockfile = Lockfile.includes(lockfile_checks: [:rails_release, :gem_checks]).find_by!(slug: params[:id])
+          render :show_new
+        else
+          @lockfile = Lockfile.find_by!(slug: params[:id])
+        end
+      end
     end
   end
 

@@ -178,5 +178,21 @@ RSpec.describe LockfilesController, type: :controller, vcr: { record: :once } do
       get :show, params: { id: lockfile.to_param }
       expect(response).to be_successful
     end
+
+    # UnknownFormat is mapped to 406 by Rails and excluded from Sentry by
+    # default, unlike the MissingTemplate 500 this replaces.
+    it "raises UnknownFormat (406) for non-HTML formats instead of MissingTemplate" do
+      expect {
+        get :show, params: { id: lockfile.to_param }, format: :json
+      }.to raise_error(ActionController::UnknownFormat)
+    end
+  end
+
+  describe "POST #create with a scalar lockfile param" do
+    it "raises ParameterMissing (400) instead of NoMethodError" do
+      expect {
+        post :create, params: { lockfile: "not a hash" }
+      }.to raise_error(ActionController::ParameterMissing)
+    end
   end
 end
